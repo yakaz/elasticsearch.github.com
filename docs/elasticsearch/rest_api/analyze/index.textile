@@ -1,0 +1,36 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Analyze
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["analyze", "Analyze"]
+];
+</script>
+
+h1. Analyze
+
+p. The analyze API allows to analyze custom text provided ("within" a specific analyzer). The REST endpoint /_analyze is used as follows:
+
+<pre class="prettyprint lang-js">
+curl -XGET 'http://host:port/{index}/_analyze'
+</pre>
+
+p. For example:
+
+<pre class="prettyprint lang-js">
+curl -XGET 'http://host:port/{index}/_analyze?text=this is a test'
+</pre>
+
+p. An @analyzer@ can also be provided to use a different "analyzer":../../index_modules/analysis/analyzer than the default indexing analyzer for the index:
+
+<pre class="prettyprint lang-js">
+curl -XGET 'http://host:port/{index}/_analyze?analyzer=whitespace&text=this is a test'
+</pre>
+
+p. The text can also be provided as the request body.
+
+p. The @format@ of the response can also be provided, by default it is @detailed@ (breaking each token information into a json object). The @text@ format provides the analyzed data in a single text response.
