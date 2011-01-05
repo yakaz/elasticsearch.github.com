@@ -22,13 +22,13 @@ curl -XGET 'http://host:port/{index}/_analyze'
 p. For example:
 
 <pre class="prettyprint lang-js">
-curl -XGET 'http://host:port/{index}/_analyze?text=this is a test'
+curl -XGET 'http://localhost:9200/twitter/_analyze?text=this is a test'
 </pre>
 
 p. An @analyzer@ can also be provided to use a different "analyzer":../../index_modules/analysis/analyzer than the default indexing analyzer for the index:
 
 <pre class="prettyprint lang-js">
-curl -XGET 'http://host:port/{index}/_analyze?analyzer=whitespace&text=this is a test'
+curl -XGET 'http://localhost:9200/twitter/_analyze?analyzer=whitespace&text=this is a test'
 </pre>
 
 p. The text can also be provided as the request body.
