@@ -51,6 +51,8 @@ p. Index templates are identified by a name (in the above case @template_1@) and
 curl -XGET localhost:9200/_template/template_1
 </pre>
 
+p. To get list of all index templates you can use "Cluster State":../../cluster/state API and check for the metadata/templates section of the response.
+
 h2. Multiple Template Matching
 
 p. Multiple index templates can potentially match an index, in this case, both the settings and mappings are merged into the final configuration of the index. The order of the merging can be controlled using the @order@ parameter, with lower order being applied first, and higher orders overriding them. For example:
