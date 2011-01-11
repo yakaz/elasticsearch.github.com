@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Object Type
 
-p. JSON documents are hierarchal in nature, allowing to define inner "object"s within the actual JSON. ElasticSearch completely understand the nature of objects and allows to map them easily, automatically support their dynamic nature (object can one have different fields each time), and provides query support for their inner field. Lets take the following JSON as an example:
+p. JSON documents are hierarchal in nature, allowing to define inner "object"s within the actual JSON. ElasticSearch completely understand the nature of objects and allows to map them easily, automatically support their dynamic nature (one object can have different fields each time), and provides query support for their inner field. Lets take the following JSON as an example:
 
 <pre class="prettyprint lang-js">
 {
@@ -30,7 +30,7 @@ p. JSON documents are hierarchal in nature, allowing to define inner "object"s w
 }
 </pre>
  
-p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @first_name@ and @last_name@. Its important to note that @tweet@ is also an an object, though a special "root object type":../root_object_type which allows for additional mapping definitions.
+p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @first_name@ and @last_name@. Its important to note that @tweet@ is also an object, though a special "root object type":../root_object_type which allows for additional mapping definitions.
 
 p. The following is an example of explicit mapping for the above JSON:
 
