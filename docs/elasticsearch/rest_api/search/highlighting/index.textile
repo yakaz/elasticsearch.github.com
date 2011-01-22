@@ -29,7 +29,7 @@ p. Allow to highlight search results on one or more fields. The implementation u
 
 p. In the above case, the @_all@ field will be highlighted for each search hit (there will be another element in each search hit, called @highlight@, which includes the highlighted fields and the highlighted fragments).
 
-p. The highlighting process requires the original text to be highlighted against, as well as @term_vector@ information set to @with_position_offsets@.
+p. The highlighting process requires the original text to be highlighted against, as well as @term_vector@ information set to @with_positions_offsets@.
 
 p. The @term_vector@ can be set on each field to be highlighted. The actual source to be highlighted can be extracted from a field that is set to be stored (@store@ set to @yes@), or, if not set, it will automatically be extracted from the @_source@ stored within the index (allowing to keep the index size smaller).
 
