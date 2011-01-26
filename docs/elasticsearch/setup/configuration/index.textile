@@ -37,7 +37,7 @@ p. Internally, all settings are collapsed into "namespaced" settings. For exampl
 p. It also means that its easy to provide the settings externally either using the @ES_JAVA_OPTS@ or as parameters to the @elasticsearch@ command, for example:
 
 <pre class="prettyprint">
-$ elasticsearch -f -Dnetwork.host=10.0.0.4
+$ elasticsearch -f -Des.network.host=10.0.0.4
 </pre>
 
 p. Another option is to use the @${...}@ notation within the configuration file which will resolve to an environment setting, for example:
@@ -81,7 +81,7 @@ index :
 p. This means that every index that gets created on the specific node started with the mentioned configuration will store the index in memory <b>unless the index explicitly sets it</b>. In other words, any index level settings override what is set in the node configuration. Of course, the above can also be set as a "collapsed" setting, for example:
 
 <pre class="prettyprint">
-$ elasticsearch -f -Dindex.store.type=memory
+$ elasticsearch -f -Des.index.store.type=memory
 </pre>
 
 p. All of the index level configuration can be found within each "index module":../../modules/index.
