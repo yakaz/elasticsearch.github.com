@@ -1,5 +1,4 @@
 ---
-nav: download
 layout: download
 type: elasticsearch
 version: 0.13.1

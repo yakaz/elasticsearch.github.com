@@ -3,7 +3,6 @@ layout: blogpost
 title: RabbitMQ River
 author: Shay Banon
 nick: kimchy
-nav: blog
 ---
 
 p. Another "River":/blog/2010/09/28/the_river.html implementation, "RabbitMQ River":http://github.com/elasticsearch/elasticsearch/issues/380 allowing to automatically index a rabbitmq queue. The format of the messages follows the new "bulk api":http://github.com/elasticsearch/elasticsearch/issues/371 format:

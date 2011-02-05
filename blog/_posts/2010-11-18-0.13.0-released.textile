@@ -3,7 +3,6 @@ layout: blogpost
 title: ElasticSearch 0.13.0 Released
 author: Shay Banon
 nick: kimchy
-nav: blog
 ---
 
 p. ElasticSearch version @0.13.0@ has just been released. You can download it "here":/download. This release includes important bug fixes (most important one is a possible corruption in the index data) and some new features, including:

@@ -3,7 +3,6 @@ layout: blogpost
 title: Zero Conf Persistency
 author: Shay Banon
 nick: kimchy
-nav: blog
 ---
 
 p. With the new "local gateway", upcoming elasticsearch version 0.11 will provide zero conf long term persistency out of the box.
