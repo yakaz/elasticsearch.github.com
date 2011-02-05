@@ -10,13 +10,18 @@
         </div>
     </a>
     <div class="clear"></div>
-    {% if page.title_in_header == false %}
-        <div class="clear" style="margin-top: 70px"></div>
-    {% else %}
-        <div style="font-size: 36px; height: 80px; left: 250px; position: absolute; top: 135px;">
-            {{ page.title }}
-        </div>
+    {% if page.nav != 'home' %}
+    <div style="font-size: 36px; height: 80px; left: 250px; position: absolute; top: 135px;">
+        {{ page.nav }}
+    </div>
     {% endif %}
+    
+    <div style="height: 80px; text-align: center; font-size: 34px; padding-top: 30px">
+            {% if page.title_in_header != false %}
+            {{ page.title }}
+            {% endif %}
+    </div>
+    <div class="clear"></div>
 </div>
 
 
