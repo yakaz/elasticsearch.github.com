@@ -1,0 +1,183 @@
+@import url("./reset.css");
+
+html, body { height: 100%; }
+
+body {
+	font-family: 'Neuton', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+    text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 1.2;
+	background:url(/images/main_bg.jpg) repeat-x 0 -26px;
+	background-color:#82B64A;
+}
+
+html>body #all {
+	height: auto;
+	min-height: 100%;
+}
+
+#wrapper {
+	background:url(/images/top.jpg) no-repeat 50% 0px;
+	height:100%;
+}
+
+#all {
+	position: relative;
+	height: 100%;
+	width:766px;
+	margin:0 auto;
+}
+
+.narrower {
+	position: relative;
+	height: 100%;
+	width:600px;
+	margin:0 auto;
+}
+
+.clear {
+	clear:both;
+	font-size:1px;
+	margin-top:-1px;
+}
+
+#empty, #footer {
+	height: 17px;
+	clear:both;
+}
+
+#footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+p {
+	margin-bottom:1.5em;
+}
+
+h1{
+	font-size:22px;
+	margin-bottom:0.6em;
+	font-style:normal;
+	line-height:1.2;
+}
+h2{
+	font-size:20px;
+	margin-bottom:0.9em;
+	line-height:1.2;
+}
+h3{
+	font-size:18px;
+	margin-bottom:1.2em;
+	line-height:1.2;
+	font-variant:small-caps;
+}
+
+pre { padding: 1em; margin: 1.5em 0; background: #c0daa4; color: #000; display: block; font-size: 14px; line-height: 1.5em; font-family: monospace; 
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #000;
+	-webkit-box-shadow:0 0 3px #000;
+	box-shadow:0 0 3px #000;
+}
+
+code {background: #c0daa4; color: #000; font-family: monospace; font-size: 15px; padding-left: 3px; padding-right: 3px; padding-top: 1px; padding-bottom: 1px;}
+
+.thinseparator { width: 100%; height: 0.1em; background: #222222; clear: both; margin-top: 0.5em; margin-bottom: 0.5em;}
+.separator { width: 100%; height: 0.3em; background: #222222; clear: both; margin-top: 0.5em; margin-bottom: 0.5em;}
+
+#content a {
+    padding:0 2px;
+    color: #c0daa4;
+	text-decoration:none;
+}
+#content a:hover { 
+	text-decoration:underline;
+}
+#content a:visited {
+    color: #c0daa4;
+}
+
+#header a {
+    color: #000;
+	text-decoration:none;
+}
+#header a:hover { 
+    color: #000;
+	text-decoration:none;
+}
+#header a:visited {
+    color: #000;
+	text-decoration:none;
+}
+
+#top_left_menu a {
+    padding:0 2px;
+    color: #c0daa4;
+	text-decoration:none;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+#top_left_menu a:hover { 
+    background:#c0daa4;
+    color:#000000;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.4);
+}
+#top_left_menu a:visited {
+    color: #c0daa4;
+}
+#top_left_menu .m_link {
+	padding-left: 4px;
+	padding-top: 5px;
+}
+
+.center {margin: auto;}
+.textcenter {text-align: center;}
+.right-float{ /* Float any item to the right */
+	float:right;
+	margin-left:2em;
+	margin-right:0;
+}
+.left-float{ /* Float any item to the left */
+	float:left;
+	margin-right:2em;
+	margin-left:0;
+}
+/* Sets styles for any 'end' grids - this class MUST be given to a grid that is the last in a horizontal series */
+.end{
+	margin-left:0 !important;
+	margin-right:0 !important;
+}
+img{
+	font-size:1em;
+}
+img.left-img{ /* Float any image to the LEFT and give it some margin */
+	font-size:1em;
+	float:left;
+	padding:4px;
+	margin-bottom:10px;
+	margin-right:10px;
+	margin-top:3px;
+}
+img.right-img{ /* Float any image to the RIGHT and give it some margin */
+	font-size:1em;
+	float:right;
+	padding:4px;
+	margin-bottom:10px;
+	margin-left:10px;
+	margin-top:3px;
+}

@@ -5,10 +5,10 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>ElasticSearch</title>
- <link href="http://elasticsearch.com/atom.xml" rel="self"/>
- <link href="http://elasticsearch.com/"/>
+ <link href="http://elasticsearch.org/atom.xml" rel="self"/>
+ <link href="http://elasticsearch.org/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://elasticsearch.com/</id>
+ <id>http://elasticsearch.org/</id>
  <author>
    <name>ElasticSearch</name>
    <email>contact@elasticsearch.com</email>
@@ -17,7 +17,7 @@ layout: nil
  {% for post in site.posts limit:20 %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://elasticsearch.com{{ post.url }}"/>
+   <link href="http://elasticsearch.org{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://elasticsearch.com{{ post.id }}</id>
    <author>

@@ -1,17 +1,14 @@
 ---
-layout: blog
+layout: default
 title: Blog
 ---
 
-<div class="bloglisting">
-    {% for post in site.categories.blog limit:10 %}
-        {% if post.nick == 'kimchy' %}
-        <div class="blogpost">
-            <h1><a href="{{post.url}}">{{post.title}}</a></h1>
-            <div class="content">
-                {{post.content}}
-            </div>
+<div class="narrower" style="font-size: 18px">
+      {% for post in site.categories.blog %}
+      {% if post.nick == 'kimchy' %}
+        <div style="padding-top: 5px">
+            <span> <a href="{{ post.url }}">{{ post.title }}</a></span> <span style="float: right">{{ post.date | date_to_string }}</span>
         </div>
-        {% endif %}
-    {% endfor %}
+      {% endif %}
+      {% endfor %}
 </div>

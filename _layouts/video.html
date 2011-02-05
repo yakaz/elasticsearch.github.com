@@ -1,74 +1,31 @@
 ---
-layout: clean
+layout: default
 ---
 
-<!-- <div style="height: 4em"></div> -->
+<div style="float: right">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.elasticsearch.org{{page.url}}" data-text="{{page.title}}" data-count="horizontal" data-via="elasticsearch" data-related="kimchy:Shay Banon: Founder of elasticsearch">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>    
 
-{% for video in site.categories.videos reversed %}
-<div id="videosvideo{{forloop.index}}" class="videosviewvideo">
-	<div class="video">
-        <div id="videosvideo_close{{forloop.index}}" class="closevideo">Close Video</div>
-        {{video.content}}
-    </div>
-</div>
-{% endfor %}
+<div style="margin-bottom: 2em;">By {{page.author}} | {{page.date | date_to_string}}</div>
 
-<div class="videosholder">
-    <img src="/images/set3/video256.png">
-</div>
 
-<div class="eighteighty" style="margin: auto; padding: 1em 0 1em 0;">
-    <div class="video"><div id="carousel">
-        <ul>
-            {% for video in site.categories.videos reversed %}
-        	<li id="videosvideolink{{forloop.index}}">
-        	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p><a href="{{video.url}}">{{video.title}}</a></p>
-        	</li>
-            {% endfor %}
-        </ul>
-    </div></div>
-</div>
+{{content}}
 
+<div id="disqus_thread"></div>
 <script type="text/javascript">
-$('#carousel').infiniteCarousel({
-    inView: 4,    
-    advance:1,
-	transitionSpeed: 800,
-	displayTime: 10000,
-	displayProgressBar: false,
-	imagePath: '/scripts/infinitecarousel/images/',
-    textholderHeight : .25,
-    padding:'10px',
-    prevNextInternal: false,
-    autoHideCaptions: false,
-    displayThumbnails: true
-});
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'elasticsearch'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = 'elasticsearch_{{page.url}}';
+    var disqus_url = 'http://www.elasticsearch.org{{page.url}}';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
-
-<script type="text/javascript">
-{% for video in site.categories.videos reversed %}
-
-{% if video.title == page.title %}
-$('.videosholder').animate({
-    height : "570px"
-}, 1500)
-$("#videosvideo{{forloop.index}}").fadeIn("slow");
-_gaq.push(['_trackEvent', 'Videos', 'Play', '{{video.title}}'])
-{% endif %}
-
-$("#videosvideolink{{forloop.index}}").click(function () {
-    _gaq.push(['_trackEvent', 'Videos', 'Play', '{{video.title}}'])
-    $('.videosholder').animate({
-        height : "570px"
-    }, 1500)
-  $("#videosvideo{{forloop.index}}").fadeIn("slow");
-});
-$("#videosvideo_close{{forloop.index}}").click(function () {
-    $('.videosholder').animate({
-        height : "250px"
-    }, 1500)
-  $("#videosvideo{{forloop.index}}").fadeOut("slow");
-});
-
-{% endfor %}
-</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

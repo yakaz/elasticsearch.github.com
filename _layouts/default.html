@@ -1,7 +1,36 @@
----
-layout: clean
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
+<head>
+	<title>{{ page.title }}</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<meta name="description" content="elasticsearch">
+	<meta name="keywords" content="elastic, search, cloud, elasticsearch, indexing, lucene, distributed lucene, shay banon">
+	<meta name="author" content="elasticsearch">
 
-<div id="wrapper">
-{{content}}
-</div>
+    <link href="http://feeds.feedburner.com/elasticsearch" rel="alternate" title="elasticsearch" type="application/atom+xml" />
+
+	<link rel="stylesheet" type="text/css" href="/scripts/prettify/prettify.css">
+    <link  href="//fonts.googleapis.com/css?family=Neuton:regular" rel="stylesheet" type="text/css" >    
+    <link rel="stylesheet" type="text/css" href="/styles/screen.css">
+</head>
+	
+<body>
+    {% include top_left_menu.html %}
+    <div id="wrapper">
+        <div id="all">
+            {% include header.html %}
+            <div id="content">
+                {{ content }}
+            </div>
+            {% include footer.html %}
+        </div>
+    </div>
+    <a href="http://github.com/elasticsearch"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
+    
+    
+    <script type="text/javascript" src="/scripts/prettify/prettify.js"></script>
+    <script type="text/javascript">
+        prettyPrint();
+    </script>    
+</body>
+</html>
