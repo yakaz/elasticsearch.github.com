@@ -3,7 +3,7 @@
 html, body { height: 100%; }
 
 body {
-	font-family: 'Neuton', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
@@ -20,6 +20,14 @@ body {
 html>body #all {
 	height: auto;
 	min-height: 100%;
+}
+
+.neuton {
+	font-family: 'Neuton', 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#header {
+	font-family: 'Neuton', 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #wrapper {
@@ -64,17 +72,20 @@ p {
 }
 
 h1{
+	font-family: 'Neuton', 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size:22px;
 	margin-bottom:0.6em;
 	font-style:normal;
 	line-height:1.2;
 }
 h2{
+	font-family: 'Neuton', 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size:20px;
 	margin-bottom:0.9em;
 	line-height:1.2;
 }
 h3{
+	font-family: 'Neuton', 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size:18px;
 	margin-bottom:1.2em;
 	line-height:1.2;
