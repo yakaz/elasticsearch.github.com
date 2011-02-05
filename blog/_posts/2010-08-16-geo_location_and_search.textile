@@ -3,6 +3,7 @@ layout: blogpost
 title: Geo Location and Search
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 notextile. <img src="/images/set3/map.png" height="120px" class="left-img"></img>

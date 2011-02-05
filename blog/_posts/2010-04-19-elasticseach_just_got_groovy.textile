@@ -3,6 +3,7 @@ layout: blogpost
 title: ElasticSearch Just Got Groovy
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 notextile. <img src="http://media.xircles.codehaus.org/_projects/groovy/_logos/medium.png" height="60px" class="left-img"></img>

@@ -3,6 +3,7 @@ layout: blogpost
 title: ElasticSearch 0.7.1 Released
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 p. ElasticSearch version @0.7.1@ has just been released. You can download it "here":/download. This release fixed a major bug when indexing large documents resulting in storing additional null bytes (and returning them).

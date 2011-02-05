@@ -3,6 +3,7 @@ layout: blogpost
 title: NoSQL, Yes Search
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 notextile. <img src="/blog/images/no_yes.jpeg" height="80px" class="left-img"></img>

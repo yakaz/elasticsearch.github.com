@@ -3,6 +3,7 @@ layout: blogpost
 title: The River
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 p. One of the problems elasticsearch aims at solving is "the river" problem. The River is the stream of constant data and somehow finding a way to waddle through it and make something meaningful out of it.

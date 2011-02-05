@@ -3,6 +3,7 @@ layout: blogpost
 title: ElasticSearch 0.6.0 Released
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 p. ElasticSearch version @0.6.0@ has just been released. You can download it "here":/download. This release brings much improved stability, and several features:

@@ -3,6 +3,7 @@ layout: blogpost
 title: ElasticSearch 0.12.0 Released
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 p. ElasticSearch version @0.12.0@ has just been released. You can download it "here":/download. This release is a bit early due to a major bug found with full cluster recovery when using more than one index and the local gateway.

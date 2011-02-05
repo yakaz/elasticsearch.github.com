@@ -3,6 +3,7 @@ layout: blogpost
 title: Search Engine Time Machine
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 notextile. <img src="/blog/images/time_tunnel.jpg" height="160px" class="left-img"></img>

@@ -3,6 +3,7 @@ layout: blogpost
 title: Here Comes The Cloud
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 p. From the get go, elasticsearch has been designed and built for the cloud. From its internal architecture, to how it works in its distributed nature. In the upcoming 0.7 version, the cloud vision has been fully realized.

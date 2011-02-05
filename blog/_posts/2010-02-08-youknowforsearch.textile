@@ -3,6 +3,7 @@ layout: blogpost
 title: You Know, for Search
 author: Shay Banon
 nick: kimchy
+nav: blog
 ---
 
 notextile. <img src="/blog/images/the_hudsucker_proxy.jpeg" height="120px" class="left-img"></img>
