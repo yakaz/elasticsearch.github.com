@@ -138,7 +138,24 @@ code {background: #c0daa4; color: #000; font-family: monospace; font-size: 15px;
 	text-decoration:none;
 }
 
-#top_left_menu a {
+#top_menu {
+    display: block;
+    width: 766px;
+    margin: auto;
+    font-weight: bold;
+    list-style: none;
+    height: 25px;
+}
+
+#top_menu li {
+    float: left;
+	padding-left: 4px;
+	padding-top: 5px;
+}
+    
+#top_menu a {
+    display: block;
+    float: left;
     padding:0 2px;
     color: #c0daa4;
 	text-decoration:none;
@@ -146,17 +163,14 @@ code {background: #c0daa4; color: #000; font-family: monospace; font-size: 15px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
 }
-#top_left_menu a:hover { 
+
+#top_menu a:hover { 
     background:#c0daa4;
     color:#000000;
     text-shadow:1px 1px 1px rgba(0,0,0,0.4);
 }
-#top_left_menu a:visited {
+#top_menu a:visited {
     color: #c0daa4;
-}
-#top_left_menu .m_link {
-	padding-left: 4px;
-	padding-top: 5px;
 }
 
 .center {margin: auto;}

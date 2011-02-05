@@ -1,0 +1,19 @@
+<ul id="top_menu">
+    <li {% if page.nav == 'home' %} class="current" {% endif %}>
+        <a href="/">Home</a>
+    </li>
+    <li {% if page.nav == 'download' %} class="current" {% endif %}>
+        <a href="/download">Download</a>
+    </li>
+    <li {% if page.nav == 'community' %} class="current" {% endif %}>
+        <a href="/community">Community</a>
+    </li>
+    <li {% if page.nav == 'blog' %} class="current" {% endif %}>
+        <a href="/blog">Blog</a>
+    </li>
+    <li {% if page.nav == 'videos' %} class="current" {% endif %}>
+        <a href="/videos">Videos</a>
+    </li>
+    <li><a href="https://github.com/elasticsearch/elasticsearch/wiki">Docs / Wiki</a></li>
+    <li><a href="https://github.com/elasticsearch/elasticsearch/issues">Issues</a></li>
+</ul>
