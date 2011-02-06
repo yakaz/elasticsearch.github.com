@@ -2,12 +2,14 @@
 layout: default
 ---
 
-<div id="guide_content" style="float: left; width: 600px">
-    {{ content }}
+<div id="guide_all">
+    <div id="guide_content" style="float: left; width: 600px">
+        {{ content }}
+    </div>
+    <div id="guide_sidebar" style="float: right; width: 200px">
+    </div>
+    <div class="clear"></div>
+    <script>
+      $('#guide_sidebar').load('sidebar.html');
+    </script>
 </div>
-<div id="guide_sidebar" style="float: right; width: 200px">
-</div>
-<div class="clear"></div>
-<script>
-  $('#guide_sidebar').load('sidebar.html');
-</script>
