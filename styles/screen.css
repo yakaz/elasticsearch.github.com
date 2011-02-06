@@ -259,3 +259,14 @@ table td {
     border: 1px solid #000;
     padding: 5px;
 }
+
+.dsq-global-toolbar-container {
+	border: none !important;
+	-moz-box-shadow:0 0 0;
+	-webkit-box-shadow:0 0 0;
+	box-shadow:0 0 0;
+}
+
+.dsq-global-toolbar-likes {
+	border: none !important;
+}
