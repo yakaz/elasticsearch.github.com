@@ -1,0 +1,21 @@
+---
+layout: guide
+title: Match All Query
+cat: guide
+---
+
+p. A query that matches all documents. Maps to Lucene @MatchAllDocsQuery@.
+
+<pre class="prettyprint lang-js">
+{
+    "match_all" : { }
+}
+</pre>
+
+p. Which can also have boost associated with it:
+
+<pre class="prettyprint lang-js">
+{
+    "match_all" : { "boost" : 1.2 }
+}
+</pre>

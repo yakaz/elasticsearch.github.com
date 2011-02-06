@@ -1,0 +1,17 @@
+---
+layout: guide
+title: Match All Filter
+cat: guide
+---
+
+p. A filter that matches on all documents:
+
+<pre class="prettyprint lang-js">
+{
+    "constant_score" : {
+        "filter" : {
+            "match_all" : { }
+        }
+    }
+}
+</pre>
