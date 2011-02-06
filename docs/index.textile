@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Docs
+cat: docs
+title_in_header: false
 ---
 
 p. The docs are maintained on *elasticsearch* "github wiki":https://github.com/elasticsearch/elasticsearch/wiki, and are community driven. Aside from the reference docs, writing Tutorials, Getting Started, and other pieces of information are of the utmost value for the community.

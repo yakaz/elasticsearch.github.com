@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: Search Engine Time Machine
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

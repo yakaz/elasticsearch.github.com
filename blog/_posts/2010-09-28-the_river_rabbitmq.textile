@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: RabbitMQ River
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

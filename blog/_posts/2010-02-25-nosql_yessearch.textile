@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: NoSQL, Yes Search
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

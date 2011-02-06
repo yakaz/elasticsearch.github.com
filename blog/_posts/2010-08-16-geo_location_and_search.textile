@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: Geo Location and Search
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

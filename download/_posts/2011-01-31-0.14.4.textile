@@ -1,8 +1,8 @@
 ---
 layout: download
-type: elasticsearch
+cat: download
 version: 0.14.4
-title: Download - 0.14.4
+title: 0.14.4
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.4.zip
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.4.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.4

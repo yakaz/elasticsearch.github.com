@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: ElasticSearch Just Got Groovy
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

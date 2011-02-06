@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: Your Data, Your Search
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

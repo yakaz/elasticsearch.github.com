@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: Here Comes The Cloud
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---

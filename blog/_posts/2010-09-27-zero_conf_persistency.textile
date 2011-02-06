@@ -1,6 +1,7 @@
 ---
 layout: blogpost
 title: Zero Conf Persistency
+cat: blog
 author: Shay Banon
 nick: kimchy
 ---
