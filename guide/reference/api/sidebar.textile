@@ -2,7 +2,7 @@
 layout: clean
 ---
 
-h3. "Home":/guide
+h3. "Guide":/guide
 
 h3. Core
 

@@ -1,9 +1,0 @@
----
-layout: clean
----
-
-h3. "Home":/guide
-
-h3. Sections
-
-* "Reference":/guide/reference
