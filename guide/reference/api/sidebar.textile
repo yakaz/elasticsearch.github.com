@@ -14,3 +14,18 @@ h3. Core
 * "Count":count.html
 * "Delete By Query":delete-by-query.html
 * "More Like This":more-like-this.html
+
+h3. Indices
+
+* "Aliases":admin-indices-aliases.html
+* "Analyze":admin-indices-analyze.html
+* "Create Index":admin-indices-create-index.html
+* "Delete Index":admin-indices-delete-index.html
+* "Open/Close":admin-indices-open-close.html
+* "Get Mapping":admin-indices-get-mapping.html
+* "Put Mapping":admin-indices-put-mapping.html
+* "Delete Mapping":admin-indices-delete-mapping.html
+* "Refresh":admin-indices-refresh.html
+* "Optimize":admin-indices-optimize.html
+* "Flush":admin-indices-flush.html
+* "Snapshot":admin-indices-gateway-snapshot.html
