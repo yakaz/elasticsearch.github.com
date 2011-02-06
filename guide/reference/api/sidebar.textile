@@ -29,3 +29,11 @@ h3. Indices
 * "Optimize":admin-indices-optimize.html
 * "Flush":admin-indices-flush.html
 * "Snapshot":admin-indices-gateway-snapshot.html
+
+h3. Cluster
+
+* "Health":admin-cluster-health.html
+* "State":admin-cluster-state.html
+* "Nodes Info":admin-cluster-nodes-info.html
+* "Nodes Stats":admin-cluster-nodes-stats.html
+* "Nodes Shutdown":admin-cluster-nodes-shutdown.html
