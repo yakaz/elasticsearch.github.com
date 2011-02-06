@@ -38,14 +38,21 @@ html>body #all {
 #all {
 	position: relative;
 	height: 100%;
-	width:766px;
+	width:940px;
 	margin:0 auto;
 }
 
-.narrower {
+.six_hun {
 	position: relative;
 	height: 100%;
 	width:600px;
+	margin:0 auto;
+}
+
+.seven_sixty {
+	position: relative;
+	height: 100%;
+	width:760px;
 	margin:0 auto;
 }
 

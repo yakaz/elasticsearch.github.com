@@ -36,7 +36,15 @@
         <div id="all">
             {% include header.html %}
             <div id="content">
-                {{ content }}
+                <div class="{{ page.width }}">
+                    <div style="height: 80px; font-size: 34px; padding-top: 30px;">
+                        {% if page.title_in_header != false %}
+                        {{ page.title }}
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                    {{ content }}
+                </div>
             </div>
             {% include footer.html %}
         </div>
