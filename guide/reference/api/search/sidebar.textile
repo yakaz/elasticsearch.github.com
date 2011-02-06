@@ -16,6 +16,7 @@ h3. Components
 * "Highlighting":highlighting.html
 * "Fields":fields.html
 * "Script Fields":script-fields.html
+* "Facets":facets/index.html
 * "Named Filters":named-filters.html
 * "Search Type":search-type.html
 * "Index Boost":index-boost.html
