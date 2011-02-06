@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div id="guide">
+    <div id="guide_content" style="float: left; width: 600px">
+        {{ content }}
+    </div>
+    <div id="guide_sidebar" style="float: right; width: 120px">
+    </div>
+    <script>
+      $('#guide_sidebar').load('sidebar.html');
+    </script>
+</div>
