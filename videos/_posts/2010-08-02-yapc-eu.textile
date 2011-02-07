@@ -1,0 +1,21 @@
+---
+layout: video
+title: Perl::EU 2010
+cat: videos
+author: Clinton Gormley
+nick: clintongormley
+video_desc: Presentation given at Perl::EU 2010
+---
+
+h1. Slides
+
+<iframe width="759" height="451" src="http://clintongormley.github.com/ElasticSearch.pm/ElasticSearch_YAPC-EU_2010/" frameborder="0"></iframe>
+
+
+h1. Part 1
+
+<iframe title="YouTube video player" width="759" height="451" src="http://www.youtube.com/embed/PkbIhz6aAl4?rel=0&amp;hd=1&amp;autohide=1" frameborder="0" allowfullscreen></iframe>
+
+h1. Part 2
+
+<iframe title="YouTube video player" width="759" height="451" src="http://www.youtube.com/embed/PiIOCP_JXXE?rel=0&amp;hd=1&amp;autohide=1" frameborder="0" allowfullscreen></iframe>
