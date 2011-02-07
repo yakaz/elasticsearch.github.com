@@ -1,0 +1,7 @@
+---
+layout: guide
+title: Whitespace Tokenizer
+cat: guide
+---
+
+p. A tokenizer of type @whitespace@ that divides text at whitespace.

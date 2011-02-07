@@ -1,0 +1,7 @@
+---
+layout: guide
+title: Standard Token Filter
+cat: guide
+---
+
+p. A token filter of type @standard@ that normalizes tokens extracted with the "Standard Tokenizer":standard-tokenizer.html.

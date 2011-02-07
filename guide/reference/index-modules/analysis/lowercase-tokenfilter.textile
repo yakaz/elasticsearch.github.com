@@ -1,0 +1,7 @@
+---
+layout: guide
+title: Lowercase Token Filter
+cat: guide
+---
+
+p. A token filter of type @lowercase@ that normalizes token text to lower case.

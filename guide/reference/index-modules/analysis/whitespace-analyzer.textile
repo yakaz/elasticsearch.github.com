@@ -1,0 +1,7 @@
+---
+layout: guide
+title: Whitespace Analyzer
+cat: guide
+---
+
+p. An analyzer of type @whitespace@ that is built using a "Whitespace Tokenizer":whitespace-tokenizer.html.
