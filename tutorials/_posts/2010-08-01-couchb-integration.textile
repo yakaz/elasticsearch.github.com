@@ -1,0 +1,188 @@
+---
+layout: tutorial
+title: CouchDB Integration
+cat: tutorials
+author: 
+nick: 
+tutorial_desc: CouchDB Integration
+---
+
+This tutorial explains the process of setting up ElasticSearch to automatically index data 
+in CouchDB and make it search-able. ElasticSearch 0.11 introduced a feature named "The River":http://www.elasticsearch.org/blog/2010/09/28/the_river.html]], which
+allows it to connect to external systems and listen for documents updates.
+On receiving a notification, Elasticsearch indexes the data and makes it available for search.
+
+Using this feature, it becomes easy to integrate various content stores with ElasticSearch.
+
+*elasticsearch* supports different plug-ins for a River (CouchDB, RabbitMQ etc.). The CouchDB river plugin makes it extremely simple to integrate with CouchDB. (Yes, it is just a simple configuration).
+
+h1. Quick Steps
+
+* [[Setup ElasticSearch|Setting up ElasticSearch]]
+* "Setup CouchDB":http://wiki.apache.org/couchdb/Installation
+* Create a CouchDB database (named my_couch_db) for indexing (or use an existing one)
+
+<pre class="prettyprint">
+curl -XPUT 'http://couchdb-host:5984/my_couch_db
+</pre>
+
+* Enable the couchdb-river plugin in ElasticSearch
+
+<pre class="prettyprint">
+cd /path/to/elasticsearch/
+./bin/plugin -install river-couchdb
+</pre>
+
+* Configure ElasticSearch to start indexing
+
+<pre class="prettyprint">
+curl -XPUT 'http://elasticsearch-host:9200/_river/my_es_idx/_meta' -d '{
+    "type" : "couchdb",
+    "couchdb" : {
+        "host" : "couchdb-host",
+        "port" : 5984,
+        "db" : "my_couch_db",
+        "filter" : null
+    }
+}'
+</pre>
+
+**Note** : The 'elasticsearch' river index that you are creating (named **my_es_idx**) can be named anything. 
+It is only for internal use by ElasticSearch.
+
+That's it. We are ready to go. At this point, what we have is:
+
+* An ElasticSearch configuration that indexes all data from the CouchDB database - **my_couch_db**
+* ElasticSearch makes use of dynamic mapping for the documents it receives from CouchDB
+* Any changes to CouchDB documents are automatically updated in ElasticSearch
+* The (continuous) indexing will keep happening on any one node of the ElasticSearch cluster. 
+If the node fails, this functionality is taken up by another node.
+* You can query ElasticSearch for the couchdb data at
+@http://elasticsearch-host:9200/my_couch_db/my_couch_db@.
+
+h1. Detailed Setup
+
+Having gone through the basic setup, let us look at how this works and how we can customize this further.
+
+h2. CouchDB
+
+h3. Change Notifications
+
+CouchDB supports a feature through which all changes to a database can be notified to external interested systems. 
+This is possible by making an HTTP connection to `http://couchdb-host:5984/my_couch_db/_changes`.
+
+Features supported by `_changes` are:
+
+* Obtain a list (JSON format) of all changes in the database since it's creation
+* Sequence id for changes. This also allows a client to request for changes from a particular sequence id
+* Continuous mode - a client can be connected to the HTTP interface indefinitely waiting for changes.
+
+h3. Filters
+
+By default, the `_changes` interface notifies about all changes to the database. However, it is
+possible to filter out the changes that are send out to clients. For this a `filter` has to be created in
+couchdb.
+
+More documentation on this is available at:
+
+* "http://guide.couchdb.org/draft/notifications.html":http://guide.couchdb.org/draft/notifications.html
+* "http://wiki.apache.org/couchdb/HTTP_database_API#Changes":http://wiki.apache.org/couchdb/HTTP_database_API#Changes
+* "http://blog.couchone.com/post/468392274/whats-new-in-apache-couchdb-0-11-part-three-new":http://blog.couchone.com/post/468392274/whats-new-in-apache-couchdb-0-11-part-three-new
+
+h2. CouchDB River
+
+The ElasticSearch CouchDB river plugin makes use of the change notification interface of couchdb to
+to keep itself synchronized with the couchdb database.
+
+h3. Configuration
+
+Detailed documentation is available at : [[http://www.elasticsearch.com/docs/elasticsearch/river/couchdb/]]
+
+In the quick how-to, we created a simple river. Let us see what those config parameters mean.
+
+For setting up a river, we will need the following
+
+* A couchdb database - (eg: **my_couch_db**)
+* A couchdb database filter (optional) - (eg: **_design/my_design/my_filter** - where my_design is a design document)
+* HTTP auth parameters (optional) for accessing CouchDB (supported in ElasticSearch >= 0.12)
+* Filter parameters (optional) (supported in ElasticSearch >= 0.12)
+* An ElasticSearch instance
+* An index and a type for indexing the couchdb documents ( eg: **my_es_idx** and **my_es_type** )
+    * This is what users will be querying against.
+* An internal Elasticsearch index name (eg: **my_es_int_idx**)
+    * This is just for internal Elasticsearch mapping and is not to be used for querying or searching.
+
+You can configure the CouchDB river as follows
+
+<pre class="prettyprint">
+curl -XPUT 'elasticsearch-host:9200/_river/my_es_int_idx/_meta' -d '{
+    "type" : "couchdb",
+
+    "couchdb" : {
+        "host" : "couchdb-host", 
+        "port" : 5984,
+        "user" : "admin",
+        "password" : "admin",
+        "db" : "my_couch_db", 
+        "filter" : "my_design/my_filter",
+        "filter_params" :  {
+               "param1" : "value1",
+               "param2" : "value2"
+        }
+    },
+    "index" : {
+        "index" : "my_es_idx",
+        "type" : "my_es_type",
+        "bulk_size" : "100",
+        "bulk_timeout" : "10ms"
+    }
+}'
+</pre>
+
+**Notes:**
+
+* The username, password feature is available only in ElasticSearch 0.12 and above
+* The filter_params feature is available only in ElasticSearch 0.12 and above
+* The data must be searched against `http://elasticsearch-host:9200/my_es_idx/my_es_type` and not against `http://elasticsearch-host:9200/_river/my_es_int_type`
+
+h3. Data Mapping
+
+By default ElasticSearch uses dynamic mapping on the data that is being indexed from CouchDB. However, it is possible
+to specify mappings on an index before indexing the data from couchdb
+
+* First create the index `curl -XPUT http://elasticsearch-host:9200/my_es_idx`
+* Create the type and upload the mapping
+
+<pre class="prettyprint">
+curl -XPUT 'elasticsearch-host:9200/my_es_idx/my_es_type/_mapping' -d '{
+    ...
+}'
+</pre>
+
+* Configure the river plug-in
+
+h1. Known Issues
+
+h2. Design documents created with "couchapp":http://github.com/jchris/couchapp
+
+Indexing of this may fail with ElasticSearch. This can be avoided with a suitable filter, since it is pointless to index design documents. This will be fixed in ElasticSearch 0.12
+
+h2. Auth support for _changes
+
+There seems to be some issue with CouchDB in accessing _changes using a username / password. This
+is being investigated.
+
+h1. Frequently Asked Questions
+
+* **What happens when CouchDB restarts ?**
+** The Elasticsearch river keeps retrying to connect to CouchDB (with an interval of 5 seconds)
+* **What happens when the entire ElasticSearch cluster is restarted ?**
+** One of the ElasticSearch nodes will pick up the job of indexing the data.
+* **What happens when the ElasticSearch node having the indexer crashes ?**
+** Some other ElasticSearch node in the cluster will pick up the job of indexing
+* **What happens when the update of a document fails ?**
+** As of now, nothing. There are plans for sending out notifications etc. This is being discussed in the ElasticSearch mailing list. Join in and give your feedback.
+* **How can I provide auth parameters to CouchDB _changes ?**
+** This feature will be added in ElasticSearch 0.12. Alternately, you can try the latest development version
+* **How can I provide additional arguments to the CouchDB filter ?**
+** This feature will be added in ElasticSearch 0.12. Alternately, you can try the latest development version
