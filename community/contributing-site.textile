@@ -1,0 +1,14 @@
+---
+layout: default
+width: six_hun
+title: Contributing to the Site
+cat: community
+---
+
+p. There are many places where the *elasticsearch* community (you!) would love for people to contribute, one of them is enhancing the knowledge base around *elasticsearch*. The site itself is hosted on "github":https://github.com/elasticsearch/elasticsearch.github.com and adding content to it is just a fork away.
+
+p. Interesting places to start is to write a "tutorial":/tutorials about your usage of *elasticsearch*, or maybe record a short "video":/videos showing how you use it. Another is to fix and enhance the *elasticsearch* "guide":/guide.
+
+p. Once the repo is forked / cloned, writing content is pretty simple with many examples already there. For example, if you are writing a tutorial, just start from an existing one. Don't worry about getting everything right, the content is what matters, we are here to help with the rest.
+
+p. If you want to "build" the site, "jekyll":https://github.com/mojombo/jekyll is used to generate it. Once you "installed":https://github.com/mojombo/jekyll/wiki/Install it, just run @jekyll --server@ to get the site running and head over to @localhost:4000@.
