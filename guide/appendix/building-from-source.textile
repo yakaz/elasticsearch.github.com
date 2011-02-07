@@ -18,6 +18,6 @@ p. In order to use it, just get either the @zip@ or @tar.gz@ installation, extra
 
 h1. Hacking
 
-p. *elasticsearch* comes with built in "IntelliJ IDEA":http://www.jetbrains.com/idea/ project files. Just download the "community edition":http://www.jetbrains.com/idea/download/ and fire it up, and import the project.
+p. *elasticsearch* comes with built in "IntelliJ IDEA":http://www.jetbrains.com/idea/ project files. Just download the "community edition":http://www.jetbrains.com/idea/download/, fire it up, and import the project.
 
-p. In order to get all the dependencies right, you will need to run @gradle test@ once to get all the test dependencies running.
+p. In order to get all the dependencies right, you will need to run @gradle@ and also @gradle test@ once to download all the dependencies.
