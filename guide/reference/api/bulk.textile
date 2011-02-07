@@ -20,10 +20,10 @@ p. The json format relies on the fact that Json string values must have @\n@ esc
 
 <pre class="prettyprint">
 { "index" : { "_index" : "test", "_type" : "type1", "_id" : "1" } }
-{ "type1" : { "field1" : "value1" } }
-{ "delete" : { "_index" : "test", "_type" : "type1", "_id" : "2" } }
-{ "create" : { "_index" : "test", "_type" : "type1", "_id" : "1" } }
 { "field1" : "value1" }
+{ "delete" : { "_index" : "test", "_type" : "type1", "_id" : "2" } }
+{ "create" : { "_index" : "test", "_type" : "type1", "_id" : "3" } }
+{ "field1" : "value3" }
 
 </pre>
 
