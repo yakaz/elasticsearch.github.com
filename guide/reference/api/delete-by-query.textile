@@ -4,7 +4,7 @@ title: Delete By Query API
 cat: guide
 ---
 
-p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":../query_dsl defined within the request body. Here is an example:
+p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":/guide/reference/query-dsl defined within the request body. Here is an example:
 
 <pre class="prettyprint">
 $ curl -XDELETE 'http://localhost:9200/twitter/tweet/_query?q=user:kimchy'
@@ -69,7 +69,7 @@ p. When executing a delete by query using the query parameter @q@, the query pas
 
 h1. Request Body
 
-p. The delete by query can use the "Query DSL":../query_dsl within its body in order to express the query that should be executed and delete all documents. The body content can also be passed as a REST parameter named @source@.
+p. The delete by query can use the "Query DSL":/guide/reference/query-dsl within its body in order to express the query that should be executed and delete all documents. The body content can also be passed as a REST parameter named @source@.
 
 h1. Distributed
 

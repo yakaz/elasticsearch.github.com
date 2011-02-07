@@ -4,7 +4,7 @@ title: Search API - Request Body
 cat: guide
 ---
 
-p. The search request can be executed with a search DSL, which includes the "Query DSL":../../query_dsl, within its body. Here is an example:
+p. The search request can be executed with a search DSL, which includes the "Query DSL":/docs/reference/query-dsl, within its body. Here is an example:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter/tweet/_search' -d '{

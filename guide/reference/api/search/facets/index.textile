@@ -29,7 +29,7 @@ p. Custom scope names works in conjunction with child queries / filters, allowin
 
 h1. filter
 
-p. All facets can be configured with an additional filter (explained in the "Query DSL":../../query_dsl#Filters section), which will further reduce the documents they execute on. For example:
+p. All facets can be configured with an additional filter (explained in the "Query DSL":/guide/reference/query-dsl section), which will further reduce the documents they execute on. For example:
 
 <pre class="prettyprint lang-js">
 {

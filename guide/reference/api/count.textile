@@ -4,7 +4,7 @@ title: Count API
 cat: guide
 ---
 
-p. The count API allows to easily execute a query and get the number of matches for that query. It can be executed across one or more indices and across one or more types. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":../query_dsl defined within the request body. Here is an example:
+p. The count API allows to easily execute a query and get the number of matches for that query. It can be executed across one or more indices and across one or more types. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":/guide/reference/query-dsl defined within the request body. Here is an example:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter/tweet/_count?q=user:kimchy'
@@ -65,7 +65,7 @@ p. When executing count using the query parameter @q@, the query passed is a que
 
 h1. Request Body
 
-p. The count can use the "Query DSL":../query_dsl within its body in order to express the query that should be executed. The body content can also be passed as a REST parameter named @source@.
+p. The count can use the "Query DSL":/guide/reference/query-dsl within its body in order to express the query that should be executed. The body content can also be passed as a REST parameter named @source@.
 
 p(note). Both HTTP GET and HTTP POST can be used to execute count with body. Since not all clients support GET with body, POST is allowed as well.
 
