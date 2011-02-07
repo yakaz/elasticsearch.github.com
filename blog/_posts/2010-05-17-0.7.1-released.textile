@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-title: ElasticSearch 0.7.1 Released
+title: 0.7.1 Released
 cat: blog
 author: Shay Banon
 nick: kimchy
