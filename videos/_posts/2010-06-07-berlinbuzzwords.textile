@@ -1,0 +1,10 @@
+---
+layout: video
+title: Berlin Buzzwords 2010
+cat: videos
+author: Shay Banon
+nick: kimchy
+video_desc: Presentation given at Berlin Buzzwords 2010
+---
+
+<embed src="http://blip.tv/play/AYHxnlkC" type="application/x-shockwave-flash" width="759" height="451" allowscriptaccess="always" allowfullscreen="true"></embed>
