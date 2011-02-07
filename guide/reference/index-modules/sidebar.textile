@@ -6,4 +6,8 @@ h3. "Guide":/guide
 
 h3. Modules
 
-* "analysis":analysis/
+* "Analysis":analysis/
+* "Merge":merge.html
+* "Store":store.html
+* "Mapper":mapper.html
+* "Translog":translog.html
