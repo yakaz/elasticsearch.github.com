@@ -10,4 +10,4 @@ p. Note, all the "APIs":/guide/reference/api are exposed through the Java API (a
 
 h2. Maven Repository
 
-p. ElasticSearch is hosted on "Sonatype":http://www.sonatype.org/, with both a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":http://oss.sonatype.org/content/repositories/snapshots.
+p. elasticsearch is hosted on "Sonatype":http://www.sonatype.org/, with both a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":http://oss.sonatype.org/content/repositories/snapshots.
