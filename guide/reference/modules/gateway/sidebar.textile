@@ -1,0 +1,15 @@
+---
+layout: clean
+---
+
+h3. "Guide":/guide
+
+h3. "Modules":/guide/reference/modules
+
+h3. Types
+
+* "Local":local.html
+* "Shared FS":fs.html
+* "Hadoop":hadoop.html
+* "S3":s3.html
+

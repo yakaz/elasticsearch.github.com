@@ -1,0 +1,11 @@
+---
+layout: guide
+title: Hadoop Gateway
+cat: guide
+---
+
+p. The hadoop (HDFS) based gateway stores the cluster meta data in hadoop. Hadoop support is provided as a plugin and installing is as simply as executing @plugin -install hadoop@ or downloading the hadoop plugin and placing it under the @plugins@ directory.
+
+h1. Settings
+
+p. The hadoop gateway requires two simple settings. The @gateway.hdfs.uri@ controls the URI to connect to the hadoop cluster, for example: @hdfs://myhost:8022@. The @gateway.hdfs.path@ controls the path under which the gateway will store the data.

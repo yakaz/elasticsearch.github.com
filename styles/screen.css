@@ -49,6 +49,20 @@ html>body #all {
 	margin:0 auto;
 }
 
+.eight_hun {
+	position: relative;
+	height: 100%;
+	width:800px;
+	margin:0 auto;
+}
+
+.eight_fifty {
+	position: relative;
+	height: 100%;
+	width:850px;
+	margin:0 auto;
+}
+
 .seven_sixty {
 	position: relative;
 	height: 100%;
@@ -178,7 +192,7 @@ code {background: #c0daa4; color: #000; font-family: monospace; font-size: 15px;
 }
 #guide_sidebar {
 	float: right;
-	width: 220px;
+	width: 200px;
 	font-size: 16px;
 }
 #guide_sidebar h3 {

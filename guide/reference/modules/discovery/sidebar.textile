@@ -1,0 +1,13 @@
+---
+layout: clean
+---
+
+h3. "Guide":/guide
+
+h3. "Modules":/guide/reference/modules
+
+h3. Types
+
+* "Zen":zen.html
+* "EC2":ec2.html
+
