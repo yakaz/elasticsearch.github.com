@@ -3,82 +3,16 @@ layout: default
 width: six_hun
 ---
 
-<script type="text/javascript"> 
-var downloadLocation = '{{page.download_url}}';
-window.onload = function () {
-    t = setTimeout('document.location = downloadLocation', 1000);
-}
-</script>
-
 <div class="six_hun">
 
 <div style="text-align: center;">
-    <p>Your download will begin shortly, if it doesn't, <a href="{{page.download_url}}">click here</a>
+    <h1><a href="{{page.download_url}}">zip</a>
     {% if page.download_nix_url != null  %}
-    (<a href="{{page.download_nix_url}}">tar.gz</a>).
+    / <a href="{{page.download_nix_url}}">tar.gz</a>.
     {% endif  %}
-    </p>
+    </h1>
     
-    <h2>While downloading:</h2>
+    <h1>Release Notes:</h1>
 </div>
 
-<h2>Getting Started</h2>
-
-<h3>Running:</h3>
-
-<pre class="prettyprint lang-bsh">
-$ bin/elasticsearch -f
-</pre>
-
-<h3>Index:</h3>
-<pre  class="prettyprint lang-bsh">
-$ curl -XPUT 'http://localhost:9200/twitter/user/kimchy' -d '{ 
-    name: "Shay Banon"
-}'
-
-$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{ 
-    user: "kimchy", 
-    postDate: "2009-11-15T13:12:00", 
-    message: "Trying out elasticsearch, so far so good?" 
-}'
-
-$ curl -XPUT 'http://localhost:9200/twitter/tweet/2' -d '{ 
-    user: "kimchy", 
-    postDate: "2009-11-15T14:12:12", 
-    message: "You know, for Search" }
-'
-</pre>
-
-<h3>Get &amp; Search:</h3>
-<pre class="prettyprint lang-bsh">
-$ curl -XGET 'http://localhost:9200/twitter/user/kimchy?pretty=true'
-$ curl -XGET 'http://localhost:9200/twitter/tweet/1?pretty=true'
-$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?q=user:kimchy&pretty=true'
-</pre>
-
-{% if page.download_type != 'source' %}
-<h2>Download Source</h2>
-<div>
-    <p>
-        {% if page.download_source_url != null  %}
-        <a href="{{page.download_source_url}}">Source</a> can be downloaded and built (distributions are placed under <code>build/distributions</code>) using:
-        {% endif  %}
-<pre class="prettyprint lang-bsh">
-$ gradlew
-</pre>
-    </p>
-</div>
-{% endif %}
-
-{% if page.download_type == 'source' %}
-<h2>Build</h2>
-<div>
-    <p>The following will build and create a distribution placed under <code>build/distributions</code>.</p>
-
-<pre class="prettyprint lang-bsh">
-$ ./gradlew clean release
-</pre>
-</div>
-{% endif %}
-
-</div>
+{{ content }}

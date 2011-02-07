@@ -7,3 +7,13 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.13.1.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.13.1
 ---
+
+h2. Enhancements:
+ * Upgrade to Lucene 3.0.3 ("#549":http://github.com/elasticsearch/elasticsearch/issues/issue/549)
+
+
+h2. Bug fixes:
+ * log4j syslog appender don't load ("#527":http://github.com/elasticsearch/elasticsearch/issues/issue/527)
+ * Delete Mapping API: Wrongly deleting existing mapping information ("#531":http://github.com/elasticsearch/elasticsearch/issues/issue/531)
+ * Query Cache: Invalidate the query cache when mappings change ("#532":http://github.com/elasticsearch/elasticsearch/issues/issue/532)
+

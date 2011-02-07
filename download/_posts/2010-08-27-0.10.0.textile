@@ -6,3 +6,80 @@ title: 0.10.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.10.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.10.0
 ---
+
+h2. Incompatible changes:
+
+h3. Query DSL:
+* Facet @filter@ renamed to @facet_filter@. (See commit for "#289":http://github.com/elasticsearch/elasticsearch/issues/issue/289)
+
+h2. New and enhancements in API:
+* Geo support:
+** Support @geo_point@ type. ("#278":http://github.com/elasticsearch/elasticsearch/issues/issue/278)
+** Filters:
+*** @geo_distance@ filter. ("#279":http://github.com/elasticsearch/elasticsearch/issues/issue/279)
+*** @geo_bounding_box@ filter. ("#290":http://github.com/elasticsearch/elasticsearch/issues/issue/290)
+*** @geo_polygon@ filter. ("#294":http://github.com/elasticsearch/elasticsearch/issues/issue/294)
+** Facets:
+*** @geo_distance@ facet. ("#286":http://github.com/elasticsearch/elasticsearch/issues/issue/286)
+** Sort:
+*** @_geo_distance@ sort. ("#306":http://github.com/elasticsearch/elasticsearch/issues/306)
+* Range Facet. ("#287":http://github.com/elasticsearch/elasticsearch/issues/issue/287)
+* Support dates in range facet. ("commit":http://github.com/elasticsearch/elasticsearch/commit/76cfbe6a442f2a4366b319767ec720e810108e71)
+* Add an option to provide the array of ranges "on" the field name itself. ("commit":http://github.com/elasticsearch/elasticsearch/commit/99af6df0ea9083495d1620ef588cc0b655c0812d, "commit":http://github.com/elasticsearch/elasticsearch/commit/7719dcd79054332b6e7e9d5116769d62503f9319)
+* Facets: Filter based facet. ("#289":http://github.com/elasticsearch/elasticsearch/issues/issue/289)
+* Support for custom script based sorting. ("#293":http://github.com/elasticsearch/elasticsearch/issues/293, "commit":http://github.com/elasticsearch/elasticsearch/commit/91c256361ec587a950d499f24306a37a07c513df)
+* Add the ability to store the index name in the doc. ("#292":http://github.com/elasticsearch/elasticsearch/issues/issue/292)
+* Ability to return all stored fields with a @*@. ("#296":http://github.com/elasticsearch/elasticsearch/issues/issue/296)
+* Rename jmx settings to conform with casing (old casing also works). ("commit":http://github.com/elasticsearch/elasticsearch/commit/860d8058b6156ec8608b53ec97d688b9ac1a9e81), ("docs":http://www.elasticsearch.com/docs/elasticsearch/modules/jmx/)
+* Update settings API, allowing to dynamically change the @number_of_replicas@ for an index / indices. ("#302":http://github.com/elasticsearch/elasticsearch/issues/302), ("docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/admin/indices/update_settings/)
+* Terms facet:
+** Allow to control the ordering either by @count@ (default), @term@, @reverse_count@ and @reverse_term@. ("#303":http://github.com/elasticsearch/elasticsearch/issues/303, "#314":http://github.com/elasticsearch/elasticsearch/issues/issue/314)
+** Allow to control the term and its inclusion using a script. ("#304":http://github.com/elasticsearch/elasticsearch/issues/304)
+* Search API: Sort values are now returned per hit. ("#305":http://github.com/elasticsearch/elasticsearch/issues/305)
+* Mappers: also use @name@ as a smart lookup for field/property on top of indexName and fullName. ("#309":http://github.com/elasticsearch/elasticsearch/issues/309)
+* Facets: Automatically filter by type for facets that use explicit field names that are prefixed by the type. ("#310":http://github.com/elasticsearch/elasticsearch/issues/310)
+* EC2 Discovery ignoring instances with more than one security group. ("#311":http://github.com/elasticsearch/elasticsearch/issues/311)
+* Remove memory monitor and move translog operations threshold to shard level setting. New setting for flush on translog operations is @index.translog.flush_threshold@, and defaults to @5000@. ("#312":http://github.com/elasticsearch/elasticsearch/issues/312)
+* Analysis: Add @char_filter@ on top of @tokenizer@, @filter@, and @analyzer@. Add an @html_strip@ char filter. ("#315":http://github.com/elasticsearch/elasticsearch/issues/315), ("docs":http://www.elasticsearch.com/docs/elasticsearch/index_modules/analysis/charfilter/)
+* Query DSL: custom score script, allow to use @_score@ as well as @score@ as the underlying query score. ("#316":http://github.com/elasticsearch/elasticsearch/issues/316)
+* Transport: add global compression support (@transport.tcp.compress@) compressing all internal transport communication (using lzf). ("#321":http://github.com/elasticsearch/elasticsearch/issues/issue/321)
+* Recovery: Using transport compression explicitly when recovering an index from a peer shard. ("#322":http://github.com/elasticsearch/elasticsearch/issues/issue/322)
+* Support compression of the @_source@ field. ("docs":http://www.elasticsearch.com/docs/elasticsearch/mapping/source_field/)
+* Added `standard_html_strip` analyzer that combines the standard analyzer with html_strip char filter. ("commit":http://github.com/elasticsearch/elasticsearch/commit/1a18387fabc129a86b2d17fa834e5642ee4f5a70)
+* Indices status API:
+** add peer recovery status exposing both on going and summary when recovering from a peer shard ("commit":http://github.com/elasticsearch/elasticsearch/commit/5fb80c391ba8f4bce294d549199b44a7105bcb64, "commit":http://github.com/elasticsearch/elasticsearch/commit/311520d14682a1f3096dc9307da3e5fcb82936ab)
+** add gateway recovery status exposing both on going and summary when recovering from a gateway ("commit":http://github.com/elasticsearch/elasticsearch/commit/3f9034b41cae5874d86265dfe311cc3a7d6b10e9)
+** add snapshot status (either current one or the latest one executed) ("commit":http://github.com/elasticsearch/elasticsearch/commit/a3107bc5b1f0eb0a763cbda449a301bdb4860353)
+** add progress status ("commit":http://github.com/elasticsearch/elasticsearch/commit/7437acfcea49a66d938e26897af8f7b29e1654b9)
+* Cluster Health API: Add @initializing_shards@ and @unassigned_shards@ to the response. ("#330":http://github.com/elasticsearch/elasticsearch/issues/issue/330)
+* List remote nodest storage information with a @timeout@. ("commit":http://github.com/elasticsearch/elasticsearch/commit/5900e01a0dc0b69b04308af860b675b4e74be164)
+* Add @/_shutdown@ to the REST endpoints. ("commit":http://github.com/elasticsearch/elasticsearch/commit/0e4789890247204c11b1e32ec4891fc088829670)
+* Indexing Buffer Size: Refine default setting to 10% (from 40%) and add more settings. ("#334":http://github.com/elasticsearch/elasticsearch/issues/issue/334)
+* Add russian letter tokenizer. ("commit":http://github.com/elasticsearch/elasticsearch/commit/d0f5bc340367a06dba32e250816f06c01929f564 docs need to be updated)
+* Query DSL: Improve @or@ and @and@ filters to accept just array of filters. ("#336":http://github.com/elasticsearch/elasticsearch/issues/issue/336)
+
+h2. Bug fixes:
+* Put Mapping: When using a single node and updating a mapping, it is not marked as `acknowledged`. ("#280":http://github.com/elasticsearch/elasticsearch/issues/issue/280)
+* Search fails when sorting on a field that has no values in the hits returned. ("#285":http://github.com/elasticsearch/elasticsearch/issues/issue/285)
+* After gateway recovery, mappings keep being applied on each cluster change. ("#295":http://github.com/elasticsearch/elasticsearch/issues/issue/295)
+* REST API hang on a bogus call. ("#297":http://github.com/elasticsearch/elasticsearch/issues/issue/297)
+* Gateway: Chunk based storage broken, fails to recover from gateway. ("#318":http://github.com/elasticsearch/elasticsearch/issues/issue/318)
+* Document IDs need to be URL decoded when indexed. ("#324":http://github.com/elasticsearch/elasticsearch/issues/issue/324)
+* Gateway: Failure to read full translog from the gateway. ("#328":http://github.com/elasticsearch/elasticsearch/issues/issue/328)
+* boolean values cannot be searched with expected queries. ("#327":http://github.com/elasticsearch/elasticsearch/issues/issue/327)
+* filtered more_like_this doesn't parse correctly. ("#326":http://github.com/elasticsearch/elasticsearch/issues/issue/326)
+* Can't set "no stopwords" on analyzer. ("#329":http://github.com/elasticsearch/elasticsearch/issues/issue/329)
+* Should escape \r\n in exception message. ("#332":http://github.com/elasticsearch/elasticsearch/issues/issue/332)
+* Memcach: StreamCorruptedException when loading a cluster. ("#300":http://github.com/elasticsearch/elasticsearch/issues/issue/300)
+
+h2. Internal:
+* upgrade to jackson 1.5.5
+* upgrade to guava r06
+* upgrade to gradle 0.9-rc-1
+* upgrade to memcached 2.5 (the protocol can be used for REST)
+* upgrade to joda-time 1.6.1
+* upgrade to aws-java-sdk-1.0.008
+* remove ning async http client
+* remove non blocking structures (Highly Scalable Java Utilities "http://sourceforge.net/projects/high-scale-lib/":http://sourceforge.net/projects/high-scale-lib/)
+* Change default calibrate_size_by_deletes for merge policy to true from false (this is what upcoming lucene version will use). ("commit":http://github.com/elasticsearch/elasticsearch/commit/f6c58ff35deac0a89b243449a33823f8e64bd464)
+* Add ability to iterate over assigned shards, and add an extension point to control shard routing iteration in the broadcast based action support. ("commit":http://github.com/elasticsearch/elasticsearch/commit/96fc16dddbd8596416193fb471c43d61230f197a)

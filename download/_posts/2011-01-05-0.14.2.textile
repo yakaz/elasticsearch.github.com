@@ -7,3 +7,15 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.2.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.2
 ---
+
+h2. New features:
+ * Highlighting: Allow to highlight on fields without term ("#585":http://github.com/elasticsearch/elasticsearch/issues/issue/585)
+
+h2. Enhancements:
+
+ * Add @resident@ field cache type ("#602":http://github.com/elasticsearch/elasticsearch/issues/issue/602)
+ * Add to node stats the number of times field cache was evicted due to memory constraints ("#603":http://github.com/elasticsearch/elasticsearch/issues/issue/603)
+
+h2. Bug fixes:
+ * Non-data master nodes and non-master data nodes fail to store data ("#579":http://github.com/elasticsearch/elasticsearch/issues/issue/579)
+ * Highlighting: The result of highlighting for a hit can contain data from another document ("#600":http://github.com/elasticsearch/elasticsearch/issues/issue/600)

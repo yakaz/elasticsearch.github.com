@@ -7,3 +7,10 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.5.1
 ---
 
+h1. New features:
+ * Mapping - MultiField Mapping ("#51":http://github.com/elasticsearch/elasticsearch/issues/issue/51)
+
+
+h1. Bug fixes:
+ * _count requests broken as a of commit 7bf0f1ffca589df6e626d61182689bde005ce649  ("#52":http://github.com/elasticsearch/elasticsearch/issues/issue/52)
+

@@ -7,3 +7,63 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.0.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.0
 ---
+
+h2. Breaking changes:
+ * Cloud AWS: Change endpoint parameters to distinguish between ec2 and s3 ("#574":http://github.com/elasticsearch/elasticsearch/issues/issue/574)
+ * Memory Index Store: Separate to two buffer size types, and fix bugs ("#577":http://github.com/elasticsearch/elasticsearch/issues/issue/577)
+
+
+h2. New features:
+ * Index Templates ("#540":http://github.com/elasticsearch/elasticsearch/issues/issue/540)
+ * Parent / Child Support ("#553":http://github.com/elasticsearch/elasticsearch/issues/issue/553)
+ * Add terms/in query, alias terms filter to be in filter as well ("#557":http://github.com/elasticsearch/elasticsearch/issues/issue/557)
+ * Analyze API: An API to analyzer custom text based on an optional analyzer ("#529":http://github.com/elasticsearch/elasticsearch/issues/issue/529)
+ * Highlighting: Automatically use the field values extracted from _source if not stored explicitly in the mapping ("#561":http://github.com/elasticsearch/elasticsearch/issues/issue/561)
+ * Index / Index Template: Allow to define @_default_@ mapping ("#542":http://github.com/elasticsearch/elasticsearch/issues/issue/542)
+
+
+h2. Enhancements:
+ * Support date and ip types for @numeric_range@ filter ("#530":http://github.com/elasticsearch/elasticsearch/issues/issue/530)
+ * Reduce the number of concurrent recoveries per node to 2 from number_of_processors ("#543":http://github.com/elasticsearch/elasticsearch/issues/issue/543)
+ * Upgrade to Lucene 3.0.3 ("#549":http://github.com/elasticsearch/elasticsearch/issues/issue/549)
+ * Disable calling mlockall by default, can be enabled by setting bootstrap.mlockall to @true@ ("#567":http://github.com/elasticsearch/elasticsearch/issues/issue/567)
+ * Bulk API: Add refresh flag ("#535":http://github.com/elasticsearch/elasticsearch/issues/issue/535)
+ * Create Index API: Allow to provide mappings ("#541":http://github.com/elasticsearch/elasticsearch/issues/issue/541)
+ * EC2 Discover: Support filtering instances by tags ("#551":http://github.com/elasticsearch/elasticsearch/issues/issue/551)
+ * Index Setting: Add @index.refresh_interval@ to simplify setting instead of "index.engine.robin.refresh_interval@ (still works) ("#546":http://github.com/elasticsearch/elasticsearch/issues/issue/546)
+ * Java TransportClient: By default, don't sniff other nodes and use addresses provided as is ("#565":http://github.com/elasticsearch/elasticsearch/issues/issue/565)
+ * Recovery: Allow to control @concurrent_streams@ (per node) during recovery  ("#563":http://github.com/elasticsearch/elasticsearch/issues/issue/563)
+ * Search API:
+ ** Add how long the search took (in milliseconds) ("#536":http://github.com/elasticsearch/elasticsearch/issues/issue/536)
+ ** Optimize single shard search to @QUERY_AND_FETCH@ from any other search type ("#547":http://github.com/elasticsearch/elasticsearch/issues/issue/547)
+ ** Allow to pass @&fields=@ without any fields to cause only id and type to be returned ("#572":http://github.com/elasticsearch/elasticsearch/issues/issue/572)
+ * Search Fields: If a field is not stored, automatically extract it from _source (without the need for _source prefix) ("#562":http://github.com/elasticsearch/elasticsearch/issues/issue/562)
+ * Search Scroll API: Allow to provide the scroll id as the body of the scroll request ("#545":http://github.com/elasticsearch/elasticsearch/issues/issue/545)
+ * Tcp Transport: Connection pool between nodes and different connection types ("#564":http://github.com/elasticsearch/elasticsearch/issues/issue/564)
+ * Transport: Increase the default transport.tcp.connect_timeout from 1s to 30s, also, add @network.tcp.connect_timeout@ to conform with other common network settings ("#576":http://github.com/elasticsearch/elasticsearch/issues/issue/576)
+
+
+h2. Bug fixes:
+ * Highlighting bug where fragments are broken when number_of_fragments is 0 ("#479":http://github.com/elasticsearch/elasticsearch/issues/issue/479)
+ * Scrolling issues ("#136":http://github.com/elasticsearch/elasticsearch/issues/issue/136)
+ * log4j syslog appender don't load ("#527":http://github.com/elasticsearch/elasticsearch/issues/issue/527)
+ * Aliased analyzers cause index deletion / cleanup failure ("#555":http://github.com/elasticsearch/elasticsearch/issues/issue/555)
+ * Geo search fails to find some docs when wrapping over IDL ("#559":http://github.com/elasticsearch/elasticsearch/issues/issue/559)
+ * Close API might cause index data to be wiped ("#560":http://github.com/elasticsearch/elasticsearch/issues/issue/560)
+ * Excessive mapping parsing when cluster state changes ("#575":http://github.com/elasticsearch/elasticsearch/issues/issue/575)
+ * Delete Mapping API: Wrongly deleting existing mapping information ("#531":http://github.com/elasticsearch/elasticsearch/issues/issue/531)
+ * Java Search API: Passing a the query as json fails ("#568":http://github.com/elasticsearch/elasticsearch/issues/issue/568)
+ * Query Cache: Invalidate the query cache when mappings change ("#532":http://github.com/elasticsearch/elasticsearch/issues/issue/532)
+
+h2. Internal:
+ * upgrade to mvel 2.0.19
+ * add freebsd sigar libs
+ * upgrade to tika 0.8
+ * upgrade to jackson 1.6.3
+ * upgrade to aws java sdk 1.1.1
+ * upgrade twitter4j to 2.1.7
+ * upgrade to gradle 0.9
+ * upgrade to groovy 1.7.6 
+ * upgrade to rabbitmq client 2.2.0
+ * upgrade to jython 2.5.2rc2
+

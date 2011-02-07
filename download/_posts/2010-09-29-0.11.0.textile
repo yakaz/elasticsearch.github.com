@@ -6,3 +6,53 @@ title: 0.11.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.11.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.11.0
 ---
+
+h2. Breaking changes:
+ * XContent refactoring might imply backward changes for Java clients ("#367":http://github.com/elasticsearch/elasticsearch/issues/issue/367)
+
+h2. New features:
+ * Bulk API ("#371":http://github.com/elasticsearch/elasticsearch/issues/issue/371)
+ * Gateway: a @local@ gateway for zero configuration persistency ("#343":http://github.com/elasticsearch/elasticsearch/issues/issue/343), ("blog":http://www.elasticsearch.com/blog/2010/09/27/zero_conf_persistency.html)
+ * Mapping API: Delete Mapping (with data) ("#373":http://github.com/elasticsearch/elasticsearch/issues/issue/373)
+ * River: A pluggable river (indexer like) support ("#377":http://github.com/elasticsearch/elasticsearch/issues/issue/377), ("blog":http://www.elasticsearch.com/blog/2010/09/28/the_river.html)
+ ** Twitter River Plugin: A river that index twitter sample stream ("#378":http://github.com/elasticsearch/elasticsearch/issues/issue/378)
+ ** CouchDB River Plugin: ("#382":http://github.com/elasticsearch/elasticsearch/issues/issue/382), ("blog":http://www.elasticsearch.com/blog/2010/09/28/the_river_searchable_couchdb.html)
+ ** RabbitMQ River Plugin: ("#380":http://github.com/elasticsearch/elasticsearch/issues/issue/380)
+ * Search API:
+ ** Allow for script fields to extract parts of the stored @_source@ ("#349":http://github.com/elasticsearch/elasticsearch/issues/issue/349)
+ ** Allow to name filters and return per hit the filters it matched on ("#364":http://github.com/elasticsearch/elasticsearch/issues/issue/364)
+ * Thrift Plugin: Expose REST interface using thrift ("#354":http://github.com/elasticsearch/elasticsearch/issues/issue/354)
+
+
+h2. Enhancements:
+ * EC2 Discovery should optionally bind to nodes who are members of all groups ("#345":http://github.com/elasticsearch/elasticsearch/issues/issue/345)
+ * Memcached transport does not support version, npe when no uri ("#342":http://github.com/elasticsearch/elasticsearch/issues/issue/342)
+ * Allow to specify highlighter parameters on a per field level basis ("#356":http://github.com/elasticsearch/elasticsearch/issues/issue/356)
+ * Allow to configure a common logger prefix using @es.logger.prefix@ system prop ("#360":http://github.com/elasticsearch/elasticsearch/issues/issue/360)
+ * Change default thread pool to scaling from cached ("#381":http://github.com/elasticsearch/elasticsearch/issues/issue/381)
+ * Create Index / Update Settings: Automatically prefix all settings with @index.@ ("#355":http://github.com/elasticsearch/elasticsearch/issues/issue/355)
+ * Gateway:
+ ** Default to @local@ gateway (replace @none@ gateway) ("#347":http://github.com/elasticsearch/elasticsearch/issues/issue/347)
+ ** Add @recover_after_data_nodes@ and @recover_after_master_nodes@ ("#376":http://github.com/elasticsearch/elasticsearch/issues/issue/376)
+ * JMX: Disable creating by default an RMI JMX connector ("#348":http://github.com/elasticsearch/elasticsearch/issues/issue/348)
+ * Local Gateway: Expose @gateway.local.initial_shards@ to control when to recover and index ("#352":http://github.com/elasticsearch/elasticsearch/issues/issue/352)
+ * Mapper:
+ ** @geo_point@ type to allow to set @store@ on the mapping ("#359":http://github.com/elasticsearch/elasticsearch/issues/issue/359)
+ ** @geo_point@ to support passing array of [lat, lon] ("#361":http://github.com/elasticsearch/elasticsearch/issues/issue/361)
+ * Query DSL: @match_all@ filter ("#365":http://github.com/elasticsearch/elasticsearch/issues/issue/365)
+ * Search API: Automatically identify "script" fields on the field elements in search ("#357":http://github.com/elasticsearch/elasticsearch/issues/issue/357)
+ * Terms Facet: Allow to provide @_index@ as the field, resulting in facets on indices ("#374":http://github.com/elasticsearch/elasticsearch/issues/issue/374)
+* Admin REST API: Cluster State returns also @allocations@ ("commit":http://github.com/elasticsearch/elasticsearch/commit/69fad80b01bac67f4a232029d46e612a2be3e013)
+* Add @refresh@ option to index/create/delete opereation, REST allows for refresh parameter (defaults to false). ("commit":http://github.com/elasticsearch/elasticsearch/commit/ce2888266051475bb53a406c658b93299ab3a837)
+* Allow to specify stopwords as comma delimiated list of words. ("commit":http://github.com/elasticsearch/elasticsearch/commit/d9c2cc9d37331db8f002b491ff36eb82efd2338a)
+* Add nodes attributes to cluster state. ("commit":http://github.com/elasticsearch/elasticsearch/commit/1f3adc213ff9efcfa10e3440d261883af4b7e820)
+
+
+h2. Bug fixes:
+ * Search failure when no results are found and sorting by score ("#362":http://github.com/elasticsearch/elasticsearch/issues/issue/362)
+ * Geo search across anti-meridian doesn't work ("#363":http://github.com/elasticsearch/elasticsearch/issues/issue/363)
+ * Setting @path.work@ does not affect the logs location ("#366":http://github.com/elasticsearch/elasticsearch/issues/issue/366)
+ * Mapper:
+ ** Failure to handle null valued objects ("obj1" : null) ("#341":http://github.com/elasticsearch/elasticsearch/issues/issue/341)
+ ** Upgrading a simple mapping to multi_field mapping fails on merge conflicts ("#369":http://github.com/elasticsearch/elasticsearch/issues/issue/369)
+ * Shared Storage Gateway (fs/s3): Wrong snapshotting of transaction log ("#375":http://github.com/elasticsearch/elasticsearch/issues/issue/375)

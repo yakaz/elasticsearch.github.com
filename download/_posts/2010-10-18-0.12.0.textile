@@ -6,3 +6,58 @@ title: 0.12.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.12.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.12.0
 ---
+
+h2. Breaking changes:
+
+* thrift definition @params@ is conflict with c#'s keyword, rename to @parameters@. ("#392":http://github.com/elasticsearch/elasticsearch/issues/issue/392)
+* Geo Overhaul (work with multiple locations). ("#414":http://github.com/elasticsearch/elasticsearch/issues/issue/414)
+* Bulk API: Rename @index@ to @_index@, @type@ to @_type@ and @id@ to @_id@. ("#421":http://github.com/elasticsearch/elasticsearch/issues/issue/421)
+* Mapper: Allow to configure @date_formats@ only on the root object mapper. ("#437":http://github.com/elasticsearch/elasticsearch/issues/issue/437)
+
+h2. New features:
+
+* Mapper: Dynamic Template Support. ("#397":http://github.com/elasticsearch/elasticsearch/issues/issue/397)
+* Groovy Plugin: Allow to run groovy code as scripts (@custom_score@, @script_fields@, and in different facets implementations). ("#398":http://github.com/elasticsearch/elasticsearch/issues/issue/398)
+* JavaScript Plugin: Allow to use javascript for scripts. ("#401":http://github.com/elasticsearch/elasticsearch/issues/issue/401)
+* Scripts: Allow to access @_fields@ providing access to stored fields. ("#402":http://github.com/elasticsearch/elasticsearch/issues/issue/402)
+* Wikipedia River: A river to index wikipedia. ("#403":http://github.com/elasticsearch/elasticsearch/issues/issue/403)
+* Term Facet:
+** Use a script that provides the facets to index. ("#410":http://github.com/elasticsearch/elasticsearch/issues/issue/410)
+** Allow to execute term facet on more than one field. ("commit":http://github.com/elasticsearch/elasticsearch/commit/22ed71e2e63ac69a32c755929298ca10ce131dc2)
+* Python Plugin: Allow to use python for scripts. ("#418":http://github.com/elasticsearch/elasticsearch/issues/issue/418)
+* Use Base64 encoding for UUID generation (auto generated doc ids, and node ids). ("#422":http://github.com/elasticsearch/elasticsearch/issues/issue/422)
+* Query DSL: Numeric Range Filter - A filter that uses the field data cache to perform numeric tests. ("#435":http://github.com/elasticsearch/elasticsearch/issues/issue/435)
+
+h2. Enhancements:
+
+* CouchDB River
+** Support couchdb filter query parameters. ("#389":http://github.com/elasticsearch/elasticsearch/issues/issue/389) (fix in "#394":http://github.com/elasticsearch/elasticsearch/issues/issue/394)
+** Support http auth. ("#390":http://github.com/elasticsearch/elasticsearch/issues/issue/390)
+** Ignore @_design/@ documents. ("commit":http://github.com/elasticsearch/elasticsearch/commit/a0d48487c1f2e45df696bc0d7b0005de6322cf83)
+** Allow to define a javascript that can munge the changes stream. ("#431":http://github.com/elasticsearch/elasticsearch/issues/issue/431)
+* Gateway: Add @gateway.expected_nodes@ for state recovery. ("#404":http://github.com/elasticsearch/elasticsearch/issues/issue/404)
+* Query DSL:
+** @query_string@ / @field@ to use the optimized @match_all@ query when using * (or :). ("#413":http://github.com/elasticsearch/elasticsearch/issues/issue/413)
+** Fine grained filter caching control with sensible defaults. ("#424":http://github.com/elasticsearch/elasticsearch/issues/issue/424)
+** Statistical Facet: Allow to compute statistical facets on more than one field. ("#436":http://github.com/elasticsearch/elasticsearch/issues/issue/436)
+* Twitter River: Support filter stream. ("#416":http://github.com/elasticsearch/elasticsearch/issues/issue/416)
+* Plugins:
+** Allow to place "extracted" plugins under the plugins directory. ("#428":http://github.com/elasticsearch/elasticsearch/issues/issue/428)
+** plugins should now be in extracted format under @ES_HOME/plugins@. ("#438":http://github.com/elasticsearch/elasticsearch/issues/issue/438)
+* Scripting: Allow to define scripts within @config/scripts@, automatically compiled and can be referenced by name. ("#429":http://github.com/elasticsearch/elasticsearch/issues/issue/429)
+* Local Gateway: Don't block meta operations (delete index) on an index that is not recovered due to not all shards being available. ("#433":http://github.com/elasticsearch/elasticsearch/issues/issue/433)
+* Cluster Admin API: add @cluster_name@ to cluster health response. ("commit":http://github.com/elasticsearch/elasticsearch/commit/648da2e6ff7f955ee777f499986335953792a2d8)
+* Improve automatic publish network address logic. ("#439":http://github.com/elasticsearch/elasticsearch/issues/issue/439)
+
+h2. Bug fixes:
+
+* @/_cluster/nodes/stats@ is broken. ("#391":http://github.com/elasticsearch/elasticsearch/issues/issue/391#issue/391)
+* Local Gateway: Possible failure to allocate shards to nodes when more than one index exists in the cluster (on full cluster restart). ("#409":http://github.com/elasticsearch/elasticsearch/issues/issue/409)
+* Thrift River: Rename Status.CONTINUE to Status.CONT (reserved word). ("#415":http://github.com/elasticsearch/elasticsearch/issues/issue/415)
+
+h2. Internal:
+
+* upgrade to groovy 1.7.5
+* upgrade to aws sdk 1.0.11
+* upgrade to Jackson 1.6.1
+* Add the ability to run check index @index.shard.check_index@ before starting a shard, used for internal testing (as it has a large overhead). ("commit":http://github.com/elasticsearch/elasticsearch/commit/bbb05a57e0127afefad0914deb8831bd6819bad1)

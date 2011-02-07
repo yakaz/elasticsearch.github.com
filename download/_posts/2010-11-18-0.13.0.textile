@@ -7,3 +7,68 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.13.0.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.13.0
 ---
+
+h2. Breaking changes:
+ * Change single operation shard hashing to only use id, and not id and type ("#472":http://github.com/elasticsearch/elasticsearch/issues/issue/472)
+ * Create specific @data@ location for indices (move from work) ("#473":http://github.com/elasticsearch/elasticsearch/issues/issue/473)
+ * Mapping: Rename _attributes to _meta ("#518":http://github.com/elasticsearch/elasticsearch/issues/issue/518)
+
+
+h2. New features:
+ * Write Consistency Level for index/delete/delete_by_query/bulk with one/quorum/all. Defaults to quorum. ("#444":http://github.com/elasticsearch/elasticsearch/issues/issue/444)
+ * When on linux, force it not to swap elasticsearch process (jvm) ("#464":http://github.com/elasticsearch/elasticsearch/issues/issue/464)
+ * API: Allow to control document shard routing, and search shard routing ("#470":http://github.com/elasticsearch/elasticsearch/issues/issue/470)
+ * Indices API: Add open and close index ("#447":http://github.com/elasticsearch/elasticsearch/issues/issue/447)
+ * Mapper:
+ ** Ip Type Support (ipv4), auto detection with dynamic mapping ("#461":http://github.com/elasticsearch/elasticsearch/issues/issue/461)
+ ** Add @path_match@ for full object navigation path matching ("#476":http://github.com/elasticsearch/elasticsearch/issues/issue/476)
+ ** An analyzer mapper allowing to control the index analyzer of a document based on a document field ("#485":http://github.com/elasticsearch/elasticsearch/issues/issue/485)
+ * Query DSL: Allow to provide pattern field names when using query_string query ("#511":http://github.com/elasticsearch/elasticsearch/issues/issue/511)
+ * Routing:
+ ** When specify in the mapping _routing required, a delete without explicit routing value should automatically be broadcasted to all shards ("#522":http://github.com/elasticsearch/elasticsearch/issues/issue/522)
+ ** Allow to define @path@ on the @_routing@ mapping, to automatically extract the routing from it ("#524":http://github.com/elasticsearch/elasticsearch/issues/issue/524)
+ * Transport Thrift: Upgrade to thrift 0.5.0 ("#457":http://github.com/elasticsearch/elasticsearch/issues/issue/457)
+
+
+h2. Enhancements:
+ * Reduce multiple indices overhead, don't create Indices data on nodes that don't hold any shard for an index ("#441":http://github.com/elasticsearch/elasticsearch/issues/issue/441)
+ * Improve performance when searching across multiple types ("#478":http://github.com/elasticsearch/elasticsearch/issues/issue/478)
+ * Add an option to display max_open_files, by setting -Des.max-open-files to @true@ ("#483":http://github.com/elasticsearch/elasticsearch/issues/issue/483)
+ * Cluster health API should return RED status (on applicable levels) when an index has not recovered from the gateway ("#507":http://github.com/elasticsearch/elasticsearch/issues/issue/507)
+ * Analysis: Allow to alias analyzers ("#486":http://github.com/elasticsearch/elasticsearch/issues/issue/486)
+ * Fs Gateway: Add (native) file lock to ensure two nodes in a split brain are not updating same gateway ("#481":http://github.com/elasticsearch/elasticsearch/issues/issue/481)
+ * Get Action: Allow to pass refresh forcing getting latest ("#488":http://github.com/elasticsearch/elasticsearch/issues/issue/488)
+ * Histogram Facet: Allow to define a key field and value script ("#517":http://github.com/elasticsearch/elasticsearch/issues/issue/517)
+ * Index: Move compound format setting to @index.compound_format@ (old setting still supported) ("#463":http://github.com/elasticsearch/elasticsearch/issues/issue/463)
+ * Index Merge: Change default @index.merge.scheduler.max_thread_count@ from @ to be adaptive based on processor count ("#469":http://github.com/elasticsearch/elasticsearch/issues/issue/469)
+ * Mapper:
+ ** Store the routing (if provided) under a @_routing@ field ("#515":http://github.com/elasticsearch/elasticsearch/issues/issue/515)
+ ** @date@ type to also allow providing values in numeric (milliseconds since epoch) ("#516":http://github.com/elasticsearch/elasticsearch/issues/issue/516)
+ * Mapping: add threshold to _source field compression  ("#506":http://github.com/elasticsearch/elasticsearch/issues/issue/506)
+ * Query DSL:
+ ** Add @exists@ and @missing@ filters to filter documents where a field either has a value or not in them. ("#445":http://github.com/elasticsearch/elasticsearch/issues/issue/445)
+ ** Query String _missing_ and _exists_ syntax ("#446":http://github.com/elasticsearch/elasticsearch/issues/issue/446)
+ ** @term@, @term@, @prefix@, and @range@ filter are now weakly cached, for more strong caching, set @_cache@ to true. ("#450":http://github.com/elasticsearch/elasticsearch/issues/issue/450)
+ ** @constant_score@ and @filtered@ queries cache filters by default, remove it ("#449":http://github.com/elasticsearch/elasticsearch/issues/issue/449)
+ ** @term@ filter to have @_cache@ set to @true@ by default ("#453":http://github.com/elasticsearch/elasticsearch/issues/issue/453)
+ ** Revert back and have range, terms, and prefix filter _cache set to true ("#456":http://github.com/elasticsearch/elasticsearch/issues/issue/456)
+ ** Add @field_masking_span@ query ("#471":http://github.com/elasticsearch/elasticsearch/issues/issue/471)
+ ** Allow to control (globally) the max clause count for @bool@ query (defaults to 1024) ("#482":http://github.com/elasticsearch/elasticsearch/issues/issue/482)
+ * Rivers: Add a _status doc for each river ("#468":http://github.com/elasticsearch/elasticsearch/issues/issue/468)
+ * Routing: Allow to specify on the @_routing@ mapping that its required, and fail index operations that do not provide one ("#520":http://github.com/elasticsearch/elasticsearch/issues/issue/520)
+ * Search: Change default operation threading to @thread_per_shard@ from @single_thread@ ("#455":http://github.com/elasticsearch/elasticsearch/issues/issue/455)
+ * Cluster Health API: add number of data nodes ("commit":https://github.com/elasticsearch/elasticsearch/commit/e7fdf16402d023abacb9ec47ff1f17ea14810e7f)
+
+
+h2. Bug fixes:
+ * "geo_distance" parsing bugs ("#454":http://github.com/elasticsearch/elasticsearch/issues/issue/454)
+ * On full cluster restart, replicas transaction logs are not getting cleaned ("#465":http://github.com/elasticsearch/elasticsearch/issues/issue/465)
+ * Possible (rare) shard index corruption / different doc count on recovery (gateway / shard) ("#466":http://github.com/elasticsearch/elasticsearch/issues/issue/466)
+ * constant_score query might apply deletes wrongly ("#477":http://github.com/elasticsearch/elasticsearch/issues/issue/477)
+ * document level analyzer (analyzer, index_analyzer, search_analyzer) are not serialized (and not maintained across restarts) ("#484":http://github.com/elasticsearch/elasticsearch/issues/issue/484)
+ * Parsing a deeply nested json might fail ("#494":http://github.com/elasticsearch/elasticsearch/issues/issue/494)
+ * Histogram Facet: keys are wrongly ordered ("#521":http://github.com/elasticsearch/elasticsearch/issues/issue/521)
+ * Query: match_all query (also in query_string: *:*) is very slow ("#451":http://github.com/elasticsearch/elasticsearch/issues/issue/451)
+ * Thrift: Response might get corrupted with extra data ("#452":http://github.com/elasticsearch/elasticsearch/issues/issue/452)
+ * (?) fix expected setting, had an additional @_@ by mistake ("commit":https://github.com/elasticsearch/elasticsearch/commit/9385476340fbd7c21799d182ba5fd6c0e0879c44)
+

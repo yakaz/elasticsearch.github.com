@@ -7,3 +7,6 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.1.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.1
 ---
+
+h2. Bug fixes:
+ * REST Create Index: Not taking JSON index settings into account unless wrapped in settings. ("#578":http://github.com/elasticsearch/elasticsearch/issues/issue/578)

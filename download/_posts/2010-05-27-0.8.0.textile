@@ -6,3 +6,31 @@ title: 0.8.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.8.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.8.0
 ---
+
+h2. Breaking changes:
+ * Gateway Storage: Improve it to support non breaking changes in the future ("#191":http://github.com/elasticsearch/elasticsearch/issues/issue/191)
+
+
+h2. New features:
+ * Cloud Plugin: Gateway should store meta data and indices under the same container ("#180":http://github.com/elasticsearch/elasticsearch/issues/issue/180)
+ * Hadoop Plugin: Use HDFS as gateway storage ("#189":http://github.com/elasticsearch/elasticsearch/issues/issue/189)
+
+
+h2. Enhancements:
+ * Consolidate network settings, common tcp settings, and generalized port settings ("#174":http://github.com/elasticsearch/elasticsearch/issues/issue/174)
+ * Failed to acquire lock ("#193":http://github.com/elasticsearch/elasticsearch/issues/issue/193)
+ * Cloud Plugin: Cloud gateway default chunk size change to 1g ("#186":http://github.com/elasticsearch/elasticsearch/issues/issue/186)
+ * FS Gateway: Change indices location (Requires manual upgrade) ("#188":http://github.com/elasticsearch/elasticsearch/issues/issue/188)
+ * Filter Cache: Improved Caching ("#182":http://github.com/elasticsearch/elasticsearch/issues/issue/182)
+ * Memory Monitor: Remove explicit GC call, clear cached instead ("#179":http://github.com/elasticsearch/elasticsearch/issues/issue/179)
+ * Network Settings:
+ ** Add more #...# logical values ("#184":http://github.com/elasticsearch/elasticsearch/issues/issue/184)
+ ** Default publish host to first non loopback (first ipv4 then ipv6) ("#185":http://github.com/elasticsearch/elasticsearch/issues/issue/185)
+ ** Allow to use '_' as well as '#' for special host names ("#194":http://github.com/elasticsearch/elasticsearch/issues/issue/194)
+ * Optimize API: Change flush and refresh to default to true and not false ("#187":http://github.com/elasticsearch/elasticsearch/issues/issue/187)
+ * Query DSL: Allow to control if filters should be cached ("#181":http://github.com/elasticsearch/elasticsearch/issues/issue/181)
+
+
+h2. Bug fixes:
+ * uppercase first letter in property name breaks "_all" queries  ("#178":http://github.com/elasticsearch/elasticsearch/issues/issue/178)
+

@@ -6,3 +6,18 @@ title: 0.12.1
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.12.1.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.12.1
 ---
+
+h2. Enhancements:
+ * Query DSL:
+ ** @term@, @term@, @prefix@, and @range@ filter are now weakly cached, for more strong caching, set @_cache@ to true. ("#450":http://github.com/elasticsearch/elasticsearch/issues/issue/450)
+ ** @constant_score@ and @filtered@ queries cache filters by default, remove it ("#449":http://github.com/elasticsearch/elasticsearch/issues/issue/449)
+ ** @term@ filter to have @_cache@ set to @true@ by default ("#453":http://github.com/elasticsearch/elasticsearch/issues/issue/453)
+ ** Revert back and have range, terms, and prefix filter _cache set to true ("#456":http://github.com/elasticsearch/elasticsearch/issues/issue/456)
+ * Search: Change default operation threading to @thread_per_shard@ from @single_thread@ ("#455":http://github.com/elasticsearch/elasticsearch/issues/issue/455)
+
+
+h2. Bug fixes:
+ * "geo_distance" parsing bugs ("#454":http://github.com/elasticsearch/elasticsearch/issues/issue/454)
+ * Query: match_all query (also in query_string: *:*) is very slow ("#451":http://github.com/elasticsearch/elasticsearch/issues/issue/451)
+ * Thrift: Response might get corrupted with extra data ("#452":http://github.com/elasticsearch/elasticsearch/issues/issue/452)
+

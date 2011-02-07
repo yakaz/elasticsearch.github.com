@@ -6,3 +6,44 @@ title: 0.7.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.7.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.7.0
 ---
+
+h2. New features:
+ * Groovy Client ("#139":http://github.com/elasticsearch/elasticsearch/issues/issue/139)
+ * XContent - An abstraction on top of content (JSON inspired) ("#152":http://github.com/elasticsearch/elasticsearch/issues/issue/152)
+ * Nodes Stats API ("#165":http://github.com/elasticsearch/elasticsearch/issues/issue/165)
+ * Analysis ICU Plugin ("#151":http://github.com/elasticsearch/elasticsearch/issues/issue/151)
+ * Add online plugin repository and a 'plugin' command to download them ("#157":http://github.com/elasticsearch/elasticsearch/issues/issue/157)
+ * Cloud Plugin:
+ ** Allow to use the cloud as gateway storage ("#163":http://github.com/elasticsearch/elasticsearch/issues/issue/163)
+ ** Auto Discovery on the Cloud (extending the Zen discovery) ("#164":http://github.com/elasticsearch/elasticsearch/issues/issue/164)
+ * Mapper: Date format - allow for multiple formats using '||' separator ("#169":http://github.com/elasticsearch/elasticsearch/issues/issue/169)
+ * Memcache Plugin: Support memcached protocol ("#141":http://github.com/elasticsearch/elasticsearch/issues/issue/141)
+ * Restart API: Allow to restart one or more nodes ("#155":http://github.com/elasticsearch/elasticsearch/issues/issue/155)
+ * Service Wrapper: A Java Service Wrapper integration ("#154":http://github.com/elasticsearch/elasticsearch/issues/issue/154)
+
+
+h2. Enhancements:
+ * Remove dependency on slf4j for logging, create own internal abstraction ("#146":http://github.com/elasticsearch/elasticsearch/issues/issue/146)
+ * Add a -v flag to output version information ("#128":http://github.com/elasticsearch/elasticsearch/issues/issue/128)
+ * Count / Delete By Query API: Add source parameter to pass the json body ("#142":http://github.com/elasticsearch/elasticsearch/issues/issue/142)
+ * HTTP/Transport Modules: Default to not set the reuse_address setting ("#131":http://github.com/elasticsearch/elasticsearch/issues/issue/131)
+ * Mapper:
+ ** Allow to define CamelCase JSON fields in mapping definitions ("#133":http://github.com/elasticsearch/elasticsearch/issues/issue/133)
+ ** Object mapper default 'date_formats' to also support 'yyyy/MM/dd HH:mm:ss' and 'yyyy/MM/dd' ("#159":http://github.com/elasticsearch/elasticsearch/issues/issue/159)
+ * Query DSL:
+ ** Allow for CamelCase field names ("#134":http://github.com/elasticsearch/elasticsearch/issues/issue/134)
+ ** Custom Boost Factory Query ("#161":http://github.com/elasticsearch/elasticsearch/issues/issue/161)
+ * REST API: Allow to provide @case@ parameter, with @camelCase@ to return results in CamelCasing ("#162":http://github.com/elasticsearch/elasticsearch/issues/issue/162)
+ * Script / Service: Add ES_MIN_MEM and ES_MAX_MEM ("#156":http://github.com/elasticsearch/elasticsearch/issues/issue/156)
+ * Search API:
+ ** Allow to pass the body JSON also as a parameter named 'source' ("#140":http://github.com/elasticsearch/elasticsearch/issues/issue/140)
+ ** Indices Boost to apply a boost factor to each index ("#143":http://github.com/elasticsearch/elasticsearch/issues/issue/143)
+
+
+h2. Bug fixes:
+ * Highlighting broken when query is on @_all@ field or with prefixes ("#148":http://github.com/elasticsearch/elasticsearch/issues/issue/148)
+ * Range filter gt is broken ("#119":http://github.com/elasticsearch/elasticsearch/issues/issue/119)
+ * multi_field not returning for default field for certain type ("#123":http://github.com/elasticsearch/elasticsearch/issues/issue/123)
+ * NodeBuilder.local(false) sets local to true ("#168":http://github.com/elasticsearch/elasticsearch/issues/issue/168)
+ * Time Memory Leak: Search requests don't eagerly clean the search context ("#153":http://github.com/elasticsearch/elasticsearch/issues/issue/153)
+ * Transport: A failure to handle a response might cause the transport to stop working ("#170":http://github.com/elasticsearch/elasticsearch/issues/issue/170)

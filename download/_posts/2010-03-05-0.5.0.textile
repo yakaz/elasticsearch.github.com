@@ -7,3 +7,43 @@ download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsea
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.5.0
 ---
 
+h1. New features:
+ * Mapping Overhaul - More user friendly, cluster aware ("#34":http://github.com/elasticsearch/elasticsearch/issues/issue/34)
+ * Cluster Health API: A simple way to know if the cluster is healthy or not ("#42":http://github.com/elasticsearch/elasticsearch/issues/issue/42)
+ * Discovery: Support local (JVM level) discovery ("#2":http://github.com/elasticsearch/elasticsearch/issues/issue/2)
+ * Optimize API: Allow to optimize index/indices ("#9":http://github.com/elasticsearch/elasticsearch/issues/issue/9)
+ * Query DSL: moreLikeThis & moreLikeThisField ("#43":http://github.com/elasticsearch/elasticsearch/issues/issue/43)
+ * Search API: Set different boost for indices when searching across indices ("#23":http://github.com/elasticsearch/elasticsearch/issues/issue/23)
+ * Terms API: Allow to get terms for one or more field ("#21":http://github.com/elasticsearch/elasticsearch/issues/issue/21)
+ * Transport: Support local (JVM level) transport ("#3":http://github.com/elasticsearch/elasticsearch/issues/issue/3)
+
+
+h1. Enhancements:
+ * Query http listeners ("#10":http://github.com/elasticsearch/elasticsearch/issues/issue/10)
+ * Merge bytebuffer and memory stores into a single memory store options ("#22":http://github.com/elasticsearch/elasticsearch/issues/issue/22)
+ * Accept 1 / 0 as true/false ("#26":http://github.com/elasticsearch/elasticsearch/issues/issue/26)
+ * query.sort should be an array, not an object ("#30":http://github.com/elasticsearch/elasticsearch/issues/issue/30)
+ * Boolean Type: Support also cases when a number/string value are passed ("#33":http://github.com/elasticsearch/elasticsearch/issues/issue/33)
+ * Count API: Also accepts /_count uri to search over all indices ("#17":http://github.com/elasticsearch/elasticsearch/issues/issue/17)
+ * Create Mapping API: Automatically create indices ("#12":http://github.com/elasticsearch/elasticsearch/issues/issue/12)
+ * Discovery/Jgroups: Upgrade to 2.9.0 ("#7":http://github.com/elasticsearch/elasticsearch/issues/issue/7)
+ * Flush API: Add refresh flag (refresh after flush) ("#14":http://github.com/elasticsearch/elasticsearch/issues/issue/14)
+ * Gateway: Store cluster meta data in JSON (and not binary) ("#36":http://github.com/elasticsearch/elasticsearch/issues/issue/36)
+ * HTTP: Rest API should support receiving HTTP chunks ("#8":http://github.com/elasticsearch/elasticsearch/issues/issue/8)
+ * Optimize API: Add onlyExpungeDeletes, flush and refresh parameters ("#15":http://github.com/elasticsearch/elasticsearch/issues/issue/15)
+ * Query: support negative queries ("#44":http://github.com/elasticsearch/elasticsearch/issues/issue/44)
+ * Query DSL:
+ ** Terms Filter ("#1":http://github.com/elasticsearch/elasticsearch/issues/issue/1)
+ ** Bool query/filter to be valid JSON ("#6":http://github.com/elasticsearch/elasticsearch/issues/issue/6)
+ ** queryString - allow to escape the string ("#41":http://github.com/elasticsearch/elasticsearch/issues/issue/41)
+ * Search API:
+ ** Fields listed should exists within a "fields" Json object ("#13":http://github.com/elasticsearch/elasticsearch/issues/issue/13)
+ ** Also accepts /_search uri to search over all indices ("#16":http://github.com/elasticsearch/elasticsearch/issues/issue/16)
+
+
+h1. Bug fixes:
+ * flush_index hangs when no indices exist ("#19":http://github.com/elasticsearch/elasticsearch/issues/issue/19)
+ * Facet query crashes the cluster ("#28":http://github.com/elasticsearch/elasticsearch/issues/issue/28)
+ * JSON object properties are not positional ("#27":http://github.com/elasticsearch/elasticsearch/issues/issue/27)
+ * Terms results differs between one node and multiple ("#38":http://github.com/elasticsearch/elasticsearch/issues/issue/38)
+

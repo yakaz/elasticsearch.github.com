@@ -8,3 +8,40 @@ download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.6.
 download_attachment_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-attachments-0.6.0.zip
 ---
 
+h2. New features:
+ * _all field ("#63":http://github.com/elasticsearch/elasticsearch/issues/issue/63)
+ * Index Aliases ("#88":http://github.com/elasticsearch/elasticsearch/issues/issue/88)
+ * Boot-time Mapping Definitions ("#86":http://github.com/elasticsearch/elasticsearch/issues/issue/86)
+ * Index FS Store: Allow to cache (in memory) specific files ("#82":http://github.com/elasticsearch/elasticsearch/issues/issue/82)
+ * Mapper: Ability to disable storing the "source" field ("#66":http://github.com/elasticsearch/elasticsearch/issues/issue/66)
+ * Mapping: Support for short type ("#84":http://github.com/elasticsearch/elasticsearch/issues/issue/84)
+ * Search API:
+ ** Support highlighting ("#69":http://github.com/elasticsearch/elasticsearch/issues/issue/69)
+ ** Scroll ("#77":http://github.com/elasticsearch/elasticsearch/issues/issue/77)
+ * Shutdown API: allow to shutdown node(s) or the whole cluster ("#64":http://github.com/elasticsearch/elasticsearch/issues/issue/64)
+ * Terms API: Support numbers/dates ("#78":http://github.com/elasticsearch/elasticsearch/issues/issue/78)
+ * ThreadPool: Add a blocking thread pool ("#74":http://github.com/elasticsearch/elasticsearch/issues/issue/74)
+
+
+h2. Enhancements:
+ * Support parsing Strings with numeric types ("#54":http://github.com/elasticsearch/elasticsearch/issues/issue/54)
+ * Mapping - Support specifying string as number values (for example, for boost) ("#53":http://github.com/elasticsearch/elasticsearch/issues/issue/53)
+ * Get API: Allow to specify which fields to load ("#65":http://github.com/elasticsearch/elasticsearch/issues/issue/65)
+ * Index Analysis: Add language analyzers and stemmers ("#72":http://github.com/elasticsearch/elasticsearch/issues/issue/72)
+ * Java API: Expose source as Map (in GetResponse, SearchHit), allow to index a Map ("#58":http://github.com/elasticsearch/elasticsearch/issues/issue/58)
+ * Mapping: Allow to have for a field to not be stored and not indexed, but still be included in @all@ ("#90":http://github.com/elasticsearch/elasticsearch/issues/issue/90)
+ * Memory Store: change default bufferSize from 1k to 100k ("#70":http://github.com/elasticsearch/elasticsearch/issues/issue/70)
+ * Query DSL: Rename @filteredQuery@ to @filtered@ ("#85":http://github.com/elasticsearch/elasticsearch/issues/issue/85)
+ * ThreadPool: Rename dynamic to scaling ("#75":http://github.com/elasticsearch/elasticsearch/issues/issue/75)
+
+
+h2. Bug fixes:
+ * A search with an empty fields param causes a NullPointerException or a runaway process ("#55":http://github.com/elasticsearch/elasticsearch/issues/issue/55)
+ * Boolean field type does not handle number/string properly when searching ("#59":http://github.com/elasticsearch/elasticsearch/issues/issue/59)
+ * Mapping metadata not restored from gateway on server restart ("#57":http://github.com/elasticsearch/elasticsearch/issues/issue/57)
+ * indexName is lost after server restart ("#62":http://github.com/elasticsearch/elasticsearch/issues/issue/62)
+ * NullPointerexception at org.elasticsearch.action.get.GetResponse.sourceAsString ("#68":http://github.com/elasticsearch/elasticsearch/issues/issue/68)
+ * Another truthy falsy issue, this time in the allField ("#76":http://github.com/elasticsearch/elasticsearch/issues/issue/76)
+ * tieBreakerMultiplier is broken ("#73":http://github.com/elasticsearch/elasticsearch/issues/issue/73)
+ * Search with sort field of score fails ("#83":http://github.com/elasticsearch/elasticsearch/issues/issue/83)
+ * Mapper : Schema less automatic date detection wrongly detects numbers as dates ("#60":http://github.com/elasticsearch/elasticsearch/issues/issue/60)

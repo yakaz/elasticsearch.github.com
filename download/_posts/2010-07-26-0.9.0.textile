@@ -6,3 +6,111 @@ title: 0.9.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.9.0.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.9.0
 ---
+
+h2. Incompatible changes:
+* Gateway: Internal refactoring, *requires manual upgrade* when using @fs@ gateway. ("#232":http://github.com/elasticsearch/elasticsearch/issues/232)
+* This release allows a newly started node to reuse up-to-date files in the working directory, without having to pull them from the gateway/master every time.  Makes restarting a node much faster. This feature *requires complete data re-indexing*. __(Note that when re-indexing data the metadata is automatically re-created too.)__
+* The service wrapper has been moved to its own repo: "http://github.com/elasticsearch/elasticsearch-servicewrapper":http://github.com/elasticsearch/elasticsearch-servicewrapper. ("#243":http://github.com/elasticsearch/elasticsearch/issues/243)
+* Jgroups has been removed - now uses Zen instead
+* The @terms@ API  has been replaced by @facets@ in search. ("#242":http://github.com/elasticsearch/elasticsearch/issues/242)
+* The @search.facets@ API has changed (see below)
+* The shard level @index.store.memory@ settings have been replaced with a node level memory store. ("#235":http://github.com/elasticsearch/elasticsearch/issues/235)
+* REST API: Cluster state (where possible) now returns the mappings as JSON, rather than as a string containing JSON.
+* REST Search API: Change @score@ to @_score@ to denote sorting by hit score. ("#271":http://github.com/elasticsearch/elasticsearch/issues/issue/271)
+* Removed cloud plugin
+* Mapping: Revise dynamic mapping (into default), merge default to new mappings. ("#275":http://github.com/elasticsearch/elasticsearch/issues/issue/275)
+
+
+h2. Enhancements:
+
+h3. Query DSL
+* Term Facets:  A lot of work has been done to improve facet support:     
+** Specify term facets that return the N most frequent terms that a field has, either globally, or bound by the search query ("#207":http://github.com/elasticsearch/elasticsearch/issues/207). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/terms_facet/.     
+** Facets can be filtered, by the same filters used in queries ("#217":http://github.com/elasticsearch/elasticsearch/issues/217). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/#filter.
+** A list of terms can be excluded from the results ("#246":http://github.com/elasticsearch/elasticsearch/issues/246). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/terms_facet/#Excluding_Terms.
+** Statistical facets: @min@, @max@, @total@, @count@, @sum_of_squares@, @variance@ and @std_deviation@ for numeric fields ("#212":http://github.com/elasticsearch/elasticsearch/issues/212). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/statistical_facet/.
+** Scripted statistical facets: define a script to be evaluated with statistical facets ("#227":http://github.com/elasticsearch/elasticsearch/issues/227). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/statistical_facet/#Script_field.
+** Histogram facets: Create buckets from the values of one field (eg @timestamp@) and query @total@ and @count@ for another field in the same doc ("#219":http://github.com/elasticsearch/elasticsearch/issues/219). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/search/facets/histogram_facet/.
+* Terms Factes: Allow to provide regex controlling which terms should be included. ("#277":http://github.com/elasticsearch/elasticsearch/issues/issue/277)
+* Custom scripts:
+** Custom score (scripted) query. ("#220":http://github.com/elasticsearch/elasticsearch/issues/220)
+*** The @custom_score@ query uses the "mvel":http://mvel.codehaus.org/ scripting language to provide custom scoring for searches. For instance, you could use this to make documents with a more recent @last_modified@ date more relevant than older documents. These mini-scripts can also accept parameters.
+** Script fields - searches can use the "mvel":http://mvel.codehaus.org/ scripting language to return calculated fields. ("#221":http://github.com/elasticsearch/elasticsearch/issues/221)
+* Fuzzy query support. ("#213":http://github.com/elasticsearch/elasticsearch/issues/213)
+* Alternate syntax for @prefix@ ("docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/query_dsl/prefix_query/), @term@ ("docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/query_dsl/term_query/), @wildcard@ ("docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/query_dsl/wildcard_query/), and @span_term@ ("docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/query_dsl/span_term_query/) queries. ("#192":http://github.com/elasticsearch/elasticsearch/issues/192)
+* @and@, @or@ and @not@ filters ("#216":http://github.com/elasticsearch/elasticsearch/issues/216). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/query_dsl/#Filters.
+* Cluster state (see "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/admin/cluster/state/):
+** Added parameters to filter the state on nodes, routing_table, metadata, and indices. ("#234":http://github.com/elasticsearch/elasticsearch/issues/234)
+** Now also includes information about index @aliases@, @blocks@ and @master_node@ id.
+* Added @/_mapping@, @/{index}/_mapping@ and @/{index}/{type}/_mapping@ to REST interface ("#222":http://github.com/elasticsearch/elasticsearch/issues/222). See "docs":http://www.elasticsearch.com/docs/elasticsearch/rest_api/admin/indices/get_mapping/.
+* Return the @maxScore@ per search and @_score@ for each search hit. ("#205":http://github.com/elasticsearch/elasticsearch/issues/205)
+
+
+h3. Other
+* Memory management much improved
+* Make replication type for @index@, @delete@, and @delete_by_query@ operations configurable: @async@ or @sync@ ("#196":http://github.com/elasticsearch/elasticsearch/issues/196).
+* "Java API":http://www.elasticsearch.com/docs/elasticsearch/java_api/ has been improved ("#199":http://github.com/elasticsearch/elasticsearch/issues/199)
+* FS Gateway: Added @index.gateway.fs.native_copy@ to control where native file copying will be used. ("#202":http://github.com/elasticsearch/elasticsearch/issues/202)
+* Plugins: Easier to plugin a custom DSL query/filter parsers. ("#208":http://github.com/elasticsearch/elasticsearch/issues/208)
+* Flush API: Added the @full@ parameter for a complete clean. ("#210":http://github.com/elasticsearch/elasticsearch/issues/210)
+* Gateway: Configurable @recovery_after_time@ and @recover_after_nodes@.   ("#223":http://github.com/elasticsearch/elasticsearch/issues/223)
+* Automatic (and configurable) management of indexing buffer size.   ("#241":http://github.com/elasticsearch/elasticsearch/issues/241)
+* Better behaviour when the whole cluster is shut down.  ("#250":http://github.com/elasticsearch/elasticsearch/issues/250)
+* Time values (eg durations) now support days as well, eg "2d"
+* Zen Discovery: Configure which nodes are or are not allowed to become master with @discovery.zen.master@. ("#248":http://github.com/elasticsearch/elasticsearch/issues/248)
+* Analysis: 
+** Fields that are not_analyzed should automatically default to keyword analyzer. ("#229":http://github.com/elasticsearch/elasticsearch/issues/229)
+** When specifying empty array for stopwords, use an empty list for stopwords. ("#230":http://github.com/elasticsearch/elasticsearch/issues/230)
+* Make merging mappings smarter. ("#253":http://github.com/elasticsearch/elasticsearch/issues/253)
+* Translog: Implement a file system based translog and make it the default. ("#260":http://github.com/elasticsearch/elasticsearch/issues/260)
+* If there isn't a valid score for result hits then return @null@ for @max_score@ value. ("#263":http://github.com/elasticsearch/elasticsearch/issues/issue/263). The same logic applies also to @_score@ values of individual documents.
+* Support Cross-Origin resource in http/rest module. ("#218":http://github.com/elasticsearch/elasticsearch/issues/issue/218)
+* Cluster Health API: Add @wait_for_nodes@ (accepts "N", "<N", ">N", "<=N", and ">=N"). ("#269":http://github.com/elasticsearch/elasticsearch/issues/issue/269)
+* Implemented specific cloud plugin for AWS with S3 gateway and EC2 discovery.
+* Analysis: Add pattern analyzer. ("#276":http://github.com/elasticsearch/elasticsearch/issues/issue/276)
+
+h2. Bug fixes:
+* Zen Discovery: 
+** Ungraceful shutdown of the master and start of replacement node might cause the cluster not to elect a new master. ("#200":http://github.com/elasticsearch/elasticsearch/issues/200)
+** When a master node is forcefully killed, other nodes might not monitor the other elected master.  ("#224":http://github.com/elasticsearch/elasticsearch/issues/224)
+** A node might get into an infinite state of trying to find a master (when client / non_master) nodes exists. ("#247":http://github.com/elasticsearch/elasticsearch/issues/247)
+* Don't create / use the work directory if not needed (for example, on client / non data) nodes. ("#249":http://github.com/elasticsearch/elasticsearch/issues/249)
+* Nodes Info API: Failed to generate REST response when node attributes are set. ("#201":http://github.com/elasticsearch/elasticsearch/issues/201)
+* REST API does not expose node-master status. ("#203":http://github.com/elasticsearch/elasticsearch/issues/203)
+* Query DSL: field query does not take into account @allow_leading_wildcards@. ("#236":http://github.com/elasticsearch/elasticsearch/issues/236)
+* Added checks to ensure survival when a cached stream is removed mid process
+* Search requests hangs when no indices exists. ("#209":http://github.com/elasticsearch/elasticsearch/issues/209)
+* Don't fail when a flush cannot be completed
+* Cluster state is now refreshed on restart, clearing out old information.
+* Block operations performed on a cluster until it has recovered from the gateway. ("#239":http://github.com/elasticsearch/elasticsearch/issues/239)
+* Put Mapping fails when an analyzer is specified that was not configured. ("#252":http://github.com/elasticsearch/elasticsearch/issues/252)
+* Sorting breaks when sorting on a field that has no value in some documents.
+* Facet results vary depending on size. ("#259":http://github.com/elasticsearch/elasticsearch/issues/259)
+* Querying mapping on a non-master throws an error. ("#261":http://github.com/elasticsearch/elasticsearch/issues/issue/261)
+* Put Mapping: When updating existing mappings, the request returns with acknowledged `false`. ("#262":http://github.com/elasticsearch/elasticsearch/issues/issue/262)
+* Search: Sending a request that fails to parse can cause file leaks. ("#270":http://github.com/elasticsearch/elasticsearch/issues/issue/270)
+* Mapping: Dynamic mapping definitions are ignored. ("#274":http://github.com/elasticsearch/elasticsearch/issues/issue/274)
+
+h2. Internal:
+* Library upgrades:
+** Lucene: now at version 3.0.2.
+** netty: now at version 3.2.1 Final
+** async http client: now at 1.0.0
+* Use Java's @user.dir@ as the default @path.home@ location
+* cached termsSet used in dfs phase
+* Logging improvements
+* Update build files to reference hamcrest
+* Always start the unicast ping discovery, so unicast discovery will work even when using multicast
+* Rest interface now accepts HTTP OPTIONS and HEAD
+* Clean up files that are in the working directory  but not in the gateway
+* Big jarjar refactoring, guice now jarjar'ed
+* Tcp Transport: Reduce @transport.tcp.connection_per_node@ from 5 to 1. ("#225":http://github.com/elasticsearch/elasticsearch/issues/225)
+* Detect write errors early and notify transport handler
+* Connect to a node when it joins the cluster on the disco level, so if it fails, it will be propagated back and the node will not be added to the cluster state
+* Simplify netty transport to use single channel
+* Refactor builder requets into common base class
+* Groovy: 
+** Refactor util.xcontent to common.xcontent in client
+** Add prepare methods to groovy APIs
+* Gateway: HDFS gateway refactored to use the new common blobstore
+* Improve join process in cluster, fetch the cluster meta-data on join and handle new meta data 
