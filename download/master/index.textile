@@ -1,0 +1,91 @@
+---
+layout: download
+version: master
+title: ElasticSearch Download - Master
+download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
+download_type: source
+---
+
+h2. Breaking changes:
+ * -Des.config=/path/to/config/file doesn't replace $ES_HOME/elasticsearch.conf, just appends to it ("#588":http://github.com/elasticsearch/elasticsearch/issues/issue/588)
+ * Allow ./bin/plugin to install plugins from the local filesystem / custom url ("#595":http://github.com/elasticsearch/elasticsearch/issues/issue/595)
+ * Twitter updates have broken Twitter River, Update to latest version of Twitter4J ("#627":http://github.com/elasticsearch/elasticsearch/issues/issue/627)
+ * Remove -XX:+AggressiveOpts flag that is turned on by default in startup script ("#638":http://github.com/elasticsearch/elasticsearch/issues/issue/638)
+ * Facets: Remove redundant data returned as part of facet response (for example, the field name being faceted) ("#655":http://github.com/elasticsearch/elasticsearch/issues/issue/655)
+ * Histogram Facet: Improve perf / memory by defaulting to just providing counts with no totals ("#587":http://github.com/elasticsearch/elasticsearch/issues/issue/587)
+ * Geo: All geo components that accept an array of [lat, lon] to change to do [lon, lat] to conform with GeoJSON ("#661":http://github.com/elasticsearch/elasticsearch/issues/issue/661)
+ * Groovy client doesn't bind to any variables outside the closure ("#654":http://github.com/elasticsearch/elasticsearch/issues/issue/654)
+ * Index Status: Add primary store size to include only primary shards store sizes, also move index store and translog into their own elements ("#666":http://github.com/elasticsearch/elasticsearch/issues/issue/666)
+
+
+h2. New features:
+ * Versioning ("#594":http://github.com/elasticsearch/elasticsearch/issues/issue/594)
+ * A setting to auto expand the number of replicas of an index (based on data nodes) ("#623":http://github.com/elasticsearch/elasticsearch/issues/issue/623)
+ * Percolator ("#624":http://github.com/elasticsearch/elasticsearch/issues/issue/624)
+ * Percolate on Index and Bulk ("#636":http://github.com/elasticsearch/elasticsearch/issues/issue/636)
+ * Highlighting: Allow to highlight on fields without term vectors ("#585":http://github.com/elasticsearch/elasticsearch/issues/issue/585)
+ * Search:
+ ** Date Histogram Facet ("#591":http://github.com/elasticsearch/elasticsearch/issues/issue/591)
+ ** Allow to pass a search filter, applying only on the query (and not on facets for example) ("#650":http://github.com/elasticsearch/elasticsearch/issues/issue/650)
+ * Allow ./bin/plugin to install plugins from the local filesystem / custom url ("#595":http://github.com/elasticsearch/elasticsearch/issues/issue/595)
+
+
+h2. Enhancements:
+ * Master based operations (create index, delete index) to automatically retry on retryable cluster blocks (like recovery from gateway) ("#584":http://github.com/elasticsearch/elasticsearch/issues/issue/584)
+ * Add @resident@ field cache type ("#602":http://github.com/elasticsearch/elasticsearch/issues/issue/602)
+ * Add to node stats the number of times field cache was evicted due to memory constraints ("#603":http://github.com/elasticsearch/elasticsearch/issues/issue/603)
+ * Make URI query decoding more robust ("#608":http://github.com/elasticsearch/elasticsearch/issues/issue/608)
+ * Geo-distance in scripts (like custom_score) ("#607":http://github.com/elasticsearch/elasticsearch/issues/issue/607)
+ * NPE for when passing null date to content builder ("#610":http://github.com/elasticsearch/elasticsearch/issues/issue/610)
+ * Add @prefer_local@ flag to analyze and percolate request ("#625":http://github.com/elasticsearch/elasticsearch/issues/issue/625)
+ * Java Client - Allow to set facets in binary format ("#442":http://github.com/elasticsearch/elasticsearch/issues/issue/442)
+ * Analysis:
+ ** Add Snowball stemmer as analyzer and filter ("#606":http://github.com/elasticsearch/elasticsearch/issues/issue/606)
+ ** Add stemming to czech analyzer ("#642":http://github.com/elasticsearch/elasticsearch/issues/issue/642, "#639":http://github.com/elasticsearch/elasticsearch/issues/issue/639)
+ ** Add phonetic token filter (metaphone, soundex, ...) ("#644":http://github.com/elasticsearch/elasticsearch/issues/issue/644)
+ * Bulk API: Add how long the bulk API took (in milliseconds) to the response ("#599":http://github.com/elasticsearch/elasticsearch/issues/issue/599)
+ * Index Merge: Improve internal (segment) merging by not initiating it on doc operations ("#653":http://github.com/elasticsearch/elasticsearch/issues/issue/653)
+ * Mapper: Add @byte@ type (8bit signed) ("#620":http://github.com/elasticsearch/elasticsearch/issues/issue/620)
+ * Node Stats: Process / Network / Os should only refresh every 5 seconds (refresh_interval to set it) ("#626":http://github.com/elasticsearch/elasticsearch/issues/issue/626)
+ * Search:
+ ** Add a @timed_out@ element indicating if the search request timed out ("#592":http://github.com/elasticsearch/elasticsearch/issues/issue/592)
+ ** When sorting, allow to pass `track_scores` and set it to `true` to get scores/max_score back ("#662":http://github.com/elasticsearch/elasticsearch/issues/issue/662)
+ * Search Scripts: Allow to access score in facet related scripts using @doc.score@ ("#663":http://github.com/elasticsearch/elasticsearch/issues/issue/663)
+ * Shared Gateway: Allow to set the number of concurrent streams doing snapshot operations ("#621":http://github.com/elasticsearch/elasticsearch/issues/issue/621)
+ * Strict dynamic setting: Refuse to index a document with fields not present in the mapping definition ("#643":http://github.com/elasticsearch/elasticsearch/issues/issue/643)
+ * Terms Facet:
+ ** Performance and memory improvements when faceting numeric fields ("#583":http://github.com/elasticsearch/elasticsearch/issues/issue/583)
+ ** Add option include counts where term is missing ("#632":http://github.com/elasticsearch/elasticsearch/issues/issue/632)
+ ** Allow to get @all_terms@ back (possibly with count 0) ("#647":http://github.com/elasticsearch/elasticsearch/issues/issue/647)
+ * Thread Pool: Increase the keep alive time of threads from 60 seconds to 60 minutes ("#657":http://github.com/elasticsearch/elasticsearch/issues/issue/657)
+ * Translog Flushing: Improve logic, flush not just by operations in the translog ("#656":http://github.com/elasticsearch/elasticsearch/issues/issue/656)
+
+
+h2. Bug fixes:
+ * Groovy Plugin not loaded (groovy not enabled as pluggable script provider) ("#581":http://github.com/elasticsearch/elasticsearch/issues/issue/581)
+ * Non-data master nodes and non-master data nodes fail to store data ("#579":http://github.com/elasticsearch/elasticsearch/issues/issue/579)
+ * @refresh@ param to bulk not working ("#614":http://github.com/elasticsearch/elasticsearch/issues/issue/614)
+ * /_open is not recovering indices correctly ("#615":http://github.com/elasticsearch/elasticsearch/issues/issue/615)
+ * If the cluster does not contain any indices then index templates do not survive cluster restart. ("#617":http://github.com/elasticsearch/elasticsearch/issues/issue/617)
+ * Starting a node with existing data and killing it before its finished it cluster joining / initialization can cause data loss ("#633":http://github.com/elasticsearch/elasticsearch/issues/issue/633)
+ * ES hangs connection when parent is not specified in bulk index ("#641":http://github.com/elasticsearch/elasticsearch/issues/issue/641)
+ * No cluster name filtering when sniffing is not enabled ("#637":http://github.com/elasticsearch/elasticsearch/issues/issue/637)
+ * Delete By Query: Types are not serialized over network, causing them to be ignored ("#580":http://github.com/elasticsearch/elasticsearch/issues/issue/580)
+ * Highlighting:
+ ** The result of highlighting for a hit can contain data from another document ("#600":http://github.com/elasticsearch/elasticsearch/issues/issue/600)
+ ** Sometimes highlighting returns empty fragments even thought there should be ("#613":http://github.com/elasticsearch/elasticsearch/issues/issue/613)
+ ** Only add highlighted fragments that have a score > 0 (fixed as a part of "#645":http://github.com/elasticsearch/elasticsearch/issues/issue/645)
+ * Nodes Stats: return no nodes info ("#629":http://github.com/elasticsearch/elasticsearch/issues/issue/629)
+ * REST Create Index: Not taking JSON index settings into account unless wrapped in settings. ("#578":http://github.com/elasticsearch/elasticsearch/issues/issue/578)
+ * Search:
+ ** When fetching @_parent@, only the @_id@ should be returned, and not type#id ("#658":http://github.com/elasticsearch/elasticsearch/issues/issue/658)
+ ** Failure when sorting on `short` type ("#665":http://github.com/elasticsearch/elasticsearch/issues/issue/665)
+
+h2. Internal:
+ * upgrade to gradle 0.9.2
+ * upgrade to jackson 1.7.2
+ * upgrade to guice 3.0 rc2
+ * upgrade to sigar 1.6.4
+ * upgrade to trove 3.0.0rc1
+ * upgrade to mvel2 2.1.RC1
+
