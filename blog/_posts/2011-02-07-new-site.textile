@@ -1,0 +1,17 @@
+---
+layout: blogpost
+title: New Site
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. We have revamped the site look and feel, hopefully to make it more appealing and more expressive in explaining what *elasticsearch* is all about. There is still much work left to be done, but we are on it!.
+
+p. The first aim was to get a "single pager" listing the most important things *elasticsearch* is about in the front page. An effort to create a more formalized "guide":/guide has taken place and you should see more content starting to appear in it.
+
+p. Another effort is to try and get the community more involved in expanding the knowledge based around *elasticsearch*. This site itself is hosted on Github, and can be easily extended with new "tutorials":/tutorials, "videos":/videos, or even helping out on writing the "guide":/guide. "Contributing":/community/contributing-site.html is simple, and the community will be grateful for it.
+
+p. As a side note, in an effort to make contributions more simpler, I went ahead and migrated most of the docs to the Github wiki, only to realize that it has some very basic deficiencies (its not possible to follow the fork / send pull request idiom for example)... . So, all the docs were converted back to the site. That made for a fun weekend :).
+
+-shay.banon
