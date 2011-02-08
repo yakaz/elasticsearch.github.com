@@ -12,6 +12,7 @@ h1. Clients
 * "em-elasticsearch":http://github.com/ichverstehe/em-elasticsearch: elasticsearch library for eventmachine.
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
 *  "ruby_elasticsearch":http://github.com/adrpac/elasticsearch: Ruby client.
+*  "slingshot":https://github.com/karmi/slingshot/: Ruby API & DSL.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
 * "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "elasitcsearch":http://github.com/nervetattoo/elasticsearch PHP client.
