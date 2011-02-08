@@ -6,9 +6,9 @@ author: Shay Banon
 nick: kimchy
 ---
 
-p. Percolator is another feature that will be part of upcoming *elasticsearch* 0.15. The percolator allows to register queries against an index, and then send @percolate@ requests which include a doc, and getting back the queries that match on that doc out of the set of registered queries.
+p. Percolator is another feature that will be part of upcoming *elasticsearch* 0.15. The percolator allows you to register queries against an index, and then send @percolate@ requests which include a doc, and getting back the queries that match on that doc out of the set of registered queries.
 
-p. Think of it as the revert operation of what *elasticsearch* does by nature. Instead of sending docs, indexing them, and then running queries. One sends queries, registers them, and then sends docs and finds out which queries match that doc.
+p. Think of it as the reverse operation of what *elasticsearch* does by nature: instead of sending docs, indexing them, and then running queries, one sends queries, registers them, and then sends docs and finds out which queries match that doc.
 
 p. As an example, a user can register an interest (a query) on all tweets that contain the word "elasticsearch". For every tweet, one can percolate the tweet against all registered user queries, and find out which ones matched.
 
