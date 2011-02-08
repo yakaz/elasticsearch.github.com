@@ -13,6 +13,7 @@ h3. Components
 * "Query":query.html
 * "From / Size":from-size.html
 * "Indices / Types":indices-types.html
+* "Sort":sort.html
 * "Highlighting":highlighting.html
 * "Fields":fields.html
 * "Script Fields":script-fields.html
