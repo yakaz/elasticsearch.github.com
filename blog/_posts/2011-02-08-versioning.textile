@@ -1,0 +1,119 @@
+---
+layout: blogpost
+title: Versioning
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. Upcoming *elasticsearch* 0.15 has some very cool features baked into it, one of those is *versioning*. Each document indexed in elasticsearch is now versioned and this allow for some cool operations done on it. But first, a simple example, starting with an index request:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?pretty=true' -d '{
+    "message" : "elasticsearch now has versioning support!"
+}'
+</pre>
+
+p. This is all business as usual, the interesting bit is in the response:
+
+<pre class="prettyprint">
+{
+  "ok" : true,
+  "_index" : "twitter",
+  "_type" : "tweet",
+  "_id" : "1",
+  "_version" : 1
+}
+</pre>
+
+p. Notice the @_version@ returned when performing an index operation. This is now the version associated with this @tweet@ registered with id @1@. If we do a get, we will get the version as well:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/twitter/tweet/1?pretty=true'
+</pre>
+
+
+<pre class="prettyprint">
+{
+  "_index" : "twitter",
+  "_type" : "tweet",
+  "_id" : "1",
+  "_version" : 1, 
+  "_source" : {
+      "message" : "elasticsearch now has versioning support!"
+   }
+}
+</pre>
+
+p. Same applies when doing a search, we will get a @_version@ per search hit. 
+
+h1. Optimistic Concurrency Control
+
+Now, the interesting bits can start, as we can use the versioning feature to perform "optimistic concurrency control":http://en.wikipedia.org/wiki/Optimistic_concurrency_control. For example, lets say we update the first tweet we indexed:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?pretty=true' -d '{
+    "message" : "elasticsearch now has versioning support, cool!"
+}'
+</pre>
+
+p. What we will get back is:
+
+<pre class="prettyprint">
+{
+  "ok" : true,
+  "_index" : "twitter",
+  "_type" : "tweet",
+  "_id" : "1",
+  "_version" : 2
+}
+</pre>
+
+p. Note the @_version@ value has been incremented to @2@. But, we can also provide the version that we would like the update to be performed:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?version=2&pretty=true' -d '{
+    "message" : "elasticsearch now has versioning support, double cool!"
+}'
+</pre>
+
+p. This will update the tweet again, and increment its version to @3@. Now, lets say someone wanted to do another update on a stale data, and execute the above again:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?version=2&pretty=true' -d '{
+    "message" : "elasticsearch now has versioning support, stale cool!"
+}'
+</pre>
+
+p. What we would get now is a conflict, with the HTTP error code of @407@ and a response:
+
+<pre class="prettyprint">
+{
+  "error" : "VersionConflictEngineException[[twitter][2] [tweet][1]: version conflict, current [3], required [2]]"
+}
+</pre>
+
+p. This notion is very powerful, especially with the near real time aspect of *elasticsearch*. Version information is completely real time, thus, a get and an index can be repeated until the index has been refreshed without the need to call explicit refresh each time.
+
+h1. Put if Absent
+
+p. The versioning feature now allow to perform a "put if absent" logic by using the @create@ flag when indexing, for example, lets say we want to create the first tweet (its already there in the index):
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?op_type=create&pretty=true' -d '{
+    "message" : "elasticsearch now has versioning support, but I am not absent...!"
+}'
+</pre>
+
+p. Now, we would get an error that the document already exists, with an HTTP response code of @407@.
+
+<pre class="prettyprint">
+{
+  "error" : "DocumentAlreadyExistsEngineException[[twitter][2] [tweet][1]: document already exists]"
+}
+</pre>
+    
+h1. Other Nice Side Effects
+
+* When deleting, and the document does not exists, a flag indicating that it was not found will be returned with an HTTP return code of @404@.
+* There is no longer a need to use the @create@ operation type to improve indexing speed, a doc is automatically "created" (and not "updated") if it does not exists.
