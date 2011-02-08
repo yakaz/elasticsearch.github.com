@@ -1,0 +1,144 @@
+---
+layout: blogpost
+title: Percolator
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. Percolator is another feature that will be part of upcoming *elasticsearch* 0.15. The percolator allows to register queries against an index, and then send @percolate@ requests which include a doc, and getting back the queries that match on that doc out of the set of registered queries.
+
+p. Think of it as the revert operation of what *elasticsearch* does by nature. Instead of sending docs, indexing them, and then running queries. One sends queries, registers them, and then sends docs and finds out which queries match that doc.
+
+p. As an example, a user can register an interest (a query) on all tweets that contain the word "elasticsearch". For every tweet, one can percolate the tweet against all registered user queries, and find out which ones matched.
+
+h1. Sample Usage
+
+p. First, create an index we will work with:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter'
+</pre>
+
+p. Next, we will register a percolator query with a specific name called @elasticsearch@ against the @twitter@ index:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/_percolator/twitter/elasticsearch -d '{
+    "query" : {
+        "field" : {
+            "message" : "elasticsearch"
+        }
+    }
+}'
+</pre>
+
+p. And now, we can percolate a document and see which queries match on it (note, its not really indexed!):
+
+<pre class="prettyprint">
+curl -XGET localhost:9200/twitter/tweet/_percolate -d '{
+    "doc" : {
+        "message" : "this new elasticsearch percolator feature is nice, borat style"
+    }
+}'
+</pre>
+
+p. And the matched percolated queries are part of the response:
+
+<pre class="prettyprint">
+{"ok":true,"matches":["elasticsearch"]}
+</pre>
+
+h1. Percolate on Index / Bulk
+
+p. Percolation can also be done when executing an index request. Lets index the tweet from before, and also specify that it needs to be percolated by adding the @percolate@ parameter:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?percolate=*' -d '{
+    "message" : "this new elasticsearch percolator feature is nice, borat style"
+}'
+</pre>
+
+p. And in the response, we will also get the percolated queries it matched on:
+
+<pre class="prettyprint">
+{
+    "ok":true,
+    "_index":"twitter",
+    "_type":"tweet",
+    "_id":"1",
+    "_version":1,
+    "matches":["elasticsearch"]
+}
+</pre>
+
+h1. Filtering Executed Queries
+
+p. Since the registered percolator queries are just docs in an index, one can filter the queries that will be used to percolate a doc. For example, we can add a color field to the registered query:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/_percolator/twitter/elasticsearch -d '{
+    "color" : "green",
+    "query" : {
+        "field" : {
+            "message" : "elasticsearch"
+        }
+    }
+}'
+</pre>
+
+p. And then, we can percolate a doc that only matches on @green@ percolated queries:
+
+<pre class="prettyprint">
+curl -XGET localhost:9200/twitter/tweet/_percolate -d '{
+    "doc" : {
+        "message" : "this new elasticsearch percolator feature is nice, borat style"
+    },
+    "query" : {
+        "term" : {
+            "color" : "green"
+        }
+    }
+}'
+</pre>
+
+p. With no matches received for @blue@ percolated queries:
+
+<pre class="prettyprint">
+curl -XGET localhost:9200/twitter/tweet/_percolate -d '{
+    "doc" : {
+        "message" : "this new elasticsearch percolator feature is nice, borat style"
+    },
+    "query" : {
+        "term" : {
+            "color" : "blue"
+        }
+    }
+}'
+</pre>
+
+p. The filtering can also be passed as a query string to the percolated parameter when indexing a doc, for example:
+
+<pre class="prettyprint">
+# matches
+curl -XPUT 'localhost:9200/twitter/tweet/1?percolate=color:green' -d '{
+    "message" : "this new elasticsearch percolator feature is nice, borat style"
+}'
+
+# no match
+curl -XPUT 'localhost:9200/twitter/tweet/1?percolate=color:blue' -d '{
+    "message" : "this new elasticsearch percolator feature is nice, borat style"
+}'
+</pre>
+
+
+h1. How it Works
+
+p. The @_percolator@ which holds the repository of registered queries is just a another index in ES. The query is registered under a concrete index that exists (or will exist) in ES. That index name is represented as the type in the _percolator index (a bit confusing, I know...).
+
+p. The fact that the queries are stored as docs in another index (@_percolator@) gives us both the persistency nature of it, and the ability to filter out queries to execute using another query :).
+
+p. The @_percolator@ index uses the @index.auto_expand_replica@ setting to make sure that each data node will have access locally to the registered queries, allowing for fast query executing to filter out queries to run against a percolated doc.
+
+p. The percolate API uses the whole number of shards as percolating processing "engines", both primaries and replicas. In our above case, if the test index has 2 shards with 1 replica, 4 shards will round robing in handing percolate requests. (dynamically) increasing the number of replicas will increase the number of percolation power.
+
+p. Note, percolate request will prefer to be executed locally, and will not try and round robin across shards if a shard exists locally on a node that received a request (for example, from HTTP). Its important to do some roundrobin in the client code among ES nodes (in any case its recommended).
