@@ -49,6 +49,13 @@ html>body #all {
 	margin:0 auto;
 }
 
+.six_fifty {
+	position: relative;
+	height: 100%;
+	width:650px;
+	margin:0 auto;
+}
+
 .eight_hun {
 	position: relative;
 	height: 100%;
