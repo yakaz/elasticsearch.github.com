@@ -26,6 +26,7 @@ h2. Integrations
 * "django-elasticsearch":http://github.com/aparo/django-elasticsearch: Django ElasticSearch Backend.
 * "elasticflume":http://github.com/tallpsmith/elasticflume: "Flume":http://github.com/cloudera/flume sink implementation.
 * "Terrastore Search":http://code.google.com/p/terrastore/wiki/Search_Integration: "Terrastore":http://code.google.com/p/terrastore/ integration module with elasticsearch.
+* "Wonderdog":https://github.com/infochimps/wonderdog: Hadoop bulk loader into elasticsearch.
 
 h2. Github
 
