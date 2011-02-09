@@ -4,7 +4,7 @@ title: Building from Source
 cat: guide
 ---
 
-p. *elasticsearch* codebase is hosted on "github":github.com/elasticsearch/elasticsearch, and its just a @fork@ away. To get started with the code, start by either forking or cloning the repo. One can also just download the master code in either "zip":https://github.com/elasticsearch/elasticsearch/tarball/master or "tar.gz":https://github.com/elasticsearch/elasticsearch/zipball/master.
+p. *elasticsearch* codebase is hosted on "github":github.com/elasticsearch/elasticsearch, and its just a @fork@ away. To get started with the code, start by either forking or cloning the repo. One can also just download the master code in either "zip":https://github.com/elasticsearch/elasticsearch/zipball/master or "tar.gz":https://github.com/elasticsearch/elasticsearch/tarball/master.
 
 p. Once downloaded, building an elasticsearch distribution is simple. From within the source, run:
 
