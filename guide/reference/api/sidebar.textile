@@ -29,6 +29,7 @@ h3. Indices
 * "Optimize":admin-indices-optimize.html
 * "Flush":admin-indices-flush.html
 * "Snapshot":admin-indices-gateway-snapshot.html
+* "Update Settings":admin-indices-update-settings.html
 
 h3. Cluster
 
