@@ -453,15 +453,3 @@ img.right-img{ /* Float any image to the RIGHT and give it some margin */
     border: none !important;
 }
 
-#dsq-content .dsq-comment {
-    padding: 0 0 5px 0;
-    background:  #fcfff9;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5x;
-}
-
-#dsq-content .dsq-comment .dsq-comment-body {
-  padding: 0 0 0 36px;
-}
-
