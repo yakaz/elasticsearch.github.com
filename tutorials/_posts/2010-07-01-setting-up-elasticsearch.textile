@@ -27,7 +27,7 @@ h2. Optionally install the service wrapper
 The service wrapper allows you to start, stop and restart elasticsearch using:
 
 <pre>
-./elasticsearch/bin/service/elasticsearch start | stop | restart 
+./elasticsearch/bin/service/elasticsearch start | stop | restart
 </pre>
 
 If you <code>install</code> it, then it will be setup as a service which will start on boot, just like the other processes available in <code>/etc/init.d</code>. The service wrapper will also restart the ElasticSearch process if it dies for any reason.
@@ -37,11 +37,11 @@ h3. Install the service wrapper:
 <pre>
 wget http://github.com/elasticsearch/elasticsearch-servicewrapper/zipball/master
 unzip *servicewraper*.zip
-mv *servicewrapper*/service elasticsearch/bin/      
+mv *servicewrapper*/service elasticsearch/bin/
 rm -Rf *servicewrapper*                  # tidy up
 
 # Setup ElasticSearch as a service:
-elasticsearch/bin/service/elasticsearch install  
+elasticsearch/bin/service/elasticsearch install
 
 # Set up rcelasticsearch as a shortcut to the service wrapper:
 ln -s `readlink -f elasticsearch/bin/service/elasticsearch` /usr/local/bin/rcelasticsearch
@@ -64,7 +64,7 @@ cluster:
 
 h3. Set the network host
 
-ElasticSearch tries to guess which IP address it should attach to. If you have more than one IP address on your server, then it may guess the wrong one. 
+ElasticSearch tries to guess which IP address it should attach to. If you have more than one IP address on your server, then it may guess the wrong one.
 
 
 <pre>
@@ -87,13 +87,13 @@ set.default.ES_MIN_MEM=256
 set.default.ES_MAX_MEM=1024
 </pre>
 
-Also, see [[Running ElasticSearch as a non-root user]] 
+Also, see [[Running ElasticSearch as a non-root user]]
 
 h2. Starting and stopping ElasticSearch
 
 h3. Using the service wrapper
 
-The service wrapper ensures that you have only one running instance of ElasticSearch. 
+The service wrapper ensures that you have only one running instance of ElasticSearch.
 
 <pre>
 rcelasticsearch start
@@ -115,7 +115,7 @@ h4. In the background
 
 <pre>
 #start, and write the PID to pidfile
-./elasticsearch/bin/elasticsearch -p pidfile 
+./elasticsearch/bin/elasticsearch -p pidfile
 
 #stop
 kill `cat pidfile`

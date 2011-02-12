@@ -1,18 +1,15 @@
 ---
 layout: default
-width: six_hun
 ---
 
-<div class="six_hun">
+<h2 class="download_link">
+Download {{ page.version }} as: <a href="{{page.download_url}}">zip</a>
+{% if page.download_nix_url != null  %}
+/ <a href="{{page.download_nix_url}}">tar.gz</a>
+{% endif  %}
+</h2>
+{% if page.release_notes %}
 
-<div style="text-align: center;">
-    <h1><a href="{{page.download_url}}">zip</a>
-    {% if page.download_nix_url != null  %}
-    / <a href="{{page.download_nix_url}}">tar.gz</a>
-    {% endif  %}
-    </h1>
-    
     <h1>Release Notes:</h1>
-</div>
-
-{{ content }}
+    {{ content }}
+{% endif %}

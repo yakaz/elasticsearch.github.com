@@ -1,6 +1,5 @@
 ---
 layout: default
-width: six_hun
 title: Contributing to the Site
 cat: community
 ---

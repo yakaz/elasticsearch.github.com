@@ -5,6 +5,7 @@ version: 0.5.1
 title: 0.5.1
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.5.1.zip
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.5.1
+release_notes: true
 ---
 
 h1. New features:

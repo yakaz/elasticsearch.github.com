@@ -1,6 +1,5 @@
 ---
 layout: default
-width: six_fifty
 title: Well, That about Wraps It Up for This Page
 cat: 404
 ---

@@ -2,70 +2,109 @@
 title: Open Source, Distributed, RESTful, Search Engine
 layout: default
 title_in_header: false
-width: seven_sixty
 ---
+<div id="home">
+    <div class="img_left">
+        <img src="/images/set3/bonsai2.png" height="120px" alt="" />
+        <div class="text">
+            <h2>
+                You know, for Search
+            </h2>
+            <p>
+                So, we build a web site or an application and want to
+                add search to it, and then it hits us: <b>getting
+                search working is hard</b>. We want our search
+                solution to be <b>fast</b>, we want a <b>painless
+                setup</b> and a completely <b>free search schema</b>,
+                we want to be able to index data simply using <b>JSON
+                over HTTP</b>, we want our search server to be
+                <b>always available</b>, we want to be able to start
+                with one machine and <b>scale to hundreds</b>, we
+                want <b>real-time search</b>, we want simple
+                <b>multi-tenancy</b>, and we want a solution that is
+                <b>built for the cloud</b>.
+            </p>
 
-<div style="width: 150px; float: left">
-    <img src="/images/set3/bonsai2.png" height="120px"></img>
-</div>
-<div style="width: 610px; float: left;">
-    <h1>You know, for Search</h1>
-    <p>So, we build a web site or an application and want to add search to it, and then it hits us: <b>getting search working is hard</b>. We want our search solution to be <b>fast</b>, we want a <b>painless setup</b> and a completely <b>free search schema</b>, we want to be able to index data simply using <b>JSON over HTTP</b>, we want our search server to be <b>always available</b>, we want to be able to start with one machine and <b>scale to hundreds</b>, we want <b>real-time search</b>, we want simple <b>multi-tenancy</b>, and we want a solution that is <b>built for the cloud</b>.</p>
-    
-    <p class="textcenter"><b>"This should be easier"</b>, we declared, <b>"and cool, bonsai cool"</b>.</p>
+            <p class="textcenter">
+                <b>"This should be easier"</b>, we declared, <b>"and
+                cool, bonsai cool"</b>.
+            </p>
+            <p class="textcenter">
+                <b>elasticsearch</b> aims to solve all these problems
+                and more. It is an Open Source (Apache 2),
+                Distributed, RESTful, Search Engine built on top of
+                <a href="http://lucene.apache.org">Lucene</a>.
+            </p>
 
-    <p class="textcenter">
-        <b>elasticsearch</b> aims at solving all these problems and more. It is an Open Source (Apache 2), Distributed, RESTful, Search Engine built on top of <a href="http://lucene.apache.org">Lucene</a>.</p>
-    </p>
-</div>
+        </div>
+    </div>
+    <div class="img_right">
+        <img height="120px" src="/images/set4/textedit128.png" alt="" />
+        <div class="text">
+            <h2>
+                Schema Free &amp; Document Oriented
+            </h2>
 
-<div class="clear" style="height: 20px"></div>
+            <p>
+                Search Engines data model roots lies with schema free
+                and document oriented databases, and as shown by the
+                <strong>#nosql</strong> movement, this model proves
+                to be very effective for building applications.
+            </p>
+            <p>
+                elasticsearch model is <a href=
+                "http://json.org">JSON</a>, which slowly emerges as
+                the de-facto standard for representing data these
+                days. More over, with JSON, it is simple to provide
+                semi-structured data with complex entities as well as
+                being programming language natural with first level
+                parsers.
+            </p>
+            <pre class="prettyprint lang-bsh">
 
-<div style="width: 610px; float: left;">
-    <h1>Schema Free &amp; Document Oriented</h1>
-    <p>Search Engines data model roots lies with schema free and document oriented databases, and as shown by the <strong>#nosql</strong> movement, this model proves to be very effective for building applications.</p> 
-
-    <p>elasticsearch model is <a href="http://json.org">JSON</a>, which slowly emerges as the de-facto standard for representing data these days. More over, with JSON, it is simple to provide semi-structured data with complex entities as well as being programming language natural with first level parsers.</p>
-
-<div>
-<pre class="prettyprint lang-bsh">
-$ curl -XPUT http://localhost:9200/twitter/user/kimchy -d '{ 
-    "name" : "Shay Banon" 
+$ curl -XPUT http://localhost:9200/twitter/user/kimchy -d '{
+    "name" : "Shay Banon"
 }'
 
-$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d '{ 
-    "user": "kimchy", 
-    "post_date": "2009-11-15T13:12:00", 
-    "message": "Trying out elasticsearch, so far so good?" 
+$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d '{
+    "user": "kimchy",
+    "post_date": "2009-11-15T13:12:00",
+    "message": "Trying out elasticsearch, so far so good?"
 }'
 
-$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{ 
-    "user": "kimchy", 
-    "post_date": "2009-11-15T14:12:12", 
-    "message": "You know, for Search" 
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{
+    "user": "kimchy",
+    "post_date": "2009-11-15T14:12:12",
+    "message": "You know, for Search"
 }'
+
 </pre>
-</div>
-</div>
-<div style="width: 150px; float: left">
-    <img src="/images/set4/textedit128.png" height="120px" class="right-img"></img>
-</div>
-<div class="clear"></div>
+        </div>
+    </div>
+    <div class="img_left">
+        <img src="/images/set3/map.png" height="140px" alt="" />
+        <div class="text">
+            <h2>
+                Schema Mapping
+            </h2>
 
-<div class="clear" style="height: 20px"></div>
-
-<div style="width: 150px; float: left">
-    <img src="/images/set3/map.png" height="140px"></img>
-</div>
-<div style="width: 610px; float: left;">
-    <h1>Schema Mapping</h1>
-    
-    <p>elasticsearch is schema less, just toss it a typed JSON document and it will automatically index it. Types such as numbers and dates are automatically detected and treated accordingly.</p>
-    
-    <p>But, as we all know, Search Engines are quite sophisticated. Fields in documents can have boost levels that affect scoring, analyzers can be used to control how text gets tokenized into terms, certain fields should not be analyzed at all, and so on... . elasticsearch allows to completely control how a JSON document gets mapped into the search engine on a per type and per index level.</p>    
-
-<div>
-<pre class="prettyprint lang-bsh">
+            <p>
+                elasticsearch is schema less, just toss it a typed
+                JSON document and it will automatically index it.
+                Types such as numbers and dates are automatically
+                detected and treated accordingly.
+            </p>
+            <p>
+                But, as we all know, Search Engines are quite
+                sophisticated. Fields in documents can have boost
+                levels that affect scoring, analyzers can be used to
+                control how text gets tokenized into terms, certain
+                fields should not be analyzed at all, and so on... .
+                elasticsearch allows to completely control how a JSON
+                document gets mapped into the search engine on a per
+                type and per index level.
+            </p>
+            <pre class="prettyprint lang-bsh">
 $ curl -XPUT http://localhost:9200/twitter
 
 $ curl -XPUT http://localhost:9200/twitter/user/_mapping -d '{
@@ -74,128 +113,171 @@ $ curl -XPUT http://localhost:9200/twitter/user/_mapping -d '{
     }
 }'
 </pre>
-</div>
+        </div>
+    </div>
 
-</div>
+    <div class="img_right">
+        <img src="/images/set4/keychain128.png" height="120px" alt=
+        "" />
+        <div class="text">
+            <h2>
+                GETting Some Data
+            </h2>
+            <p>
+                Indexing data is always done using a unique
+                identifier (at the type level). This is very handy
+                since many time we wish to update or delete the
+                actual indexed data, or just GET it. Getting data
+                could not be simpler and all is needed is the index
+                name, the type and the id. What we get back is the
+                <b>actual JSON document</b> used to index the
+                specific data, but please, keep it secret and don't
+                tell any other distributed Key/Value storage
+                systems...
+            </p>
 
-<div class="clear" style="height: 20px"></div>
-
-<div style="width: 610px; float: left;">
-    <h1>GETting Some Data</h1>
-    
-    <p>Indexing data is always done using a unique identifier (at the type level). This is very handy since many time we wish to update or delete the actual indexed data, or just GET it. Getting data could not be simpler and all is needed is the index name, the type and the id. What we get back is the <b>actual JSON document</b> used to index the specific data, but please, keep it secret and don't tell any other distributed Key/Value storage systems...</p>
-
-<div>
-<pre class="prettyprint lang-bsh">
-$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{ 
-    "user": "kimchy", 
-    "post_date": "2009-11-15T14:12:12", 
-    "message": "You know, for Search" 
+            <pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{
+    "user": "kimchy",
+    "post_date": "2009-11-15T14:12:12",
+    "message": "You know, for Search"
 }'
 
 $ curl -XGET http://localhost:9200/twitter/tweet/2
 </pre>
-</div>
+        </div>
+    </div>
+    <div class="img_left">
+        <img src="/images/set3/search128.png" height="120px" alt="" />
+        <div class="text">
+            <h2>
+                Search
+            </h2>
+            <p>
+                It what it all boils down to at the end, being
+                able to search. And search could never be
+                simpler. Issuing queries is a simple call hiding
+                away the sophisticated distributed based search
+                support elasticsearch provides. Search can be
+                execute either using a simple, <a href=
+                "http://lucene.apache.org/java/3_0_0/queryparsersyntax.html">
+                Lucene</a> based query string or using an
+                extensive <b>JSON based search query DSL</b>.
+            </p>
+            <p>
 
-</div>
-<div style="width: 150px; float: left">
-    <img src="/images/set4/keychain128.png" height="120px" class="right-img"></img>
-</div>
-
-<div class="clear" style="height: 20px"></div>
-
-<div style="width: 150px; float: left">
-    <img src="/images/set3/search128.png" height="120px"></img>
-</div>
-<div style="width: 610px; float: left;">
-    <h1>Search</h1>
-    
-    <p>It what it all boils down to at the end, being able to search. And search could never be simpler. Issuing queries is a simple call hiding away the sophisticated distributed based search support elasticsearch provides. Search can be execute either using a simple, <a href="http://lucene.apache.org/java/3_0_0/queryparsersyntax.html">Lucene</a> based query string or using an extensive <b>JSON based search query DSL</b>.</p>
-    
-    <p>Search though does not end with just queries, <b>facets</b>, <b>highlighting</b>, <b>custom scripts</b>, and more are all there to be used when needed.</p>
-
-<div>
-<pre class="prettyprint lang-bsh">
-$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{ 
-    "user": "kimchy", 
-    "post_date": "2009-11-15T14:12:12", 
-    "message": "You know, for Search" 
+                Search though does not end with just queries,
+                <b>facets</b>, <b>highlighting</b>, <b>custom
+                scripts</b>, and more are all there to be used
+                when needed.
+            </p>
+            <pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{
+    "user": "kimchy",
+    "post_date": "2009-11-15T14:12:12",
+    "message": "You know, for Search"
 }'
 
 $ curl -XGET http://localhost:9200/twitter/tweet/_search?q=user:kimchy
 
-$ curl -XGET http://localhost:9200/twitter/tweet/_search -d '{ 
-    "query" : { 
-        "term" : { "user": "kimchy" } 
-    } 
+$ curl -XGET http://localhost:9200/twitter/tweet/_search -d '{
+    "query" : {
+        "term" : { "user": "kimchy" }
+    }
 }'
 
-$ curl -XGET http://localhost:9200/twitter/_search?pretty=true -d '{ 
-    "query" : { 
-        "range" : { 
-            "post_date" : { 
-                "from" : "2009-11-15T13:00:00", 
-                "to" : "2009-11-15T14:30:00" 
-            } 
+$ curl -XGET http://localhost:9200/twitter/_search?pretty=true -d '{
+    "query" : {
+        "range" : {
+            "post_date" : {
+                "from" : "2009-11-15T13:00:00",
+                "to" : "2009-11-15T14:30:00"
+            }
         }
-    } 
+    }
 }'
 </pre>
-</div>
-    
-</div>
+        </div>
+    </div>
 
-<div class="clear" style="height: 20px"></div>
+    <div class="img_right">
+        <img src="/images/set3/crystal128.png" height="120px"
+        alt="" />
+        <div class="text">
+            <h2>
+                Multi Tenancy
+            </h2>
+            <p>
+                A single index is already a major step forward,
+                but what happens when we need to have more than
+                one index. There are many cases for using
+                multiple indices, an example can be storing an
+                index per week of log files indexing, or even
+                having different indices with different settings
+                (one with memory storage, and one with file
+                system storage).
+            </p>
+            <p>
 
-<div style="width: 610px; float: left;">
-    <h1>Multi Tenancy</h1>
-    
-    <p>A single index is already a major step forward, but what happens when we need to have more than one index. There are many cases for using multiple indices, an example can be storing an index per week of log files indexing, or even having different indices with different settings (one with memory storage, and one with file system storage).</p>
-    
-    <p>When we do that though, we would like to be able to <b>search across multiple indices</b> (among other operations).</p>    
-<div>
-<pre class="prettyprint lang-bsh">
+                When we do that though, we would like to be able
+                to <b>search across multiple indices</b> (among
+                other operations).
+            </p>
+            <pre class="prettyprint lang-bsh">
 $ curl -XPUT http://localhost:9200/kimchy
 
 $ curl -XPUT http://localhost:9200/elasticsearch
 
-$ curl -XPUT http://localhost:9200/elasticsearch/tweet/1 -d '{ 
-    "post_date": "2009-11-15T14:12:12", 
-    "message": "Zug Zug", 
-    "tag": "warcraft" 
+$ curl -XPUT http://localhost:9200/elasticsearch/tweet/1 -d '{
+    "post_date": "2009-11-15T14:12:12",
+    "message": "Zug Zug",
+    "tag": "warcraft"
 }'
 
-$ curl -XPUT http://localhost:9200/kimchy/tweet/1 -d '{ 
-    "post_date": "2009-11-15T14:12:12", 
-    "message": "Whatyouwant?", 
-    "tag": "warcraft" 
+$ curl -XPUT http://localhost:9200/kimchy/tweet/1 -d '{
+    "post_date": "2009-11-15T14:12:12",
+    "message": "Whatyouwant?",
+    "tag": "warcraft"
 }'
 
 $ curl -XGET http://localhost:9200/kimchy,elasticsearch/tweet/_search?q=tag:warcraft
 
 $ curl -XGET http://localhost:9200/_all/tweet/_search?q=tag:warcraft
 </pre>
-</div>
+        </div>
+    </div>
+    <div class="img_left">
 
-</div>
-<div style="width: 150px; float: left">
-    <img src="/images/set3/crystal128.png" height="120px" class="right-img"></img>
-</div>
+        <img src="/images/set4/settings128.png" height=
+        "120px" alt="" />
+        <div class="text">
+            <h2>
+                Settings
+            </h2>
+            <p>
+                The ability to configure is a double edged
+                sword. We want the ability to start working
+                with the system as fast as possible, with no
+                configuration, and still be able to control
+                almost every aspect of the application if
+                need be.
+            </p>
+            <p>
+                <strong>elasticsearch</strong> is built with
+                this notion in mind. Almost everything is
+                configurable and pluggable. More over,
+                <b>each index can have its own settings</b>
 
-<div class="clear" style="height: 20px"></div>
-
-<div style="width: 150px; float: left">
-    <img src="/images/set4/settings128.png" height="120px"></img>
-</div>
-<div style="width: 610px; float: left;">
-    <h1>Settings</h1>
-    
-    <p>The ability to configure is a double edged sword. We want the ability to start working with the system as fast as possible, with no configuration, and still be able to control almost every aspect of the application if need be.</p>
-    
-    <p><strong>elasticsearch</strong> is built with this notion in mind. Almost everything is configurable and pluggable. More over, <b>each index can have its own settings</b> which can override the master settings. For example, one index can be configured with memory storage and have 10 shards with 1 replica each, and another index can have file based storage with 1 shard and 10 replicas. All the index level settings can be controlled when creating an index either using a YAML or JSON format.</p>
-
-<div>
-<pre class="prettyprint lang-bsh">
+                which can override the master settings. For
+                example, one index can be configured with
+                memory storage and have 10 shards with 1
+                replica each, and another index can have file
+                based storage with 1 shard and 10 replicas.
+                All the index level settings can be
+                controlled when creating an index either
+                using a YAML or JSON format.
+            </p>
+            <pre class="prettyprint lang-bsh">
 $ curl -XPUT http://localhost:9200/elasticsearch/ -d '{
     "settings" : {
         "number_of_shards" : 2,
@@ -203,37 +285,65 @@ $ curl -XPUT http://localhost:9200/elasticsearch/ -d '{
     }
 }'
 </pre>
-</div>
-    
-</div>
+        </div>
+    </div>
+    <div class="img_right">
+        <img src="/images/set4/intranet128.png" height=
+        "120px" alt="" />
+        <div class="text">
 
-<div class="clear" style="height: 20px"></div>
+            <h2>
+                Distributed
+            </h2>
+            <p>
+                One of the main features of Elastic Search is
+                its distributed nature. Indices are broken
+                down into shards, each shard with 0 or more
+                replicas. Each data node within the cluster
+                hosts one or more shards, and acts as a
+                coordinator to delegate operations to the
+                correct shard(s). Rebalancing and routing are
+                done <b>automatically and behind the
+                scenes</b>.
+            </p><iframe title="YouTube video player" width=
+            "609" height="372" src=
+            "http://www.youtube.com/embed/l4ReamjCxHo?rel=0&amp;hd=1&amp;autohide=1"
+            frameborder="0" allowfullscreen=""></iframe>
+        </div>
+    </div>
 
-<div style="width: 610px; float: left;">
-    <h1>Distributed</h1>
-    
-    <p>One of the main features of Elastic Search is its distributed nature. Indices are broken down into shards, each shard with 0 or more replicas. Each data node within the cluster hosts one or more shards, and acts as a coordinator to delegate operations to the correct shard(s). Rebalancing and routing are done <b>automatically and behind the scenes</b>.</p>
+    <div class="img_left">
+        <img src="/images/set4/timemachine128.png" height="120px" alt="" />
+        <div class="text">
+            <h2>
+                Gateway
+            </h2>
+            <p>
+                Sometimes the whole cluster crashes or needs
+                to be taken down. Many times, in such a case,
+                we want to restore to the latest state of the
+                cluster when it comes back up again.
+                elasticsearch provides the gateway module
+                allowing to do just that, think <b>Time
+                Machine for search</b>.
+            </p>
 
-    <iframe title="YouTube video player" width="609" height="372" src="http://www.youtube.com/embed/l4ReamjCxHo?rel=0&amp;hd=1&amp;autohide=1" frameborder="0" allowfullscreen></iframe>
-    
+            <p>
+                The state of the cluster (including the
+                transaction log) can either be recreated from
+                each node local storage (the default), or
+                from a shared storage (like NFS or Amazon
+                S3). When using a shared storage, the state
+                is <b>asynchronously</b> replicated to it.
+            </p>
+            <p>
+                Moreover, when using shared storage long term
+                persistency, the index can be kept completely
+                in memory while still being able to perform
+                full recovery in the event of cluster
+                shutdown.
+            </p>
+        </div>
+    </div>
+
 </div>
-<div style="width: 150px; float: left">
-    <img src="/images/set4/intranet128.png" height="120px" class="right-img"></img>
-</div>
-
-<div class="clear" style="height: 20px"></div>
-
-<div style="width: 150px; float: left">
-    <img src="/images/set4/timemachine128.png" height="120px"></img>
-</div>
-<div style="width: 610px; float: left;">
-    <h1>Gateway</h1>
-    
-    <p>Sometimes the whole cluster crashes or needs to be taken down. Many times, in such a case, we want to restore to the latest state of the cluster when it comes back up again. elasticsearch provides the gateway module allowing to do just that, think <b>Time Machine for search</b>.</p>
-    
-    <p>The state of the cluster (including the transaction log) can either be recreated from each node local storage (the default), or from a shared storage (like NFS or Amazon S3). When using a shared storage, the state is <b>asynchronously</b> replicated to it.</p>
-    
-    <p>Moreover, when using shared storage long term persistency, the index can be kept completely in memory while still being able to perform full recovery in the event of cluster shutdown.</p>                
-</div>
-
-<div class="clear" style="height: 20px"></div>

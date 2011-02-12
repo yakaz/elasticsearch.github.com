@@ -1,19 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
-	<title>elasticsearch - {{ page.cat }} - {{ page.title }}</title>
-    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">    
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-	<meta name="description" content="elasticsearch">
-	<meta name="keywords" content="elastic, search, cloud, elasticsearch, indexing, lucene, distributed lucene, shay banon">
-	<meta name="author" content="elasticsearch">
+    <title>elasticsearch - {{ page.cat }} - {{ page.title }}</title>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="elasticsearch" />
+    <meta name="keywords" content="elastic, search, cloud, elasticsearch, indexing, lucene, distributed lucene, shay banon" />
+    <meta name="author" content="elasticsearch" />
 
     <link href="http://www.elasticsearch.org/atom.xml" rel="alternate" title="elasticsearch" type="application/atom+xml" />
 
-	<link rel="stylesheet" type="text/css" href="/scripts/prettify/prettify.css">
-    <link  href="//fonts.googleapis.com/css?family=Neuton:regular" rel="stylesheet" type="text/css" >    
-    <link rel="stylesheet" type="text/css" href="/styles/screen.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/prettify/prettify.css" />
+    <link  href="#//fonts.googleapis.com/css?family=Neuton:regular" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/screen.css" />
 
     <script type="text/javascript" src="/scripts/jquery-1.5.min.js"></script>
     <!-- Analytics -->
@@ -31,32 +32,28 @@
 
     </script>
 </head>
-	
+
 <body>
-    {% include top_left_menu.html %}
     <div id="wrapper">
         <div id="all">
             {% include header.html %}
-            <div id="content">
-                <div id="{{ page.cat}}" class="{{ page.width }}">
-                    <div style="height: 80px; font-size: 34px; padding-top: 30px;">
-                        {% if page.title_in_header != false %}
-                        {{ page.title }}
-                        {% endif %}
-                    </div>
-                    <div class="clear"></div>
-                    {{ content }}
-                </div>
+            {% if page.title_in_header != false %}
+                <h2 class="page_title">{{ page.title }} </h2>
+            {% else %}
+                <div id="header_spacer"></div>
+            {% endif %}
+            <div id="content" class="{{ page.cat}}">
+                {{ content }}
             </div>
             {% include footer.html %}
         </div>
     </div>
     <a href="http://github.com/elasticsearch"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
-    
-    
+
+
     <script type="text/javascript" src="/scripts/prettify/prettify.js"></script>
     <script type="text/javascript">
         prettyPrint();
-    </script>    
+    </script>
 </body>
 </html>

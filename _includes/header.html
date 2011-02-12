@@ -1,15 +1,11 @@
-<div id="header">
-    <a href="/">
-        <div style="padding-top: 70px; margin-left: 110px">
-            <div style="float: left">
-                <img src="/images/logo.png" height="170px">
-            </div>
-            <div style="float: left; padding-top: 35px; margin-left: -45px">
-                <div style="font-size: 70px;">elasticsearch.</div>
-                <div style="font-size: 40px; margin-top: -10px;"><a href="/{{ page.cat }}">{{ page.cat }}</a></div>
-            </div>
-            <div class="clear"></div>
-        </div>
+<h1 id="header">
+    <a id="elasticsearch" href="/" title="elasticsearch home page">
+        <span>elasticsearch.</span>
     </a>
-    <div class="clear"></div>
-</div>
+    {% if page.cat %}
+        <a id="section" href="/{{ page.cat }}" title="elasticsearch {{ page.cat }}">
+            {{ page.cat }}
+        </a>
+    {% endif %}
+</h1>
+{% include top_left_menu.html %}

@@ -6,6 +6,7 @@ title: 0.14.0
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.0.zip
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.0.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.0
+release_notes: true
 ---
 
 h2. Breaking changes:
@@ -63,7 +64,7 @@ h2. Internal:
  * upgrade to aws java sdk 1.1.1
  * upgrade twitter4j to 2.1.7
  * upgrade to gradle 0.9
- * upgrade to groovy 1.7.6 
+ * upgrade to groovy 1.7.6
  * upgrade to rabbitmq client 2.2.0
  * upgrade to jython 2.5.2rc2
 
