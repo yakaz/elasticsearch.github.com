@@ -7,7 +7,8 @@ h3. "Guide":/guide
 h3. Queries
 
 * "bool":bool-query.html
-* "contant_score":constant-score-query.html
+* "custom_score":custom-score-query.html
+* "constant_score":constant-score-query.html
 * "dis_max":dis-max-query.html
 * "field":field-query.html
 * "filtered":filtered-query.html
