@@ -1,9 +1,10 @@
 ---
 layout: default
+title_in_header: false
 ---
 
 <h2 class="download_link">
-Download {{ page.version }} as: <a href="{{page.download_url}}">zip</a>
+{{ page.title }}: <a href="{{page.download_url}}">zip</a>
 {% if page.download_nix_url != null  %}
 / <a href="{{page.download_nix_url}}">tar.gz</a>
 {% endif  %}

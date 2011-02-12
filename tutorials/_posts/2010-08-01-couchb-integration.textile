@@ -2,13 +2,13 @@
 layout: tutorial
 title: CouchDB Integration
 cat: tutorials
-author: 
-nick: 
+author:
+nick:
 tutorial_desc: CouchDB Integration
 ---
 
-This tutorial explains the process of setting up ElasticSearch to automatically index data 
-in CouchDB and make it search-able. ElasticSearch 0.11 introduced a feature named "The River":http://www.elasticsearch.org/blog/2010/09/28/the_river.html]], which
+This tutorial explains the process of setting up ElasticSearch to automatically index data
+in CouchDB and make it search-able. ElasticSearch 0.11 introduced a feature named "The River":http://www.elasticsearch.org/blog/2010/09/28/the_river.html, which
 allows it to connect to external systems and listen for documents updates.
 On receiving a notification, Elasticsearch indexes the data and makes it available for search.
 
@@ -47,7 +47,7 @@ curl -XPUT 'http://elasticsearch-host:9200/_river/my_es_idx/_meta' -d '{
 }'
 </pre>
 
-**Note** : The 'elasticsearch' river index that you are creating (named **my_es_idx**) can be named anything. 
+**Note** : The 'elasticsearch' river index that you are creating (named **my_es_idx**) can be named anything.
 It is only for internal use by ElasticSearch.
 
 That's it. We are ready to go. At this point, what we have is:
@@ -55,7 +55,7 @@ That's it. We are ready to go. At this point, what we have is:
 * An ElasticSearch configuration that indexes all data from the CouchDB database - **my_couch_db**
 * ElasticSearch makes use of dynamic mapping for the documents it receives from CouchDB
 * Any changes to CouchDB documents are automatically updated in ElasticSearch
-* The (continuous) indexing will keep happening on any one node of the ElasticSearch cluster. 
+* The (continuous) indexing will keep happening on any one node of the ElasticSearch cluster.
 If the node fails, this functionality is taken up by another node.
 * You can query ElasticSearch for the couchdb data at
 @http://elasticsearch-host:9200/my_couch_db/my_couch_db@.
@@ -68,7 +68,7 @@ h2. CouchDB
 
 h3. Change Notifications
 
-CouchDB supports a feature through which all changes to a database can be notified to external interested systems. 
+CouchDB supports a feature through which all changes to a database can be notified to external interested systems.
 This is possible by making an HTTP connection to `http://couchdb-host:5984/my_couch_db/_changes`.
 
 Features supported by `_changes` are:
@@ -119,11 +119,11 @@ curl -XPUT 'elasticsearch-host:9200/_river/my_es_int_idx/_meta' -d '{
     "type" : "couchdb",
 
     "couchdb" : {
-        "host" : "couchdb-host", 
+        "host" : "couchdb-host",
         "port" : 5984,
         "user" : "admin",
         "password" : "admin",
-        "db" : "my_couch_db", 
+        "db" : "my_couch_db",
         "filter" : "my_design/my_filter",
         "filter_params" :  {
                "param1" : "value1",
