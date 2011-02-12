@@ -69,6 +69,11 @@ p {
     margin-bottom: 1em;
 }
 
+blockquote {
+    margin: 0 2em 1em;
+    font-style: italic;
+}
+
 pre {
     padding: 1em; margin: 1.5em 0;
     background: #C0DAA4;

@@ -1,0 +1,151 @@
+---
+layout: default
+title: I have a problem. What do I do?
+cat: community
+---
+
+<p>
+    There is a strong, helpful community of users on the
+    <a href="/community/forum">user mailing list</a>
+    and on <a href="/community/#irc">IRC</a>
+     who are happy to help you sort out any issues.
+</p>
+
+<p>
+If something is not working, there are two possibilities:
+</p>
+<ol>
+<li>there is a bug</li>
+<li>you are doing something wrong</li>
+</ol>
+
+
+<p>Whichever it is, a <b>clear</b> description of the problem will help other
+users to help you.</p>
+
+<p>The best thing to do is to <b>gist a simple, complete curl
+recreation </b>of the issue. That way, any user can recreate your
+problem locally.</p>
+
+<h3>What is a curl recreation?</h3>
+
+<p>
+<code>curl</code> is a command line program which can talk to an ElasticSearch
+server over http.  All of the code examples in the ElasticSearch
+guide are provided as curl statements.
+</p>
+
+<p>For example:</p>
+
+<pre class="prettyprint lang-js">
+    curl -XGET 'http://127.0.0.1:9200/_cluster/health?pretty=true'
+    {
+      "cluster_name" : "MyCluster",
+      "status" : "yellow",
+      "timed_out" : false,
+      "number_of_nodes" : 1,
+      "number_of_data_nodes" : 1,
+      "active_primary_shards" : 25,
+      "active_shards" : 25,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 25
+    }
+</pre>
+
+
+<h3>How do I create a curl example?</h3>
+
+
+<p>
+You can just type the command into the command line and copy and
+paste the output.
+</p>
+
+<h4>Tips</h4>
+<ul>
+<li>Use <code>?pretty=true</code> - it makes it easier to read the output</li>
+<li>Change the actual server to <code>localhost:9200</code> or <code>127.0.0.1:9200</code>
+rather than <code>elasticsearch.mydomain.com</code> - it makes it easier for
+other users to run your example, without having to edit it first.
+</li>
+</ul>
+<h4>Other APIs</h4>
+<p>
+If you use the Perl API,
+<a href="http://search.cpan.org/~drtech/ElasticSearch/">ElasticSearch.pm</a>,
+you can log your commands
+in a suitable format:
+</p>
+<pre class="prettyprint lang-perl">
+    use ElasticSearch();
+    $es = ElasticSearch->new(servers=>'127.0.0.1:9200');
+
+    $es->trace_calls(1);            # log to STDERR
+    # $es->trace_calls('example');  # or log to a file
+
+    $es->cluster_health();
+</pre>
+
+<p>Outputs:</p>
+<pre class="prettyprint lang-js">
+    curl -XGET 'http://127.0.0.1:9200/_cluster/health'
+
+    # [Sat Feb 12 18:20:42 2011] Response:
+    # {
+    #    "number_of_data_nodes" : 1,
+    #    "relocating_shards" : 0,
+    #    "active_shards" : 25,
+    #    "status" : "yellow",
+    #    "cluster_name" : "MyCluster",
+    #    "active_primary_shards" : 25,
+    #    "timed_out" : false,
+    #    "initializing_shards" : 0,
+    #    "number_of_nodes" : 1,
+    #    "unassigned_shards" : 25
+    # }
+</pre>
+
+
+<h3>Why should it be complete?</h3>
+
+<p>
+The example should be sufficient to recreate the problem on a new, clean
+ElasticSearch server.
+</p>
+<p>
+Quite often, the problem is a result of you having already indexed
+data that differs from your current example.
+Just by starting from scratch, you may solve your own problem.</p>
+
+<p>If you don't provide all of the information, then it may be
+difficult for others to figure out where the issue is.</p>
+
+<h3>Where do I put my curl recreation?</h3>
+
+<p>
+Please don't paste long lines of code in the mailing list - it
+is difficult to read, and people will be less likely to take the
+time to help.
+</p>
+
+<p>
+You can create a gist on github: <a href="http://gist.github.com/gists">http://gist.github.com/gists</a>
+</p>
+
+<blockquote>
+"Gist is a simple way to share snippets and pastes with others. All gists are git repositories, so they are automatically versioned, forkable and usable as a git repository."
+</blockquote>
+
+<h3>What other information is useful?</h3>
+
+<p>It is useful to know what version of ElasticSearch you are using.</p>
+
+<p>Depending on the problem, it may also be useful to know:</p>
+<ul>
+ <li>the version of your JVM</li>
+ <li>your local configuration</li>
+ <li>your operating system</li>
+ <li>how many nodes and indices you have</li>
+ <li>what gateway you are using (eg local, fs, s3 etc)</li>
+</ul>
