@@ -30,6 +30,7 @@ h3. Indices
 * "Flush":admin-indices-flush.html
 * "Snapshot":admin-indices-gateway-snapshot.html
 * "Update Settings":admin-indices-update-settings.html
+* "Templates":admin-indices-templates.html
 * "Status":admin-indices-status.html
 
 h3. Cluster
