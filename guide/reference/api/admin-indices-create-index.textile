@@ -22,7 +22,7 @@ p. The above second example curl shows how an index called @twitter@ can be crea
 $ curl -XPUT 'http://localhost:9200/twitter/' -d \
 '
 {
-    settings : { 
+    settings : {
         index : {
             number_of_shards : 3,
             number_of_replicas : 2
@@ -72,4 +72,4 @@ curl -XPOST localhost:9200/test -d '
 
 h1. Index Settings
 
-p. For more information regarding all the different index level settings that can be set when creating an index, please check the "index modules":/guide/reference/index_modules section.
+p. For more information regarding all the different index level settings that can be set when creating an index, please check the "index modules":/guide/reference/index-modules section.
