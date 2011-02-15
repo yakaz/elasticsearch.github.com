@@ -2,6 +2,7 @@
 layout: guide
 title: EC2 Discovery
 cat: guide
+sidebar: reference_modules_discovery
 ---
 
 p. ec2 discovery allows to use the ec2 APIs to perform automatic discovery (similar to multicast in non hostile multicast environments). Here is a simple sample configuration:

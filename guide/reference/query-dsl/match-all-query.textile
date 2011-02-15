@@ -2,6 +2,7 @@
 layout: guide
 title: Match All Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A query that matches all documents. Maps to Lucene @MatchAllDocsQuery@.

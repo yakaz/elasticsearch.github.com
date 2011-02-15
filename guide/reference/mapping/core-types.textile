@@ -2,6 +2,7 @@
 layout: guide
 title: Core Types
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. Each JSON field can be mapped to a specific core type. JSON itself already provides us with some typing, with its support for @string@, @integer@/@long@, @float@/@double@, @boolean@, and @null@.

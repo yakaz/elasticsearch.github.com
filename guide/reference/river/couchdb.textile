@@ -2,6 +2,7 @@
 layout: guide
 title: CouchDB River
 cat: guide
+sidebar: reference_river
 ---
 
 p. The CouchDB River allows to automatically index couchdb and make it searchable using the excellent "_changes":http://guide.couchdb.org/draft/notifications.html stream couchdb provides. Setting it up is as simple as executing the following against elasticsearch:

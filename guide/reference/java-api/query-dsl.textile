@@ -2,6 +2,7 @@
 layout: guide
 title: Java Query DSL
 cat: guide
+sidebar: reference_java_api
 ---
 
 p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for query builders is @QueryBuilders@ and the factory for filter builders is @FilterBuilders@. Here is an example:

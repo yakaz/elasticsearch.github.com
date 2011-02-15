@@ -2,6 +2,7 @@
 layout: guide
 title: Delete By Query Java API
 cat: guide
+sidebar: reference_java_api
 ---
 
 p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided the "Query DSL":../query_dsl. Here is an example:

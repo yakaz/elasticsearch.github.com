@@ -2,6 +2,7 @@
 layout: guide
 title: Exists Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Filters documents where a specific field has a value in them.

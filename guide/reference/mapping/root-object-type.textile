@@ -2,6 +2,7 @@
 layout: guide
 title: Root Object Type
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. The root object mapping is an "object type mapping":object-type.html that maps the root object (the type itself). On top of all the different mappings that can be set using the "object type mapping":object-type.html, it allows for additional, type level mapping definitions.

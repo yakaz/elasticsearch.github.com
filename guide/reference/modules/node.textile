@@ -2,6 +2,7 @@
 layout: guide
 title: Node
 cat: guide
+sidebar: reference_modules
 ---
 
 p. *elasticsearch* allows to configure a node to either be allowed to store data locally or not. Storing data locally basically means that shards of different indices are allowed to be allocated on that node. By default, each node is considered to be a data node, and it can be turned off by setting @node.data@ to @false@.

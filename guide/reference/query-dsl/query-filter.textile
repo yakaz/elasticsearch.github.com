@@ -2,6 +2,7 @@
 layout: guide
 title: Query Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Wraps any query to be used as a filter. Can be placed within queries that accept a filter.

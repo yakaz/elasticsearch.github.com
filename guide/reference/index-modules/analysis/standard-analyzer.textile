@@ -2,6 +2,7 @@
 layout: guide
 title: Standard Analyzer
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. An analyzer of type @standard@ that is built of using "Standard Tokenizer":standard-tokenizer.html, with "Standard Token Filter":standard-tokenfilter.html, "Lower Case Token Filter":lowercase-tokenfilter.html, and "Stop Token Filter":stop-tokenfilter.html.

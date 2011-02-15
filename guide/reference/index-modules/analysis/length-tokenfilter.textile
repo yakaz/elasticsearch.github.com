@@ -2,6 +2,7 @@
 layout: guide
 title: Length Token Filter
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A token filter of type @length@ that removes words that are too long or too short for the stream.

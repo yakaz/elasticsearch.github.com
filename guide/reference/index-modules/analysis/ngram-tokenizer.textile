@@ -2,6 +2,7 @@
 layout: guide
 title: NGram Tokenizer
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A tokenizer of type @nGram@.

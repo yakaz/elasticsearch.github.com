@@ -2,6 +2,7 @@
 layout: guide
 title: Zen Discovery
 cat: guide
+sidebar: reference_modules_discovery
 ---
 
 p. The zen discovery is the built in discovery module for elasticsearch and the default. It provides both multicast and unicast discovery as well being easily extended to support cloud environments. 

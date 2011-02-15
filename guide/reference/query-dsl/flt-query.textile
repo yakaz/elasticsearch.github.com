@@ -2,6 +2,7 @@
 layout: guide
 title: Fuzzy Like This Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Fuzzy like this query find documents that are "like" provided text by running it against one or more fields.

@@ -2,6 +2,7 @@
 layout: guide
 title: Span Not Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Removes matches which overlap with another span query. The span not query maps to Lucene @SpanNotQuery@. Here is an example:

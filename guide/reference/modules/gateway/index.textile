@@ -2,6 +2,7 @@
 layout: guide
 title: Gateway
 cat: guide
+sidebar: reference_modules_gateway
 ---
 
 p. The gateway module allows to store the state of the cluster meta data across full cluster restarts. The cluster meta data mainly holds all the indices created with their respective index level settings and explicit type mappings.

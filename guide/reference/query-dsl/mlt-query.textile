@@ -2,6 +2,7 @@
 layout: guide
 title: More Like This Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. More like this query find documents that are "like" provided text by running it against one or more fields.

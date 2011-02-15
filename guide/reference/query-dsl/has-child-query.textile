@@ -2,6 +2,7 @@
 layout: guide
 title: Has Child Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. The @has_child@ query works the same as the "has_child":has_child_filter.html filter, by automatically wrapping the filter with a "constant_score":constant_score_query.html. It has the same syntax as the "has_child":has_child_filter.html filter:

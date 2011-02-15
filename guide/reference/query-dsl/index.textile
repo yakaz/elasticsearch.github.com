@@ -2,6 +2,7 @@
 layout: guide
 title: Query DSL
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. *elasticsearch* provides a full query dsl based on JSON to define queries. In general, there are basic queries such as @term@ or @prefix@. There are also compound queries like the @bool@ query. Queries can also have filters associated with them such as the @filtered@ or @constant_score@ queries, with specific filter queries. 

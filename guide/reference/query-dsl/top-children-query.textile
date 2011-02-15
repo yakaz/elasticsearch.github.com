@@ -2,6 +2,7 @@
 layout: guide
 title: Top Children Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. The @top_children@ query runs the child query with an estimated hits size, and out of the hit docs, aggregates it into parent docs. If there aren't enough parent docs matching the requested from/size search request, then it is run again with a wider (more hits) search.

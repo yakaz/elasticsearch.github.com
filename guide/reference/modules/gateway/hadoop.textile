@@ -2,6 +2,7 @@
 layout: guide
 title: Hadoop Gateway
 cat: guide
+sidebar: reference_modules_gateway
 ---
 
 p. The hadoop (HDFS) based gateway stores the cluster meta data in hadoop. Hadoop support is provided as a plugin and installing is as simply as executing @plugin -install hadoop@ or downloading the hadoop plugin and placing it under the @plugins@ directory.

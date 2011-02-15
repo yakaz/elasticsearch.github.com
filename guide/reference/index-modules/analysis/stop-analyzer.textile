@@ -2,6 +2,7 @@
 layout: guide
 title: Stop Analyzer
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. An analyzer of type @stop@ that is built using a "Lower Case Tokenizer":lowercast-tokenizer.html, with "Stop Token Filter":stop-tokenfilter.html.

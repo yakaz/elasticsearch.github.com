@@ -2,6 +2,7 @@
 layout: guide
 title: Field Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A query that executes a query string against a specific field. It is a simplified version of "query_string":query-string-query.html query (by setting the @default_field@ to the field this query executed against). In its simplest form:

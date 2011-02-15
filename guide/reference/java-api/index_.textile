@@ -2,6 +2,7 @@
 layout: guide
 title: Index Java API
 cat: guide
+sidebar: reference_java_api
 ---
 
 p. The index API allows to index a typed JSON document into a specific index and make it searchable. The following example index the JSON document into an index called twitter, under a type called tweet, with id valued 1:

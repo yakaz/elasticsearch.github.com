@@ -2,6 +2,7 @@
 layout: guide
 title: Geo Point Type
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. Mapper type called @geo_point@ to support geo based points. The declaration looks as follows:

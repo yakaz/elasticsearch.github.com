@@ -2,6 +2,7 @@
 layout: guide
 title: Java API
 cat: guide
+sidebar: reference_java_api
 ---
 
 p. This section describes the Java API elasticsearch provides. All of elasticsearch APIs are executed using a "Client":client.html, and are completely asynchronous in nature (either accepts a listener, or return a future).

@@ -2,6 +2,7 @@
 layout: guide
 title: Twitter River
 cat: guide
+sidebar: reference_river
 ---
 
 p. The twitter river indexes the public "twitter stream":http://dev.twitter.com/pages/streaming_api, aka the hose, and makes it searchable.

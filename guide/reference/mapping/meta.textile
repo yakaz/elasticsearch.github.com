@@ -2,6 +2,7 @@
 layout: guide
 title: Meta
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. Each mapping can have custom meta data associated with it. These are simple storage elements that are simply persisted along with the mapping and can be retrieved when fetching the mapping definition. The meta is defined under the @_meta@ element, for example:

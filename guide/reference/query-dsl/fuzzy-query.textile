@@ -2,6 +2,7 @@
 layout: guide
 title: Fuzzy Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A fuzzy based query that uses similarity based on Levenshtein (edit distance) algorithm.

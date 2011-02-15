@@ -2,6 +2,7 @@
 layout: guide
 title: Date Format
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. When defining a @date@ type, or when defining @date_formats@ in the @object@ mapping, the value of it is the actual date format that will be used to parse the string representation of the date. There are built in formats supported, as well as complete custom one.

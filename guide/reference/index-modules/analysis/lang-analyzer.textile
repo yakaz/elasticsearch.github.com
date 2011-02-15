@@ -2,6 +2,7 @@
 layout: guide
 title: Language Analyzers
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A set of analyzers aimed at analyzing specific language text.

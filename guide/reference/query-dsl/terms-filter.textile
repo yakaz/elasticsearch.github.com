@@ -2,6 +2,7 @@
 layout: guide
 title: Terms Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Filters documents that have fields that match any of the provided terms (*not analyzed*). For example:

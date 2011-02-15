@@ -2,6 +2,7 @@
 layout: guide
 title: Thrift
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The thrift transport module allows to expose the REST interface of elasticsearch using thrift. Thrift should provide better performance over http. Since thrift provides both the wire protocol and the transport, it should make using it simpler (thought its lacking on docs...).

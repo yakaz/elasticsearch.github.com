@@ -2,6 +2,7 @@
 layout: guide
 title: RabbitMQ River
 cat: guide
+sidebar: reference_river
 ---
 
 p. RabbitMQ River allows to automatically index a rabbitmq queue. The format of the messages follows the bulk api format:

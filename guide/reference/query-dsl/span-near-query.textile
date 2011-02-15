@@ -2,6 +2,7 @@
 layout: guide
 title: Span Near Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Matches spans which are near one another. One can specify _slop_, the maximum number of intervening unmatched positions, as well as whether matches are required to be in-order. The span near query maps to Lucene @SpanNearQuery@. Here is an example:

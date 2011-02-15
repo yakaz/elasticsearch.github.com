@@ -2,6 +2,7 @@
 layout: guide
 title: Span First Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Matches spans near the beginning of a field. The span first query maps to Lucene @SpanFirstQuery@. Here is an example:

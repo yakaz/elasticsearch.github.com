@@ -2,6 +2,7 @@
 layout: guide
 title: Whitespace Analyzer
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A char filter of type @html_strip@ stripping out HTML elements from an analyzed text.

@@ -2,6 +2,7 @@
 layout: guide
 title: Indices
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The indices module allow to control settings that are globally managed for all indices.

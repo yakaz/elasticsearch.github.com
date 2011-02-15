@@ -2,6 +2,7 @@
 layout: guide
 title: Prefix Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Matches documents that have fields containing terms with a specified prefix. The prefix query maps to Lucene @PrefixQuery@. The following matches documents where the user field contains a term that starts with @ki@:

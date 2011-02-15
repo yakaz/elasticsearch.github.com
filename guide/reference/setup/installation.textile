@@ -2,6 +2,7 @@
 layout: guide
 title: Installation
 cat: guide
+sidebar: reference_setup
 ---
 
 p. After "downloading":/download the latest release and extracting it, *elasticsearch* can be started using:

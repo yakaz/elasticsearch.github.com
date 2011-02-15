@@ -2,6 +2,7 @@
 layout: guide
 title: Scripting
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The scripting module allows to use scripts in order to evaluate custom expressions. For example, scripts can be used to return "script fields" as part of a search request, or can be used to evaluate a custom score for a query and so on.

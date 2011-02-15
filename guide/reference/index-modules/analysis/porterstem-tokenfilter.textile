@@ -2,6 +2,7 @@
 layout: guide
 title: Porter Stem Token Filter
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A token filter of type @porterStem@ that transforms the token stream as per the Porter stemming algorithm. 

@@ -2,6 +2,7 @@
 layout: guide
 title: Analysis
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 

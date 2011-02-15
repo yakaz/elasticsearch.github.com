@@ -2,6 +2,7 @@
 layout: guide
 title: JMX
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The JMX module exposes node information through "JMX":http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/. JMX can be used by either "jconsole":http://en.wikipedia.org/wiki/JConsole or "VisualVM":http://en.wikipedia.org/wiki/VisualVM.

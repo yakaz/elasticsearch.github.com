@@ -2,6 +2,7 @@
 layout: guide
 title: Script Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A filter allowing to define "scripts":/guide/refrence/modules/scripting.html as filters. For example:

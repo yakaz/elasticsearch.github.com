@@ -2,6 +2,7 @@
 layout: guide
 title: HTTP
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The http module allows to expose *elasticsearch* "API":/guide/reference/api over HTTP.

@@ -2,6 +2,7 @@
 layout: guide
 title: ICU Analysis Plugin
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. The "ICU":http://icu-project.org/ analysis plugin allows for unicode normalization, collation and folding. The plugin is called @analysis-icu@ and can be installed by running:

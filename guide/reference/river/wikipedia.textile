@@ -2,6 +2,7 @@
 layout: guide
 title: Wikipedia River
 cat: guide
+sidebar: reference_river
 ---
 
 p. A simple river to index wikipedia. Create it using:

@@ -2,6 +2,7 @@
 layout: guide
 title: Edge NGram Token Filter
 cat: guide
+sidebar: reference_index_modules_analysis
 ---
 
 p. A token filter of type @edgeNGram@.

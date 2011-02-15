@@ -2,6 +2,7 @@
 layout: guide
 title: Span Term Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Matches spans containing a term. The span term query maps to Lucene @SpanTermQuery@. Here is an example:

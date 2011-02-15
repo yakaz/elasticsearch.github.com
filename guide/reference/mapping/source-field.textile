@@ -2,6 +2,7 @@
 layout: guide
 title: Source Field
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. The @_source@ field is an automatically generated field that stores the actual JSON that was used as the indexed document. It is not indexed (searchable), just stored. When executed "fetch" requests, like get or search, the @_source@ field is returned by default.

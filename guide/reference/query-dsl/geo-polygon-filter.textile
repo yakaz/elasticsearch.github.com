@@ -2,6 +2,7 @@
 layout: guide
 title: Geo Polygon Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A filter allowing to include hits that only fall within a polygon of points. Here is an example:

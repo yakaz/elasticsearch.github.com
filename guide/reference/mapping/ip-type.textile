@@ -2,6 +2,7 @@
 layout: guide
 title: IP Type
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. An @ip@ mapping type allows to store _ipv4_ addresses in a numeric form allowing to easily sort, and range query it (using ip values). This type is automatically detected within documents.

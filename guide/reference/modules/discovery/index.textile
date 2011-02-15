@@ -2,6 +2,7 @@
 layout: guide
 title: Discovery
 cat: guide
+sidebar: reference_modules_discovery
 ---
 
 p. The discovery module is responsible for discovering nodes within a cluster, as well as electing a master node.

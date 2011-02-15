@@ -2,6 +2,7 @@
 layout: guide
 title: Query String Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A query that uses a query parser in order to parse its content. Here is an example:

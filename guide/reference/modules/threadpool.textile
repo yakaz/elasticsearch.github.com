@@ -2,6 +2,7 @@
 layout: guide
 title: Thread Pool
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The thread pool module allows to control the thread pool type that will be used by the node in order to execute long or non CPU blocking operations. It also allows for scheduled execution of tasks.

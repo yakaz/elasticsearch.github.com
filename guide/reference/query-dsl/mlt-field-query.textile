@@ -2,6 +2,7 @@
 layout: guide
 title: More Like This Field Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. The @more_like_this_field@ query is the same as the @more_like_this@ query, except it runs against a single field. It provides nicer query DSL over the generic @more_like_this@ query, and support typed fields query (automatically wraps typed fields with type filter to match only on the specific type).

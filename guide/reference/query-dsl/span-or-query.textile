@@ -2,6 +2,7 @@
 layout: guide
 title: Span Or Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Matches the union of its span clauses. The span or query maps to Lucene @SpanOrQuery@. Here is an example:

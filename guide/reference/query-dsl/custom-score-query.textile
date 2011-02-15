@@ -2,6 +2,7 @@
 layout: guide
 title: Custom Score Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. @custom_score@ query allows to wrap another query and customize the scoring of it optionally with a computation derived from other field values in the doc (numeric ones) using "script expression":/guide/reference/modules/scripting. Here is a simple sample:

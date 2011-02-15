@@ -2,6 +2,7 @@
 layout: guide
 title: Filtered Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A query that applies a filter to the results of another query. This query maps to Lucene @FilteredQuery@.

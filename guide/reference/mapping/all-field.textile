@@ -2,6 +2,7 @@
 layout: guide
 title: All Field
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. The idea of an @_all@ field is a field that includes the text of one or more other fields within the document indexed. It can come very handy especially for search request, where we want to execute a search query against the content of a document, without knowing which fields to search on. This comes at the expense of CPU cycles and index size.

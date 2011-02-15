@@ -2,6 +2,7 @@
 layout: guide
 title: Dynamic Mapping
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. Default mappings allow to automatically apply generic mapping definition to types that do not have mapping pre defined. This is mainly done thanks to the fact that the "object mapping":object_type.html and namely the "root object mapping":root_object_type.html allow for schema-less dynamic addition of unmapped fields.

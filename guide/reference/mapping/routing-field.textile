@@ -2,6 +2,7 @@
 layout: guide
 title: Routing Field
 cat: guide
+sidebar: reference_mapping
 ---
 
 p. The routing field allows to control the @_routing@ aspect when indexing data and explicit routing control is required.

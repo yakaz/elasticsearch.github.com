@@ -2,6 +2,7 @@
 layout: guide
 title: Geo Bounding Box Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A filter allowing to filter hits based on a point location using a bounding box. Assuming the following indexed document:

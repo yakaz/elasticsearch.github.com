@@ -2,6 +2,7 @@
 layout: guide
 title: Geo Distance Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. Filters documents that include only hits that exists within a specific distance from a geo point. Assuming the following indexed json:

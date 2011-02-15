@@ -2,6 +2,7 @@
 layout: guide
 title: Not Filter
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A filter that filters out matched documents using a query. This filter is more performant then "bool":bool_filter.html filter. Can be placed within queries that accept a filter.

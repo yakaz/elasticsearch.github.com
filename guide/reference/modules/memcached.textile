@@ -2,6 +2,7 @@
 layout: guide
 title: memcached
 cat: guide
+sidebar: reference_modules
 ---
 
 p. The memcached module allows to expose *elasticsearch* "API":/guide/reference/api over the memcached protocol (as closely as possible). 

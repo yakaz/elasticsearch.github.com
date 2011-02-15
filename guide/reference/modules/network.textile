@@ -2,6 +2,7 @@
 layout: guide
 title: Network Settings
 cat: guide
+sidebar: reference_modules
 ---
 
 p. There are several modules within a Node that use network based configuration, for example, the "transport":transport.html and "http":http.html modules. Node level network settings allows to set common settings that will be shared among all network based modules (unless explicitly overridden in each module).

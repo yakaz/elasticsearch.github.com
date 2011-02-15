@@ -2,6 +2,7 @@
 layout: guide
 title: Dis Max Query
 cat: guide
+sidebar: reference_query_dsl
 ---
 
 p. A query that generates the union of documents produced by its subqueries, and that scores each document with the maximum score for that document as produced by any subquery, plus a tie breaking increment for any additional matching subqueries. 
