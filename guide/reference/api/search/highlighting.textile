@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Highlighting
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. Allow to highlight search results on one or more fields. The implementation uses the lucene fast-vector-highlighter. The search request body:

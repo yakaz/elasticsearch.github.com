@@ -2,6 +2,7 @@
 layout: guide
 title: Groovy API Anatomy
 cat: guide
+sidebar: reference_groovy_api
 ---
 
 p. Once a "GClient":client.html has been obtained, all of ElasticSearch APIs can be executed on it. Each Groovy API is exposed using three different mechanisms.

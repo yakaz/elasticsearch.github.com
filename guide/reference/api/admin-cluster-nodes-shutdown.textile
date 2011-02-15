@@ -2,6 +2,7 @@
 layout: guide
 title: Nodes Shutdown API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The nodes shutdown API allows to shutdown one or more (or all) nodes in the cluster. Here is an example of shutting the @_local@ node the request is directed to:

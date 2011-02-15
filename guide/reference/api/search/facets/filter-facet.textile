@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Filter Facets
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. A facet filter allows to return a count of the hits matching the facet filter. The filter itself can be expressed using the Query DSL. For example:

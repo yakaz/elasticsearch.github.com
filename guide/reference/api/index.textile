@@ -2,6 +2,7 @@
 layout: guide
 title: API
 cat: guide
+sidebar: reference_api
 ---
 
 p. This section describes the REST APIs *elasticsearch* provides (mainly) using JSON. The API is exposed using "HTTP":/guide/reference/modules/http, "thrift":/guide/reference/thrift, "memcached":/guide/reference/modules/memcached.

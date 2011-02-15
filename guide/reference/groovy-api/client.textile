@@ -2,6 +2,7 @@
 layout: guide
 title: Groovy Client
 cat: guide
+sidebar: reference_groovy_api
 ---
 
 p. Obtaining an elasticsearch Groovy @GClient@ (a @GClient@ is a simple wrapper on top of the Java @Client@) is simple. The most common way to get a client is by starting an embedded @Node@ which acts as a node within the cluster.

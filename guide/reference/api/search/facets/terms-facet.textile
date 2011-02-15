@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Terms Facet
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. Allow to specify field facets that return the N most frequent terms. For example:

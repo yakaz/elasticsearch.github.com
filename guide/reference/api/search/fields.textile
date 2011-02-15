@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Fields
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. Allows to selectively load specific fields for each document represented by a search hit. Defaults to load the internal @_source@ field.

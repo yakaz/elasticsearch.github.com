@@ -2,6 +2,7 @@
 layout: guide
 title: Store
 cat: guide
+sidebar: reference_index_modules
 ---
 
 p. The store module allows to control the storage type each index shard stores the index content at. It's important to note that the storage is considered temporal only for the shared gateway (non @local@, which is the default).

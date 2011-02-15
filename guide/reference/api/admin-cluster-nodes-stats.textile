@@ -2,6 +2,7 @@
 layout: guide
 title: Nodes Stats API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The cluster nodes stats API allows to retrieve one or more (or all) of the cluster nodes statistics.

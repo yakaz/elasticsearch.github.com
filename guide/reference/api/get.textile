@@ -2,6 +2,7 @@
 layout: guide
 title: Get API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The get API allows to get a typed JSON document from the index based on its id. The following example gets a JSON document from an index called twitter, under a type called tweet, with id valued 1:

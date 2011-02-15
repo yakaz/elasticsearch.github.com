@@ -2,6 +2,7 @@
 layout: guide
 title: Cluster Health API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The cluster health API allows to get a very simple status on the health of the cluster.

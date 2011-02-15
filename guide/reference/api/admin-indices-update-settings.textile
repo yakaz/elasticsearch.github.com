@@ -2,6 +2,7 @@
 layout: guide
 title: Update Settings API
 cat: guide
+sidebar: reference_api
 ---
 
 p. Change specific index level settings. The only setting supported is the @index.number_of_replicas@ setting allowing to dynamically change the number of replicas an index has.

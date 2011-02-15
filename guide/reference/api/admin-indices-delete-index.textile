@@ -2,6 +2,7 @@
 layout: guide
 title: Delete Index API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The delete index API allows to delete an existing index.

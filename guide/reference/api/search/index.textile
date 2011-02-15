@@ -2,6 +2,7 @@
 layout: guide
 title: Search API
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. The search API allows to execute a search query and get back search hits that match the query. It can be executed across "indices and types":indices-types.html. The query can either be provided using a simple "query string as a parameter":uri-request.html, or using a "request body":request-body.html.

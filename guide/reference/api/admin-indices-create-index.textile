@@ -2,6 +2,7 @@
 layout: guide
 title: Create Index API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The create index API allows to instantiate an index. ElasticSearch provides support for multiple indices, including executing operations across several indices. Each index created can have specific settings associated with it.

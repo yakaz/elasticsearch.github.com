@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Named Filters
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. Each filter can accept a _name in its top level definition, for example:

@@ -2,6 +2,7 @@
 layout: guide
 title: Get Mapping API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The get mapping API allows to retrieve mapping definition of index or index/type.

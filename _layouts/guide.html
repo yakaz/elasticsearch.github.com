@@ -2,11 +2,115 @@
 layout: default
 ---
 
-<div id="guide_sidebar"></div>
+<div id="guide_sidebar">
+    {% if page.sidebar == 'reference_api' %}
+        <h3><a href="/guide">Guide</a></h3>
+        <h3><a href="/guide/reference/api">API</a></h3>
+        <h3>Core</h3>
+        <ul>
+            <li><a href="/guide/reference/api/index_.html">Index</a></li>
+            <li><a href="/guide/reference/api/delete.html">Delete</a></li>
+            <li><a href="/guide/reference/api/get.html">Get</a></li>
+            <li><a href="/guide/reference/api/search">Search</a></li>
+            <li><a href="/guide/reference/api/bulk.html">Bulk</a></li>
+            <li><a href="/guide/reference/api/count.html">Count</a></li>
+            <li><a href="/guide/reference/api/delete-by-query.html">Delete By Query</a></li>
+            <li><a href="/guide/reference/api/more-like-this.html">More Like This</a></li>
+        </ul>
+
+        <h3>Indices</h3>
+        <ul>
+            <li><a href="/guide/reference/api/admin-indices-aliases.html">Aliases</a></li>
+            <li><a href="/guide/reference/api/admin-indices-analyze.html">Analyze</a></li>
+            <li><a href="/guide/reference/api/admin-indices-create-index.html">Create Index</a></li>
+            <li><a href="/guide/reference/api/admin-indices-delete-index.html">Delete Index</a></li>
+            <li><a href="/guide/reference/api/admin-indices-open-close.html">Open/Close Index</a></li>
+            <li><a href="/guide/reference/api/admin-indices-get-mapping.html">Get Mapping</a></li>
+            <li><a href="/guide/reference/api/admin-indices-put-mapping.html">Put Mapping</a></li>
+            <li><a href="/guide/reference/api/admin-indices-delete-mappping.html">Delete Mapping</a></li>
+            <li><a href="/guide/reference/api/admin-indices-refresh.html">Refresh</a></li>
+            <li><a href="/guide/reference/api/admin-indices-optimize.html">Optimize</a></li>
+            <li><a href="/guide/reference/api/admin-indices-flush.html">Flush</a></li>
+            <li><a href="/guide/reference/api/admin-indices-snapshot.html">Snapshot</a></li>
+            <li><a href="/guide/reference/api/admin-indices-update-settings.html">Update Settings</a></li>
+            <li><a href="/guide/reference/api/admin-indices-templates.html">Templates</a></li>
+            <li><a href="/guide/reference/api/admin-indices-status.html">Status</a></li>
+        </ul>
+
+        <h3>Cluster</h3>
+        <ul>
+            <li><a href="/guide/reference/api/admin-cluster-health.html">Health</a></li>
+            <li><a href="/guide/reference/api/admin-cluster-state.html">State</a></li>
+            <li><a href="/guide/reference/api/admin-cluster-nodes-info.html">Nodes Info</a></li>
+            <li><a href="/guide/reference/api/admin-cluster-nodes-stats.html">Nodes Stats</a></li>
+            <li><a href="/guide/reference/api/admin-cluster-nodes-shutdown.html">Nodes Shutdown</a></li>
+        </ul>
+    {% endif %}
+
+    {% if page.sidebar == 'reference_api_search' %}
+        <h3><a href="/guide">Guide</a></h3>
+        <h3><a href="/guide/reference/api">API</a></h3>
+        <h3><a href="/guide/reference/api/search">Search</a></h3>
+        <ul>
+            <li><a href="/guide/reference/api/search/request-body.html">Request Body</a></li>
+            <li><a href="/guide/reference/api/search/uri-request.html">URI Request</a></li>
+            <li><a href="/guide/reference/api/search/query.html">Query</a></li>
+            <li><a href="/guide/reference/api/search/from-size.html">From / Size</a></li>
+            <li><a href="/guide/reference/api/search/indices-types.html">Indices / Types</a></li>
+            <li><a href="/guide/reference/api/search/sort.html">Sort</a></li>
+            <li><a href="/guide/reference/api/search/highlighting.html">Highlighting</a></li>
+            <li><a href="/guide/reference/api/search/fields.html">Fields</a></li>
+            <li><a href="/guide/reference/api/search/script-fields.html">Script Fields</a></li>
+            <li><a href="/guide/reference/api/search/facets">Facets</a></li>
+            <li><a href="/guide/reference/api/search/names-filters.html">Named Filters</a></li>
+            <li><a href="/guide/reference/api/search/search-type.html">Search Type</a></li>
+            <li><a href="/guide/reference/api/search/index-boost.html">Index Boost</a></li>
+            <li><a href="/guide/reference/api/search/scroll.html">Scroll</a></li>
+            <li><a href="/guide/reference/api/search/explain.html">Explain</a></li>
+        </ul>
+    {% endif %}
+
+    {% if page.sidebar == 'reference_api_search_facets' %}
+    <h3><a href="/guide">Guide</a></h3>
+    <h3><a href="/guide/reference/api">API</a></h3>
+    <h3><a href="/guide/reference/api/search">Search</a></h3>
+    <h3><a href="/guide/reference/api/search/facets">Facets</a></h3>
+    <ul>
+        <li><a href="/guide/reference/api/search/facets/terms-facet.html">Terms</a></li>
+        <li><a href="/guide/reference/api/search/facets/range-facet.html">Range</a></li>
+        <li><a href="/guide/reference/api/search/facets/histogram-facet.html">Histogram</a></li>
+        <li><a href="/guide/reference/api/search/facets/filter-facet.html">Filter</a></li>
+        <li><a href="/guide/reference/api/search/facets/query-facet.html">Query</a></li>
+        <li><a href="/guide/reference/api/search/facets/statistical-facet.html">Statistical</a></li>
+        <li><a href="/guide/reference/api/search/facets/geo-distance-facet.html">Geo Distance</a></li>
+    </ul>
+    {% endif %}
+
+    {% if page.sidebar == 'reference_groovy_api' %}
+    <h3><a href="/guide">Guide</a></h3>
+    <h3><a href="/guide/reference/groovy-api">Groovy API</a></h3>
+    <ul>
+        <li><a href="/guide/reference/groovy-api/client.html">Client</a></li>
+        <li><a href="/guide/reference/groovy-api/index_.html">Index</a></li>
+        <li><a href="/guide/reference/groovy-api/get.html">Get</a></li>
+        <li><a href="/guide/reference/groovy-api/delete.html">Delete</a></li>
+        <li><a href="/guide/reference/groovy-api/search.html">Search</a></li>
+    </ul>
+    {% endif %}
+
+    {% if page.sidebar == 'reference_index_modules' %}
+    <h3><a href="/guide">Guide</a></h3>
+    <h3><a href="/guide/reference/index-modules">Index Modules</a></h3>
+    
+    <ul>
+        <li><a href="/guide/reference/index-modules/analysis">Analysis</a></li>
+        <li><a href="/guide/reference/index-modules/merge.html">Merge</a></li>
+        <li><a href="/guide/reference/index-modules/store.html">Store</a></li>
+        <li><a href="/guide/reference/index-modules/mapper.html">Mapper</a></li>
+        <li><a href="/guide/reference/index-modules/translog.html">Translog</a></li>
+    </ul>
+    {% endif %}
+</div>
 <div class="guide_content">
     {{ content }}
 </div>
-
-<script type="text/javascript">
-  $('#guide_sidebar').load('sidebar.html');
-</script>

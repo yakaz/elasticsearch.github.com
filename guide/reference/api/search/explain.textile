@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Explain
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. Enables explanation for each hit on how its score was computed.

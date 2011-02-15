@@ -2,6 +2,7 @@
 layout: guide
 title: Analyze API
 cat: guide
+sidebar: reference_api
 ---
 
 p. Performs the analysis process on a text and return the tokens breakdown of the text. Here is an example:

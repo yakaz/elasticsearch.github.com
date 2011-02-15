@@ -2,6 +2,7 @@
 layout: guide
 title: Status API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The indices status API allows to get a comprehensive status information of one or more indices.

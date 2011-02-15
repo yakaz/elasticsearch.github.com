@@ -2,6 +2,7 @@
 layout: guide
 title: Bulk API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The bulk API allows to index and delete several documents in a single API. This can greatly increase the indexing speed.The REST API endpoint is /_bulk and it follows the following structure (for @json@):

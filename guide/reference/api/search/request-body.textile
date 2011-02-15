@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Request Body
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. The search request can be executed with a search DSL, which includes the "Query DSL":/guide/reference/query-dsl, within its body. Here is an example:

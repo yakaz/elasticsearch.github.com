@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Facets
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. Facets allow to provide aggregated data based on the search request. For example, a facet can return the most popular terms within the search query.

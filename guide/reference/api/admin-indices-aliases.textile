@@ -2,6 +2,7 @@
 layout: guide
 title: Index Aliases API
 cat: guide
+sidebar: reference_api
 ---
 
 p. APIs in elasticsearch accept an index name when working against a specific index, and several indices when applicable. The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name. An alias can also be mapped to more than one index, and when specifying it, the alias will automatically expand to the aliases indices. 

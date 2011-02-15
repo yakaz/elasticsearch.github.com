@@ -2,6 +2,7 @@
 layout: guide
 title: Search Groovy API
 cat: guide
+sidebar: reference_groovy_api
 ---
 
 p. The search API is very similar to the "Java search API":/guide/reference/java-api/search.html. The Groovy extension allows to provide the search source to execute as a @Closure@ including the query itself (similar to GORM criteria builder):

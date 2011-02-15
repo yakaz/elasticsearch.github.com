@@ -2,6 +2,7 @@
 layout: guide
 title: Put Mapping API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The put mapping API allows to register specific mapping definition for a specific type.

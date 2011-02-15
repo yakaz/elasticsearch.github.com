@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Histogram Facets
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. The histogram facet works with numeric data by building a histogram across intervals of the field values. Each value is "rounded" into an interval (or placed in a bucket), and statistics are provided per interval/bucket (count and total). Here is a simple example:

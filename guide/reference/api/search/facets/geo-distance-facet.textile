@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Geo Distance Facets
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. The geo_distance facet is a facet providing information for ranges of distances from a provided geo_point including count of the number of hits that fall within each range, and aggregation information (like total). 

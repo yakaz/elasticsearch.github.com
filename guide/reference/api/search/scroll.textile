@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Scroll
 cat: guide
+sidebar: reference_api_search
 ---
 
 p. Note, scroll is currently an experimental feature.

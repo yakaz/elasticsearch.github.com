@@ -2,6 +2,7 @@
 layout: guide
 title: Open / Close Index API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The optimize API allows to optimize one or more indices through an API. The optimize process basically optimizes the index for faster search operations (and relates to the number of segments a lucene index within each shard). The optimize operation allows to optimize the number of segments to optimize to.

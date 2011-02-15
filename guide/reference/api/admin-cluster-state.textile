@@ -2,6 +2,7 @@
 layout: guide
 title: Cluster State API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The cluster state API allows to get a comprehensive state information of the whole cluster.

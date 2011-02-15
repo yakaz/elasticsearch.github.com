@@ -2,6 +2,7 @@
 layout: guide
 title: Nodes Info API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The cluster nodes info API allows to retrieve one or more (or all) of the cluster nodes information.

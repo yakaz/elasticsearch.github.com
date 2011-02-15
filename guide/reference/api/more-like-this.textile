@@ -2,6 +2,7 @@
 layout: guide
 title: More Like This API
 cat: guide
+sidebar: reference_api
 ---
 
 p. The more like this (mlt) API allows to get documents that are "like" a specified document. Here is an example:

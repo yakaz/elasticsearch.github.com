@@ -2,6 +2,7 @@
 layout: guide
 title: Search API - Statistical Facet
 cat: guide
+sidebar: reference_api_search_facets
 ---
 
 p. Statistical facet allows to compute statistical data on a numeric fields. The statistical data include count, total, sum of squares, mean (average), minimum, maximum, variance, and standard deviation. Here is an example:
