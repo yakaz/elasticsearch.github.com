@@ -4,6 +4,7 @@ version: master
 title: ElasticSearch Download - Master
 download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
 download_type: source
+release_notes: true
 ---
 
 h2. Breaking changes:
@@ -16,6 +17,8 @@ h2. Breaking changes:
  * Geo: All geo components that accept an array of [lat, lon] to change to do [lon, lat] to conform with GeoJSON ("#661":http://github.com/elasticsearch/elasticsearch/issues/issue/661)
  * Groovy client doesn't bind to any variables outside the closure ("#654":http://github.com/elasticsearch/elasticsearch/issues/issue/654)
  * Index Status: Add primary store size to include only primary shards store sizes, also move index store and translog into their own elements ("#666":http://github.com/elasticsearch/elasticsearch/issues/issue/666)
+ * Mapping: Disable automatic ip type detection on new fields ("#674":http://github.com/elasticsearch/elasticsearch/issues/issue/674)
+ * Highlighting: If a field ends up not being highlighted, don't return it in the response ("#685":http://github.com/elasticsearch/elasticsearch/issues/issue/685)
 
 
 h2. New features:
@@ -50,6 +53,7 @@ h2. Enhancements:
  * Search:
  ** Add a @timed_out@ element indicating if the search request timed out ("#592":http://github.com/elasticsearch/elasticsearch/issues/issue/592)
  ** When sorting, allow to pass `track_scores` and set it to `true` to get scores/max_score back ("#662":http://github.com/elasticsearch/elasticsearch/issues/issue/662)
+ ** By default, don't return the version per hit, unless @version@ is set to @true@ ("#676":http://github.com/elasticsearch/elasticsearch/issues/issue/676)
  * Search Scripts: Allow to access score in facet related scripts using @doc.score@ ("#663":http://github.com/elasticsearch/elasticsearch/issues/issue/663)
  * Shared Gateway: Allow to set the number of concurrent streams doing snapshot operations ("#621":http://github.com/elasticsearch/elasticsearch/issues/issue/621)
  * Strict dynamic setting: Refuse to index a document with fields not present in the mapping definition ("#643":http://github.com/elasticsearch/elasticsearch/issues/issue/643)
@@ -57,8 +61,13 @@ h2. Enhancements:
  ** Performance and memory improvements when faceting numeric fields ("#583":http://github.com/elasticsearch/elasticsearch/issues/issue/583)
  ** Add option include counts where term is missing ("#632":http://github.com/elasticsearch/elasticsearch/issues/issue/632)
  ** Allow to get @all_terms@ back (possibly with count 0) ("#647":http://github.com/elasticsearch/elasticsearch/issues/issue/647)
+ ** Terms facet on an IP field returns terms as numbers, not IPs ("#678":http://github.com/elasticsearch/elasticsearch/issues/issue/678)
  * Thread Pool: Increase the keep alive time of threads from 60 seconds to 60 minutes ("#657":http://github.com/elasticsearch/elasticsearch/issues/issue/657)
  * Translog Flushing: Improve logic, flush not just by operations in the translog ("#656":http://github.com/elasticsearch/elasticsearch/issues/issue/656)
+ * Added @geo_bbox@ as an alias to geo bounding box ("commit":http://github.com/elasticsearch/elasticsearch/commit/02a2ebb84b6dbdd9a6ab75a6d0b537d3f88bdac9)
+ * Analysis: Decompounder ("#651":http://github.com/elasticsearch/elasticsearch/issues/issue/651)
+ * Don't fail search if highlight field is missing for a specific type ("#682":http://github.com/elasticsearch/elasticsearch/issues/issue/682)
+ * Query: boosting query ("#683":http://github.com/elasticsearch/elasticsearch/issues/issue/683)
 
 
 h2. Bug fixes:
@@ -79,7 +88,10 @@ h2. Bug fixes:
  * REST Create Index: Not taking JSON index settings into account unless wrapped in settings. ("#578":http://github.com/elasticsearch/elasticsearch/issues/issue/578)
  * Search:
  ** When fetching @_parent@, only the @_id@ should be returned, and not type#id ("#658":http://github.com/elasticsearch/elasticsearch/issues/issue/658)
- ** Failure when sorting on `short` type ("#665":http://github.com/elasticsearch/elasticsearch/issues/issue/665)
+ ** Failure when sorting on @short@ type ("#665":http://github.com/elasticsearch/elasticsearch/issues/issue/665)
+ * NPE during ES startup when using S3 gateway with the europe region specified ("#659":http://github.com/elasticsearch/elasticsearch/issues/issue/659)
+ * REST API: Failure to index docs that have their ids URL encoded and contain @/@ ("#681":http://github.com/elasticsearch/elasticsearch/issues/issue/681)
+ 
 
 h2. Internal:
  * upgrade to gradle 0.9.2
@@ -88,4 +100,6 @@ h2. Internal:
  * upgrade to sigar 1.6.4
  * upgrade to trove 3.0.0rc1
  * upgrade to mvel2 2.1.RC1
-
+ * upgrade jsr166y
+ * upgrade to netty 3.2.4
+ * upgrade to groovy 1.7.7
