@@ -73,7 +73,7 @@ network:
                     OR  _en0_           # IP address of the first ethernet interface
 </pre>
 
-See "Node network settings":http://www.elasticsearch.com/docs/elasticsearch/modules/node/network/ for more.
+See "Node network settings":/guide/refrence/modules/network.html for more.
 
 h2. Configuring service wrapper
 
