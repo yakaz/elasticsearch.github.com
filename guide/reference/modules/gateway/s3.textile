@@ -25,6 +25,10 @@ p. The following are a list of settings (prefixed with @gateway.s3@) that can fu
 |_. Setting |_. Description |
 |@chunk_size@|Big files are broken down into chunks (to overcome AWS 5g limit and use concurrent snapshotting). Default set to @100m@.|
 
+h1. concurrent_streams
+
+p. The @gateway.s3.concurrent_streams@ allow to throttle the number of streams (per node) opened against the shared gateway performing the snapshot operation. It defaults to @5@.
+
 h1. Region
 
 p. The @cloud.aws.region@ can be set to a region and will automatically use the relevant settings for both @ec2@ and @s3@. The available values are: @us-east-1@, @us-west-1@, @ap-southeast-1@, @eu-west-1@.
