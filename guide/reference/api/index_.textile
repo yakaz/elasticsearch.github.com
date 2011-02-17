@@ -128,6 +128,27 @@ $ curl -XPUT localhost:9200/blogs/blog_tag/1122?parent=1111 -d '{
 }'
 </pre>
 
+h1. Percolate
+
+p. "Percolation":percolate.html can be automatically done on an indexed doc by passing the @percolate@ parameter. Setting it to @*@ will cause all percolation queries registered against the index to be checked against the indexed doc, for example:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/test/type1/1?percolate=* -d '{
+    "field1" : "value1"
+}'
+</pre>
+
+p. It can also be set to query (following the query string syntax) to filter out which percolator queries will be executed:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/test/type1/1?percolate=color:green -d '{
+    "field1" : "value1",
+    "field2" : "value2"
+}'
+</pre>
+
+p. Percolation on index operation is done while optimizing the distributed nature of elasticsearch. Once the index operation is done on the primary shard, it is sent to all the replicas, and while the operation is done on the replicas, the percolation is executed on the node hosting the primary shard. Also, the parsing operation done on the primary shard is reused for the percolation operation.
+
 h1. Distributed
 
 p. The index operation gets hashed into a specific shard id. It then gets redirected into the primary shard within that id group, and replicated (if needed) to shard replicas within that id group.
