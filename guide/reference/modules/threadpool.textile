@@ -5,47 +5,9 @@ cat: guide
 sidebar: reference_modules
 ---
 
-p. The thread pool module allows to control the thread pool type that will be used by the node in order to execute long or non CPU blocking operations. It also allows for scheduled execution of tasks.
+p. A node holds several thread pools in order to improve how threads are managed and memory consumption within a node. There are several thread pools, but the important ones include:
 
-p. The type of the thread pool can be controlled using @threadpool.type@ setting, with the following types supported (@cached@ is the default):
+* @index@: for index/delete/bulk operations.
+* @search@:  For get/count/search operations.
 
-h1. cached
-
-p. A cached thread pool is an unbounded thread pool that reuses previously constructed threads.
-
-h2. Settings
-
-p. Settings for the cached Thread Pool module should be set for within @threadpool.cached@. For example, the @keep_alive@ setting should be set using @threadpool.cached.keepAlive@.
-
-|_. Setting |_. Description |
-|@keep_alive@|A time based settings controlling how long an unused thread can be kept in the pool. Defaults to @60s@.|
-|@scheduled_size@|The number of threads that will be used to execute scheduled tasks. Defaults to @20@.|
-
-h1. scaling
-
-p. A bounded thread pool that reuses previously created free threads.
-
-h2. Settings
-
-p. Settings for the scaling thread pool should be set for within @threadpool.scaling@. For example, the @keep_alive@ setting should be set using @threadpool.scaling.keep_alive@.
-
-|_. Setting |_. Description |
-|@min@|The minimum number of threads. Defaults to @1@.|
-|@max@|The maximum number of threads. Defaults to @100@.|
-|@keep_alive@|A time based settings controlling how long an unused thread can be kept in the pool. Defaults to @60s@.|
-|@scheduled_size@|The number of threads that will be used to execute scheduled tasks. Defaults to @20@.|
-
-h1. blocking
-
-p. A bounded thread pool that reuses previously created free threads. Pending requests block for an available thread (different than the @scaling@ one, where the request is added to a queue and does not block).
-
-h2. Settings
-
-p. Settings for the blocking thread pool should be set for within @threadpool.blocking@. For example, the @keep_alive@ setting should be set using @threadpool.blocking.keep_alive@.
-
-|_. Setting |_. Description |
-|@min@|The minimum number of threads. Defaults to @1@.|
-|@max@|The maximum number of threads. Defaults to @100@.|
-|@keep_alive@|A time based settings controlling how long an unused thread can be kept in the pool. Defaults to @60s@.|
-|@scheduled_size@|The number of threads that will be used to execute scheduled tasks. Defaults to @20@.|
-|@wait_time@|How long a request will block if there is no available thread. Defaults to @60s@.|
+Each pool can have a type associated with it, and based on the type, associated parameters. The types can be @cached@, @fixed@, @scaling@, and @blocking@.
