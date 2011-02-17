@@ -77,7 +77,7 @@ p. The following table lists all the attributes that can be used with the @strin
 
 h1. Number
 
-p. A number based type supporting @float@, @double@, @integer@, and @long@. It uses specific constructs within Lucene is order to support numeric values. An example mapping can be:
+p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene is order to support numeric values. An example mapping can be:
 
 <pre class="prettyprint lang-js">
 {
