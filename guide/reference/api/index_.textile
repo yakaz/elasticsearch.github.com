@@ -44,12 +44,21 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
 }'
 </pre>
 
+h1. Versioning
+
+p. Each document indexed is versioned. When indexing a doc, the @version@ that is associated with it is returned as part of the response. The index API allows for "optimistic concurrency control":http://en.wikipedia.org/wiki/Optimistic_concurrency_control by allowing to specify the version the index should be updated under. This is handy for example when doing read and update, and making sure no changes happened in the meantime. For example:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/twitter/tweet/1?version=2' -d '{
+    "message" : "elasticsearch now has versioning support, double cool!"
+}'
+</pre>
+
+p. Note, versioning are completely real time, and are not affect by the near real time aspect of get and search operations. If no version is provided, then the operation is forced to be executed without any checks.
 
 h1. Operation Type
 
-p. The index operation will automatically replace an existing document within the same index that has the same type and id. If you know in advance that this is a new document, then the @op_type@ parameter can be set to @create@. The benefit is a slight improvement in performance since there is no need to check and possibly delete the existing document.
-
-p(note). If the @op_type@ is set to create, and there is already an existing document with the same type and id within the index, the index will now hold *two* documents with the same id and type. 
+p. The index operation also accepts an @op_type@ to force a @create@ operation. This will allow for a "put of absent" behavior when a document will be created only if it does not exists in the index.
 
 p. Here is an example of using the @op_type@ parameter:
 

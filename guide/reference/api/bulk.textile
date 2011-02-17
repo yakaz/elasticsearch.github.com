@@ -40,6 +40,10 @@ p. Note, in the end, the full data needs to be represented on each server, so in
 
 p. If using the HTTP API, make sure that the client does not send HTTP chunks, as this will slow things down.
 
+h1. Versioning
+
+p. Each bulk item can include the version value using the @_version@ field. It automatically follows the behavior of the index / delete operation based on the @_version@ mapping.
+
 h1. Routing
 
 p. Each bulk item can include the routing value using the @_routing@ field. It automatically follows the behavior of the index / delete operation based on the @_routing@ mapping.
