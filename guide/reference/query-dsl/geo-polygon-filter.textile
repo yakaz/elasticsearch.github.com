@@ -32,6 +32,8 @@ h1. Allowed Formats
 
 h2. Lat Long as Array
 
+p. Format in @[lon, lat]@, note, the order of lon/lat here in order to conform with "GeoJSON":http://geojson.org/.
+
 <pre class="prettyprint lang-js">
 {
     "filtered" : {
@@ -42,9 +44,9 @@ h2. Lat Long as Array
             "geo_polygon" : {
                 "person.location" : {
                     "points" : [
-                        [40, -70],
-                        [30, -80],
-                        [20, -90]
+                        [-70, 40],
+                        [-80, 30],
+                        [-90, 20]
                     ]
                 }
             }
@@ -54,6 +56,8 @@ h2. Lat Long as Array
 </pre>
 
 h2. Lat Lon as String
+
+p. Format in @lat,lon@.
 
 <pre class="prettyprint lang-js">
 {

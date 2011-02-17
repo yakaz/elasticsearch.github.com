@@ -38,6 +38,8 @@ h2. Lat Lon as Properties
 
 h2. Lat Lon as String
 
+p. Format in @lat,lon@.
+
 <pre class="prettyprint lang-js">
 {
     "pin" : {
@@ -58,10 +60,12 @@ h2. Geohash
 
 h2. Lat Lon as Array
 
+p. Format in @[lon, lat]@, note, the order of lon/lat here in order to conform with "GeoJSON":http://geojson.org/.
+
 <pre class="prettyprint lang-js">
 {
     "pin" : {
-        "location" : [41.12, -71.34]
+        "location" : [-71.34, 41.12]
     }
 }
 </pre>

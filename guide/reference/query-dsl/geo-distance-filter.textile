@@ -66,6 +66,8 @@ h2. Lat Lon As Properties
 
 h2. Lat Lon As Array
 
+p. Format in @[lon, lat]@, note, the order of lon/lat here in order to conform with "GeoJSON":http://geojson.org/.
+
 <pre class="prettyprint lang-js">
 {
     "filtered" : {
@@ -83,6 +85,8 @@ h2. Lat Lon As Array
 </pre>
 
 h2. Lat Lon As String
+
+p. Format in @lat,lon@.
 
 <pre class="prettyprint lang-js">
 {
