@@ -7,7 +7,7 @@ sidebar: reference_mapping
 
 p. Default mappings allow to automatically apply generic mapping definition to types that do not have mapping pre defined. This is mainly done thanks to the fact that the "object mapping":object_type.html and namely the "root object mapping":root_object_type.html allow for schema-less dynamic addition of unmapped fields.
 
-p. The default mapping definition is plain mapping definition that is embedded within ElasticSearch:
+p. The default mapping definition is plain mapping definition that is embedded within the distribution:
 
 <pre class="prettyprint lang-js">
 {
@@ -20,7 +20,7 @@ p. Pretty short, no? Basically, everything is defaulted, especially the dynamic 
 
 p. The dynamic creation of mappings for unmapped types can be completely disabled by setting @index.mapper.dynamic@ to @false@.
 
-p. As an example, here is how we can change the default "date_formats":../object_type#dateFormats used in the root and inner object types:
+p. As an example, here is how we can change the default "date_formats":date-format.html used in the root and inner object types:
 
 <pre class="prettyprint lang-js">
 {
