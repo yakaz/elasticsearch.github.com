@@ -68,6 +68,10 @@ h2. Enhancements:
  * Analysis: Decompounder ("#651":http://github.com/elasticsearch/elasticsearch/issues/issue/651)
  * Don't fail search if highlight field is missing for a specific type ("#682":http://github.com/elasticsearch/elasticsearch/issues/issue/682)
  * Query: boosting query ("#683":http://github.com/elasticsearch/elasticsearch/issues/issue/683)
+ * ThreadPool: Refactor into several pools, with configurable types per pool ("#687":http://github.com/elasticsearch/elasticsearch/issues/issue/687)
+ * Add new Access-Control-Allow-Headers value into http response header ("#688":http://github.com/elasticsearch/elasticsearch/issues/issue/688)
+ * REST codes: Improve returned error codes on REST APIs, associate codes with internal exceptions ("#690":http://github.com/elasticsearch/elasticsearch/issues/issue/690)
+ * Cluster Shutdown API: On full/_all shutdown, shutdown only data/master nodes, not client nodes ("#697":http://github.com/elasticsearch/elasticsearch/issues/issue/697)
 
 
 h2. Bug fixes:
@@ -91,11 +95,12 @@ h2. Bug fixes:
  ** Failure when sorting on @short@ type ("#665":http://github.com/elasticsearch/elasticsearch/issues/issue/665)
  * NPE during ES startup when using S3 gateway with the europe region specified ("#659":http://github.com/elasticsearch/elasticsearch/issues/issue/659)
  * REST API: Failure to index docs that have their ids URL encoded and contain @/@ ("#681":http://github.com/elasticsearch/elasticsearch/issues/issue/681)
+ * Index Status: Peer recovery does not compute the index size correctly to report the full size ("#695":http://github.com/elasticsearch/elasticsearch/issues/issue/695)
  
 
 h2. Internal:
  * upgrade to gradle 0.9.2
- * upgrade to jackson 1.7.2
+ * upgrade to jackson 1.7.3
  * upgrade to guice 3.0 rc2
  * upgrade to sigar 1.6.4
  * upgrade to trove 3.0.0rc1
