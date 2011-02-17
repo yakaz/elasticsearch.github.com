@@ -13,6 +13,7 @@ h1. Clients
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
 *  "ruby_elasticsearch":http://github.com/adrpac/elasticsearch: Ruby client.
 *  "slingshot":https://github.com/karmi/slingshot/: Ruby API & DSL.
+*  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
 * "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "elasitcsearch":http://github.com/nervetattoo/elasticsearch PHP client.
