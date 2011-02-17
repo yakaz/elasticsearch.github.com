@@ -5,31 +5,31 @@ cat: guide
 sidebar: reference_api_search
 ---
 
-p. Allow to highlight search results on one or more fields. The implementation uses the lucene fast-vector-highlighter. The search request body:
+p. Allow to highlight search results on one or more fields. The implementation uses the either lucene @fast-vector-highlighter@ or @highlighter@. The search request body:
 
 <pre class="prettyprint lang-js">
 {
     "query" : {...},
     "highlight" : {
         "fields" : {
-            "_all" : {}
+            "content" : {}
         }
     }
 }
 </pre>
 
-p. In the above case, the @_all@ field will be highlighted for each search hit (there will be another element in each search hit, called @highlight@, which includes the highlighted fields and the highlighted fragments).
+p. In the above case, the @content@ field will be highlighted for each search hit (there will be another element in each search hit, called @highlight@, which includes the highlighted fields and the highlighted fragments).
 
-p. The highlighting process requires the original text to be highlighted against, as well as @term_vector@ information set to @with_positions_offsets@.
+p. In order to perform highlighting, the actual content of the field is required. If the field in question is stored (has @store@ set to @yes@ in the mapping), it will be used, otherwise, the actual @_source@ will be loaded and the relevant field will be extracted from it.
 
-p. The @term_vector@ can be set on each field to be highlighted. The actual source to be highlighted can be extracted from a field that is set to be stored (@store@ set to @yes@), or, if not set, it will automatically be extracted from the @_source@ stored within the index (allowing to keep the index size smaller).
+p. If no @term_vector@ information is provided (by setting it to @with_positions_offset@ in the mapping), then the plain highlighter will be used. If it is provided, then the fast vector highlighter will be used. When term vectors are available, highlighting will be performed faster at the cost of bigger index size.
 
-p. Here is an example of setting the @_all@ field to allow for highlighting on it (this will cause the index to be bigger):
+p. Here is an example of setting the @content@ field to allow for highlighting on it (this will cause the index to be bigger):
 
 <pre class="prettyprint lang-js">
 {
     "type_name" : {
-        "_all" : {"store" : "yes", "term_vector" : "with_positions_offsets"}
+        "content" : {"store" : "yes", "term_vector" : "with_positions_offsets"}
     }
 }
 </pre>
@@ -69,7 +69,7 @@ p. And post tag of @</em>@. If you think of more nice to have built in tag schem
     "highlight" : {
         "tags_schema" : "styled",
         "fields" : {
-            "_all" : {}
+            "content" : {}
         }
     }
 }
@@ -84,7 +84,7 @@ p. Each field highlighted can control the size of the highlighted fragment in ch
     "query" : {...},
     "highlight" : {
         "fields" : {
-            "_all" : {"fragment_size" : 150, "number_of_fragments" : 3}
+            "content" : {"fragment_size" : 150, "number_of_fragments" : 3}
         }
     }
 }
@@ -98,7 +98,7 @@ p. On top of this it is possible to specify that highlighted fragments are order
     "highlight" : {
         "order" : "score",
         "fields" : {
-            "_all" : {"fragment_size" : 150, "number_of_fragments" : 3}
+            "content" : {"fragment_size" : 150, "number_of_fragments" : 3}
         }
     }
 }
