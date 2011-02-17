@@ -1,0 +1,27 @@
+---
+layout: guide
+title: Snowball Analyzer
+cat: guide
+sidebar: reference_index_modules_analysis
+---
+
+p. An analyzer of type @snowball@ that uses the "standard tokenizer":standard-tokenizer.html, with "standard filter":standard-tokenfilter.html, "lowercase filter":lowercase-tokenfilter.html, "stop filter":stop-tokenfilter.html, and "snowball filter":snowball-tokenfilter.html.
+
+p. Sample usage:
+
+<pre class="prettyprint">
+{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "my_analyzer" : {
+                    "type" : "snowball",
+                    "name" : "English"
+                }
+            }
+        }
+    }
+}
+</pre>
+
+p. The @name@ parameter can have the same values as the "snowball filter":snowball-tokenfilter.html and defaults to @English@.
