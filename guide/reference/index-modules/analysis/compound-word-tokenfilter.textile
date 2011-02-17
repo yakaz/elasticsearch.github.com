@@ -1,0 +1,8 @@
+---
+layout: guide
+title: Compound Word Token Filter
+cat: guide
+sidebar: reference_index_modules_analysis
+---
+
+p. Token filters that allow to decompose compound words. There are two types available: @dictionary@ and @hyphenation@. 
