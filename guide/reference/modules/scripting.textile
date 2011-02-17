@@ -21,6 +21,10 @@ p. Scripts can always be provided as part of the relevant API, but they can also
 
 p. The name of the script is derived from the hierarchy of directories it exists under, and the file name without the lang extension. For example, a script placed under `config/scripts/group1/group2/test.py` will be named `group1_group2_test`.
 
+h1. Score
+
+p. In all scripts that can be used in facets, allow to access the current doc score using @doc.score@.
+
 h1. Document Fields
 
 p. Most scripting revolve around the use of specific document fields data. The @doc['field_name']@ can be used to access specific field data within a document (the document in question is usually derived by the context the script is used). Document fields are very fast to access since they end up being loaded into memory (all the relevant field values/tokens are loaded to memory).
