@@ -86,6 +86,25 @@ p. Allow to sort based on custom scripts, here is an example:
 
 p. Note, it is recommended, for single custom based script based sorting, to use @custom_score@ query instead as sorting based on score is faster.
 
+h1. Track Scores
+
+p. When sorting on a field, scores are not computed. By setting @track_scores@ to true, scores will still be computed and tracked.
+
+<pre class="prettyprint lang-js">
+{
+    "track_scores": true,
+    "sort" : [
+        { "post_date" : {"reverse" : true} },
+        { "name" : "desc" },
+        { "age" : "desc" }
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+
 h1. Memory Considerations
 
 p. When sorting, the relevant sorted field values are loaded into memory. This means that per shard, there should be enough memory to contain them. For string based types, the field sorted on should not be analyzed / tokenized. For numeric types, if possible, it is recommended to explicitly set the type to six_hun types (like @short@, @integer@ and @float@).
