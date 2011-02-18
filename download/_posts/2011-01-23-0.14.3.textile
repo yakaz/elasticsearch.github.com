@@ -6,4 +6,5 @@ title: 0.14.3
 download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.3.zip
 download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.3.tar.gz
 download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.14.3
+release_notes: true
 ---
