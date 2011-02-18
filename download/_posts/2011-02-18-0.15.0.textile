@@ -9,6 +9,12 @@ download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.15
 release_notes: true
 ---
 
+h2. Upgrade Notes
+
+p. In order to upgrade to this version, and full cluster restart is required. Shutdown the cluster using the cluster wide shutdown API, upgrade the version, and start it back up.
+
+p. The new versioning feature will only start to kick in for newly indexed docs.
+
 h2. Breaking changes:
  * -Des.config=/path/to/config/file doesn't replace $ES_HOME/elasticsearch.conf, just appends to it ("#588":http://github.com/elasticsearch/elasticsearch/issues/issue/588)
  * Allow ./bin/plugin to install plugins from the local filesystem / custom url ("#595":http://github.com/elasticsearch/elasticsearch/issues/issue/595)

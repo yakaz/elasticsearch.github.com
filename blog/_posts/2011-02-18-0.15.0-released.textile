@@ -1,0 +1,34 @@
+---
+layout: blogpost
+title: 0.15.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.15.0@ has just been released. You can download it "here":/download. This is another major release that includes several major features and of course, the typical set of bug fixes and enhancements. Some of the major features include:
+
+h1. Versioning
+
+p. Versioning got its own "blog post":/blog/2011/02/08/versioning.html detailing how to use the feature. It will now allow for more interesting interaction model with documents allowing to utilize optimistic concurrency control when changing docs.
+
+h1. Percolator
+
+p. "Percolator":/blog/2011/02/08/percolator.html is quite an interesting feature, basically turning search upside down. Instead of indexing docs and searching on them. Queries are registered, and docs are percolated to find out which queries match it. I can't wait to see all the cool things that will be built on top of *elasticsearch* utilizing this feature!.
+
+h1. Date Histogram
+
+p. One of the more powerful features of elasticsearch are "facets":/guide/reference/api/search/facets, and one of my favorite facets is the "histogram":/guide/reference/api/search/facets/histogram-facet.html facet. Though, when using it on a @date@ type field, it lacks some important features.
+
+p. The "date_histogram":/guide/reference/api/search/facets/date-histogram-facet.html facets comes to solve and enhance the regular histogram faceting by allowing to bucket results by "uneven" intervals like months and years. And allow to provide a time zone that will control how "bucketing" of hits will be performed while the histogram is computed (note, you can't really do it on the client side).
+
+h1. Search Filter
+
+p. The new "filter":/guide/reference/api/search/filter.html element to the search API will now allow to do facet based navigation in a much simpler manner. The new element will filter out hits returned, but will *not* be applied to facet calculations (though each facet can have its own filters as well using the @facet_filter@ element). This allows for things like navigation by facets to be done in a much simpler manner, while controlling which facets are affected by it and which ones still work on the original user entered query.
+
+h1. Many More
+
+p. There are many more performance improvements, enhancements, features, and bug fixes, all listed in the "0.15 download page":/download/2011/02/18/0.15.0.html.
+
+-shay.banon
+ 
