@@ -25,7 +25,7 @@ p. The @cjk@ analyzer is built on top of @cjk@ tokenizer and @stop@ filter.
 
 h2. Czech Analyzer
 
-p. The @czech@ analyzer is built on top of @standard@ tokenizer, and @standard@, @lowercase@ and @stop@ filters. It comes with default @stopwords@ but they can be set.
+p. The @czech@ analyzer is built on top of @standard@ tokenizer, and @standard@, @lowercase@, @stop@ and @czech_stem@ filters. It comes with default @stopwords@ but they can be set.
 
 h2. Dutch Analyzer
 
