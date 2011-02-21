@@ -4,12 +4,11 @@ title: Snowball Analyzer
 cat: guide
 sidebar: reference_index_modules_analysis
 ---
-
 p. An analyzer of type @snowball@ that uses the "standard tokenizer":standard-tokenizer.html, with "standard filter":standard-tokenfilter.html, "lowercase filter":lowercase-tokenfilter.html, "stop filter":stop-tokenfilter.html, and "snowball filter":snowball-tokenfilter.html.
 
 p. The Snowball Analyzer is a stemming analyzer from Lucene that is originally based on the snowball project from "snowball.tartarus.org":http://snowball.tartarus.org.
 
-p. Sample usage:
+p. Sample usage: 
 
 <pre class="prettyprint">
 {
