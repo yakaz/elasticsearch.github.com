@@ -22,7 +22,7 @@ p. For example:
             "filter" : {
                 "my_snow" : {
                     "type" : "snowball",
-                    "name" : "Lovins"
+                    "language" : "Lovins"
                 }
             }
         }
