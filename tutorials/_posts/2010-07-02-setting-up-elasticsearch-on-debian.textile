@@ -24,7 +24,7 @@ h1. Install the latest version of ElasticSearch
 Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.org/download/ for the latest version of *elasticsearch*.
 
 <pre class="prettyprint">
-curl -O -L https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.14.1.zip
+curl -OL http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.0.zip
 unzip elasticsearch-* && rm elasticsearch-*.zip
 mv elasticsearch-* /usr/local/elasticsearch
 </pre>
