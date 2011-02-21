@@ -17,6 +17,8 @@ discovery:
     type: ec2
 </pre>
 
+p. You'll need to install the @cloud-aws@ plugin, by running @bin/plugin install cloud-aws@ before (re)starting elasticsearch.
+
 p. The following are a list of settings (prefixed with @discovery.ec2@) that can further control the discovery:
 
 |_. Setting |_. Description |
