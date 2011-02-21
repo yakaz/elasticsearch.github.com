@@ -8,7 +8,7 @@ sidebar: reference_index_modules_analysis
 
 p. An analyzer of type @snowball@ that uses the "standard tokenizer":standard-tokenizer.html, with "standard filter":standard-tokenfilter.html, "lowercase filter":lowercase-tokenfilter.html, "stop filter":stop-tokenfilter.html, and "snowball filter":snowball-tokenfilter.html.
 
-p. The Snowball Analyzer is a stemming analyzer from Lucene that is originally based on the snowball project from "snowball.tartarus.org":snowball.tartarus.org.
+p. The Snowball Analyzer is a stemming analyzer from Lucene that is originally based on the snowball project from "snowball.tartarus.org":http://snowball.tartarus.org.
 
 p. Sample usage:
 
@@ -45,11 +45,12 @@ index :
            my_analyzer: 
                 type: snowball
                 name: Swedish
-                stopwords: [och,det,att,i,en,jag,hon,som,han,på,den,med,var,sig,för,så,till,är,men,ett,om,hade,de,av,icke,mig,du,
-                henne,då,sin,nu,har,inte,hans,honom,skulle,hennes,där,min,man,ej,vid,kunde,något,från,ut,när,efter,upp,vi,dem,vara,
-                vad,över,än,dig,kan,sina,här,ha,mot,alla,under,någon,allt,mycket,sedan,ju,denna,själv,detta,åt,utan,varit,hur,ingen,
-                mitt,ni,bli,blev,oss,din,dessa,några,deras,blir,mina,samma,vilken,er,sådan,vår,blivit,dess,inom,mellan,sådant,varför,
-                varje,vilka,ditt,vem,vilket,sitta,sådana,vart,dina,vars,vårt,våra,ert,era,vilkas]
+                stopwords: [och,det,att,i,en,jag,hon,som,han,på,den,med,var,sig,för,så,till,är,men,ett,om,hade,
+                de,av,icke,mig,du,henne,då,sin,nu,har,inte,hans,honom,skulle,hennes,där,min,man,ej,vid,kunde,
+                något,från,ut,när,efter,upp,vi,dem,vara,vad,över,än,dig,kan,sina,här,ha,mot,alla,under,någon,allt,
+                mycket,sedan,ju,denna,själv,detta,åt,utan,varit,hur,ingen,mitt,ni,bli,blev,oss,din,dessa,några,
+                deras,blir,mina,samma,vilken,er,sådan,vår,blivit,dess,inom,mellan,sådant,varför,varje,vilka,ditt,
+                vem,vilket,sitta,sådana,vart,dina,vars,vårt,våra,ert,era,vilkas]
 </pre>
 
 
