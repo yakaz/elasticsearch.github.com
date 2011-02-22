@@ -11,14 +11,14 @@ These instructions work on linux, but can be easily adapated for other operating
 
 h2. Install the latest version of ElasticSearch
 
-Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.com/download/ for the latest version of ElasticSearch. (Currently version 0.12.0)
+Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.com/download/ for the latest version of ElasticSearch. (Currently version 0.15.0)
 
 Install it as follows:
 
 <pre>
-wget http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.12.0.zip
-unzip elasticsearch-0.12.0.zip
-mv elasticsearch-0.12.0 elasticsearch    # rename dir to ./elasticsearch
+wget http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.0.zip
+unzip elasticsearch-0.15.0.zip
+mv elasticsearch-0.15.0 elasticsearch    # rename dir to ./elasticsearch
 rm elasticsearch*.zip                    # tidy up
 </pre>
 
