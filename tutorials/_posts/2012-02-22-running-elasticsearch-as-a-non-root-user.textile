@@ -1,0 +1,33 @@
+---
+layout: tutorial
+title: Running ElasticSearch as a non-root-user
+cat: tutorials
+author: Clinton Gormley
+nick: clintongormley
+tutorial_desc: Running ElasticSearch as a non-root-user
+---
+
+To run ElasticSearch on as a non-root user (eg <code>elasticsearch</code>), you can follow the following steps.
+
+First, make sure that you have the service wrapper installed (see "Setting up ElasticSearch":/tutorials/2010/07/01/setting-up-elasticsearch.html ).
+
+<p>We assume that <code>$ES_HOME</code> is set to the ElasticSearch install path, eg:</p>
+<pre>    export ES_HOME=/opt/elasticsearch</pre>
+* Create the user:
+<pre>    useradd -d $ES_HOME elasticsearch</pre>
+* Open the service wrapper script in a text editor:
+<pre>    vi $ES_HOME/bin/service/elasticsearch</pre>
+** uncomment the line starting <code>RUN_AS_USER</code> and change it to: <code>  RUN_AS_USER=elasticsearch</code>
+** change the line starting <code>LOCKDIR</code> to: <code>  LOCKDIR=$ES_HOME/lock</code>
+
+* Create the lock dir:
+<pre>    mkdir $ES_HOME/lock</pre>
+* Change permissions on the ElasticSearch install dir: (Your gateway dir also needs to be writable by the <code>elasticsearch</code> user)
+<pre>    chown -R elasticsearch $ES_HOME</pre>
+* Edit <code>/etc/security/limits.conf</code> and add this line (this increases the number of files that the <code>elasticsearch</code> user can open):
+<pre>    elasticsearch     soft    nofile    32000</pre>
+* Install the service wrapper to <code>/etc/rc.d</code> (or <code>/etc/rc.d/init.d</code> depending on your distribution):
+<pre>   $ES_HOME/bin/service/elasticsearch -install</pre>
+* ElasticSearch is now set up to run as a service on startup, running under the user <code>elasticsearch</code>.  You can start and stop ElasticSearch using:
+** <code>/etc/rc.d/elasticsearch start</code>
+** <code>/etc/rc.d/elasticsearch stop</code>
