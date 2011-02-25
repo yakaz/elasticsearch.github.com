@@ -10,7 +10,7 @@ p. A query that match on any (configurable) of the provided terms. This is a sim
 <pre class="prettyprint lang-js">
 {
     "terms" : {
-        "tags" : [ "blue", "pill" ]
+        "tags" : [ "blue", "pill" ],
         "minimum_match" : 1
     }
 }
