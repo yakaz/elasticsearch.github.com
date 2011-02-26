@@ -6,3 +6,36 @@ download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
 download_type: source
 release_notes: true
 ---
+
+h2. Breaking changes:
+
+h2. New features:
+ * Search:
+ ** Terms Stats Facet ("#705":http://github.com/elasticsearch/elasticsearch/issues/705)
+ ** Add search type @scan@ allowing to efficiently scan large result set ("#707":http://github.com/elasticsearch/elasticsearch/issues/707)
+ ** Add search_type for @count@ to return count but still support facets ("#718":http://github.com/elasticsearch/elasticsearch/issues/718)
+
+h2. Enhancements:
+ * Attachment plugin: upgrade to Tika 0.9
+ * Add @http@ and @transport@ simplified host settings ("#706":http://github.com/elasticsearch/elasticsearch/issues/706)
+ * Get API: Allow to provide a script as a field ("#708":http://github.com/elasticsearch/elasticsearch/issues/708)
+ * Support for other exchange types and options in AMQP river ("#709":http://github.com/elasticsearch/elasticsearch/issues/709)
+ * Allow to register custom rivers under a custom type name (And not full class names) ("#712":http://github.com/elasticsearch/elasticsearch/issues/712)
+ * Node Stats: Add number of docs per node ("#713":http://github.com/elasticsearch/elasticsearch/issues/713)
+ * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
+ * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
+ * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
+ * Search: Allow to filter out docs based on a minimum score ("#719":http://github.com/elasticsearch/elasticsearch/issues/719)
+ * Index Filter Cache: Add @resident@ type, and @max_size@ to @soft@/@weak@ types ("#721":http://github.com/elasticsearch/elasticsearch/issues/721)
+ * Mapping: When _all is disabled, optimize to not gather all entries ("#722":http://github.com/elasticsearch/elasticsearch/issues/722)
+
+h2. Bug fixes:
+ * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
+ * River not recovered when using single node after shutdown ("#711":http://github.com/elasticsearch/elasticsearch/issues/711)
+ * Single node cluster comes up as red with local gateway ("#714":http://github.com/elasticsearch/elasticsearch/issues/714)
+ * Acknowledge problem for put mapping with multiple indices or all indices ("#720":http://github.com/elasticsearch/elasticsearch/issues/720)
+
+h2. Internal:
+ * upgrade to mvel 2.1.beta1
+ * upgrade to guava r08
+ * upgrade to aws sdk 1.1.7
