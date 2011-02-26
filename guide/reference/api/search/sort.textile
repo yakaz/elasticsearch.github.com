@@ -50,7 +50,7 @@ p. Allow to sort by @_geo_distance@. Here is an example:
     "sort" : [
         {
             "_geo_distance" : {
-                "pin.location" : [40, -70],
+                "pin.location" : [-70, 40],
                 "order" : "asc",
                 "unit" : "km"
             }
@@ -61,6 +61,92 @@ p. Allow to sort by @_geo_distance@. Here is an example:
     }
 }
 </pre>
+
+p. The following formats are supported in providing the coordinates:
+
+h2. Lat Lon as Properties
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        {
+            "_geo_distance" : {
+                "pin.location" : {
+                    "lat" : 40,
+                    "lon", -70
+                }
+                "order" : "asc",
+                "unit" : "km"
+            }
+        }
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+h2. Lat Lon as String
+
+p. Format in @lat,lon@.
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        {
+            "_geo_distance" : {
+                "pin.location" : "-70,40",
+                "order" : "asc",
+                "unit" : "km"
+            }
+        }
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+h2. Geohash
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        {
+            "_geo_distance" : {
+                "pin.location" : "drm3btev3e86",
+                "order" : "asc",
+                "unit" : "km"
+            }
+        }
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+h2. Lat Lon as Array
+
+p. Format in @[lon, lat]@, note, the order of lon/lat here in order to conform with "GeoJSON":http://geojson.org/.
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        {
+            "_geo_distance" : {
+                "pin.location" : [-70, 40],
+                "order" : "asc",
+                "unit" : "km"
+            }
+        }
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
 
 h1. Script Based Sorting
 
