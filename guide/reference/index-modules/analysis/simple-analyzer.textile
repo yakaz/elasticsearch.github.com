@@ -5,4 +5,4 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. An analyzer of type @simple@ that is built using a "Lower Case Tokenizer":../../tokenizer/lowercase.
+p. An analyzer of type @simple@ that is built using a "Lower Case Tokenizer":lowercase-tokenizer.html.
