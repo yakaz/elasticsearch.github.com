@@ -15,6 +15,7 @@ h2. New features:
 
 h2. Enhancements:
  * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
+ * Add @http@ and @transport@ simplified host settings ("#706":http://github.com/elasticsearch/elasticsearch/issues/706)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
  * Index Filter Cache: Add @resident@ type, and @max_size@ to @soft@/@weak@ types ("#721":http://github.com/elasticsearch/elasticsearch/issues/721)
