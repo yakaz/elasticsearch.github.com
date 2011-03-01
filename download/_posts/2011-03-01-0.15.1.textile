@@ -1,22 +1,19 @@
 ---
 layout: download
-version: master
-title: ElasticSearch Download - Master
-download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
-download_type: source
+cat: download
+version: 0.15.1
+title: 0.15.1
+download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.1.zip
+download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.1.tar.gz
+download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.15.1
 release_notes: true
 ---
 
 h2. Breaking changes:
 
 h2. New features:
- * Search:
- ** Terms Stats Facet ("#705":http://github.com/elasticsearch/elasticsearch/issues/705)
- ** Add search type @scan@ allowing to efficiently scan large result set ("#707":http://github.com/elasticsearch/elasticsearch/issues/707)
- ** Add search_type for @count@ to return count but still support facets ("#718":http://github.com/elasticsearch/elasticsearch/issues/718)
 
 h2. Enhancements:
- * Attachment plugin: upgrade to Tika 0.9
  * Add @http@ and @transport@ simplified host settings ("#706":http://github.com/elasticsearch/elasticsearch/issues/706)
  * Get API: Allow to provide a script as a field ("#708":http://github.com/elasticsearch/elasticsearch/issues/708)
  * Support for other exchange types and options in AMQP river ("#709":http://github.com/elasticsearch/elasticsearch/issues/709)
@@ -25,7 +22,6 @@ h2. Enhancements:
  * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
- * Search: Allow to filter out docs based on a minimum score ("#719":http://github.com/elasticsearch/elasticsearch/issues/719)
  * Index Filter Cache: Add @resident@ type, and @max_size@ to @soft@/@weak@ types ("#721":http://github.com/elasticsearch/elasticsearch/issues/721)
  * Mapping: When _all is disabled, optimize to not gather all entries ("#722":http://github.com/elasticsearch/elasticsearch/issues/722)
  * Zen Discovery: Rename `discovery.zen.initial_ping_timeout` to `discovery.zen.ping_timeout` (still support the old setting) ("#723":https://github.com/elasticsearch/elasticsearch/issues/723)
