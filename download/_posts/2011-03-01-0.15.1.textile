@@ -15,10 +15,6 @@ h2. New features:
 
 h2. Enhancements:
  * Add @http@ and @transport@ simplified host settings ("#706":http://github.com/elasticsearch/elasticsearch/issues/706)
- * Get API: Allow to provide a script as a field ("#708":http://github.com/elasticsearch/elasticsearch/issues/708)
- * Support for other exchange types and options in AMQP river ("#709":http://github.com/elasticsearch/elasticsearch/issues/709)
- * Allow to register custom rivers under a custom type name (And not full class names) ("#712":http://github.com/elasticsearch/elasticsearch/issues/712)
- * Node Stats: Add number of docs per node ("#713":http://github.com/elasticsearch/elasticsearch/issues/713)
  * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
