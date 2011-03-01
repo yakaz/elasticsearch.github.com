@@ -14,7 +14,6 @@ h2. Breaking changes:
 h2. New features:
 
 h2. Enhancements:
- * Add @http@ and @transport@ simplified host settings ("#706":http://github.com/elasticsearch/elasticsearch/issues/706)
  * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
@@ -31,6 +30,7 @@ h2. Bug fixes:
  * Acknowledge problem for put mapping with multiple indices or all indices ("#720":http://github.com/elasticsearch/elasticsearch/issues/720)
  * Percolate: Failure to percolate with specific query (when creating the _percolate index before the actual index) ("#725":https://github.com/elasticsearch/elasticsearch/issues/725)
  * Ids with # in them will cause search failures, also, fail when # is used in a type name ("#728":https://github.com/elasticsearch/elasticsearch/issues/728)
+ * Date Histogram Facet: NPE if using "1w" interval ("#727":https://github.com/elasticsearch/elasticsearch/issues/727)
 
 h2. Internal:
  * upgrade to mvel 2.1.beta1
