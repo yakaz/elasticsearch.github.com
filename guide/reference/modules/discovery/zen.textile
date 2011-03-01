@@ -14,7 +14,7 @@ p. It is separated into several sub modules, which are explained below:
 
 h1. Ping
 
-p. This is the initial process when a node starts up and tries to discovery other nodes. There is support for both multicast and unicast based discovery (can be used in conjunction as well).
+p. This is the process where a node uses the discovery mechanisms to find other nodes. There is support for both multicast and unicast based discovery (can be used in conjunction as well).
 
 h2. Multicast
 
@@ -39,7 +39,7 @@ p. The unicast discovery uses the "transport":../../transport module to perform 
 
 h1. Master Election
 
-p. As part of the initial ping process a master of the cluster is either elected or joined to. This is done automatically. The @discovery.zen.initial_ping_timeout@ (which defaults to @3s@) allows to configure the election to handle cases of slow or congested networks (higher values assure less chance of failure).
+p. As part of the initial ping process a master of the cluster is either elected or joined to. This is done automatically. The @discovery.zen.ping_timeout@ (which defaults to @3s@) allows to configure the election to handle cases of slow or congested networks (higher values assure less chance of failure). Note, this setting was changed from 0.15.1 onwards, prior it was called @discovery.zen.initial_ping_timeout@.
 
 p. Nodes can be excluded from becoming a master by setting @zen.master@ to @false@. Note, once a node is a client node (@node.client@ set to @true@), it will not be allowed to become a master (@zen.master@ is automatically set to @false@).
 
