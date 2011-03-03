@@ -21,4 +21,4 @@ p. Some filters already produce a result that is easily cacheable, and the diffe
 
 p. Other filters, usually already working with the field data loaded into memory, are not cached by default. Those filter are already very fast, and the process of caching them requires extra processing in order to allow the filter result to be used with different queries than the one executed. This filters, including the geo filters, "numeric_range":numeric-range-filter.html, and "script":script-filter.html are not cached by default.
 
-p. The last type of filters are filters that work with other filters. The "and":and-filter.html, "not":not-filter.html, and "or"or-filter.html are not cached as they basically just manipulate the internal filters.
+p. The last type of filters are filters that work with other filters. The "and":and-filter.html, "not":not-filter.html, and "or":or-filter.html are not cached as they basically just manipulate the internal filters.
