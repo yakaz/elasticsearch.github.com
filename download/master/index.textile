@@ -22,15 +22,22 @@ h2. Enhancements:
  * Support for other exchange types and options in AMQP river ("#709":http://github.com/elasticsearch/elasticsearch/issues/709)
  * Allow to register custom rivers under a custom type name (And not full class names) ("#712":http://github.com/elasticsearch/elasticsearch/issues/712)
  * Node Stats: Add number of docs per node ("#713":http://github.com/elasticsearch/elasticsearch/issues/713)
- * Twitter river: "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
+ * Twitter river:
+ ** "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
+ ** Automatically reconnect when disconnected from twitter stream ("#735":http://github.com/elasticsearch/elasticsearch/issues/735)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
- * Search: Allow to filter out docs based on a minimum score ("#719":http://github.com/elasticsearch/elasticsearch/issues/719)
+ * Search:
+ ** Allow to filter out docs based on a minimum score ("#719":http://github.com/elasticsearch/elasticsearch/issues/719)
+ ** Allow to use has_child filter in facets ("#730":http://github.com/elasticsearch/elasticsearch/issues/730)
  * Index Filter Cache: Add @resident@ type, and @max_size@ to @soft@/@weak@ types ("#721":http://github.com/elasticsearch/elasticsearch/issues/721)
- * Mapping: When _all is disabled, optimize to not gather all entries ("#722":http://github.com/elasticsearch/elasticsearch/issues/722)
+ * Mapping: When @_all@ is disabled, optimize to not gather all entries ("#722":http://github.com/elasticsearch/elasticsearch/issues/722)
  * Zen Discovery: Rename `discovery.zen.initial_ping_timeout` to `discovery.zen.ping_timeout` (still support the old setting) ("#723":https://github.com/elasticsearch/elasticsearch/issues/723)
  * Bulk API: Improve memory usage when executing large bulk requests ("724":https://github.com/elasticsearch/elasticsearch/issues/724)
  * Peer Recovery: Batch translog based operation recovery based on size and not just number of operations ("#729":https://github.com/elasticsearch/elasticsearch/issues/729)
+ * Don't "double" cache a facet filter / query facet ("#734":http://github.com/elasticsearch/elasticsearch/issues/734)
+ * Delete API: Allow to set @_parent@ on it (will simply set the routing value) ("#742":http://github.com/elasticsearch/elasticsearch/issues/742)
+ * Query DSL: flt_field does not allow to set @min_similarity@ and @prefix_length@ ("#744":http://github.com/elasticsearch/elasticsearch/issues/744)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
@@ -39,8 +46,12 @@ h2. Bug fixes:
  * Acknowledge problem for put mapping with multiple indices or all indices ("#720":http://github.com/elasticsearch/elasticsearch/issues/720)
  * Percolate: Failure to percolate with specific query (when creating the _percolate index before the actual index) ("#725":https://github.com/elasticsearch/elasticsearch/issues/725)
  * Ids with # in them will cause search failures, also, fail when # is used in a type name ("#728":https://github.com/elasticsearch/elasticsearch/issues/728)
+ * Date Histogram Facet: NPE if using "1w" interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
+ * Prefix inside a dis_max / bool query broken ("#732":http://github.com/elasticsearch/elasticsearch/issues/732)
+ * Searching while an index is being allocated and no active shards exists within a "shard replication group" can cause search "misses" ("#736":http://github.com/elasticsearch/elasticsearch/issues/736)
+ * All Field: All field can fail to analyze input data (rare cases) ("#743":http://github.com/elasticsearch/elasticsearch/issues/743)
 
 h2. Internal:
- * upgrade to mvel 2.1.beta1
+ * upgrade to mvel 2.1.beta2
  * upgrade to guava r08
  * upgrade to aws sdk 1.1.7
