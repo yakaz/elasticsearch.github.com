@@ -1,0 +1,29 @@
+---
+layout: download
+cat: download
+version: 0.15.2
+title: 0.15.2
+download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.2.zip
+download_nix_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.2.tar.gz
+download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.15.2
+release_notes: true
+---
+
+h2. Breaking changes:
+
+h2. New features:
+
+h2. Enhancements:
+* Don't "double" cache a facet filter / query facet ("#734":http://github.com/elasticsearch/elasticsearch/issues/734)
+* Delete API: Allow to set @_parent@ on it (will simply set the routing value) ("#742":http://github.com/elasticsearch/elasticsearch/issues/742)
+* Query DSL: flt_field does not allow to set @min_similarity@ and @prefix_length@ ("#744":http://github.com/elasticsearch/elasticsearch/issues/744)
+* Refresh getting called without really needed to refresh ("#749":http://github.com/elasticsearch/elasticsearch/issues/749)
+
+h2. Bug fixes:
+* Date Histogram Facet: NPE if using "1w" interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
+* Prefix inside a dis_max / bool query broken ("#732":http://github.com/elasticsearch/elasticsearch/issues/732)
+* Searching while an index is being allocated and no active shards exists within a "shard replication group" can cause search "misses" ("#736":http://github.com/elasticsearch/elasticsearch/issues/736)
+* All Field: All field can fail to analyze input data (rare cases) ("#743":http://github.com/elasticsearch/elasticsearch/issues/743)
+
+h2. Internal:
+ * upgrade to mvel 2.1.beta2
