@@ -107,6 +107,8 @@ p. The terms API allows to define regex expression that will control which terms
 }
 </pre>
 
+p. Check "Java Pattern API":http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary for more details about @regex_flags@ options.
+
 h1. Term Scripts
 
 p. Allow to define a script for terms facet to process the actual term that will be used in the term facet collection, and also optionally control its inclusion or not.

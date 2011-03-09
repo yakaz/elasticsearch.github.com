@@ -13,3 +13,5 @@ p. The following are settings that can be set for a @pattern@ analyzer type:
 |@lowercase@|Should terms be lowercased or not. Defaults to @true@.|
 |@pattern@|The regular expression pattern, defaults to @\W+@.|
 |@flags@|The regular expression flags.|
+
+p. Check "Java Pattern API":http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary for more details about @flags@ options.
