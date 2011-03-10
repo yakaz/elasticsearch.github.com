@@ -9,7 +9,7 @@ p. The search API allows to execute a search query and get back search hits that
 
 h1. Routing
 
-p. When executing a search, it will be broadcasted to all the index/indices shards (round robin between replicas). Which shards will be searched on can be controlled by providing the @routing@ parameter. For example, when indexing tweets, the routing value can be the user name:  
+p. When executing a search, it will be broadcasted to all the index/indices shards (round robin between replicas). Which shards will be searched on can be controlled by providing the @routing@ parameter. For example, when indexing tweets, the routing value can be the user name:
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
@@ -24,14 +24,16 @@ p. In such a case, if we want to search only on the tweets for a specific user, 
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '{
-    "filtered" : {
-        "query" : {
-            "query_string" : {
-                "query" : "some query string here"
+    "query": {
+        "filtered" : {
+            "query" : {
+                "query_string" : {
+                    "query" : "some query string here"
+                }
+            },
+            "filter" : {
+                "term" : { "user" : "kimchy" }
             }
-        },
-        "filter" : {
-            "term" : { "user" : "kimchy" }
         }
     }
 }
