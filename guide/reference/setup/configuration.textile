@@ -76,7 +76,7 @@ p. This means that every index that gets created on the specific node started wi
 $ elasticsearch -f -Des.index.store.type=memory
 </pre>
 
-p. All of the index level configuration can be found within each "index module":../../modules/index.
+p. All of the index level configuration can be found within each "index module":/guide/reference/index-modules.
 
 h1. Logging
 
