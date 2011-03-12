@@ -11,7 +11,7 @@ p. The clear cache API allows to clear either all caches or specific cached asso
 $ curl -XPOST 'http://localhost:9200/twitter/_cache/clear'
 </pre>
 
-p. The API, by default, will clear all cached. Specific caches can cleaned explicitly by setting @filter@, @field_data@ to @true@.
+p. The API, by default, will clear all cached. Specific caches can cleaned explicitly by setting @filter@, @field_data@ or @bloom@ to @true@.
 
 h1. Multi Index
 
