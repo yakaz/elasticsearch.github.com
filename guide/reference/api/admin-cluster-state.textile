@@ -19,6 +19,7 @@ p. It is possible to filter the cluster state response using the following REST 
 |filter_nodes| Set to @true@ to filter out the @nodes@ part of the response. |
 |filter_routing_table| Set to @true@ to filter out the @routing_table@ part of the response.  |
 |filter_metadata| Set to @true@ to filter out the @metadata@ part of the response. |
+|filter_blocks| Set to @true@ to filter out the @blocks@ part of the response. |
 |filter_indices| When not filtering metadata, a comma separated list of indices to include in the response. |
 
 p. Example follows:
