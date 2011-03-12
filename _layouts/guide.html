@@ -106,7 +106,7 @@ layout: default
     {% if page.sidebar == 'reference_index_modules' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/index-modules">Index Modules</a></h3>
-    
+
     <ul>
         <li><a href="/guide/reference/index-modules/analysis">Analysis</a></li>
         <li><a href="/guide/reference/index-modules/merge.html">Merge</a></li>
@@ -121,7 +121,7 @@ layout: default
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/index-modules">Index Modules</a></h3>
     <h3><a href="/guide/reference/index-modules/analysis">Analysis</a></h3>
-    
+
     <h3>Analyzers</h3>
     <ul>
         <li><a href="/guide/reference/index-modules/analysis/standard-analyzer.html">Standard</a></li>
@@ -190,7 +190,7 @@ layout: default
     {% if page.sidebar == 'reference_mapping' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/mapping">Mapping</a></h3>
-    
+
     <h3>Fields</h3>
     <ul>
         <li><a href="/guide/reference/mapping/id-field.html">_id</a></li>
@@ -200,6 +200,7 @@ layout: default
         <li><a href="/guide/reference/mapping/analyzer-field.html">_analyzer</a></li>
         <li><a href="/guide/reference/mapping/boost-field.html">_boost</a></li>
         <li><a href="/guide/reference/mapping/parent-field.html">_parent</a></li>
+        <li><a href="/guide/reference/mapping/routing-field.html">_routing</a></li>
         <li><a href="/guide/reference/mapping/index-field.html">_index</a></li>
     </ul>
 
@@ -221,7 +222,7 @@ layout: default
         <li><a href="/guide/reference/mapping/conf-mappings.html">Node Config</a></li>
     </ul>
     {% endif %}
-    
+
     {% if page.sidebar == 'reference_modules' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/modules">Modules</a></h3>
@@ -240,7 +241,7 @@ layout: default
         <li><a href="/guide/reference/modules/thrift.html">Thrift</a></li>
     </ul>
     {% endif %}
-    
+
     {% if page.sidebar == 'reference_modules_discovery' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/modules">Modules</a></h3>
@@ -262,11 +263,11 @@ layout: default
         <li><a href="/guide/reference/modules/gateway/s3.html">S3</a></li>
     </ul>
     {% endif %}
-    
+
     {% if page.sidebar == 'reference_query_dsl' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/query-dsl">Query DSL</a></h3>
-    
+
     <h3>Queries</h3>
     <ul>
         <li><a href="/guide/reference/query-dsl/bool-query.html">bool</a></li>
@@ -319,7 +320,7 @@ layout: default
         <li><a href="/guide/reference/query-dsl/terms-filter.html">terms</a></li>
     </ul>
     {% endif %}
-    
+
     {% if page.sidebar == 'reference_river' %}
     <h3><a href="/guide">Guide</a></h3>
     <h3><a href="/guide/reference/river">River</a></h3>
@@ -340,7 +341,7 @@ layout: default
         <li><a href="/guide/reference/setup/dir-layout.html">Directory Layout</a></li>
     </ul>
     {% endif %}
-    
+
 </div>
 <div class="guide_content">
     {{ content }}
