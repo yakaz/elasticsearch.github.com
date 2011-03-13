@@ -10,7 +10,7 @@ p. Allows to add one or more sort on specific fields. Each sort can be reversed 
 <pre class="prettyprint lang-js">
 {
     "sort" : [
-        { "post_date" : {"reverse" : true} },
+        { "post_date" : {"order" : "asc"} },
         "user",
         { "name" : "desc" },
         { "age" : "desc" },
@@ -27,7 +27,7 @@ p. If the JSON parser support ordering without an array, the sort request can al
 <pre class="prettyprint lang-js">
 {
     "sort" : {
-        "post_date" : {"reverse" : true},
+        { "post_date" : {"order" : "asc"} },
         "user" : { },
         "_score" : { }
     },
