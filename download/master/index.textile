@@ -8,12 +8,19 @@ release_notes: true
 ---
 
 h2. Breaking changes:
+ * Node Stats API: Change the structure of the response (more structured) ("#746":http://github.com/elasticsearch/elasticsearch/issues/746)
+ * Percolator: Failures when using docs where fields repeat, such as arrays ("#763":http://github.com/elasticsearch/elasticsearch/issues/763)
+ * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
 
 h2. New features:
  * Search:
  ** Terms Stats Facet ("#705":http://github.com/elasticsearch/elasticsearch/issues/705)
  ** Add search type @scan@ allowing to efficiently scan large result set ("#707":http://github.com/elasticsearch/elasticsearch/issues/707)
  ** Add search_type for @count@ to return count but still support facets ("#718":http://github.com/elasticsearch/elasticsearch/issues/718)
+ * Scripts: Allow to register native scripts (Java) for better script execution performance. ("#752":http://github.com/elasticsearch/elasticsearch/issues/752)
+ * Update Settings: Allow to dynamically change refresh_interval and merge policy settings ("#758":http://github.com/elasticsearch/elasticsearch/issues/758)
+ * Versioning: Add a new @version_type@ parameter, with a new type - @external@ ("#776":http://github.com/elasticsearch/elasticsearch/issues/776)
+ * Sort: Support "missing" specific handling, include @_last@, @_first@, and custom value (for numeric values) ("#772":http://github.com/elasticsearch/elasticsearch/issues/772)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -25,6 +32,7 @@ h2. Enhancements:
  * Twitter river:
  ** "user.screen_name" should not be analyzed ("#715":http://github.com/elasticsearch/elasticsearch/issues/715)
  ** Automatically reconnect when disconnected from twitter stream ("#735":http://github.com/elasticsearch/elasticsearch/issues/735)
+ ** Oauth support ("#757":http://github.com/elasticsearch/elasticsearch/issues/757)
  * Clear Cache API: Add specific cache clear for @id@, @filter@, @field_data@, @bloom@ ("#716":http://github.com/elasticsearch/elasticsearch/issues/716)
  * Improve from hits pagination (duplicates) ("#717":http://github.com/elasticsearch/elasticsearch/issues/717)
  * Search:
@@ -32,12 +40,21 @@ h2. Enhancements:
  ** Allow to use has_child filter in facets ("#730":http://github.com/elasticsearch/elasticsearch/issues/730)
  * Index Filter Cache: Add @resident@ type, and @max_size@ to @soft@/@weak@ types ("#721":http://github.com/elasticsearch/elasticsearch/issues/721)
  * Mapping: When @_all@ is disabled, optimize to not gather all entries ("#722":http://github.com/elasticsearch/elasticsearch/issues/722)
- * Zen Discovery: Rename `discovery.zen.initial_ping_timeout` to `discovery.zen.ping_timeout` (still support the old setting) ("#723":https://github.com/elasticsearch/elasticsearch/issues/723)
+ * Zen Discovery: Rename @discovery.zen.initial_ping_timeout@ to @discovery.zen.ping_timeout@ (still support the old setting) ("#723":https://github.com/elasticsearch/elasticsearch/issues/723)
  * Bulk API: Improve memory usage when executing large bulk requests ("724":https://github.com/elasticsearch/elasticsearch/issues/724)
  * Peer Recovery: Batch translog based operation recovery based on size and not just number of operations ("#729":https://github.com/elasticsearch/elasticsearch/issues/729)
  * Don't "double" cache a facet filter / query facet ("#734":http://github.com/elasticsearch/elasticsearch/issues/734)
  * Delete API: Allow to set @_parent@ on it (will simply set the routing value) ("#742":http://github.com/elasticsearch/elasticsearch/issues/742)
  * Query DSL: flt_field does not allow to set @min_similarity@ and @prefix_length@ ("#744":http://github.com/elasticsearch/elasticsearch/issues/744)
+ * Indices Status / Node Stats: Add (Lucene) index merge stats ("#745":http://github.com/elasticsearch/elasticsearch/issues/745)
+ * Internal: Improve checksum process by bulk writing them into a single file instead of checksum file per index file ("#747":http://github.com/elasticsearch/elasticsearch/issues/747)
+ * Logging: Add merge level logging ("#755":http://github.com/elasticsearch/elasticsearch/issues/755)
+ * Mvel Script: add more random options, and optimize random ("#759":http://github.com/elasticsearch/elasticsearch/issues/759)
+ * Update Settings:
+ ** Allow to dynamically change @index.term_index_interval@ and @index.term_index_divisor@ ("#762":http://github.com/elasticsearch/elasticsearch/issues/762)
+ ** Allow to dynamically update @index.translog@ settings ("#765":http://github.com/elasticsearch/elasticsearch/issues/765)
+ * Add @max_shard_index_buffer_size@ to control the upper limit of a shard indexing buffer size (defaults to @512mb@) ("#773":http://github.com/elasticsearch/elasticsearch/issues/773)
+ * Support true|false for the @store@ parameter in mappings ("#775":http://github.com/elasticsearch/elasticsearch/issues/775)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
@@ -46,7 +63,7 @@ h2. Bug fixes:
  * Acknowledge problem for put mapping with multiple indices or all indices ("#720":http://github.com/elasticsearch/elasticsearch/issues/720)
  * Percolate: Failure to percolate with specific query (when creating the _percolate index before the actual index) ("#725":https://github.com/elasticsearch/elasticsearch/issues/725)
  * Ids with # in them will cause search failures, also, fail when # is used in a type name ("#728":https://github.com/elasticsearch/elasticsearch/issues/728)
- * Date Histogram Facet: NPE if using "1w" interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
+ * Date Histogram Facet: NPE if using @1w@ interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
  * Prefix inside a dis_max / bool query broken ("#732":http://github.com/elasticsearch/elasticsearch/issues/732)
  * Searching while an index is being allocated and no active shards exists within a "shard replication group" can cause search "misses" ("#736":http://github.com/elasticsearch/elasticsearch/issues/736)
  * All Field: All field can fail to analyze input data (rare cases) ("#743":http://github.com/elasticsearch/elasticsearch/issues/743)
@@ -55,3 +72,5 @@ h2. Internal:
  * upgrade to mvel 2.1.beta2
  * upgrade to guava r08
  * upgrade to aws sdk 1.1.7
+ * upgrade to jackson 1.7.4
+ * upgrade to guice 3 rc3
