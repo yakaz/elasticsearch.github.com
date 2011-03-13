@@ -85,7 +85,7 @@ curl -XPUT 'localhost:9200/twitter/tweet/1?version=2&pretty=true' -d '{
 }'
 </pre>
 
-p. What we would get now is a conflict, with the HTTP error code of @407@ and a response:
+p. What we would get now is a conflict, with the HTTP error code of @409@ and a response:
 
 <pre class="prettyprint">
 {
@@ -105,7 +105,7 @@ curl -XPUT 'localhost:9200/twitter/tweet/1?op_type=create&pretty=true' -d '{
 }'
 </pre>
 
-p. Now, we would get an error that the document already exists, with an HTTP response code of @407@.
+p. Now, we would get an error that the document already exists, with an HTTP response code of @409@.
 
 <pre class="prettyprint">
 {
