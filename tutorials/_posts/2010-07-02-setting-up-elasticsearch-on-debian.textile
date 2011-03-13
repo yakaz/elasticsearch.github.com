@@ -2,8 +2,8 @@
 layout: tutorial
 title: Setting up elasticsearch on Debian
 cat: tutorials
-author: 
-nick: 
+author:
+nick:
 tutorial_desc: Setting up elasticsearch on Debian
 ---
 
@@ -24,7 +24,7 @@ h1. Install the latest version of ElasticSearch
 Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.org/download/ for the latest version of *elasticsearch*.
 
 <pre class="prettyprint">
-curl -OL http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.0.zip
+curl -OL http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.2.zip
 unzip elasticsearch-* && rm elasticsearch-*.zip
 mv elasticsearch-* /usr/local/elasticsearch
 </pre>
@@ -66,34 +66,34 @@ set -e
 
 case "$1" in
   start)
-	echo -n "Starting $DESC: "
-	mkdir -p $LOG_DIR $DATA_DIR $WORK_DIR
-	if start-stop-daemon --start --pidfile $PID_FILE --startas $DAEMON -- $DAEMON_OPTS
-	then
-		echo "started."
-	else
-		echo "failed."
-	fi
-	;;
+    echo -n "Starting $DESC: "
+    mkdir -p $LOG_DIR $DATA_DIR $WORK_DIR
+    if start-stop-daemon --start --pidfile $PID_FILE --startas $DAEMON -- $DAEMON_OPTS
+    then
+        echo "started."
+    else
+        echo "failed."
+    fi
+    ;;
   stop)
-	echo -n "Stopping $DESC: "
-	if start-stop-daemon --stop --pidfile $PID_FILE
-	then
-		echo "stopped."
-	else
-		echo "failed."
-	fi
-	;;
+    echo -n "Stopping $DESC: "
+    if start-stop-daemon --stop --pidfile $PID_FILE
+    then
+        echo "stopped."
+    else
+        echo "failed."
+    fi
+    ;;
   restart|force-reload)
-	${0} stop
-	sleep 0.5
-	${0} start
-	;;
+    ${0} stop
+    sleep 0.5
+    ${0} start
+    ;;
   *)
-	N=/etc/init.d/$NAME
-	echo "Usage: $N {start|stop|restart|force-reload}" >&2
-	exit 1
-	;;
+    N=/etc/init.d/$NAME
+    echo "Usage: $N {start|stop|restart|force-reload}" >&2
+    exit 1
+    ;;
 esac
 
 exit 0
