@@ -9,8 +9,8 @@ p. A query that uses a query parser in order to parse its content. Here is an ex
 
 <pre class="prettyprint lang-js">
 {
-    "query_string" : { 
-        "default_field" : "content", 
+    "query_string" : {
+        "default_field" : "content",
         "query" : "this AND that OR thus"
     }
 }
@@ -37,8 +37,8 @@ p. The @query_string@ query can also run against multiple fields. The idea of ru
 
 <pre class="prettyprint lang-js">
 {
-    "query_string" : { 
-        "fields" : ["content", "name^5"], 
+    "query_string" : {
+        "fields" : ["content", "name^5"],
         "query" : "this AND that OR thus",
         "use_dis_max" : true
     }
@@ -55,15 +55,15 @@ p. The fields parameter can also include pattern based field names, allowing to 
 
 <pre class="prettyprint lang-js">
 {
-    "query_string" : { 
-        "fields" : ["content", "name.*^5"], 
+    "query_string" : {
+        "fields" : ["content", "name.*^5"],
         "query" : "this AND that OR thus",
         "use_dis_max" : true
     }
 }
 </pre>
 
-h1. Syntax Extension
+h1(#Syntax_Extension). Syntax Extension
 
 p. There are several syntax extensions to the Lucene query language.
 
