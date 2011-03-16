@@ -73,7 +73,7 @@ network:
                     OR  _en0_           # IP address of the first ethernet interface
 </pre>
 
-See "Node network settings":/guide/refrence/modules/network.html for more.
+See "Node network settings":/guide/reference/modules/network.html for more.
 
 h2. Configuring service wrapper
 
@@ -87,7 +87,7 @@ set.default.ES_MIN_MEM=256
 set.default.ES_MAX_MEM=1024
 </pre>
 
-Also, see [[Running ElasticSearch as a non-root user]]
+Also, see "Running ElasticSearch as a non-root user":/tutorials/2011/02/22/running-elasticsearch-as-a-non-root-user.html
 
 h2. Starting and stopping ElasticSearch
 
