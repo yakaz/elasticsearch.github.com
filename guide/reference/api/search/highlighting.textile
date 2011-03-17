@@ -22,7 +22,7 @@ p. In the above case, the @content@ field will be highlighted for each search hi
 
 p. In order to perform highlighting, the actual content of the field is required. If the field in question is stored (has @store@ set to @yes@ in the mapping), it will be used, otherwise, the actual @_source@ will be loaded and the relevant field will be extracted from it.
 
-p. If no @term_vector@ information is provided (by setting it to @with_positions_offset@ in the mapping), then the plain highlighter will be used. If it is provided, then the fast vector highlighter will be used. When term vectors are available, highlighting will be performed faster at the cost of bigger index size.
+p. If no @term_vector@ information is provided (by setting it to @with_positions_offsets@ in the mapping), then the plain highlighter will be used. If it is provided, then the fast vector highlighter will be used. When term vectors are available, highlighting will be performed faster at the cost of bigger index size.
 
 p. Here is an example of setting the @content@ field to allow for highlighting on it (this will cause the index to be bigger):
 
