@@ -18,7 +18,7 @@ Using this feature, it becomes easy to integrate various content stores with Ela
 
 h1. Quick Steps
 
-* [[Setup ElasticSearch|Setting up ElasticSearch]]
+* "Setting up ElasticSearch":/tutorials/2010/07/01/setting-up-elasticsearch.html
 * "Setup CouchDB":http://wiki.apache.org/couchdb/Installation
 * Create a CouchDB database (named my_couch_db) for indexing (or use an existing one)
 
@@ -96,7 +96,7 @@ to keep itself synchronized with the couchdb database.
 
 h3. Configuration
 
-Detailed documentation is available at : [[http://www.elasticsearch.com/docs/elasticsearch/river/couchdb/]]
+Detailed documentation is available at : "http://www.elasticsearch.org/guide/reference/river/couchdb.html":http://www.elasticsearch.org/guide/reference/river/couchdb.html
 
 In the quick how-to, we created a simple river. Let us see what those config parameters mean.
 
