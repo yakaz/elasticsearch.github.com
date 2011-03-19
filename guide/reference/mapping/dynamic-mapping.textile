@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. Default mappings allow to automatically apply generic mapping definition to types that do not have mapping pre defined. This is mainly done thanks to the fact that the "object mapping":object_type.html and namely the "root object mapping":root_object_type.html allow for schema-less dynamic addition of unmapped fields.
+p. Default mappings allow to automatically apply generic mapping definition to types that do not have mapping pre defined. This is mainly done thanks to the fact that the "object mapping":object-type.html and namely the "root object mapping":root-object-type.html allow for schema-less dynamic addition of unmapped fields.
 
 p. The default mapping definition is plain mapping definition that is embedded within the distribution:
 
