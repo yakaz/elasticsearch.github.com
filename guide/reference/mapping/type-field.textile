@@ -5,9 +5,9 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. Each document indexed is associated with an id and a type. The type, when indexing, is automatically indexed into an @_type@ field. By default, the @_type@ field is indexed (but *not* analyzed) and not stored. This means that the @_type@ field can be used to query against it.
+p. Each document indexed is associated with an id and a type. The type, when indexing, is automatically indexed into a @_type@ field. By default, the @_type@ field is indexed (but *not* analyzed) and not stored. This means that the @_type@ field can be queried.
 
-p. The @_type@ field allows to store it as well, for example:
+p. The @_type@ field can be stored as well, for example:
 
 <pre class="prettyprint lang-js">
 {
