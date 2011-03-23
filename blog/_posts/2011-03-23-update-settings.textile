@@ -1,0 +1,44 @@
+---
+layout: blogpost
+title: Update Settings
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. When using *elasticsearch*, many times the initial usage of an index in the cluster is bulk indexing data into it, and then moving into a more "streamlined" operations that are applied in realtime against it. When doing something like bulk indexing, changing the default settings of the index can improve the speed at which documents are indexed, but, those settings then do not really apply for the case where we want to do real time indexing of data.
+
+p. Some of those settings include @index.refresh_interval@, which defaults to @1s@. Setting this value to be higher can improve indexing speed. Other settings include low level Lucene settings such as @index.merge.policy.merge_factor@.
+
+p. In the upcoming 0.16 version (and already in master), there has been a lot of work going into being able to update a subset of index level settings in real time to improve that. It uses the same update settings API already exposed that allowed to change only the @index.number_of_replicas@.
+
+p. For example, lets say we are going to do some bulk indexing into an index, we can simply change the relevant index settings to the following:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/test/_settings -d '{
+    "index" : {
+        "refresh_interval" : "-1",
+        "merge.policy.merge_factor" : 30
+    }
+}'
+</pre>
+
+p. The above will disable refreshing of the index completely, and change the merge factor to be 30. Once the bulk loading is done, we can get back to the default settings:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/test/_settings -d '{
+    "index" : {
+        "refresh_interval" : "1s",
+        "merge.policy.merge_factor" : 10
+    }
+}'
+</pre>
+
+p. This makes *elasticsearch* even more elastic, allowing to munge it to adapt to what is currently required from it. The following are a list of issues listing the currently updateable settings:
+
+* "762":https://github.com/elasticsearch/elasticsearch/issues/762
+* "765":https://github.com/elasticsearch/elasticsearch/issues/765
+* "778":https://github.com/elasticsearch/elasticsearch/issues/758
+* "799":https://github.com/elasticsearch/elasticsearch/issues/799
+
+p. If you are missing some settings, ping the mailing list and we can see if they can also be updated dynamically.
