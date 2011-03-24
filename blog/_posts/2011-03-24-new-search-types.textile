@@ -1,0 +1,67 @@
+---
+layout: blogpost
+title: New Search Types
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* has had the ability to control the "search type":/guide/reference/api/search/search-type.html since its inception. It includes the ability to control how to execute the "query" and "fetch" phases of a distributed search execution, as well as the ability to compute distributed frequencies across shards (the "dfs" phase).
+
+p. Two things that many users have been asking for is the ability to easily iterate over a very large result set as fast as possible, and the ability to just count results (possibly with facets) without actually fetching any hits back. Both features are now supported as new search types.
+
+h1. count
+
+p. The first is the @count@ search type. It allows to get back the total number of hits matching a query, with the ability to have facets configured in an optimized (implementation wise and performance wise) manner. For example:
+
+<pre class="prettyprint">
+curl -XGET 'http://localhost:9200/twitter/tweet/_search?search_type=count' -d '{
+    "query": {
+        "filtered" : {
+            "query" : {
+                "query_string" : {
+                    "query" : "some query string here"
+                }
+            },
+            "filter" : {
+                "term" : { "user" : "kimchy" }
+            }
+        }
+    }
+}
+'
+</pre>
+
+p. The result will not include any hits, just the @total_hits@ and optional facets results.
+
+h1. scan
+
+p. The new @scan@ type allows to scroll a very large result set in an optimized manner. When scrolling large result set using one of the other search types, there is an overhead (that increases the more we scroll "into" the result set) that comes from the fact that sorting needs to be computed (either by score, or custom). The @scan@ type does no sorting, allowing it to optimize the scrolling process. It uses the same scroll mechanism when using other search types.
+
+p. The initial search execution bootstraps the scanning process:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/_search?search_type=scan&scroll=10m&size=50' -d '
+{
+    "query" : {
+        "match_all" : {}
+    }
+}
+'
+</pre>
+
+p. The @scroll@ parameter indicates two things, the fact that we wish to scroll further into the result set, and the timeout value for maintaing the scroll "open" (the timeout value applies per request, not globally across the scroll process). 
+
+p. The @size@ parameter controls how many hits we want to get back. Note, the actual number of hits will be the the size provided times the number of shards, which is done in order to further optimize the scrolling process.
+
+p. The result of the search request is a @scroll_id@. The @scroll_id@ should then be used as a parameter to the next search request:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/_search/scroll?scroll=10m' -d 'c2NhbjsxOjBLMzdpWEtqU2IyZHlmVURPeFJOZnc7MzowSzM3aVhLalNiMmR5ZlVET3hSTmZ3OzU6MEszN2lYS2pTYjJkeWZVRE94Uk5mdzsyOjBLMzdpWEtqU2IyZHlmVURPeFJOZnc7NDowSzM3aVhLalNiMmR5ZlVET3hSTmZ3Ow=='
+</pre>
+
+p. The results now will include hits, and another @scroll_id@, which should then be used as the parameter to the next scroll request. Also, the @scroll@ parameter needs to be provided again in order to indicate we wish to continue the scrolling process.
+
+p. The "exit" point from the scrolling process is when no hits are returned back.
+
+-shay.banon
