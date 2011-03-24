@@ -31,4 +31,4 @@ p. All REST APIs accept the @case@ parameter. When set to @camelCase@, all field
 
 h2. JSONP
 
-p. All REST APIs accept a @callback@ parameter resulting in a "JSONP":http://en.wikipedia.org/wiki/JSON#JSONP result.
+p. All REST APIs accept a @callback@ parameter resulting in a "JSONP":http://en.wikipedia.org/wiki/JSONP result.
