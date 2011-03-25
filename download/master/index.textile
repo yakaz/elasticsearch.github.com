@@ -11,10 +11,11 @@ h2. Breaking changes:
  * Node Stats API: Change the structure of the response (more structured) ("#746":http://github.com/elasticsearch/elasticsearch/issues/746)
  * Percolator: Failures when using docs where fields repeat, such as arrays ("#763":http://github.com/elasticsearch/elasticsearch/issues/763)
  * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
+ * Mapping: Failure to update _source mapping - compress and compress_threshold ("#800":http://github.com/elasticsearch/elasticsearch/issues/800)
 
 h2. New features:
  * Search:
- ** Terms Stats Facet ("#705":http://github.com/elasticsearch/elasticsearch/issues/705)
+ ** Terms Stats Facet ("#705":http://github.com/elasticsearch/elasticsearch/issues/705, related "commit":http://github.com/elasticsearch/elasticsearch/commit/992becf0135341f6eea7a922b9dc693991d34219)
  ** Add search type @scan@ allowing to efficiently scan large result set ("#707":http://github.com/elasticsearch/elasticsearch/issues/707)
  ** Add search_type for @count@ to return count but still support facets ("#718":http://github.com/elasticsearch/elasticsearch/issues/718)
  * Scripts: Allow to register native scripts (Java) for better script execution performance. ("#752":http://github.com/elasticsearch/elasticsearch/issues/752)
@@ -23,6 +24,7 @@ h2. New features:
  * Sort: Support "missing" specific handling, include @_last@, @_first@, and custom value (for numeric values) ("#772":http://github.com/elasticsearch/elasticsearch/issues/772)
  * Search / Get: Allow to specify a preference on which shards (or order) it will be executed ("#769":http://github.com/elasticsearch/elasticsearch/issues/769)
  * Delete Index API: Allow to delete more than one index or _all indices ("#791":http://github.com/elasticsearch/elasticsearch/issues/791)
+ * Mapping: Add @_size@ field mapping, indexing the original source size ("#804":http://github.com/elasticsearch/elasticsearch/issues/804)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -57,10 +59,16 @@ h2. Enhancements:
  * Update Settings:
  ** Allow to dynamically change @index.term_index_interval@ and @index.term_index_divisor@ ("#762":http://github.com/elasticsearch/elasticsearch/issues/762)
  ** Allow to dynamically update @index.translog@ settings ("#765":http://github.com/elasticsearch/elasticsearch/issues/765)
+ ** Allow to control @index.auto_expand_replicas@ ("#799":http://github.com/elasticsearch/elasticsearch/issues/799)
  * Add @max_shard_index_buffer_size@ to control the upper limit of a shard indexing buffer size (defaults to @512mb@) ("#773":http://github.com/elasticsearch/elasticsearch/issues/773)
  * Support true|false for the @store@ parameter in mappings ("#775":http://github.com/elasticsearch/elasticsearch/issues/775)
  * "exclude" functionality missing for terms facet on numeric fields ("#789":http://github.com/elasticsearch/elasticsearch/issues/789)
  * Percolator: When deleting an index, make sure to delete all its percolated queries from the _percolator index ("#793":http://github.com/elasticsearch/elasticsearch/issues/793)
+ * NPE when the JSON to index doesn't match the mapping's expectations ("#795":http://github.com/elasticsearch/elasticsearch/issues/795)
+ * Date Field Mapper: Allow to use timestamp value (milliseconds since epoch, UTC) ("#801":http://github.com/elasticsearch/elasticsearch/issues/801)
+ * Add option to expire filter's cache based on access time ("#803":http://github.com/elasticsearch/elasticsearch/issues/803)
+ * Extend stats API to include filter's cache count and eviction count ("#802":http://github.com/elasticsearch/elasticsearch/issues/802)
+ * Support @ES_MIN_MEM@ and @ES_MAX_MEM@ as external settings for windows startup script ("commit":http://github.com/elasticsearch/elasticsearch/commit/b8ac25c43030296a7f331fc2d899e1d3891bbf01)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
