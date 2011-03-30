@@ -79,7 +79,7 @@ h1. Mapping Options
 
 |_. Option |_. Description |
 |@lat_lon@|Set to @true@ to also index the @.lat@ and @.lon@ as fields. Defaults to @false@.|
-|@geohash@|Set to @true@ to also index the @.geohash@ as a field. Defaults to false.|
+|@geohash@|Set to @true@ to also index the @.geohash@ as a field. Defaults to @false@.|
 |@geohash_precision@|Sets the geohash precision, defaults to 12.|
 
 h1. Usage in Scripts
