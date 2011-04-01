@@ -9,9 +9,11 @@ release_notes: true
 
 h2. Breaking changes:
  * Node Stats API: Change the structure of the response (more structured) ("#746":http://github.com/elasticsearch/elasticsearch/issues/746)
+ * Indices Status API: Remove settings/aliases section, and add @recovery@/@snapshot@ flags ("#809":http://github.com/elasticsearch/elasticsearch/issues/809)
  * Percolator: Failures when using docs where fields repeat, such as arrays ("#763":http://github.com/elasticsearch/elasticsearch/issues/763)
  * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
  * Mapping: Failure to update _source mapping - compress and compress_threshold ("#800":http://github.com/elasticsearch/elasticsearch/issues/800)
+ * elasticsearch script: Change CLASSPATH to ES_CLASSPATH ("#818":http://github.com/elasticsearch/elasticsearch/issues/818)
 
 h2. New features:
  * Search:
@@ -25,6 +27,8 @@ h2. New features:
  * Search / Get: Allow to specify a preference on which shards (or order) it will be executed ("#769":http://github.com/elasticsearch/elasticsearch/issues/769)
  * Delete Index API: Allow to delete more than one index or _all indices ("#791":http://github.com/elasticsearch/elasticsearch/issues/791)
  * Mapping: Add @_size@ field mapping, indexing the original source size ("#804":http://github.com/elasticsearch/elasticsearch/issues/804)
+ * Get Settings API: Allow to retrieve (just) a specific index / indices settings ("#810":http://github.com/elasticsearch/elasticsearch/issues/810)
+ * Shard Allocation: Add a setting to control when rebalancing will happen based on the cluster wide active shards state ("#814":http://github.com/elasticsearch/elasticsearch/issues/814)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -53,6 +57,7 @@ h2. Enhancements:
  * Query DSL: flt_field does not allow to set @min_similarity@ and @prefix_length@ ("#744":http://github.com/elasticsearch/elasticsearch/issues/744)
  * Query: Provide an option to analyze wildcard/prefix in query_string / field queries ("#787":http://github.com/elasticsearch/elasticsearch/issues/787)
  * Indices Status / Node Stats: Add (Lucene) index merge stats ("#745":http://github.com/elasticsearch/elasticsearch/issues/745)
+ * Indices Status API: Add refresh stats ("#811":http://github.com/elasticsearch/elasticsearch/issues/811)
  * Internal: Improve checksum process by bulk writing them into a single file instead of checksum file per index file ("#747":http://github.com/elasticsearch/elasticsearch/issues/747)
  * Logging: Add merge level logging ("#755":http://github.com/elasticsearch/elasticsearch/issues/755)
  * Mvel Script: add more random options, and optimize random ("#759":http://github.com/elasticsearch/elasticsearch/issues/759)
@@ -69,6 +74,11 @@ h2. Enhancements:
  * Add option to expire filter's cache based on access time ("#803":http://github.com/elasticsearch/elasticsearch/issues/803)
  * Extend stats API to include filter's cache count and eviction count ("#802":http://github.com/elasticsearch/elasticsearch/issues/802)
  * Support @ES_MIN_MEM@ and @ES_MAX_MEM@ as external settings for windows startup script ("commit":http://github.com/elasticsearch/elasticsearch/commit/b8ac25c43030296a7f331fc2d899e1d3891bbf01)
+ * HTTP: Support compression (gzip, deflate) when using Accept-Encoding header ("#815":http://github.com/elasticsearch/elasticsearch/issues/815)
+ * Shard Allocation:
+ ** Rename cluster.routing.allocation.concurrent_recoveries to cluster.routing.allocation.node_concurrent_recoveries (old one still works) ("#817":http://github.com/elasticsearch/elasticsearch/issues/817)
+ ** Add node_initial_primaries_recoveries setting ("#819":http://github.com/elasticsearch/elasticsearch/issues/819)
+ * Translog: Reduce the number of translog ops to flush after from 20000 to 5000 ("#820":http://github.com/elasticsearch/elasticsearch/issues/820)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
@@ -90,5 +100,6 @@ h2. Internal:
  * upgrade to guava r08
  * upgrade to aws sdk 1.1.7
  * upgrade to jackson 1.7.4
- * upgrade to guice 3 rc3
+ * upgrade to guice 3.0
  * upgrade to rabbitmq client 2.3.1 
+ * upgrade to the new lzf compression (0.7)
