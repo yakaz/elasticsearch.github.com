@@ -14,6 +14,7 @@ h2. Breaking changes:
  * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
  * Mapping: Failure to update _source mapping - compress and compress_threshold ("#800":http://github.com/elasticsearch/elasticsearch/issues/800)
  * elasticsearch script: Change CLASSPATH to ES_CLASSPATH ("#818":http://github.com/elasticsearch/elasticsearch/issues/818)
+ * Concurrent calls to refresh might result in "dangling" searchers ("#823":http://github.com/elasticsearch/elasticsearch/issues/823)
 
 h2. New features:
  * Search:
@@ -29,6 +30,7 @@ h2. New features:
  * Mapping: Add @_size@ field mapping, indexing the original source size ("#804":http://github.com/elasticsearch/elasticsearch/issues/804)
  * Get Settings API: Allow to retrieve (just) a specific index / indices settings ("#810":http://github.com/elasticsearch/elasticsearch/issues/810)
  * Shard Allocation: Add a setting to control when rebalancing will happen based on the cluster wide active shards state ("#814":http://github.com/elasticsearch/elasticsearch/issues/814)
+ * Terms Facet: Performance improvements ("#822":http://github.com/elasticsearch/elasticsearch/issues/822)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -79,6 +81,7 @@ h2. Enhancements:
  ** Rename cluster.routing.allocation.concurrent_recoveries to cluster.routing.allocation.node_concurrent_recoveries (old one still works) ("#817":http://github.com/elasticsearch/elasticsearch/issues/817)
  ** Add node_initial_primaries_recoveries setting ("#819":http://github.com/elasticsearch/elasticsearch/issues/819)
  * Translog: Reduce the number of translog ops to flush after from 20000 to 5000 ("#820":http://github.com/elasticsearch/elasticsearch/issues/820)
+ * Indexing Buffer: Automatically inactivate unindexed into shards and lower their indexing buffer size ("#821":http://github.com/elasticsearch/elasticsearch/issues/821)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
