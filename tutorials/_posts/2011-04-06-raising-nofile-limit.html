@@ -1,0 +1,33 @@
+---
+layout: tutorial
+title: Raising nofile limits
+cat: tutorials
+author: Joaquín Cuenca Abela
+nick: e98cuenc
+tutorial_desc: Raising nofile limits
+---
+
+<p>ElasticSearch needs to keep open simultaneously lots of files and you will
+need to raise the maximum number of open files a user can have.</p>
+
+<p>To raise the limit add to <code>/etc/security/limits.conf</code> the lines:</p>
+<pre>    elasticsearch soft nofile 32000
+    elasticsearch hard nofile 32000</pre>
+<p>Now you can check if these limits have been applied running:</p>
+<pre>    sudo -u elasticsearch -s "ulimit -Sn"</pre>
+<p>If you are logged as <code>elasticsearch</code> you have to log out and log
+in again to see the new limits.</p>
+<p>If you still see the previous limit, run:</p>
+<pre>    egrep -r pam_limits /etc/pam.d/</pre>
+<p>and check that all pam_limits.so are not commented out.</p>
+<p>You can check the limit that elasticsearch really has adding the flag
+<code>es.max-open-files=true</code>, for example:</p>
+<pre>    $ bin/elasticsearch -f -Des.max-open-files=true
+    [2011-04-05 04:12:02,687][INFO ][bootstrap                ]
+    max_open_files [32000]</pre>
+<p>If <code>sudo -u elasticsearch -s "ulimit -Sn"</code> shows 32000 but you
+still have a low limit when you run ElasticSearch, you're probably running it
+through another program that doesn't support PAM, a usual offender is
+supervisord. The only solution I know to this problem is to raise the nofile
+limit for the user running supervisord, but this will obviously raise the limit
+for all the processes running under supervisord, a non ideal situation.</p>
