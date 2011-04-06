@@ -1,21 +1,23 @@
 ---
 layout: tutorial
-title: Raising nofile limits
+title: Too many open files
 cat: tutorials
 author: Joaquín Cuenca Abela
 nick: e98cuenc
-tutorial_desc: Raising nofile limits
+tutorial_desc: Solving the "Too many open files" error
 ---
-
-<p>ElasticSearch needs to keep open simultaneously lots of files and you will
+<h2>How to raise the nofiles limit on *NIX</h2>
+<p>ElasticSearch needs to keep lots of files open simultaneously and you will
 need to raise the maximum number of open files a user can have.</p>
+<p>In this tutorial, we will assume that you are running ElasticSearch
+as the user <code>elasticsearch</code>.</p>
 
 <p>To raise the limit add to <code>/etc/security/limits.conf</code> the lines:</p>
 <pre>    elasticsearch soft nofile 32000
     elasticsearch hard nofile 32000</pre>
 <p>Now you can check if these limits have been applied running:</p>
 <pre>    sudo -u elasticsearch -s "ulimit -Sn"</pre>
-<p>If you are logged as <code>elasticsearch</code> you have to log out and log
+<p>If you are logged in as <code>elasticsearch</code> you have to log out and log
 in again to see the new limits.</p>
 <p>If you still see the previous limit, run:</p>
 <pre>    egrep -r pam_limits /etc/pam.d/</pre>
@@ -27,7 +29,11 @@ in again to see the new limits.</p>
     max_open_files [32000]</pre>
 <p>If <code>sudo -u elasticsearch -s "ulimit -Sn"</code> shows 32000 but you
 still have a low limit when you run ElasticSearch, you're probably running it
-through another program that doesn't support PAM, a usual offender is
-supervisord. The only solution I know to this problem is to raise the nofile
-limit for the user running supervisord, but this will obviously raise the limit
-for all the processes running under supervisord, a non ideal situation.</p>
+through another program that doesn't support PAM: a frequent offender is
+<code>supervisord</code>. </p>
+<p>The only solution I know to this problem is to raise the nofile
+limit for the user running <code>supervisord</code>, but this will obviously raise the limit
+for all the processes running under <code>supervisord</code>, not an ideal situation.</p>
+<p>Consider using the 
+<a href="http://github.com/elasticsearch/elasticsearch-servicewrapper">ElasticSearch 
+service wrapper</a> instead.</p>
