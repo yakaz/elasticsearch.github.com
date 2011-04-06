@@ -10,11 +10,8 @@ release_notes: true
 h2. Breaking changes:
  * Node Stats API: Change the structure of the response (more structured) ("#746":http://github.com/elasticsearch/elasticsearch/issues/746)
  * Indices Status API: Remove settings/aliases section, and add @recovery@/@snapshot@ flags ("#809":http://github.com/elasticsearch/elasticsearch/issues/809)
- * Percolator: Failures when using docs where fields repeat, such as arrays ("#763":http://github.com/elasticsearch/elasticsearch/issues/763)
- * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
- * Mapping: Failure to update _source mapping - compress and compress_threshold ("#800":http://github.com/elasticsearch/elasticsearch/issues/800)
  * elasticsearch script: Change CLASSPATH to ES_CLASSPATH ("#818":http://github.com/elasticsearch/elasticsearch/issues/818)
- * Concurrent calls to refresh might result in "dangling" searchers ("#823":http://github.com/elasticsearch/elasticsearch/issues/823)
+ * Upgrade to Lucene 3.1 ("#825":http://github.com/elasticsearch/elasticsearch/issues/825, Analyzers in "#826":http://github.com/elasticsearch/elasticsearch/issues/826)
 
 h2. New features:
  * Search:
@@ -31,6 +28,7 @@ h2. New features:
  * Get Settings API: Allow to retrieve (just) a specific index / indices settings ("#810":http://github.com/elasticsearch/elasticsearch/issues/810)
  * Shard Allocation: Add a setting to control when rebalancing will happen based on the cluster wide active shards state ("#814":http://github.com/elasticsearch/elasticsearch/issues/814)
  * Terms Facet: Performance improvements ("#822":http://github.com/elasticsearch/elasticsearch/issues/822)
+ * Histogram Facet: Add ability to define bounds (from/to) to both improve performance and provide additional bound filtering ("#834":http://github.com/elasticsearch/elasticsearch/issues/834)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -82,27 +80,39 @@ h2. Enhancements:
  ** Add node_initial_primaries_recoveries setting ("#819":http://github.com/elasticsearch/elasticsearch/issues/819)
  * Translog: Reduce the number of translog ops to flush after from 20000 to 5000 ("#820":http://github.com/elasticsearch/elasticsearch/issues/820)
  * Indexing Buffer: Automatically inactivate unindexed into shards and lower their indexing buffer size ("#821":http://github.com/elasticsearch/elasticsearch/issues/821)
+ * Histogram Facet: Add min/max stats when providing value field / script ("#830":http://github.com/elasticsearch/elasticsearch/issues/830)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
  * River not recovered when using single node after shutdown ("#711":http://github.com/elasticsearch/elasticsearch/issues/711)
  * Single node cluster comes up as red with local gateway ("#714":http://github.com/elasticsearch/elasticsearch/issues/714)
  * Acknowledge problem for put mapping with multiple indices or all indices ("#720":http://github.com/elasticsearch/elasticsearch/issues/720)
- * Percolate:
+ * Percolator:
  ** Failure to percolate with specific query (when creating the _percolate index before the actual index) ("#725":http://github.com/elasticsearch/elasticsearch/issues/725)
  ** Failure when deleting and creating an index, also causes problem with percolated queries isolation between different indices ("#790":http://github.com/elasticsearch/elasticsearch/issues/790)
+ ** Failures when using docs where fields repeat, such as arrays ("#763":http://github.com/elasticsearch/elasticsearch/issues/763)
  * Ids with # in them will cause search failures, also, fail when # is used in a type name ("#728":http://github.com/elasticsearch/elasticsearch/issues/728)
- * Date Histogram Facet: NPE if using @1w@ interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
+ * Date Histogram Facet:
+ ** NPE if using @1w@ interval ("#727":http://github.com/elasticsearch/elasticsearch/issues/727)
+ ** Improve value field case performance, fix wrong total computation with multi valued fields by introducing @total_count@, add min/max stats ("#831":http://github.com/elasticsearch/elasticsearch/issues/831)
  * Prefix inside a dis_max / bool query broken ("#732":http://github.com/elasticsearch/elasticsearch/issues/732)
  * Searching while an index is being allocated and no active shards exists within a "shard replication group" can cause search "misses" ("#736":http://github.com/elasticsearch/elasticsearch/issues/736)
  * All Field: All field can fail to analyze input data (rare cases) ("#743":http://github.com/elasticsearch/elasticsearch/issues/743)
+ * Mapper: Using @dynamic_template@ can result in warning of parsed and original source difference (resulting in excessive mapping parsing) ("#764":http://github.com/elasticsearch/elasticsearch/issues/764)
  * Cluster Health API: Asking for health on an index that does not exists should return RED status ("#781":http://github.com/elasticsearch/elasticsearch/issues/781)
+ * Mapping: Failure to update @_source@ mapping - compress and compress_threshold ("#800":http://github.com/elasticsearch/elasticsearch/issues/800)
+ * Concurrent calls to refresh might result in "dangling" searchers ("#823":http://github.com/elasticsearch/elasticsearch/issues/823)
+ * Geo Distance / Range Facets might count documents several times for a range entry if the field is multi valued ("#824":http://github.com/elasticsearch/elasticsearch/issues/824)
+ * Histogram Facet: Improve value field case performance, fix wrong total computation with multi valued fields by introducing @total_count@ ("#829":http://github.com/elasticsearch/elasticsearch/issues/829)
+ * Range Facet: Fix wrong total computation with multi valued fields by introducing @total_count@, add min/max stats ("#832":http://github.com/elasticsearch/elasticsearch/issues/832)
+ * Geo Distance Facet: Fix wrong total computation with multi valued fields by introducing @total_count@, add min/max stats ("#833":http://github.com/elasticsearch/elasticsearch/issues/833)
+ * Bug: Sort on a column of type 'short' throws an exception ("#835":http://github.com/elasticsearch/elasticsearch/issues/835)
 
 h2. Internal:
  * upgrade to mvel 2.1.beta2
  * upgrade to guava r08
  * upgrade to aws sdk 1.1.7
- * upgrade to jackson 1.7.4
+ * upgrade to jackson 1.7.5
  * upgrade to guice 3.0
  * upgrade to rabbitmq client 2.3.1 
  * upgrade to the new lzf compression (0.7)
