@@ -24,7 +24,7 @@ First, make sure that you have the service wrapper installed (see "Setting up El
 <pre>    mkdir $ES_HOME/lock</pre>
 * Change permissions on the ElasticSearch install dir: (Your gateway dir also needs to be writable by the <code>elasticsearch</code> user)
 <pre>    chown -R elasticsearch $ES_HOME</pre>
-* Edit <code>/etc/security/limits.conf</code> and add this line (this increases the number of files that the <code>elasticsearch</code> user can open):
+* Edit <code>/etc/security/limits.conf</code> and add this line (this increases the number of files that the <code>elasticsearch</code> user can open, see "Raising nofile limits":/tutorials/2011/04/06/raising-nofile-limits.html if you have any problem here):
 <pre>    elasticsearch     soft    nofile    32000</pre>
 * Install the service wrapper to <code>/etc/rc.d</code> (or <code>/etc/rc.d/init.d</code> depending on your distribution):
 <pre>   $ES_HOME/bin/service/elasticsearch -install</pre>
