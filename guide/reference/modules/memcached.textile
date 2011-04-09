@@ -38,7 +38,7 @@ p. The following are the settings the can be configured for memcached:
 |_. Setting |_. Description |
 |@memcached.port@|A bind port range. Defaults to @11211-11311@.|
 
-p. It also shares the uses the common "network settings":../node/network.
+p. It also shares the uses the common "network settings":network.html.
 
 h1. Disable memcached
 

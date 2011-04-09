@@ -56,7 +56,7 @@ p. The idea is the short term high availability is maintained by replication, wh
 
 p. So, what happens when we start back the cluster?. When it first starts up, it queries the long term storage regarding the cluster state (indices created, settings, and so on) and perform them (creating indices, creating mapping), and each time a shard is first instantiated within its shard replication group, it will also recover its state from the long term persistency.
 
-p. ElasticSearch provides just that with a module called "Gateway":/docs/elasticsearch/modules/gateway/. For example, to have the state  stored in a shared file system, each node needs to start with a configuration of:
+p. ElasticSearch provides just that with a module called "Gateway":/guide/reference/modules/gateway/. For example, to have the state  stored in a shared file system, each node needs to start with a configuration of:
 
 <pre class="prettyprint">
 gateway :

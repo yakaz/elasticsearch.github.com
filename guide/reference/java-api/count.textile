@@ -17,7 +17,7 @@ CountResponse response = client.prepareCount("test")
         .actionGet();
 </pre>
 
-p. For more information on the count operation, check out the REST "count":/docs/elasticsearch/rest_api/count docs.
+p. For more information on the count operation, check out the REST "count":/guide/reference/api/count.html docs.
 
 h1. Operation Threading
 

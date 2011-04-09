@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. An analyzer of type @stop@ that is built using a "Lower Case Tokenizer":lowercast-tokenizer.html, with "Stop Token Filter":stop-tokenfilter.html.
+p. An analyzer of type @stop@ that is built using a "Lower Case Tokenizer":lowercase-tokenizer.html, with "Stop Token Filter":stop-tokenfilter.html.
 
 p. The following are settings that can be set for a @stop@ analyzer type:
 

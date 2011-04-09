@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api_search
 ---
 
-p. Allows to return a "script evaluation":/guide/reference/modules/scripting (based on different fields) for each hit, for example:
+p. Allows to return a "script evaluation":/guide/reference/modules/scripting.html (based on different fields) for each hit, for example:
 
 <pre class="prettyprint lang-js">
 {

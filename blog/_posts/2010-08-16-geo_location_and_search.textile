@@ -49,7 +49,7 @@ p. By defining the @location@ property as @geo_point@, this means that now we ca
 
 h2. Find By Location
 
-p. The first thing after indexing location aware documents, is being able to query them. There are several ways to be able to query such information, the simplest one is by "distance"::http://github.com/elasticsearch/elasticsearch/issues/279. Here is an example:
+p. The first thing after indexing location aware documents, is being able to query them. There are several ways to be able to query such information, the simplest one is by "distance":http://github.com/elasticsearch/elasticsearch/issues/279. Here is an example:
 
 <pre class="prettyprint lang-js">
 {

@@ -33,7 +33,7 @@ h2. MMap FS
 
 p. The @mmapfs@ type stores the shard index on the file system (maps to Lucene @MMapDirectory@) using mmap. Memory mapping uses up a portion of the virtual memory address space in your process equal to the size of the file being mapped.  Before using this class, be sure your have plenty of virtual address space.
 
-h1. Memory
+h1(#Memory). Memory
 
 p. The @memory@ type stores the index in memory with the following configuration options:
 

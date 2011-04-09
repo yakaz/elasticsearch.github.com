@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. A filter allowing to define "scripts":/guide/refrence/modules/scripting.html as filters. For example:
+p. A filter allowing to define "scripts":/guide/reference/modules/scripting.html as filters. For example:
 
 <pre class="prettyprint lang-js">
 "filtered" : {

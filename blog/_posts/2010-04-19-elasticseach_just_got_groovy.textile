@@ -8,7 +8,7 @@ nick: kimchy
 
 notextile. <img src="http://media.xircles.codehaus.org/_projects/groovy/_logos/medium.png" height="60px" class="left-img"></img>
 
-p. Just pushed into master (upcoming 0.7 release) a "Groovy":http://groovy.codehaus.org/ client wrapper on-top of the "Java API":/docs/elasticsearch/java_api elasticsearch provides.
+p. Just pushed into master (upcoming 0.7 release) a "Groovy":http://groovy.codehaus.org/ client wrapper on-top of the "Java API":/guide/reference/java-api/ elasticsearch provides.
 
 p. Using elasticsearch with dynamic languages makes a lot of sense, especially thanks to its "domain driven approach":/blog/2010/02/12/yourdatayoursearch.html, and thanks to the fact that Groovy runs on the JVM, it can make use of the native elasticsearch Java API. Here are some examples:
 

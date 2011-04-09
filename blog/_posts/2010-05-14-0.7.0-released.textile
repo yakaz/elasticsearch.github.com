@@ -10,7 +10,7 @@ p. ElasticSearch version @0.7.0@ has just been released. You can download it "he
 
 h2. Zen Discovery
 
-p. A discovery module called "zen":/docs/elasticsearch/modules/discovery/zen built from the ground up to work well, and fast with elasticsearch. This is now the default discovery module, with the jgroups discovery module moving to be provided as a plugin.
+p. A discovery module called "zen":/guide/reference/modules/discovery/zen.html built from the ground up to work well, and fast with elasticsearch. This is now the default discovery module, with the jgroups discovery module moving to be provided as a plugin.
 
 h2. Groovy Client
 
@@ -22,7 +22,7 @@ p. First and foremost, native cloud support, providing zero conf cloud discovery
 
 h2. Memcached Transport
 
-p. For that extra oomph when HTTP is not fast enough (mainly from other languages), elasticsearch supports a subset of the memcached protocol. Basically, the implementation implements REST on top of memcached (as much as possible). More info can be found "here":/docs/elasticsearch/modules/memcached.
+p. For that extra oomph when HTTP is not fast enough (mainly from other languages), elasticsearch supports a subset of the memcached protocol. Basically, the implementation implements REST on top of memcached (as much as possible). More info can be found "here":/guide/reference/modules/memcached.html.
 
 h2. Simpler Plugin Management
 
@@ -35,7 +35,7 @@ bin/plugin -install transport-memcached
 
 h2. Analysis ICU
 
-p. Better support when working with unicode through the ICU analysis plugin. More info "here":/docs/elasticsearch/index_modules/analysis/icu.
+p. Better support when working with unicode through the ICU analysis plugin. More info "here":/guide/reference/index-modules/analysis/icu-plugin.html.
 
 h2. More APIs
 
