@@ -13,7 +13,7 @@ GetResponse response = client.prepareGet("twitter", "tweet", "1")
         .actionGet();
 </pre>
 
-p. For more information on the index operation, check out the REST "get":/docs/elasticsearch/rest_api/get docs.
+p. For more information on the index operation, check out the REST "get":/guide/reference/api/get.html docs.
 
 h1. Operation Threading
 

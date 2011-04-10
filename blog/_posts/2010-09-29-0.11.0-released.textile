@@ -20,7 +20,7 @@ p. Generic support for "river(s)":/blog/2010/09/28/the_river.html which are serv
 
 h2. Bulk API
 
-p. A new API to do bulk indexing of data, greatly increasing the throughput of the indexing process. Details "here":/docs/elasticsearch/rest_api/bulk.
+p. A new API to do bulk indexing of data, greatly increasing the throughput of the indexing process. Details "here":/guide/reference/api/bulk.html.
 
 h2. Thrift REST Transport
 
@@ -28,6 +28,6 @@ p. A Thrift based REST transport (mimicking HTTP) for faster execution compared 
 
 h2. Minor Features
 
-p. Minor features include "_source fields":/docs/elasticsearch/rest_api/search/script_fields and the ability to use them in plain fields, "named_filters":/docs/elasticsearch/rest_api/search/named_filters, improved geo support, faster query_string and field queries execution, and of course, bug fixes.
+p. Minor features include "_source fields":/guide/reference/mapping/source-field.html and the ability to use them in plain fields, "named_filters":/guide/reference/api/search/named-filters.html, improved geo support, faster query_string and field queries execution, and of course, bug fixes.
 
 -shay.banon

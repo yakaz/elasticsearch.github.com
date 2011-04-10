@@ -19,7 +19,7 @@ SearchResponse response = client.prepareSearch("test")
         .actionGet();
 </pre>
 
-p. For more information on the search operation, check out the REST "search":/docs/elasticsearch/rest_api/search docs.
+p. For more information on the search operation, check out the REST "search":/guide/reference/api/search/ docs.
 
 h1. Operation Threading
 

@@ -35,7 +35,7 @@ p. The unicast discovery allows to perform the discovery when multicast is not e
 |_. Setting |_. Description |
 |@hosts@|Either an array setting or a comma delimited setting. Each value is either in the form of @host:port@, or in the form of @host[port1-port2]@.|
 
-p. The unicast discovery uses the "transport":../../transport module to perform the discovery.
+p. The unicast discovery uses the "transport":../transport.html module to perform the discovery.
 
 h1. Master Election
 

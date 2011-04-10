@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. @custom_score@ query allows to wrap another query and customize the scoring of it optionally with a computation derived from other field values in the doc (numeric ones) using "script expression":/guide/reference/modules/scripting. Here is a simple sample:
+p. @custom_score@ query allows to wrap another query and customize the scoring of it optionally with a computation derived from other field values in the doc (numeric ones) using "script expression":/guide/reference/modules/scripting.html. Here is a simple sample:
 
 <pre class="prettyprint lang-js">
 "custom_score" : {
