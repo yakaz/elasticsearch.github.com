@@ -84,10 +84,14 @@ $(function() {
     $.placeholder();
 
     var elastic_search_url = "http://search.elasticsearch.org/elastic-search-website/guide,blog/_search";
+    var searchRequest = undefined;
 
 		$( "#search" ).autocomplete({
 			source: function( request, response ) {
-				$.ajax({
+				if ( searchRequest && searchRequest.readyState < 4 ) {
+					searchRequest.abort();
+				}
+				searchRequest = $.ajax({
 					url: [ elastic_search_url, $.param( { fields : "title,category,url", size : 25, q : request.term } )].join("?"),
 					dataType: "jsonp",
 					success: function( data ) {
