@@ -85,8 +85,16 @@ $(function() {
 
     var elastic_search_url = "http://search.elasticsearch.org/elastic-search-website/guide,blog/_search";
     var searchRequest = undefined;
+    var previousQueryString = "";
 
 		$( "#search" ).autocomplete({
+			search: function() {
+				if ( this.value.trim() != previousQueryString ) {
+					previousQueryString = this.value.trim();
+					return true;
+				}
+				return false;
+			},
 			source: function( request, response ) {
 				if ( searchRequest && searchRequest.readyState < 4 ) {
 					searchRequest.abort();
