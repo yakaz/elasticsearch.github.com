@@ -90,6 +90,7 @@ h2. Enhancements:
  * EC2 Zen Discovery: Automatically use the configured transport port to ping other nodes ("#854":http://github.com/elasticsearch/elasticsearch/issues/854)
  * Unicast Discovery: Concurrently connect to nodes to improve cases where some listed nodes are not up ("#855":http://github.com/elasticsearch/elasticsearch/issues/855)
  * Query DSL: Allow to directly wrap a query with a @constant_score@ query ("#857":http://github.com/elasticsearch/elasticsearch/issues/857)
+ * Mapping: Allow to set index to @no@ for @_id@ and @_type@ ("#863":http://github.com/elasticsearch/elasticsearch/issues/863)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
