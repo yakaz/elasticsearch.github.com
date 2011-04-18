@@ -12,6 +12,8 @@ h2. Breaking changes:
  * Indices Status API: Remove settings/aliases section, and add @recovery@/@snapshot@ flags ("#809":http://github.com/elasticsearch/elasticsearch/issues/809)
  * elasticsearch script: Change CLASSPATH to ES_CLASSPATH ("#818":http://github.com/elasticsearch/elasticsearch/issues/818)
  * Upgrade to Lucene 3.1 ("#825":http://github.com/elasticsearch/elasticsearch/issues/825, Analyzers in "#826":http://github.com/elasticsearch/elasticsearch/issues/826)
+ * Get Mapping API: when asking for a mapping of a single index and single type, don't wrap the mapping with the index name ("#838":http://github.com/elasticsearch/elasticsearch/issues/838)
+ * JMX: Don't use node id and name as part of the jmx registration, use static org.elasticsearch ("#843":http://github.com/elasticsearch/elasticsearch/issues/843)
 
 h2. New features:
  * Search:
@@ -29,6 +31,7 @@ h2. New features:
  * Shard Allocation: Add a setting to control when rebalancing will happen based on the cluster wide active shards state ("#814":http://github.com/elasticsearch/elasticsearch/issues/814)
  * Terms Facet: Performance improvements ("#822":http://github.com/elasticsearch/elasticsearch/issues/822)
  * Histogram Facet: Add ability to define bounds (from/to) to both improve performance and provide additional bound filtering ("#834":http://github.com/elasticsearch/elasticsearch/issues/834)
+ * Query DSL: Geo Distance Range filter ("#856":http://github.com/elasticsearch/elasticsearch/issues/856)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -81,6 +84,12 @@ h2. Enhancements:
  * Translog: Reduce the number of translog ops to flush after from 20000 to 5000 ("#820":http://github.com/elasticsearch/elasticsearch/issues/820)
  * Indexing Buffer: Automatically inactivate unindexed into shards and lower their indexing buffer size ("#821":http://github.com/elasticsearch/elasticsearch/issues/821)
  * Histogram Facet: Add min/max stats when providing value field / script ("#830":http://github.com/elasticsearch/elasticsearch/issues/830)
+ * Network Settings: Allow to explicitly set ipv4 and ipv4 when using _networkInterface_ notation ("#841":http://github.com/elasticsearch/elasticsearch/issues/841)
+ * Optimize API: Don't execute concurrent optimize operations (shard level) on the same node ("#846":http://github.com/elasticsearch/elasticsearch/issues/846)
+ * Better handling when a shard hits OOM ("#848":http://github.com/elasticsearch/elasticsearch/issues/848)
+ * EC2 Zen Discovery: Automatically use the configured transport port to ping other nodes ("#854":http://github.com/elasticsearch/elasticsearch/issues/854)
+ * Unicast Discovery: Concurrently connect to nodes to improve cases where some listed nodes are not up ("#855":http://github.com/elasticsearch/elasticsearch/issues/855)
+ * Query DSL: Allow to directly wrap a query with a @constant_score@ query ("#857":http://github.com/elasticsearch/elasticsearch/issues/857)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
@@ -107,12 +116,20 @@ h2. Bug fixes:
  * Range Facet: Fix wrong total computation with multi valued fields by introducing @total_count@, add min/max stats ("#832":http://github.com/elasticsearch/elasticsearch/issues/832)
  * Geo Distance Facet: Fix wrong total computation with multi valued fields by introducing @total_count@, add min/max stats ("#833":http://github.com/elasticsearch/elasticsearch/issues/833)
  * Bug: Sort on a column of type 'short' throws an exception ("#835":http://github.com/elasticsearch/elasticsearch/issues/835)
+ * Percolator doesn't work correctly after index recreation ("#837":http://github.com/elasticsearch/elasticsearch/issues/837)
+ * Allow to search across indices and types even if some types do not exists on some indices ("#839":http://github.com/elasticsearch/elasticsearch/issues/839)
+ * Better handling of shard failures ("#845":http://github.com/elasticsearch/elasticsearch/issues/845)
+ * River: Failure to reallocate river to another node on rivers node failure ("#850":http://github.com/elasticsearch/elasticsearch/issues/850)
+ * Local Gateway: Listed active shards on each node does apply index deletion ("#853":http://github.com/elasticsearch/elasticsearch/issues/853)
+ * Shard Allocation: Closed indices are not properly taken into account when rebalancing ("#858":http://github.com/elasticsearch/elasticsearch/issues/858)
+ * Allow to delete a closed index ("#859":http://github.com/elasticsearch/elasticsearch/issues/859)
+ * Versioning: Better handling of deletes - time based eviction ("#862":http://github.com/elasticsearch/elasticsearch/issues/862)
 
 h2. Internal:
  * upgrade to mvel 2.1.beta2
  * upgrade to guava r08
- * upgrade to aws sdk 1.1.7
- * upgrade to jackson 1.7.5
- * upgrade to guice 3.0
+ * upgrade to aws sdk 1.1.9
+ * upgrade to jackson 1.7.6
  * upgrade to rabbitmq client 2.3.1 
  * upgrade to the new lzf compression (0.7)
+ * upgrade to groowvy 1.7.10
