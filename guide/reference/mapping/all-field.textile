@@ -53,4 +53,5 @@ p. The @_all@ fields allows for @store@, @term_vector@ and @analyzer@ (with spec
 
 h2. Highlighting
 
-For any field to allow "highlighting":../api/search/highlighting.html it has to be either stored or part of the @_source@ filed. By default @_all@ filed does not qualify for either of this thus highlighting for it does not yeild any data. Although it is possible to allow for @store@ it is not usually practical to use @_all@ filed for highlighting because it can mix content from several fields into a single highlighting fragment.
+For any field to allow "highlighting":../api/search/highlighting.html it has to be either stored or part of the @_source@ filed. By default @_all@ filed does not qualify for either of this thus highlighting for it does not yield any data. Although it is possible to @store@ it, note that the @_all@ field is basically an aggregation of all fields, which means more data will be stored, and highlighting it might produce strange results.
+
