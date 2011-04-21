@@ -36,7 +36,7 @@ p. The get operation allows to specify a set of fields that will be returned (by
 $ curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'
 </pre>
 
-p(note). The fields specified must be stored in order to retrieve them.
+p. The fields will retrieved will either be loaded if they are stored, or fetched from the @_source@ (parsed and extracted). Note, certain "json sub objects" can be returned by explicitly prefixing them with @_source.@, for example: @_source.obj1.obj2@.
 
 h1. Routing
 
