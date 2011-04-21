@@ -39,6 +39,12 @@ p. Parameter value: *dfs_query_then_fetch*.
 
 p. Same as "Query Then Fetch", except for an initial scatter phase which goes and computes the distributed term frequencies for more accurate scoring.
 
+h1. Count
+
+p. Parameter value: *count*.
+
+p. A special search type that returns the count that matched the search request without any docs (represented in @total_hits@), and possibly, including facets as well. In general, this is preferable to the @count@ API as it provides more options.
+
 h1. Scan
 
 p. Parameter value: *scan*.
