@@ -8,15 +8,15 @@ sidebar: reference_index_modules_analysis
 p. The @path_hierarchy@ tokenizer takes something like this:
 
 <pre>
-/soemthing/something/else
+/something/something/else
 </pre>
 
 p. And produces tokens:
 
 <pre>
-/soemthing
-/soemthing/something
-/soemthing/something/else
+/something
+/something/something
+/something/something/else
 </pre>
 
 |_. Setting |_. Description |
