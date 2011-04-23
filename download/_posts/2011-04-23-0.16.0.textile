@@ -17,6 +17,7 @@ h2. Breaking changes:
  * Upgrade to Lucene 3.1 ("#825":http://github.com/elasticsearch/elasticsearch/issues/825, Analyzers in "#826":http://github.com/elasticsearch/elasticsearch/issues/826)
  * Get Mapping API: when asking for a mapping of a single index and single type, don't wrap the mapping with the index name ("#838":http://github.com/elasticsearch/elasticsearch/issues/838)
  * JMX: Don't use node id and name as part of the jmx registration, use static org.elasticsearch ("#843":http://github.com/elasticsearch/elasticsearch/issues/843)
+ * Mapping: By default, don't index @_id@ ("#868":http://github.com/elasticsearch/elasticsearch/issues/868)
 
 h2. New features:
  * Search:
@@ -34,7 +35,9 @@ h2. New features:
  * Shard Allocation: Add a setting to control when rebalancing will happen based on the cluster wide active shards state ("#814":http://github.com/elasticsearch/elasticsearch/issues/814)
  * Terms Facet: Performance improvements ("#822":http://github.com/elasticsearch/elasticsearch/issues/822)
  * Histogram Facet: Add ability to define bounds (from/to) to both improve performance and provide additional bound filtering ("#834":http://github.com/elasticsearch/elasticsearch/issues/834)
- * Query DSL: Geo Distance Range filter ("#856":http://github.com/elasticsearch/elasticsearch/issues/856)
+ * Query DSL:
+ ** Geo Distance Range filter ("#856":http://github.com/elasticsearch/elasticsearch/issues/856)
+ ** Add ids query and filter to fetch docs by ids (do not require _id field to be indexed) ("#865":http://github.com/elasticsearch/elasticsearch/issues/865)
 
 h2. Enhancements:
  * Attachment plugin: upgrade to Tika 0.9
@@ -94,6 +97,10 @@ h2. Enhancements:
  * Unicast Discovery: Concurrently connect to nodes to improve cases where some listed nodes are not up ("#855":http://github.com/elasticsearch/elasticsearch/issues/855)
  * Query DSL: Allow to directly wrap a query with a @constant_score@ query ("#857":http://github.com/elasticsearch/elasticsearch/issues/857)
  * Mapping: Allow to set index to @no@ for @_id@ and @_type@ ("#863":http://github.com/elasticsearch/elasticsearch/issues/863)
+ * Better support with @_type@ is marked as not indexed, allowing to filter by type ("#866":http://github.com/elasticsearch/elasticsearch/issues/866)
+ * Simplify Filter Cache Eviction Settings ("#871":http://github.com/elasticsearch/elasticsearch/issues/871)
+ * Update Settings: Allow to dynamically set filter cache settings ("#874":http://github.com/elasticsearch/elasticsearch/issues/874)
+ * Startup script: fix shell quoting ("commit":http://github.com/elasticsearch/elasticsearch/commit/50a475fd021c6ab3dbea130de9fe3233f1c102e8)
 
 h2. Bug fixes:
  * Handle cluster join request on a non IO thread ("#702":http://github.com/elasticsearch/elasticsearch/issues/702)
@@ -128,6 +135,11 @@ h2. Bug fixes:
  * Shard Allocation: Closed indices are not properly taken into account when rebalancing ("#858":http://github.com/elasticsearch/elasticsearch/issues/858)
  * Allow to delete a closed index ("#859":http://github.com/elasticsearch/elasticsearch/issues/859)
  * Versioning: Better handling of deletes - time based eviction ("#862":http://github.com/elasticsearch/elasticsearch/issues/862)
+ * Weird error message on syntax error ("#864":http://github.com/elasticsearch/elasticsearch/issues/864)
+ * Failure to recover a shard might cause loosing translog data (especially with no replicas) ("#869":http://github.com/elasticsearch/elasticsearch/issues/869)
+ * No highlight results when @number_of_fragments@ set to 0 ("#873":http://github.com/elasticsearch/elasticsearch/issues/873)
+ * Search request intermittent failures with has_child query/filter ("#875":http://github.com/elasticsearch/elasticsearch/issues/875)
+ * Unexpected failure to create a shard can lead to data loss if it has no replicas ("#878":http://github.com/elasticsearch/elasticsearch/issues/878)
 
 h2. Internal:
  * upgrade to mvel 2.1.beta2
