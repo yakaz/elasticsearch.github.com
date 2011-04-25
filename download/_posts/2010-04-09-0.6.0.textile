@@ -3,8 +3,8 @@ layout: download
 cat: download
 version: 0.6.0
 title: 0.6.0
-download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.6.0.zip
-download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.6.0
+download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.6.0.zip
+download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.6.0
 download_attachment_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-attachments-0.6.0.zip
 release_notes: true
 ---
