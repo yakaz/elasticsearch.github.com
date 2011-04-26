@@ -10,14 +10,13 @@ release_notes: true
 ---
 
 h2. Breaking changes:
- * Mapping: By default, don't index _id ("#868":http://github.com/elasticsearch/elasticsearch/issues/868)
+ * Mapping: By default, don't index @_id@ ("#868":http://github.com/elasticsearch/elasticsearch/issues/868)
  * Node Stats API: Change the structure of the response (more structured) ("#746":http://github.com/elasticsearch/elasticsearch/issues/746)
  * Indices Status API: Remove settings/aliases section, and add @recovery@/@snapshot@ flags ("#809":http://github.com/elasticsearch/elasticsearch/issues/809)
  * elasticsearch script: Change CLASSPATH to ES_CLASSPATH ("#818":http://github.com/elasticsearch/elasticsearch/issues/818)
  * Upgrade to Lucene 3.1 ("#825":http://github.com/elasticsearch/elasticsearch/issues/825, Analyzers in "#826":http://github.com/elasticsearch/elasticsearch/issues/826)
  * Get Mapping API: when asking for a mapping of a single index and single type, don't wrap the mapping with the index name ("#838":http://github.com/elasticsearch/elasticsearch/issues/838)
  * JMX: Don't use node id and name as part of the jmx registration, use static org.elasticsearch ("#843":http://github.com/elasticsearch/elasticsearch/issues/843)
- * Mapping: By default, don't index @_id@ ("#868":http://github.com/elasticsearch/elasticsearch/issues/868)
 
 h2. New features:
  * Search:
