@@ -4,7 +4,7 @@ title: Clients & Integrations
 cat: guide
 ---
 
-h1. Clients
+h2. Clients
 
 * "ElasticSearch.pm":http://github.com/clintongormley/ElasticSearch.pm: Perl client.
 * "pyes":http://github.com/aparo/pyes: Python client.
@@ -29,7 +29,13 @@ h2. Integrations
 * "elasticflume":http://github.com/tallpsmith/elasticflume: "Flume":http://github.com/cloudera/flume sink implementation.
 * "Terrastore Search":http://code.google.com/p/terrastore/wiki/Search_Integration: "Terrastore":http://code.google.com/p/terrastore/ integration module with elasticsearch.
 * "Wonderdog":https://github.com/infochimps/wonderdog: Hadoop bulk loader into elasticsearch.
-* "Play! Framework":http://geeks.aretotally.in/play-framework-module-elastic-search-distributed-searching-with-json-http-rest-or-java: Integrate Elastic Search in a Play! Framework Application. This module uses JPA events to notify Elastic Search of events of their own. It embeds a running Elastic Search instance for Rapid Development.
+* "Play! Framework":http://geeks.aretotally.in/play-framework-module-elastic-search-distributed-searching-with-json-http-rest-or-java: Integrate with Play! Framework Application.
+
+h2. Misc
+
+* "Puppet":https://github.com/visibiz/puppet-elasticsearch: elasticsearch puppet module.
+* "elasticsearch-rpms":https://github.com/tavisto/elasticsearch-rpms: RPMs for elasticsearch.
+
 
 h2. Front Ends
 
