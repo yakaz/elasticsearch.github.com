@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. A new family of @text@ queries that accept text, analyzes it, and constructs a query out of it. For example:
+p. A family of @text@ queries that accept text, analyzes it, and constructs a query out of it. For example:
 
 <pre class="prettyprint lang-js">
 {
