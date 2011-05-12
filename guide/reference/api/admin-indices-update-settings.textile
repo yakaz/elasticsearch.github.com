@@ -42,6 +42,7 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.translog.flush_threshold_ops@|When to flush based on operations.|
 |@index.translog.flush_threshold_size@|When to flush based on translog (bytes) size.|
 |@index.translog.flush_threshold_period@|When to flush based on a period of not flushing.|
+|@index.translog.disable_flush@|Disables flushing. Note, should be set for a short interval and then enabled.|
 |@index.cache.filter.max_size@|The maximum size of filter cache (per segment in shard). Set to @-1@ to disable.|
 |@index.cache.filter.expire@|The expire after access time for filter cache. Set to @-1@ to disable.|
 

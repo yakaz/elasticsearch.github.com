@@ -75,6 +75,19 @@ p. The following table lists all the attributes that can be used with the @strin
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
 
+p. The @string@ type also support custom indexing parameters associated with the indexed value. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "message" : {
+        "_value":  "boosted value",
+        "_boost":  2.0
+    }
+}
+</pre>
+
+p. The mapping is required to disambiguate the meaning of the document. Otherwise, the structure would interpret "message" as a value of type "object". The key @_value@ (or @value@) in the inner document specifies the real string content that should eventually be indexed. The @_boost@ (or @boost@) key specifies the per field document boost (here 2.0).
+
 h1. Number
 
 p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene is order to support numeric values. An example mapping can be:
