@@ -1,18 +1,11 @@
 ---
 layout: download
-version: master
-title: ElasticSearch Download - Master
+version: 0.17.0
+title: master (0.17.0)
+cat: download
 download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
 download_type: source
 release_notes: true
 ---
 
-h2. Breaking changes:
-
-h2. New features:
-
-h2. Enhancements:
-
-h2. Bug fixes:
-
-h2. Internal:
+No special upgrade steps are needed from @0.16.0@.
