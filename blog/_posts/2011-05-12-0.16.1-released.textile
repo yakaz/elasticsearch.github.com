@@ -1,0 +1,21 @@
+---
+layout: blogpost
+title: 0.16.1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.16.1@ has just been released. You can download it "here":/download. This is a minor release but it includes some really cool features and enhancements:
+
+h2. Text Query Family
+
+p. A new family of queries called "text":/guide/reference/query-dsl/text-query.html. The aim with those is to simplify querying elasticsearch with regards to the analysis process (and should hopefully remove some confusion when using @term@ query).
+
+h2. More Analysis Options
+
+p. All the analyzers (mainly around language analyzers) part of Lucene @3.1@ are now exposed. On top of that, several token filters were backported from Lucene 4.0 (synonym and word_delimiter).
+
+h2. Other
+
+p. Minor additional enhancements (better global facets execution, custom boost per value for @string@ type, and more) and important bug fixes are part of this release. Upgrade is highly recommended.
