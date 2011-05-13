@@ -6,8 +6,6 @@ author: Karel Minarik
 nick: karmiq
 ---
 
-# Data Visualization with ElasticSearch and Protovis
-
 The primary purpose of a search engine is, quite unsurprisingly: _searching_. You pass it a query, and it returns bunch of matching documents, in the order of relevance. We can get creative with query construction, experimenting with different analyzers for our documents, and the search engine tries hard to provide best results.
 
 Nevertheless, a modern full-text search engine can do much more than that. At its core lies the <a href="http://en.wikipedia.org/wiki/Index_(search_engine)#Inverted_indices"><em>inverted index</em></a>, a highly optimized data structure for efficient lookup of documents matching the query. But it also allows to compute complex **aggregations** of our data, called [_facets_](http://www.elasticsearch.org/guide/reference/api/search/facets/index.html).
