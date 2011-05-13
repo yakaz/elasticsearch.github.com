@@ -20,7 +20,7 @@ p. The @synonym@ token filter allows to easily handle synonyms during the analys
             "filter" : {
                 "synonym" : {
                     "type" : "synonym",
-                    "synonym_path" : "analysis/synonym.txt"
+                    "synonyms_path" : "analysis/synonym.txt"
                 }
             }
         }
