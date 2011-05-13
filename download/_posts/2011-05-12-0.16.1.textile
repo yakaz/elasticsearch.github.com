@@ -10,3 +10,37 @@ release_notes: true
 ---
 
 No special upgrade steps are needed from @0.16.0@.
+
+h2. New features:
+ * Mapping: Document's Field level boosting  ("#920":http://github.com/elasticsearch/elasticsearch/issues/issue/920)
+ * Search: Optimize (perf) execution of global facets ("#889":http://github.com/elasticsearch/elasticsearch/issues/issue/889)
+
+
+h2. Enhancements:
+ * (Small) optimization to has_child filter ("#880":http://github.com/elasticsearch/elasticsearch/issues/issue/880)
+ * Week Interval on Date Histogram Facet ("#904":http://github.com/elasticsearch/elasticsearch/issues/issue/904)
+ * Simplified Disable Flush operation ("#906":http://github.com/elasticsearch/elasticsearch/issues/issue/906)
+ * Analysis:
+ ** Expose light and minimal language token filters ("#908":http://github.com/elasticsearch/elasticsearch/issues/issue/908)
+ ** Stop words config to allow for automatic _lang_ expansion ("#909":http://github.com/elasticsearch/elasticsearch/issues/issue/909)
+ ** Word Delimiter Token Filter ("#918":http://github.com/elasticsearch/elasticsearch/issues/issue/918)
+ ** All analysis components that accept stopwords to allow to load stopwords from a file ("#919":http://github.com/elasticsearch/elasticsearch/issues/issue/919)
+ ** Synonym Token Filter ("#900":http://github.com/elasticsearch/elasticsearch/issues/issue/900)
+ * Create Index API: Better logic to wait for ack for indices being created on nodes ("#885":http://github.com/elasticsearch/elasticsearch/issues/issue/885)
+ * Phonetic Filter : Double Metaphone, partial implementation (not using the secondary code) ("#924":http://github.com/elasticsearch/elasticsearch/issues/issue/924)
+ * Query DSL:
+ ** Allow to set boost on has_child query ("#884":http://github.com/elasticsearch/elasticsearch/issues/issue/884)
+ ** Fuzzy Query - add max_expansions ("#905":http://github.com/elasticsearch/elasticsearch/issues/issue/905)
+ ** Fuzzy query support for numeric / date types ("#907":http://github.com/elasticsearch/elasticsearch/issues/issue/907)
+ ** Text Queries (boolean, phrase, and phrase_prefix) ("#917":http://github.com/elasticsearch/elasticsearch/issues/issue/917)
+
+
+h2. Bug fixes:
+ * include_in_all not overridable in objects ("#883":http://github.com/elasticsearch/elasticsearch/issues/issue/883)
+ * Sort missing wrongly sorts negative values ("#899":http://github.com/elasticsearch/elasticsearch/issues/issue/899)
+ * Possible failure to start a river after cluster restart ("#902":http://github.com/elasticsearch/elasticsearch/issues/issue/902)
+ * Failure when applying failed shards during local gateway allocation ("#903":http://github.com/elasticsearch/elasticsearch/issues/issue/903)
+ * Possible failure when using TransportClient (with sniffing) ("#923":http://github.com/elasticsearch/elasticsearch/issues/issue/923)
+ * And/Or Filter: Possible failure when inner filter does not match any docs ("#892":http://github.com/elasticsearch/elasticsearch/issues/issue/892)
+ * Search API: filter element should not be applied to global facets ("#888":http://github.com/elasticsearch/elasticsearch/issues/issue/888)
+
