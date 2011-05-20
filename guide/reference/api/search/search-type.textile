@@ -69,6 +69,8 @@ p. The response will include no hits, with two important results, the @total_hit
 curl -XGET 'localhost:9200/_search/scroll?scroll=10m' -d 'c2NhbjsxOjBLMzdpWEtqU2IyZHlmVURPeFJOZnc7MzowSzM3aVhLalNiMmR5ZlVET3hSTmZ3OzU6MEszN2lYS2pTYjJkeWZVRE94Uk5mdzsyOjBLMzdpWEtqU2IyZHlmVURPeFJOZnc7NDowSzM3aVhLalNiMmR5ZlVET3hSTmZ3Ow=='
 </pre>
 
+p. Scroll requests will include a number of hits equal to the size multiplied by the number of primary shards.
+
 p. The "breaking" condition out of a scroll is when no hits has been returned. The total_hits will be maintained between scroll requests.
 
 p. Note, scan search type does not support sorting (either on score or a field) or faceting.
