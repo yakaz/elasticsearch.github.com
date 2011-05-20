@@ -33,6 +33,8 @@ p. Both above examples end up doing the same thing, which is delete all tweets f
 }
 </pre>
 
+p. Note, delete by query bypasses versioning support. Also, it is not recommended to delete "large chunks of the data in an index", many times, its better to simply reindex into a new index.
+
 h1. Multiple Indices and Types
 
 p. The delete by query API can be applies to multiple types within an index, and across multiple indices. For example, we can delete all documents across all types within the twitter index:
