@@ -38,7 +38,7 @@ p. A @_scope@ can be defined on the query allowing to run facets on the same sco
 <pre class="prettyprint lang-js">
 {
     "top_children" : {
-        "_score" : "my_scope",
+        "_scope" : "my_scope",
         "type": "blog_tag",
         "query" : {
             "term" : {
