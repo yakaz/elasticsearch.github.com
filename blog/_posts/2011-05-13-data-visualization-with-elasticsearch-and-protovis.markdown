@@ -107,7 +107,7 @@ We are interested in the `facets` section of the JSON, notably in the `facets.ta
 
 Suitable visualization for this type of ratio distribution is a pie chart, or its variation: a donut chart. The end result is displayed below (you may want to check out the [working example](/blog/assets/dashboards/donut.html)).
 
-![Donut Chart](/blog/images/dashboards/donut_chart.png)
+[![Donut Chart](/blog/images/dashboards/donut_chart.png)](/blog/assets/dashboards/donut.html)
 
 We will use [_Protovis_](http://vis.stanford.edu/protovis/), a JavaScript data visualization toolkit. _Protovis_ is 100% open source, and you could think of it as _Ruby on Rails_ for data visualization; in stark contrast to similar tools, it does not ship with a limited set of chart types to “choose” from, but it defines a set of primitives and a flexible domain-specific language so you can easily build your own custom visualizations. Creating [pie charts](http://vis.stanford.edu/protovis/ex/pie.html) is pretty easy in _Protovis_.
 
@@ -301,7 +301,7 @@ _Protovis_ makes it very easy to create another common form of visualization: th
 
 The end result should look like this (again, you may want to check out the [working version](/blog/assets/dashboards/timeline.html)):
 
-![Timeline Chart](/blog/images/dashboards/timeline_chart.png)
+[![Timeline Chart](/blog/images/dashboards/timeline_chart.png)](/blog/assets/dashboards/timeline.html)
 
 So, let's store handful of articles with a `published` date in the index.
 
