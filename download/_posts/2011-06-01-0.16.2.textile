@@ -42,5 +42,3 @@ h2. Bug fixes:
  * Scripting - mvel: Fix thread safety misuse when compiling scripts ("#886":http://github.com/elasticsearch/elasticsearch/issues/issue/886)
  * Search: Empty facets element causes search failures ("#938":http://github.com/elasticsearch/elasticsearch/issues/issue/938)
  * auto_expand_replicas: [0-all] can cause data loss when nodes are removed ("#934":http://github.com/elasticsearch/elasticsearch/issues/issue/934)
-
-
