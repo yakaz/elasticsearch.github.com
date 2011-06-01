@@ -31,6 +31,7 @@ p. The @query_string@ top level parameters include:
 | @phrase_slop@ | Sets the default slop for phrases. If zero, then exact phrase matches are required.  Default value is @0@.|
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
 | @analyze_wildcard@ | By default, wildcards terms in a query string are not analyzed. By setting this value to @true@, a best effort will be made to analyze those as well. |
+| @auto_generate_phrase_queries@ | Default to @false@. |
 
 h1. Multi Field
 

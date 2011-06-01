@@ -16,3 +16,5 @@ p. Filters documents that only have the provided ids. Note, this filter does not
 }    
 </pre>
 
+p. The @type@ is optional and can be omitted, and can also accept an array of values.
+
