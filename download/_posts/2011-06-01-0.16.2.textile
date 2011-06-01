@@ -10,3 +10,37 @@ release_notes: true
 ---
 
 No special upgrade steps are needed from @0.16.1@.
+
+h2. Breaking changes:
+ * Field Cache: Change default type to @resident@ from @soft@ ("#958":http://github.com/elasticsearch/elasticsearch/issues/issue/958)
+ * Filter Cache: Introduce new @node@ level filter cache and make it default ("#959":http://github.com/elasticsearch/elasticsearch/issues/issue/959)
+
+
+h2. Enhancements:
+ * Upgrade to jackson 1.8.1 ("#941":http://github.com/elasticsearch/elasticsearch/issues/issue/941)
+ * Analysis:
+ ** Pattern Tokenizer ("#928":http://github.com/elasticsearch/elasticsearch/issues/issue/928)
+ ** Add elision token filter ("#930":http://github.com/elasticsearch/elasticsearch/issues/issue/930)
+ ** Phonetic filter to support @cologne@ encoder ("#942":http://github.com/elasticsearch/elasticsearch/issues/issue/942)
+ * Field Cache: Allow to set @index.cache.field.expire@ when using @resident@ type ("#957":http://github.com/elasticsearch/elasticsearch/issues/issue/957)
+ * Query DSL:
+ ** @query_string@ - Expose QueryParser#setAutoGeneratePhraseQueries ("#964":http://github.com/elasticsearch/elasticsearch/issues/issue/964)
+ ** Ids Filter / Query - allow to execute it with no type defined / several types ("#969":http://github.com/elasticsearch/elasticsearch/issues/issue/969)
+ ** Add limit filter ("#976":http://github.com/elasticsearch/elasticsearch/issues/issue/976)
+ * Scripting: Optimize to native script execution when using just @doc.score@ ("#952":http://github.com/elasticsearch/elasticsearch/issues/issue/952)
+
+
+h2. Bug fixes:
+ * Deleting and recreating a new index with dynamic mapping can cause type failures ("#931":http://github.com/elasticsearch/elasticsearch/issues/issue/931)
+ * wrong type returned by date_histogram ("#932":http://github.com/elasticsearch/elasticsearch/issues/issue/932)
+ * IBM J9 failure to serialize nodes info ("#950":http://github.com/elasticsearch/elasticsearch/issues/issue/950)
+ * NPE when using "not" filter ("#953":http://github.com/elasticsearch/elasticsearch/issues/issue/953)
+ * Analysis: Regression (0.16.1), Camel cased filters / tokenizers failed to load in custom analyzer ("#937":http://github.com/elasticsearch/elasticsearch/issues/issue/937)
+ * Filter Cache: @soft@ filter cache can cause bad memory behavior ("#946":http://github.com/elasticsearch/elasticsearch/issues/issue/946)
+ * Mapping: dynamic templates of object type do not initialize some mapping data structures (like analyzers lookup) ("#929":http://github.com/elasticsearch/elasticsearch/issues/issue/929)
+ * Mapping - Date Format: 3 or more custom date formats fail using '||' delimiter ("#977":http://github.com/elasticsearch/elasticsearch/issues/issue/977)
+ * Scripting - mvel: Fix thread safety misuse when compiling scripts ("#886":http://github.com/elasticsearch/elasticsearch/issues/issue/886)
+ * Search: Empty facets element causes search failures ("#938":http://github.com/elasticsearch/elasticsearch/issues/issue/938)
+ * auto_expand_replicas: [0-all] can cause data loss when nodes are removed ("#934":http://github.com/elasticsearch/elasticsearch/issues/issue/934)
+
+
