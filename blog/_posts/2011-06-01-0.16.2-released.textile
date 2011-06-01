@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.16.2 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.16.2@ has just been released. You can download it "here":/download. The bulk of the work on this release (backported from master) revolves around improved memory usage, especially with the filter cache (there is a new default filter cache, which takes the size in bytes as a limit on works on the *node* level).
+
+p. As usual, bug fixes and other minor improvements. Upgrade is highly recommended.
