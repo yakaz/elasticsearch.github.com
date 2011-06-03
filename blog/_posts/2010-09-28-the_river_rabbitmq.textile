@@ -9,10 +9,10 @@ nick: kimchy
 p. Another "River":/blog/2010/09/28/the_river.html implementation, "RabbitMQ River":http://github.com/elasticsearch/elasticsearch/issues/380 allowing to automatically index a rabbitmq queue. The format of the messages follows the new "bulk api":http://github.com/elasticsearch/elasticsearch/issues/371 format:
 
 <pre class="prettyprint lang-js">
-{ "index" : { "index" : "twitter", "type" : "tweet", "id" : "1" }
+{ "index" : { "_index" : "twitter", "_type" : "tweet", "_id" : "1" }
 { "tweet" : { "text" : "this is a tweet" } }
-{ "delete" : { "index" : "twitter", "type" : "tweet", "id" : "2" } }
-{ "create" : { "index" : "twitter", "type" : "tweet", "id" : "1" }
+{ "delete" : { "_index" : "twitter", "_type" : "tweet", "_id" : "2" } }
+{ "create" : { "_index" : "twitter", "_type" : "tweet", "_id" : "1" }
 { "tweet" : { "text" : "another tweet" } }    
 </pre>
 
