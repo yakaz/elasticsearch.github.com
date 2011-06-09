@@ -17,6 +17,8 @@ p. A family of @text@ queries that accept text, analyzes it, and constructs a qu
 
 p. Note, even though the name is text, it also supports exact matching (@term@ like) on numeric values and dates.
 
+p. Note, @message@ is the name of a field, you can subsitute the name of any field (including @_all@) instead.
+
 h2. Types of Text Queries
 
 h3. boolean
