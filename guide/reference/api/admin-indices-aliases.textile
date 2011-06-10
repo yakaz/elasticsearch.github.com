@@ -54,3 +54,8 @@ $ curl -XPOST 'http://localhost:9200/_aliases' -d '
 </pre>
 
 p. It is an error to index to an alias which points to more than one index.
+
+h2. Retrieving existing aliases
+
+p. There is no API to retrieve existing aliases directly. Instead, use the "Cluster State API":/guide/reference/api/admin-cluster-state.html .
+
