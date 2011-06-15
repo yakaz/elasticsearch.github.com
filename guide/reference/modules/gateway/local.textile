@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_modules_gateway
 ---
 
-p. The local gateway allows for recovery of the full cluster state and indices from the local storage of each node, and does not require a common node level shared storage.
+p. The local gateway allows for recovery of the full cluster state and indices from the local storage of each node, and does not require a common node level shared storage. 
 
 p. In order to use the local gateway, the indices must be file system based with no memory caching.
 
@@ -20,3 +20,4 @@ gateway:
     expected_nodes: 2
 </pre>
 
+p. Note, to backup/snapshot the full cluster state it is recommended that the local storage for all nodes be copied (in theory not all are required, just enough to guarantee a copy of each shard has been copied, ie depending on the replication settings). Shared storage such as S3 can be used to keep the different nodes' copies in one place.
