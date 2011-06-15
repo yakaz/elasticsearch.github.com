@@ -99,11 +99,14 @@ $(function() {
 				if ( searchRequest && searchRequest.readyState < 4 ) {
 					searchRequest.abort();
 				}
+                var q = request.term;
+                var re = /[^ *]/;
+                if (re.test(q)) { q = q + '*' }
 				searchRequest = $.ajax({
 					url: [ elastic_search_url, $.param( { 
                         fields : "title,category,url", 
                         size : 25, 
-                        q : request.term,
+                        q : q,
                         default_operator: "AND"
                     } )].join("?"),
 					dataType: "jsonp",
