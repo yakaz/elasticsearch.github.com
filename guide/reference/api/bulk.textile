@@ -17,6 +17,8 @@ action_and_meta_data\n
 optional_source\n
 </pre>
 
+p. *NOTE*: the final line of data must end with a newline character @\n@.
+
 p. The json format relies on the fact that Json string values must have @\n@ escaped, and that the actual json actions and sources are not pretty printed. Here is an example:
 
 <pre class="prettyprint">
