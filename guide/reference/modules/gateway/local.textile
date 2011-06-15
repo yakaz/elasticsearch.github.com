@@ -20,4 +20,4 @@ gateway:
     expected_nodes: 2
 </pre>
 
-p. Note, to backup/snapshot the full cluster state it is recommended that the local storage for all nodes be copied (in theory not all are required, just enough to guarantee a copy of each shard has been copied, ie depending on the replication settings). Shared storage such as S3 can be used to keep the different nodes' copies in one place.
+p. Note, to backup/snapshot the full cluster state it is recommended that the local storage for all nodes be copied (in theory not all are required, just enough to guarantee a copy of each shard has been copied, ie depending on the replication settings) while disabling flush. Shared storage such as S3 can be used to keep the different nodes' copies in one place, though it does comes at a price of more IO.
