@@ -100,7 +100,12 @@ $(function() {
 					searchRequest.abort();
 				}
 				searchRequest = $.ajax({
-					url: [ elastic_search_url, $.param( { fields : "title,category,url", size : 25, q : request.term } )].join("?"),
+					url: [ elastic_search_url, $.param( { 
+                        fields : "title,category,url", 
+                        size : 25, 
+                        q : request.term,
+                        default_operator: "AND"
+                    } )].join("?"),
 					dataType: "jsonp",
 					success: function( data ) {
 						response( $.map( data.hits.hits, function( item ) {
