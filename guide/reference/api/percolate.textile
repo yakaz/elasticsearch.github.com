@@ -51,7 +51,7 @@ p. Since the registered percolator queries are just docs in an index, one can fi
 
 <pre class="prettyprint">
 curl -XPUT localhost:9200/_percolator/test/kuku -d '{
-    "color" : "blue"
+    "color" : "blue",
     "query" : {
         "term" : {
             "field1" : "value1"
