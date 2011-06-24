@@ -17,3 +17,8 @@ p. Field names with the same name across types are highly recommended to have th
 
 p. In practice though, this restriction is almost never an issue. The field name usually ends up being a good indication to its "typeness" (i.e., first_name will always be a string). Note also, that this does not apply to cross index case.
 
+h2. Mapping API
+
+p. To create a mapping, you will need the "Put Mapping API":/guide/reference/api/admin-indices-put-mapping.html, or you can add multiple mappings when you "create an index":/guide/reference/api/admin-indices-create-index.html.
+
+
