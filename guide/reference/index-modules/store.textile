@@ -11,7 +11,7 @@ p. The storage module allows to store the index either in memory or using file s
 
 p. When using local gateway (the default), file system storage with *no* in memory storage is required to provide full persistency. This is required since the local gateway constructs its state from the local index state of each node. When using shared gateway (like shared fs, s3), the index can be safely stored in memory (with replicas).
 
-p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory":#Memory storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
+p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory" (see below) storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
 
 p. The following sections lists all the different storage types supported.
 
@@ -33,7 +33,7 @@ h2. MMap FS
 
 p. The @mmapfs@ type stores the shard index on the file system (maps to Lucene @MMapDirectory@) using mmap. Memory mapping uses up a portion of the virtual memory address space in your process equal to the size of the file being mapped.  Before using this class, be sure your have plenty of virtual address space.
 
-h1(#Memory). Memory
+h2. Memory
 
 p. The @memory@ type stores the index in memory with the following configuration options:
 
