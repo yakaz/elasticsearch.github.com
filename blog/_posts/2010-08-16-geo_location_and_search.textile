@@ -47,6 +47,10 @@ p. If explicit setting is still required, then its easy to define a mapping that
 
 p. By defining the @location@ property as @geo_point@, this means that now we can index location data in many different formats, starting from the lat/lon example above, up to @geohash@. For information on all the available formats, check out "278":http://github.com/elasticsearch/elasticsearch/issues/278.
 
+<div class="rounded" style="color: #f5f5f5; background: #333; padding: 1em; margin: 1em 0">
+    *Update:* The automatic mapping of “geo enabled” properties has been disabled since publishing this article. You have to provide the correct mapping for geo properties. Please see the "documentation":/guide/reference/mapping/geo-point-type.html.
+</div>
+
 h2. Find By Location
 
 p. The first thing after indexing location aware documents, is being able to query them. There are several ways to be able to query such information, the simplest one is by "distance":http://github.com/elasticsearch/elasticsearch/issues/279. Here is an example:
