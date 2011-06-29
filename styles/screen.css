@@ -150,6 +150,12 @@ table td {
     padding: 5px;
 }
 
+.rounded {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
 /* Page layout */
 #wrapper {
     height: auto;
