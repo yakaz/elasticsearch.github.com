@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. The bulk API makes it possible to perform many index/delete operations in a single API call. This can greatly increase the indexing speed. The REST API endpoint is /_bulk, and it expects the following JSON structure:
+p. The bulk API makes it possible to perform many index/delete operations in a single API call. This can greatly increase the indexing speed. The REST API endpoint is @/_bulk@, and it expects the following JSON structure:
 
 <pre class="prettyprint">
 action_and_meta_data\n
