@@ -5,11 +5,11 @@ cat: guide
 sidebar: reference_index_modules
 ---
 
-p. The store module allows to control the storage type each index shard stores the index content at. It's important to note that the storage is considered temporal only for the shared gateway (non @local@, which is the default).
+p. The store module gives you control over the persistence settings for your indices. It's important to note that the storage is considered temporal only for the shared gateway (non @local@, which is the default).
 
-p. The storage module allows to store the index either in memory or using file system. Typically, in non distributed systems, file system based storage is used to allow for large indices. In memory provides better performance at the cost of limited sizing of the index.
+p. The index can either be stored in-memory (no persistence), or on-disk (the default). In-memory indices provide better performance at the cost of limiting the index size to the amount of available physical memory.
 
-p. When using local gateway (the default), file system storage with *no* in memory storage is required to provide full persistency. This is required since the local gateway constructs its state from the local index state of each node. When using shared gateway (like shared fs, s3), the index can be safely stored in memory (with replicas).
+p. When using local gateway (the default), file system storage with *no* in memory storage is required to maintain index consistency. This is required since the local gateway constructs its state from the local index state of each node. When using a shared gateway (like NFS or s3), the index can be safely stored in memory (with replicas).
 
 p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory":#Memory storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
 
@@ -23,7 +23,7 @@ p. The following are the different file system based storage types:
 
 h2. Simple FS
 
-p. The @simplefs@ type is a plain forward implementation of file system storage (maps to Lucene @SimpleFsDirectory@) using random access file. This class has poor concurrent performance (multiple threads will bottleneck). Its usually better to use the @niofs@ when file system is required.
+p. The @simplefs@ type is a straightforward implementation of file system storage (maps to Lucene @SimpleFsDirectory@) using random access file. This class has poor concurrent performance (multiple threads will bottleneck). Its usually better to use the @niofs@ when you need index persistence.
 
 h2. NIO FS
 
