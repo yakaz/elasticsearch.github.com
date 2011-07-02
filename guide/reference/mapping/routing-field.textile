@@ -9,7 +9,7 @@ p. The routing field allows to control the @_routing@ aspect when indexing data 
 
 h1. store / index
 
-p. The first thing the @_rouing@ mapping does is to store the routing value provided (@store@ set to @yes@) and index it (@index@ set to @not_analyzed@). The reason why the routing is stored by default is so reindexing data will be possible if the routing value is completely external and not part of the docs.
+p. The first thing the @_routing@ mapping does is to store the routing value provided (@store@ set to @yes@) and index it (@index@ set to @not_analyzed@). The reason why the routing is stored by default is so reindexing data will be possible if the routing value is completely external and not part of the docs.
 
 h1. required
 
