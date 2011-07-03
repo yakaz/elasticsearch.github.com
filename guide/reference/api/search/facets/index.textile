@@ -58,6 +58,8 @@ This request will return articles “Two” and “Three”, as well as the @tag
 
 Notice that the counts are scoped for this query: _foo_ and _bar_ are counted twice, _baz_ is counted once. (This is because the primary purpose of facets is to enable "_faceted browsing_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet: restrict the search to a specific category, price or date range, etc., most probably with a "_filter_":/guide/reference/api/search/filter.html based on selected facet.)
 
+In the facet results, the @missing@ field represents the number of documents that have no value for that facet.
+
 h2. Scope
 
 Facets are bound to the current query by default, called @main@. Every facet can be set with the @global@ scope, in which case it will return facet calculations for all documents in the index.
