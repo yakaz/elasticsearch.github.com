@@ -21,6 +21,36 @@ SearchResponse response = client.prepareSearch("test")
 
 p. For more information on the search operation, check out the REST "search":/guide/reference/api/search/ docs.
 
+h1. Using scrolls in Java
+
+Read the "scroll documentation":/guide/reference/api/search/scroll.html first!
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
+import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
+
+QueryBuilder qb = termQuery("multi", "test");
+
+SearchResponse scrollResp = client.prepareSearch(test)
+		.setSearchType(SearchType.SCAN)
+		.setScroll(new TimeValue(60000))
+		.setQuery(qb.buildAsBytes())
+		.setSize(100).execute().actionGet(); //100 hits per shard will be returned for each scroll
+//Scroll until no hits are returned
+while (true) {
+    scrollResp = client.prepareSearchScroll(scrollResp.getScrollId()).setScroll(new TimeValue(600000)).execute().actionGet();
+    boolean hitsRead = false;
+    for (SearchHit hit : scrollResp.getHits()) {
+        hitsRead = true;
+        //Handle the hit...
+    }
+    //Break condition: No hits are returned
+    if (!hitsRead) {
+        break;
+    }
+}
+</pre>
+
 h1. Operation Threading
 
 p. The search API allows to set the threading model the operation will be performed when the actual execution of the API is performed on the same node (the API is executed on a shard that is allocated on the same server).
