@@ -84,5 +84,5 @@ h1. Mapping Options
 
 h1. Usage in Scripts
 
-p. When using @doc[geo_field_name]@ (in the above mapping, @doc['location']@), the @doc[...].value@ returns a @GeoPoint@, which then allows access to @lat@ and @lon@ (for example, @doc[...].value.lat@). For performance, it is better to access the @lat@ and @lon@ directly using @doc[...].latValue@ and @doc[...].lonValue@.
+p. When using @doc[geo_field_name]@ (in the above mapping, @doc['location']@), the @doc[...].value@ returns a @GeoPoint@, which then allows access to @lat@ and @lon@ (for example, @doc[...].value.lat@). For performance, it is better to access the @lat@ and @lon@ directly using @doc[...].lat@ and @doc[...].lon@.
 
