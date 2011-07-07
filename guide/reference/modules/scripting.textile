@@ -53,10 +53,10 @@ p. The following data can be extracted from a field:
 |@doc['field_name'].dates@|Return an array of date values for the field.|
 |@doc['field_name'].empty@|A boolean indicating if the field has no values within the doc.|
 |@doc['field_name'].multiValued@|A boolean indicating that the field has several values within the corpus.|
-|@doc['field_name'].latValue@|The latitude of a geo point type.|
-|@doc['field_name'].lonValue@|The longitude of a geo point type.|
-|@doc['field_name'].latValues@|The latitudes of a geo point type.|
-|@doc['field_name'].lonValues@|The longitudes of a geo point type.|
+|@doc['field_name'].lat@|The latitude of a geo point type.|
+|@doc['field_name'].lon@|The longitude of a geo point type.|
+|@doc['field_name'].lats@|The latitudes of a geo point type.|
+|@doc['field_name'].lons@|The longitudes of a geo point type.|
 |@doc['field_name'].distance(lat, lon)@|The distance (in miles) of this geo point field from the provided lat/lon.|
 |@doc['field_name'].distanceInKm(lat, lon)@|The distance (in km) of this geo point field from the provided lat/lon.|
 |@doc['field_name'].geohashDistance(geohash)@|The distance (in miles) of this geo point field from the provided geohash.|
