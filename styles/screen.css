@@ -269,6 +269,11 @@ table td {
     margin-right: -150px;
 }
 
+#home #who_using img {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 /* Post lists */
 .posts {
     list-style: none;
@@ -363,6 +368,31 @@ table td {
 .community {
     width: 600px;
     margin: auto;
+}
+
+/* Users */
+.users {
+    margin: auto;
+}
+
+#users .img_left {
+    padding-left: 150px;
+    margin-bottom: 40px;
+}
+
+#users .img_left img {
+    float: left;
+    margin-left: -150px;
+}
+
+#users .img_right {
+    padding-right: 150px;
+    margin-bottom: 40px;
+}
+
+#users .img_right img {
+    float: right;
+    margin-right: -150px;
 }
 
 #forum {
