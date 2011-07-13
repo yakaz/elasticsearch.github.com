@@ -9,7 +9,7 @@ p. There are different caching inner modules associated with an index. They incl
 
 h1. Filter Cache
 
-p. The filter cache is responsible to for caching the results of filters (used in the query). The default implementation of a filter cache (and the one recommended to use in almost all cases) is the @node@ filter cache type.
+p. The filter cache is responsible for caching the results of filters (used in the query). The default implementation of a filter cache (and the one recommended to use in almost all cases) is the @node@ filter cache type.
 
 h2. Node Filter Cache
 
