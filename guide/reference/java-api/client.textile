@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. Obtaining an elasticsearch @Client@ is simple. The most common way to get a client is by 1) creating an embedded @Node@ that acts as a node within an ES cluster and 2) requesting a @Client@ from your embedded @Node@. Another manner is by creating a @TransportClient@ that connects to an existing cluster.
+p. Obtaining an elasticsearch @Client@ is simple. The most common way to get a client is by 1) creating an embedded @Node@ that acts as a node within a cluster and 2) requesting a @Client@ from your embedded @Node@. Another manner is by creating a @TransportClient@ that connects to a cluster.
 
 h1. Node Client
 
