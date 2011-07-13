@@ -22,7 +22,7 @@ IndexResponse response = client.prepareIndex("twitter", "tweet", "1")
         .actionGet();
 </pre>
 
-p. The source to be indexed is provided as a byte array representing the json to be indexed. It can be easily built using elasticsearch special @XContent@ JSON Builder.
+p. The source to be indexed a json object that can be built easily using the elasticsearch @XContent@ JSON Builder.
 
 p. For more information on the index operation, check out the REST "index":/guide/reference/api/index_.html docs.
 
