@@ -5,11 +5,11 @@ cat: guide
 sidebar: reference_index_modules
 ---
 
-p. Lucene indices (which each shard has a complete standalone one) gets segmented over time while performing indexing (and delete) operations on them. The merge process keeps those segments at bay. The more segments you have, the slower the search will be, though merging can potentially be a heavy operation so forcing small number of segments will mean more heavy merge operations.
+p. Lucene indices are produced in segments over time.  The more segments, the slower a search will be.  Merging segments speeds up searching, but merging is an expensive operation itself. The @Merge@ module allows you to set the merging policy. 
 
 h1. Policy
 
-p. The index merge policy module allows to control which segments of a shard index are to be merged. There are several types of policies with the default set to @LogByteSizeMergePolicy@.
+p. The index merge policy module allows one to control which segments of a shard index are to be merged. There are several types of policies with the default set to @LogByteSizeMergePolicy@.
 
 h2. LogByteSizeMergePolicy
 
