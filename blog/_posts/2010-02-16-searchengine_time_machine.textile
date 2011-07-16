@@ -14,13 +14,13 @@ p. The following covers how a distributed system can handle these two problems, 
 
 h2. Partial Cluster Failure
 
-p. Partial cluster failure means that one or more nodes failed within the cluster. Support in a distributed system for partial cluster failure means (surprise surprise) not loosing data when such event happens. It gets even more important when working in the cloud, since the control one has over the servers (for good or bad) is out of our hand. More over, with cloud providers innovating in really cool features like Amazon "spot instances":http://aws.amazon.com/ec2/spot-instances/ (the ability to bid for instances) it means that nodes are out of your control and they basically come and go as they wish.
+p. Partial cluster failure means that one or more nodes failed within the cluster. Support in a distributed system for partial cluster failure means (surprise surprise) not losing data when such events happen. It gets even more important when working in the cloud, since the control one has over the servers (for good or bad) is out of our hands. Moreover, with cloud providers innovating with cool features like Amazon's "spot instances":http://aws.amazon.com/ec2/spot-instances/ (the ability to bid for instances), we cannot control when our nodes operate. They basically come and go as they wish.
 
-p. This is a question of state, and where the state is stored. I will cover the case when the state is stored locally to the node, which means that if you loose your node, you loose the data stored with the node. It is important to understand that almost any system will work much faster with local state (local file system, "local" memory) than with a shared storage solution (like NFS). Also, when more than one node needs to access a shared state (like NFS), usually locking needs to take place, which hinders the scalability of the system.
+p. This is a question of state, and where the state is stored. I will cover the case when the state is stored locally to the node, which means that if you lose your node, you lose the data stored with the node. It is important to understand that almost any system will work much faster with local state (local file system, "local" memory) than with a shared storage solution (like NFS). Also, when more than one node needs to access shared state (like NFS), usually locking needs to take place, which hinders the scalability of the system.
 
-p. The most common solution to partial cluster failure is replicating data between nodes. The ability to control the number of replicas in the cluster allows to provide higher degree of high availability (this also relates to total cluster failure, see below). The idea of replication is to have one node that perform the operation on itself, and replicate the data or operation to its replicas.
+p. The most common solution to partial cluster failure is to replicate data between nodes. The ability to control the number of replicas in the cluster allows one to provide a higher degree of availability (this also relates to total cluster failure, see below). The idea of replication is to have one node that perform the operation on itself, and then to replicate the data or operation to its replicas.
 
-p. In case of ElasticSearch, an index is broken down into shards, and each shard can have zero or more replicas (both are configurable when creating an index). Here is an example of creating an index with 3 shards, each with 2 replicas (note, this is configurable on a *per index basis*):
+p. In the case of ElasticSearch, an index is broken down into shards, and each shard can have zero or more replicas. Both are configurable when creating an index. Here is an example of creating an index with 3 shards, each with 2 replicas (note, this is configurable on a *per index basis*):
 
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/twitter/ -d '
@@ -30,11 +30,13 @@ index :
 '
 </pre>
 
-p. An operation performed is automatically rerouted to the primary shard within its replication group, performed on it, and replicated to all its backups. Replication to the backup is done in parallel using *non blocking IO*, which basically means that more replicas mainly just means more traffic on the network.
+p. When an operation is presented to a node, it is routed automatically to the primary shard within its replication group, which performs the operation and then replicates it to all its backups. Replication to the backup is done in parallel using *non-blocking IO*, which basically means that more replicas mainly just means more traffic on the network.
 
-p(note). Replicas accept read operations as well, meaning that the more replicas you have, the more highly available your index is, but also the more scalable it is in terms of search and get operations!.
+p(note). Replicas accept read operations as well, meaning that the more replicas you have, the more highly available your index is, but also the more scalable it is in terms of search and get operations!
 
-p. Once we work under the assumption that node level state is volatile, it means that we can have the index itself stored on fast medium, starting with local file system (even SSD), and up to memory (both inside the heap, and *outside the heap, in native memory*). The index storage itself for ElasticSearch is also configurable on the index level:
+p. Once we work under the assumption that node level state is volatile, we can store the index itself in a fast medium, perhaps  a local file system (even SSD),  JVM heap memory, or even non-JVM (or native) memory. 
+
+p. The choice of where to store an index for ElasticSearch is configurable on the index level.  Here is an example that indicates that the "twitter" index be stored in main memory:
 
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/twitter/ -d '
@@ -44,19 +46,19 @@ index :
 '
 </pre>
 
-p. But, if the node storage is considered transient, what do we do regarding long term persistency of the index? The answer is the next section.
+p. But if node storage is considered transient, what do we do regarding long term persistency of the index? The answer is the next section.
 
 h2. Full Cluster Failure / Long Term Persistency
 
-p. Handling full cluster failure or shutdown means that both the state of the cluster (in elasticsearch case, which indices have been created, what were the settings for each index, mapping definitions and so on) and each index actual content needs to be stored in a long term persistency.
+p. Handling full cluster failure or shutdown means that both the state of the cluster (i.e. which indices exist, what are the their settings, what are their mapping definitions, etc.) and the content of each index must be stored persistently elsewhere.
 
 p. A solution for this is similar to "Time Machine":http://www.apple.com/macosx/what-is-macosx/time-machine.html, we need to persist the state into a long term storage. This solution is similar to what data grids have called "Write Behind":http://www.infoq.com/articles/write-behind-caching.
 
-p. The idea is the short term high availability is maintained by replication, while long term persistency is done by *asynchronously* writing deltas of the state into a long term storage. The benefit is that *real time operations are not affected* by this process.
+p. The idea is that short term high availability is maintained by replication, while long term persistency is done by *asynchronously* writing deltas of the state into long term (persistent) storage. The benefit is that *real time operations are not affected* by this process.
 
-p. So, what happens when we start back the cluster?. When it first starts up, it queries the long term storage regarding the cluster state (indices created, settings, and so on) and perform them (creating indices, creating mapping), and each time a shard is first instantiated within its shard replication group, it will also recover its state from the long term persistency.
+p. So, what happens when we restart a cluster? When it first starts up, it queries the long term storage for the cluster state (indices created, settings, mappings, etc.) and established them locally (creating indices, creating mapping). Each time a shard is first instantiated within its shard replication group, it will also recover its state from the long term persistency.
 
-p. ElasticSearch provides just that with a module called "Gateway":/guide/reference/modules/gateway/. For example, to have the state  stored in a shared file system, each node needs to start with a configuration of:
+p. ElasticSearch provides this capability with a module called "Gateway":/guide/reference/modules/gateway/. For example, to have the state stored in a shared file system, each node needs to start with a configuration of:
 
 <pre class="prettyprint">
 gateway :
@@ -87,6 +89,6 @@ p. As you can see, this is really powerful. More over, this is the perfect solut
 
 h2. Final Words
 
-p. This only the tip of the iceberg of how ElasticSearch replication, recovery and gateway works, and the future will just increase the iceberg (right back at you, global warming!). For example, what I am playing with now is with the idea of treating indices state as a version control, being able to tag them, and recover back specific tags into new indices or current ones. I hope that at least in terms of handling cluster failures (both partial and total), ElasticSearch makes more sense now.
+p. This is only the tip of the iceberg of how ElasticSearch replication, recovery and gateway works, and the future will just increase the iceberg (right back at you, global warming!). For example, what I am playing with now is with the idea of treating indices state as a version control, being able to tag them, and recover back specific tags into new indices or current ones. I hope that at least in terms of handling cluster failures (both partial and total), ElasticSearch makes more sense now.
 
 -shay.banon
