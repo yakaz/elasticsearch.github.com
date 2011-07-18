@@ -45,6 +45,7 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.translog.disable_flush@|Disables flushing. Note, should be set for a short interval and then enabled.|
 |@index.cache.filter.max_size@|The maximum size of filter cache (per segment in shard). Set to @-1@ to disable.|
 |@index.cache.filter.expire@|The expire after access time for filter cache. Set to @-1@ to disable.|
+|@index.gateway.snapshot_interval@|The gateway snapshot interval (only applies to shared gateways).|
 
 h1. Bulk Indexing Usage
 

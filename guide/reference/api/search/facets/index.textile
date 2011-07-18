@@ -97,3 +97,96 @@ All facets can be configured with an additional filter (explained in the "Query 
     }
 }    
 </pre>
+
+h2. Facets on nested mapping
+
+p. "nested":/guide/reference/mapping/nested-type.html mapping allows for better support for "inner" documents faceting, especially when it comes to multi valued key and value facets (like histograms, or term stats).
+
+p. Why is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and thats the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
+
+p. For example, lets use the following mapping:
+
+<pre class="prettyprint lang-js">
+{
+    "type1" : {
+        "properties" : {
+            "obj1" : {
+                "type" : "nested"
+            }
+        }
+    }
+}
+</pre>
+
+p. And, here is a sample data:
+
+<pre class="prettyprint lang-js">
+{
+    "obj1" : [
+        {
+            "name" : "blue",
+            "count" : 4
+        },
+        {
+            "name" : "green",
+            "count" : 6
+        }
+    ]
+}
+</pre>
+
+h3. Nested Query Facets
+
+p. Any @nested@ query allows to specify a @_scope@ associated with it. Any @facet@ allows for a scope to be defined on it controlling the scope it will execute against. For example, the following @facet1@ terms stats facet will only run on documents matching the nested query associated with @my_scope@:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "nested" : {
+            "_scope" : "my_scope"
+            "path" : "obj1",
+            "score_mode" : "avg"
+            "query" : {
+                "bool" : {
+                    "must" : [
+                        "text" : {"obj1.name" : "blue"},
+                        "range" : {"obj1.count" : {"gt" : 5}}
+                    ]
+                }
+            }
+        }
+    },
+    "facets" : {
+        "facet1" : {
+            "terms_stats" : {
+                "key_field" : "obj1.name",
+                "value_field" : "obj1.count",
+            },
+            "scope" : "my_scope"
+        }
+    }
+}
+</pre>
+
+h3. All Nested Matching Root Documents
+
+p. Another option is to run the facet on all the nested documents matching the root objects that the main query will end up producing. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "facet1" : {
+            "terms_stats" : {
+                "key_field" : "name",
+                "value_field" : "count",
+            },
+            "nested" : "obj1"
+        }
+    }
+}
+</pre>
+
+p. The @nested@ element provides the path to the nested document (can be a multi level nested docs) that will be used.
