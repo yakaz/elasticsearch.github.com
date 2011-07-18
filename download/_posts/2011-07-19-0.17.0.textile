@@ -1,0 +1,16 @@
+---
+layout: download
+cat: download
+version: 0.17.0
+title: 0.17.0
+download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.0.zip
+download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.0.tar.gz
+download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.0
+release_notes: true
+---
+
+h1. Upgrade Notes
+
+p. Upgrading requires a full cluster restart. Note, once upgraded, there is no option to downgrade to previous version as the index files format will be also upgraded (new lucene version). 
+
+p. For relevant breaking changes, check the "issues tagged with breaking change":https://github.com/elasticsearch/elasticsearch/issues?labels=breaking%2Cv0.17.0&sort=created&direction=desc&state=closed&page=1.
