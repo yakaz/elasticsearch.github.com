@@ -1,0 +1,10 @@
+---
+layout: video
+title: Building Search App for Public Mailing Lists
+cat: videos
+author: Lukáš Vlček
+nick: lukasvlcek
+video_desc: Building Search App for Public Mailing Lists
+---
+
+<iframe src="http://player.vimeo.com/video/26553486?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>
