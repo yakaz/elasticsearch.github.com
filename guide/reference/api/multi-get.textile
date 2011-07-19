@@ -54,7 +54,7 @@ curl 'localhost:9200/test/type/_mget' -d '{
         }
     ]
 }'
-</p>
+</pre>
 
 p. In which case, the @ids@ element can directly be used to simplify the request:
 
