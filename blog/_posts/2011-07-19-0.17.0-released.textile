@@ -49,7 +49,7 @@ p. An upgrade to Lucene 3.3 version bringing bug fixes and a new "tiered":/guide
 
 h2. Nodes APIs 
 
-p. All nodes level APIs now support executing the APIs against indices not only based on their IDs. For example:
+p. All nodes level APIs now support executing the APIs against nodes not only based on their IDs. For example:
 
 <pre class="prettyprint">
 # Address
