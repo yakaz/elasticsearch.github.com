@@ -10,3 +10,7 @@ release_notes: true
 ---
 
 No special upgrade steps are needed from @0.16.3@.
+
+h2. Bug fixes:
+ * Native (java) process memory leak ("#1118":http://github.com/elasticsearch/elasticsearch/issues/issue/1118)
+  * Index / Delete API when causing auto index creation can cause buffer data overrun ("#1122":http://github.com/elasticsearch/elasticsearch/issues/issue/1122)

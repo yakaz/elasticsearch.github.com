@@ -10,3 +10,16 @@ release_notes: true
 ---
 
 No special upgrade steps are needed from @0.16.2@.
+
+h2. Bug fixes:
+ * Merging complex objects / types (geo, objects) can cause failure to lookup field names (without type prefix) ("#1016":http://github.com/elasticsearch/elasticsearch/issues/issue/1016)
+ * Numeric values always omit norms (boosting), regardless of the configuration set ("#1020":http://github.com/elasticsearch/elasticsearch/issues/issue/1020)
+ * River might not start properly after cluster shutdown (timing) ("#1038":http://github.com/elasticsearch/elasticsearch/issues/issue/1038)
+ * Misbehaving "missing" field in facet results ("#1070":http://github.com/elasticsearch/elasticsearch/issues/issue/1070)
+ * java.lang.ArrayIndexOutOfBoundsException when indexing a doc ("#1094":http://github.com/elasticsearch/elasticsearch/issues/issue/1094)
+ * Uneven distribution of search requests across shards ("#1103":http://github.com/elasticsearch/elasticsearch/issues/issue/1103)
+ * Delete API: Using refresh parameter might not refresh delete operation on replica ("#1047":http://github.com/elasticsearch/elasticsearch/issues/issue/1047)
+ * Parent Child: complex parent child mapping (>2 hierarchy) might fail ("#1039":http://github.com/elasticsearch/elasticsearch/issues/issue/1039)
+ * Query DSL: Span Term Query wrongly parses when boost is provided, causing using it in span or to fail ("#1032":http://github.com/elasticsearch/elasticsearch/issues/issue/1032)
+ * Transport Client: Adding more nodes causes more scheduled reconnect tasks ("#1062":http://github.com/elasticsearch/elasticsearch/issues/issue/1062)
+
