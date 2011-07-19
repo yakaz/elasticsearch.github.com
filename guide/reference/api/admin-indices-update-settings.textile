@@ -54,8 +54,7 @@ p. For example, the update settings API can be used to dynamically change the in
 <pre class="prettyprint">
 curl -XPUT localhost:9200/test/_settings -d '{
     "index" : {
-        "refresh_interval" : "-1",
-        "merge.policy.merge_factor" : 30
+        "refresh_interval" : "-1"
     }
 }'
 </pre>
@@ -67,8 +66,7 @@ p. Then, once bulk indexing is done, the settings can be updated (back to the de
 <pre class="prettyprint">
 curl -XPUT localhost:9200/test/_settings -d '{
     "index" : {
-        "refresh_interval" : "1s",
-        "merge.policy.merge_factor" : 10
+        "refresh_interval" : "1s"
     }
 }'
 </pre>
