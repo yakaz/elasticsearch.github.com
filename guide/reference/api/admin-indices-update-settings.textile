@@ -35,8 +35,6 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.number_of_replicas@|The number of replicas each shard has.|
 |@index.auto_expand_replicas@|Set to an actual value (like @0-all@) or @false@ to disable it.|
 |@index.refresh_interval@|The async refresh interval of a shard.|
-|@index.compound_format@|The format of the index files (only applies to newly created segments).|
-|@index.merge.policy.merge_factor@|The merge factor of a Lucene index.|
 |@index.term_index_interval@|The Lucene index term interval. Only applies to newly created docs.|
 |@index.term_index_divisor@|The Lucene reader term index divisor.|
 |@index.translog.flush_threshold_ops@|When to flush based on operations.|
@@ -46,6 +44,7 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.cache.filter.max_size@|The maximum size of filter cache (per segment in shard). Set to @-1@ to disable.|
 |@index.cache.filter.expire@|The expire after access time for filter cache. Set to @-1@ to disable.|
 |@index.gateway.snapshot_interval@|The gateway snapshot interval (only applies to shared gateways).|
+|"merge poilcy":/guide/reference/index-modules/merge.html|Merge policy settings.|
 
 h1. Bulk Indexing Usage
 
