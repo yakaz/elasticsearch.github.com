@@ -21,6 +21,8 @@ This will download the attachments plugin from "plugins repository":http://elast
 
 You can also install plugins manually by copying relevant files directly into @ES_HOME/lib/@ folder. For example you extract mapper attachment zip file from @ES_HOME/build/distributions/plugins/@ into @ES_HOME/lib/@ folder (this can be useful if you work with SNAPSHOT version of ES).
 
+Make sure you *restart ElasticSearch*, so the plugins are picked up.
+
 h1. Download some data
 
 Let's download some PDF document:
