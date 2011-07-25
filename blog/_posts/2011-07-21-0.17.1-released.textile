@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.17.1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.1@ has just been released. You can download it "here":/download. This is a quick bug fix release fixing major bugs (listed "here":https://github.com/elasticsearch/elasticsearch/issues?sort=created&labels=v0.17.1&direction=desc&state=closed).

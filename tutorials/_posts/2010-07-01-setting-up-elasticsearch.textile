@@ -36,7 +36,7 @@ h3. Install the service wrapper:
 
 <pre>
 wget http://github.com/elasticsearch/elasticsearch-servicewrapper/zipball/master
-unzip *servicewraper*.zip
+unzip *servicewrapper*.zip
 mv *servicewrapper*/service elasticsearch/bin/
 rm -Rf *servicewrapper*                  # tidy up
 

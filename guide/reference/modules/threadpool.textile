@@ -7,7 +7,18 @@ sidebar: reference_modules
 
 p. A node holds several thread pools in order to improve how threads are managed and memory consumption within a node. There are several thread pools, but the important ones include:
 
-* @index@: for index/delete/bulk operations.
-* @search@:  For get/count/search operations.
+* @index@: For index/delete/bulk operations (defaults to @cache@ type).
+* @search@: For get/count/search operations (defaults to @cache@ type).
 
-Each pool can have a type associated with it, and based on the type, associated parameters. The types can be @cached@, @fixed@, @scaling@, and @blocking@.
+p. Each pool can have a type associated with it, and based on the type, associated parameters. The types can be @cached@, @fixed@, @scaling@, and @blocking@.
+
+p. Changing a specific thread pool can be done by setting its type and specific type parameters, for example, changing the @index@ thread pool to @blocking@ type:
+
+<pre class="prettyprint">
+threadpool:
+    index:
+        type: blocking
+        min: 1
+        max: 30
+        wait_time: 30s
+</pre>

@@ -16,7 +16,7 @@ $ curl -XGET 'http://localhost:9200/twitter/tweet/_count' -d '
 }'
 </pre>
 
-p. Both examples above end up doing the same thing, which is count the number of tweets from the twitter index for a certain user. The result of the commands is:
+p. Both examples above do the same thing, which is count the number of tweets from the twitter index for a certain user. The result is:
 
 <pre class="prettyprint lang-js">
 {

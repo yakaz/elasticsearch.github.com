@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. The bulk API allows to index and delete several documents in a single API. Here is a sample usage:
+p. The bulk API allows one to index and delete several documents in a single request. Here is a sample usage:
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.common.xcontent.XContentFactory.*;

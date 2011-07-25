@@ -61,6 +61,22 @@ p. In the above mapping, if a new JSON field of type string is detected, the dat
 
 p. The default formats are: @dateOptionalTime@ (ISO) and @yyyy/MM/dd HH:mm:ss||yyyy/MM/dd@.
 
+h1. date_detection
+
+p. Allows to disable automatic date type detection (a new field introduced and matches the provided format), for example:
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "date_detection" : false,
+        "properties" : {
+            "message" : {"type" : "string"}
+        }
+    }
+}
+</pre>
+
+
 h1. dynamic_templates
 
 p. Dynamic templates allow to define mapping templates that will be applied when dynamic introduction of fields / objects happens.

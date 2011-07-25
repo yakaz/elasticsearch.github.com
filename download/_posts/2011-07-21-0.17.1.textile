@@ -1,0 +1,23 @@
+---
+layout: download
+cat: download
+version: 0.17.1
+title: 0.17.1
+download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.1.zip
+download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.1.tar.gz
+download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.1
+release_notes: true
+---
+h2. Enhancements:
+ * NullPointerException for invalid faceted query ("#1136":http://github.com/elasticsearch/elasticsearch/issues/issue/1136)
+ * Scan Search: Take track_scores into account, if set, return also scores per doc when scanning ("#1139":http://github.com/elasticsearch/elasticsearch/issues/issue/1139)
+
+
+h2. Bug fixes:
+ * mget doesn't work with aliases ("#1130":http://github.com/elasticsearch/elasticsearch/issues/issue/1130)
+ * Realtime Get fails when using compression ("#1131":http://github.com/elasticsearch/elasticsearch/issues/issue/1131)
+ * IndicesExistsRequest throws IndexMissingException  ("#1133":http://github.com/elasticsearch/elasticsearch/issues/issue/1133)
+ * Java client nodes using multicast discovery connect to one another ("#1135":http://github.com/elasticsearch/elasticsearch/issues/issue/1135)
+ * Analyze API: Failure to read full message over the wire ("#1138":http://github.com/elasticsearch/elasticsearch/issues/issue/1138)
+ * Network: Default (back) network.tcp.connect_timeout to 30s ("#1134":http://github.com/elasticsearch/elasticsearch/issues/issue/1134)
+

@@ -1,0 +1,94 @@
+---
+layout: default
+title: Users
+cat: users
+title_in_header: false
+---
+
+
+<div id="users">
+    <div class="img_left">
+        <a href="http://www.mozilla.org/foundation/"><img src="/users/images/mozilla.png" height="120px" alt="" /></a>
+        <div class="text">
+            <h1>Mozilla Foundation</h1>
+            <p>WarOnOrange is a build system that runs unit/functional test cases whenever a build is committed. The test results are all JSONs that are indexed inside ElasticSearch. Developers can gain further insights on the failures and thereby make better Mozilla Products. Here is a <a href="http://brasstacks.mozilla.com/orangefactor/?display=Bug&amp;bugid=655648&amp;startday=2011-06-13&amp;endday=2011-07-11&amp;tree=mozilla-central">sample</a>.</p>
+            <p><a href="http://crash-stats.mozilla.com/products/Firefox">Socorro</a> is Mozilla's crash-reporting system that collects minidumps from crashes, runs them through minidump-stackwalk to generate json + stack-trace and insert that data inside HBase + Postgres, thereby making it available to be queried via front-end. Socorro Search Service is a REST based API system that facilitates real time indexing using ElasticSearch by retrieving JSONs from HBase with HazelCast as a broker, thereby removing the Postgres dependency.</p>
+            <ul>
+                <li><a href="http://blog.mozilla.com/data/2010/12/30/flume-hive-and-realtime-indexing-via-elasticsearch-2/">Flume, Hive and realtime indexing via ElasticSearch</a></li>
+                <li><a href="http://pedroalves-bi.blogspot.com/2011/03/firefox-4-twitter-and-nosql.html">Firefox 4, Twitter and NoSQL Elasticsearch</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="img_right">
+        <a href="http://www.stumbleupon.com"><img height="120px" src="/users/images/StumbleUpon.png" alt="" /></a>
+        <div class="text">
+            <h1>StumbleUpon</h1>
+            <p>StumbleUpon is using elasticsearch, an open-source, scalable data search solution, to power some upcoming new features. Here’s one example of why we love it: say you wanted to retrieve web pages that you’d stored in HBase. To do this with HBase, you’d have to assign unique IDs to each web page and remember these IDs in order to retrieve them later. ElasticSearch can take a web page you’ve submitted and index every word on this page. All you need to do if you need the web page again is remember a keyword present on the page, and the technology will find what you need.</p>
+            <p>elasticsearch also enables our engineering teams to work cross-functionally. Even engineers not trained on searching data sets like HBase can run functions using ElasticSearch technology. For example, our research team uses ElasticSearch when they conduct natural language processing tests to improve recommendation methods. Plus, it’s fast and easy to implement: I was able to integrate ElasticSearch in our analytics dashboard after just an hour.</p>
+            <ul>
+                <li><a href="http://www.stumbleupon.com/devblog/searching-for-serendipity/">Searching for Serendipity</a></li>
+                <li><a href="http://www.stumbleupon.com/sublog/wrangling-data-with-open-source/">Wrangling Data with Open Source</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="img_left">
+        <a href=""><img src="/users/images/sony.png" height="120px" alt="" /></a>
+        <div class="text">
+            <h1>Sony Computer Entertainment</h1>
+            <p>What were our reasons for using elasticsearch?</p>
+            <ul>
+                <li>Open Source, Free.</li>
+                <li>Very active project.</li>
+                <li>Lucene-based - we all know Lucene, right!?</li>
+                <li>nice slice of awesomeness!!</li>
+            </ul>
+            <p>We have lots of information in the search index. From play counts and ratings, to the title, and other information. Within Infamous 2 you can select certain filters like 'newest' and that will filter the missions in the index on certain of the criteria. Post-filtering then ensures only one mission per map grid and missions not played by the user are returned.</p>
+            <p>We also use elasticsearch to provide localized free text searching of both Creators and Missions.</p>
+        </div>
+    </div>
+
+    <div class="img_right">
+        <a href="http://www.infochimps.com/"><img src="/users/images/Infochimps.png" height="50px" alt="" /></a>
+        <div class="text">
+            <h1>Infochimps</h1>
+            <p>"At Infochimps we recently indexed over 2.5 billion documents for a total of 4TB total indexed size. This would not have been possible without ElasticSearch and the Hadoop..."</p>
+            <ul>
+                <li><a href="http://thedatachef.blogspot.com/2011/01/bulk-indexing-with-elasticsearch-and.html">Bulk Indexing With ElasticSearch and Hadoop</a></li>
+                <li><a href="http://thedatachef.blogspot.com/2011/02/indexing-text-corpora-with-pig-and.html">Indexing Text Corpora With Pig and ElasticSearch</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="img_left">
+        <a href="http://www.assistly.com/"><img src="/users/images/assistly.png" height="100px" alt="" /></a>
+        <div class="text">
+            <h1>Assistly</h1>
+            <p>Assistly is the all-in-one customer support system that turns customer service into Customer Wow. Our product lets companies connect to their customers by Email, Facebook, Twitter, Live Chat and Phone — instantly, and in real time — and deliver “awesomely responsive customer service.”</p>
+            <p>We use elasticsearch in the following ways:</p>
+            <ul>
+                <li>Our customers depend on a fast and efficient workflow and we give them the ability to create Case Filters, which are prioritized lists of support requests. We implement our Case Filters using elasticsearch.</li>
+                <li>We let our customers create an extensive Knowledge Base, both for use by their own customer service agents and for display to the outside world on a searchable Help Center. We use elasticsearch to provide real time search on the Knowledge Base.</li>
+                <li>Our users need quick access to their customer records and cases in Assistly, and we use Elastic Search to serve up customer records and offer fast and efficient case lookup with sophisticated command-line options that are made easy with elasticsearch.</li>
+                <li>Users of Assistly create Business Rules to automate workflow and we use elasticsearch to process timed rules.</li>
+            </ul>
+            <p>We’ve made elasticsearch a critical part of the Assistly product. We evaluated many different search technologies before we made the decision to incorporate elasticsearch. elasticsearch has improved our customer experience and has reduced our implementation costs.</p>
+        </div>
+    </div>
+
+    <div class="img_right">
+        <div class="text">
+            <h1>Ataxo Social Insider</h1>
+            <p><a href="http://ataxosocialinsider.cz/">Ataxo Social Insider</a> is a web application to monitor and evaluate communication in social networks such as Twitter, Facebook, blogs and other online media in Central Europe. The back-end system, implemented with RabbitMQ and custom Python libraries, retrieves, stores and indexes data from various online services. The front-end system, a Ruby On Rails application, continuously retrieves these „mentions“, based on user preferences („keywords“), from the back-end.</p>
+            <p>ElasticSearch is used both at the back-end (migrating from Solr) and the front-end (which previously relied on CouchDB-Lucene integration; see our <a href="http://www.couchbase.com/case-studies/ataxo">CouchDB case study</a>). All the front-end application logic: filtering by keywords, sources, dates, fulltext searching, computing aggregated metrics and displaying records is powered by ElasticSearch (via the <a href="http://karmi.github.com/tire/">Tire</a> gem for Ruby). In fact, we're using ElasticSearch as a searchable database with <a href="/guide/reference/api/search/facets/index.html">powerful aggregation features</a>. The data are being duplicated in CouchDB for durability and redundancy.</p>
+            <p>ElasticSearch has enabled us to implement some unique and competitive features, which would be hard or impossible to achieve otherwise:</p>
+            <ul>
+                <li>Users can use any valid Lucene query syntax for defining the „keyword”, such as <code>apple AND NOT iphone</code>. They're able to fine-tune already defined keywords in this way, and see the impact of their changes immediately.</li>
+                <li>We're able to display real-time, rich, interactive visualization of various metric for currently displayed data, without having to write custom map/reduce functions. See the <a href="/blog/2011/05/13/data-visualization-with-elasticsearch-and-protovis.html">article on the ElasticSearch's blog</a> for details.</li>
+                <li>Using the <a href="/guide/reference/api/percolate.html">percolator feature</a>, we can offer users real-time alerts, where notifications are triggerred by a certain amount of mentions retrieved within certain period.</li>
+                <li>Last, but not least, we're able to retrieve data very fast. Most searches take around 5 milliseconds in ElasticSearch and most pages load under 1 second, for the data set in range of millions of documents and tens of gigabytes.</li>
+            </ul>
+        </div>
+    </div>
+</div>

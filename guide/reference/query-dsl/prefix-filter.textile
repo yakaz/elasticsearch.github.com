@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. Filters documents that have fields containing terms with a specified prefix. Similar to phrase query, except that it acts as a filter. Can be placed within queries that accept a filter.
+p. Filters documents that have fields containing terms with a specified prefix (*not analyzed*). Similar to phrase query, except that it acts as a filter. Can be placed within queries that accept a filter.
 
 <pre class="prettyprint lang-js">
 {

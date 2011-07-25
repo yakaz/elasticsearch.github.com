@@ -64,7 +64,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all. Defaults to @analyzed@.|
+|@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all (as an individual field; it may still be included in @_all@). Defaults to @analyzed@.|
 |@term_vector@|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|

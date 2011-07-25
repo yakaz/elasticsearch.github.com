@@ -1,0 +1,76 @@
+---
+layout: blogpost
+title: 0.17.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.0@ has just been released. You can download it "here":/download. This is a major release, and includes the following major features:
+
+h2. Improved Aliases - Filtering and Routing
+
+p. "Index aliases":/guide/reference/api/admin-indices-aliases.html, which are very handy in aliasing a custom name to an index (or indices) and changing it on the fly, now support the ability to associate a search filter which will automatically filter all the search requests when using the alias, and a routing value (will automatically be used when hitting the alias).
+
+p. This can come in handy in several scenarios, for example, a single index holding multi user data can have a username as the alias, associate a term filter that filters the results based on the username, and possibly use the username as the routing value (thus hitting less shards when searching).
+
+h2. Realtime GET
+
+p. The "get":/guide/reference/api/get.html API is now fully realtime. This means that its not affected by the scheduled refresh / visibility of changes done to the index for search, and once a document is indexed / deleted, it will be immediately visible for GET.
+
+p. Also, a new "multi get":/guide/reference/api/multi-get.html API has been added to execute multi document get in an optimized manner.
+
+p. Note, the realtime get feature does not require "refreshing" the Lucene index, and does not come with the overhead associated with it.
+
+h2. Nested objects / docs
+
+p. Nested objects / documents are now supported, allowing for a document to be broken down into root document and nested document (mainly make sense for multi valued inner objects). This allows for better searchability across those nested documents, as well as better faceting.
+
+p. The "nested":/guide/reference/mapping/nested-type.html mapping allows to control which inner objects will be nested. Searching "within" nested docs is done using nested "query":/guide/reference/query-dsl/nested-query.html and "filter":/guide/reference/query-dsl/nested-filter.html. Faceting is explained in the "faceting":/guide/reference/api/search/facets section.
+
+p. Note, the fact that those nested documents are "within" the json document indexed allows to index them within the same "block", resulting in extremely fast "join" implementation (compared to parent child mapping).
+
+h2. Plugins & Site Plugins
+
+p. The "plugins":/guide/reference/modules/plugins.html module has been enhanced to support downloading plugins from github. Plugins can now also serve static sites, for example, installing two commonly used web admins for elasticsearch is as simple as:
+
+<pre class="prettyprint">
+bin/plugin -install mobz/elasticsearch-head
+bin/plugin -install lukas-vlcek/bigdesk
+</pre>
+
+h2. Many Indices / Large Cluster
+
+p. Numerous improvements to large clusters and many indices scenarios, especially around memory utilization and full cluster restart times.
+
+h2. Lucene 3.3
+
+p. An upgrade to Lucene 3.3 version bringing bug fixes and a new "tiered":/guide/reference/index-modules/merge.html based segment merging.
+
+h2. Nodes APIs 
+
+p. All nodes level APIs now support executing the APIs against nodes not only based on their IDs. For example:
+
+<pre class="prettyprint">
+# Address
+curl localhost:9200/_cluster/nodes/10.0.0.3,10.0.0.4
+curl localhost:9200/_cluster/nodes/10.0.0.*
+# Names
+curl localhost:9200/_cluster/nodes/node_name_goes_here
+curl localhost:9200/_cluster/nodes/node_name_goes_*
+# Attributes (set something like node.rack: 2 in the config)
+curl localhost:9200/_cluster/nodes/rack:2
+curl localhost:9200/_cluster/nodes/ra*:2
+curl localhost:9200/_cluster/nodes/ra*:2*
+</pre>
+
+h2. EC2 specific network host settings
+
+p. Specific ec2 settings for host names when the @cloud-aws@ plugin is installed. For example, setting @network.host@ to @_ec2:privateIp_@ will automatically use the configured instance private ip address to bind and publish to.
+
+h2. Small(er) improvements and bug fixes
+
+p. As usual, many more smaller features (more analyzers, more customization) and bug fixes are in this release.
+
+enjoy!
+-shay.banon

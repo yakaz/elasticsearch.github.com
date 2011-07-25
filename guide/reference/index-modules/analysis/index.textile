@@ -6,9 +6,9 @@ sidebar: reference_index_modules_analysis
 ---
 
 
-p. The index analysis module acts as a configurable registry of Analyzers that can be used in order to both break indexed (analyzed) fields when a document is indexed and process query strings. It maps to Lucene @Analyzer@. 
+p. The index analysis module acts as a configurable registry of Analyzers that can be used in order to both break indexed (analyzed) fields when a document is indexed and process query strings. It maps to the Lucene @Analyzer@. 
 
-p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @TokenFilters@ applied to it. A set of @CharFilters@ can be associated with it to filter out the text stream. The analysis module allows to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names which can then be referenced either in mapping definitions or in certain APIs. The Analysis module automatically registers (*if not explicitly defined*) built in analyzers, token filters, and tokenizers. 
+p. Analyzers are (generally) composed of a single @Tokenizer@ and zero or more @TokenFilters@. A set of @CharFilters@ can be associated with an analyzer to process the characters prior to other analysis steps. The analysis module allows one to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names that can then be referenced either in mapping definitions or in certain APIs. The Analysis module automatically registers (*if not explicitly defined*) built in analyzers, token filters, and tokenizers. 
 
 p. Here is a sample configuration:
 
@@ -51,11 +51,11 @@ h1. Types
 
 h2. Analyzer
 
-p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @TokenFilter@ applied to it. The analysis module allows to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names which can then be referenced either in mapping definitions or in certain APIs. Here is a list of analyzer types:
+p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @TokenFilter@ applied to it. The analysis module allows one to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names which can then be referenced either in mapping definitions or in certain APIs. Here is a list of analyzer types:
 
 h2. Char Filter
 
-p. Char filters allow to filter out the stream of text before it gets tokenized (used within an @Analyzer@). 
+p. Char filters allow one to filter out the stream of text before it gets tokenized (used within an @Analyzer@). 
 
 h2. Tokenizer
 
@@ -63,13 +63,13 @@ p. Tokenizers act as the first stage of the analysis process (used within an @An
 
 h2. Token Filter
 
-p. Token filters act as the additional stages of the analysis process (used within an @Analyzer@).
+p. Token filters act as additional stages of the analysis process (used within an @Analyzer@).
 
 h1. Default Analyzers
 
-p. An analyzer is registered under a logical name and can then be referenced from mapping definitions or certain APIs. When none are defined, defaults are used. There is an option to define which analyzers will be used as default when none can be derived.
+p. An analyzer is registered under a logical name. It can then be referenced from mapping definitions or certain APIs. When none are defined, defaults are used. There is an option to define which analyzers will be used by default when none can be derived.
 
-p. The @default@ logical name allows to configure an analyzer that will be used both for indexing and for searching APIs. The @default_index@ logical name can be used to configure a default analyzer that will be used just when indexing, and the @default_search@ can be used to configure a default analyzer that will be used just when searching.
+p. The @default@ logical name allows one to configure an analyzer that will be used both for indexing and for searching APIs. The @default_index@ logical name can be used to configure a default analyzer that will be used just when indexing, and the @default_search@ can be used to configure a default analyzer that will be used just when searching.
 
 h1. Aliasing Analyzers
 
