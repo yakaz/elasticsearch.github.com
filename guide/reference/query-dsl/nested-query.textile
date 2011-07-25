@@ -25,7 +25,7 @@ p. And here is a sample nested query usage:
 {
     "nested" : {
         "path" : "obj1",
-        "score_mode" : "avg"
+        "score_mode" : "avg",
         "query" : {
             "bool" : {
                 "must" : [
