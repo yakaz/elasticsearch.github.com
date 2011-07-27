@@ -1,0 +1,13 @@
+---
+layout: blogpost
+title: 0.17.2 / 0.16.5 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.2@ and @0.16.5@ have just been released. You can download it "here":/download.
+
+p. A major concurrency bug has been fixed when executing search requests, which is the reason for the 0.16.5 release and also included in the @0.17.2@ release.
+
+p. The @0.17.2@ release includes mainly bug fixes, and its highly recommended to upgrade to it if @0.17.x@ is used.
