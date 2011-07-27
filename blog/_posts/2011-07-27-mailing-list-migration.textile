@@ -1,0 +1,19 @@
+---
+layout: blogpost
+title: Mailing List Migration
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. I created the mailing list on a google apps account (paying one...) with the hopes of not running into spam problems down the road. The problem with that is the fact that I did not know about the host of problems I will have with google account one... . The latest one is a major problem, where google apps restrict the size of members to 1000 members, and we just hit that. 
+   
+p. So, I am going to migrate the group to a new group in the "public" google groups, called "elasticsearch":https://groups.google.com/group/elasticsearch/. Sadly, I don't think migrating content is possible, but at least I will be able to subscribe all of you. I will automatically subscribe all under a "Send email for each message and update" option, so you will have to change that to your preference (sorry about that...). _Update_: Google Groups seems to have spam limits on the number of users that can be added, will add them in batches over time, I guess... . Make sure to "register":https://groups.google.com/group/elasticsearch/ now if you can.
+
+p. Luckily, the group has been mirrored on nabble, and it will remain as a mirror to the new group as well. This group will be closed (but not deleted) and old content will be searchable from both nabble and this interface, posting will not be allowed though. And posts should only go to the new group mailing address. I will post details on the new group shortly, but you 
+should get it as well via direct mail once I invite you. 
+
+p. I apologize for that. If someone knows of a better way to migrate the 
+mails, it would be great. 
+
+-shay.banon 
