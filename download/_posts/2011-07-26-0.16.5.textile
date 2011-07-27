@@ -10,3 +10,9 @@ release_notes: true
 ---
 
 No special upgrade steps are needed from @0.16.4@.
+
+h2. Bug fixes:
+ * File#mkdirs gets stuck, might be concurrency issue ("#1147":http://github.com/elasticsearch/elasticsearch/issues/issue/1147)
+ * Search / Broadcast concurrency bug can result in response corruption / errors ("#1152":http://github.com/elasticsearch/elasticsearch/issues/issue/1152)
+ * Bulk API: _version on delete actions is not honored ("#1156":http://github.com/elasticsearch/elasticsearch/issues/issue/1156)
+

@@ -9,3 +9,30 @@ download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.1
 release_notes: true
 ---
 
+h2. New features:
+ * Index Settings: Add @index.recovery.initial_shards@ controlling the number of shards to exists when using local gateway ("#1163":http://github.com/elasticsearch/elasticsearch/issues/issue/1163)
+ * Query DSL:
+ ** custom_filters_score ("#1140":http://github.com/elasticsearch/elasticsearch/issues/issue/1140)
+ ** Allow to associate a custom cache key with a filter ("#1142":http://github.com/elasticsearch/elasticsearch/issues/issue/1142)
+
+
+h2. Enhancements:
+ * Fail shard (recovery) allocation on a node when the index does not exists ("#1148":http://github.com/elasticsearch/elasticsearch/issues/issue/1148)
+ * Improve peer recovery of index files to reduce chances of corruption ("#1158":http://github.com/elasticsearch/elasticsearch/issues/issue/1158)
+ * Local Gateway: Allow to set gateway.local.initial_shards to @quorum-1@ ("#1160":http://github.com/elasticsearch/elasticsearch/issues/issue/1160)
+
+
+h2. Bug fixes:
+ * Reusing query parser in WrapperQueryParser produces invalid queries ("#1143":http://github.com/elasticsearch/elasticsearch/issues/issue/1143)
+ * File#mkdirs gets stuck, might be concurrency issue ("#1147":http://github.com/elasticsearch/elasticsearch/issues/issue/1147)
+ * Search / Broadcast concurrency bug can result in response corruption / errors ("#1152":http://github.com/elasticsearch/elasticsearch/issues/issue/1152)
+ * Bulk API: _version on delete actions is not honored ("#1156":http://github.com/elasticsearch/elasticsearch/issues/issue/1156)
+ * Get API:
+ ** Will always prefer first local execution, regardless of the preference ("#1153":http://github.com/elasticsearch/elasticsearch/issues/issue/1153)
+ ** a get for a document that does not exists can cause open file handles leak ("#1167":http://github.com/elasticsearch/elasticsearch/issues/issue/1167)
+ * Java API: BoostingQueryBuilder does not build the query correctly ("#1141":http://github.com/elasticsearch/elasticsearch/issues/issue/1141)
+ * Mapping: _default_ mapping type with root level date_formats can cause recursive addition of them to the mapping ("#1168":http://github.com/elasticsearch/elasticsearch/issues/issue/1168)
+ * Search API: REST endpoint should use default operation_threading of thread_per_shard ("#1154":http://github.com/elasticsearch/elasticsearch/issues/issue/1154)
+ * Unicast Discovery: Clusters under different cluster names can cause failed discovery ("#1159":http://github.com/elasticsearch/elasticsearch/issues/issue/1159)
+ * Update Settings: Changing the number of replicas does cause allocation / deallocation of shards ("#1162":http://github.com/elasticsearch/elasticsearch/issues/issue/1162)
+
