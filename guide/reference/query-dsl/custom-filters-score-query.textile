@@ -1,0 +1,32 @@
+---
+layout: guide
+title: Custom Filters Score Query
+cat: guide
+sidebar: reference_query_dsl
+---
+
+p. A @custom_filters_score@ query allows to execute a query, and if the hit matches a provided filter (ordered), use the script associated with it to compute the score. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "custom_filters_score" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filters" : [
+            {
+                "filter" : { "range" : { "age" : {"from" : 0, "to" : 10} } },
+                "script" : "_score * 3"
+            },
+            {
+                "filter" : { "range" : { "age" : {"from" : 10, "to" : 20} } },
+                "script" : "_score * 2"
+            }
+        ]
+    }
+}
+</pre>
+
+p. This can considerably simplify and increase performance for parameterized based scoring since filters are easily cached for faster performance, and the script is considerably simpler.
+
+p. The query allows (on the same level as @query@ and @filters@) to provide @boost@, and the common scripting elements @params@ and @lang@.
