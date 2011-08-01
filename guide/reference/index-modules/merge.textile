@@ -31,7 +31,7 @@ p. For normal merging, this policy first computes a "budget" of how many segment
 
 p. If a merge will produce a segment that's larger than @max_merged_segment@ then the policy will merge fewer segments (down to 1 at once, if that one has deletions) to keep the segment size under budget.
 
-h2. log_bytes_size
+h2. log_byte_size
 
 p. A merge policy that merges segments into levels of exponentially increasing *byte size*, where each level has fewer segments than the value of the merge factor. Whenever extra segments (beyond the merge factor upper bound) are encountered, all segments within the level are merged.
 
