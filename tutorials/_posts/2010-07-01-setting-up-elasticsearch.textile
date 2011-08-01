@@ -16,7 +16,7 @@ Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.com/down
 Install it as follows:
 
 <pre>
-wget http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.2.zip
+curl -L -O http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.17.2.zip
 unzip elasticsearch-0.17.2.zip
 mv elasticsearch-0.17.2 elasticsearch    # rename dir to ./elasticsearch
 rm elasticsearch*.zip                    # tidy up
@@ -35,8 +35,7 @@ If you <code>install</code> it, then it will be setup as a service which will st
 h3. Install the service wrapper:
 
 <pre>
-wget http://github.com/elasticsearch/elasticsearch-servicewrapper/zipball/master
-unzip *servicewrapper*.zip
+curl -L http://github.com/elasticsearch/elasticsearch-servicewrapper/tarball/master | tar -xz
 mv *servicewrapper*/service elasticsearch/bin/
 rm -Rf *servicewrapper*                  # tidy up
 
