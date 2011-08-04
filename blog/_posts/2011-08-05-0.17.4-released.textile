@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.17.4 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.4@ has just been released. You can download it "here":/download.
+
+p. This is a quick release post @0.17.4@ to fix a reported bug which probably doesn't affect most users, but its still an important one to get out there (for new users) as its a difficult one to track down... . The upgrade is only really needed when using explicit stored fields that have multi values, which can result in not all the values being returned when asked.
