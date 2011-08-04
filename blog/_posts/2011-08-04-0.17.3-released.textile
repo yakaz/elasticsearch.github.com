@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.17.3 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.3@ has just been released. You can download it "here":/download. This is another bug fix release with minor enhancements (listed "here":https://github.com/elasticsearch/elasticsearch/issues?sort=created&labels=v0.17.3&direction=desc&state=closed). This upgrade is highly recommended to all @0.17.x@ users.
+
+p. Note, when upgrading to this release, due to a bug in previous 0.17.x versions, it is recommended to run flush against all indices before shutting down the cluster (or doing a rolling restart) if "delete_by_query" is used against specific types.
