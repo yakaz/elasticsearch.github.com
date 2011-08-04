@@ -33,6 +33,8 @@ p. The @query_string@ top level parameters include:
 | @analyze_wildcard@ | By default, wildcards terms in a query string are not analyzed. By setting this value to @true@, a best effort will be made to analyze those as well. |
 | @auto_generate_phrase_queries@ | Default to @false@. |
 
+p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":multi-term-rewrite.html parameter.
+
 h1. Multi Field
 
 p. The @query_string@ query can also run against multiple fields. The idea of running the @query_string@ query against multiple fields is by internally creating several queries for the same query string, each with @default_field@ that match the fields provided. Since several queries are generated, combining them can be automatically done either using a @dis_max@ query or a simple @bool@ query. For example (the @name@ is boosted by 5 using @^5@ notation):
