@@ -41,7 +41,7 @@ h1. Important Configurations
 
 h2. File Descriptors
 
-p. Make sure to increate the number of open files descriptors on the machine (or for the user running elasticsearch). Setting it to 32k or even 64k is recommended.
+p. Make sure to increase the number of open files descriptors on the machine (or for the user running elasticsearch). Setting it to 32k or even 64k is recommended.
 
 p. In order to test how many open files the process can open, start it with @-Des.max-open-files@ set to @true@. This will print the number of open files the process can open on startup.
 
