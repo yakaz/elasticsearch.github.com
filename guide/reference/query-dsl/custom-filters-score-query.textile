@@ -35,4 +35,4 @@ p. A @score_mode@ can be defined to control how multiple matching filters contro
 
 h2. Script
 
-p. The query allows (on the same level as @query@ and @filters@) to provide @boost@, and the common scripting elements @params@ and @lang@.
+p. A @script@ can be used instead of @boost@ for more complex score calculations. With optional @params@ and @lang@ (on the same level as @query@ and @filters@).
