@@ -1,0 +1,10 @@
+---
+layout: video
+title: Road to a Distributed Search Engine
+cat: videos
+author: Shay Banon
+nick: kimchy
+video_desc: Road to a Distributed Search Engine at Berlin Buzzwords
+---
+
+<iframe src="http://player.vimeo.com/video/26710663?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>
