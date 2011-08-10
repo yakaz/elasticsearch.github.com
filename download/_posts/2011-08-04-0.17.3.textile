@@ -8,3 +8,40 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.3
 release_notes: true
 ---
+h2. Enhancements:
+ * Stop Token Filter - allow to set enable_position_increments ("#1182":http://github.com/elasticsearch/elasticsearch/issues/issue/1182)
+ * warn if mlockall is not working once enabled in settings (instead of debug logging) ("#1194":http://github.com/elasticsearch/elasticsearch/issues/issue/1194)
+ * Allow creation of empty docs ("#1195":http://github.com/elasticsearch/elasticsearch/issues/issue/1195)
+ * Analysis:
+ ** Unique token filter ("#1185":http://github.com/elasticsearch/elasticsearch/issues/issue/1185)
+ ** 'truncate' token filter ("#1165":http://github.com/elasticsearch/elasticsearch/issues/issue/1165)
+ ** Add a @kstem@ name option to @stemmer@ token filter (on top of the default kstem option) ("#1196":http://github.com/elasticsearch/elasticsearch/issues/issue/1196)
+ * Cache Stats: Computing the filter stats using the default weighted filter cache is expensive ("#1201":http://github.com/elasticsearch/elasticsearch/issues/issue/1201)
+ * Groovy Plugins: Upgrade to 1.8.1 ("#1175":http://github.com/elasticsearch/elasticsearch/issues/issue/1175)
+ * HTTP: Disable automatic cookie parsing and resetting, allow to enable it ("#1177":http://github.com/elasticsearch/elasticsearch/issues/issue/1177)
+ * Http Transport: Allow to configure @max_header_size@, @max_initial_line_length@, and @max_chunk_size@ ("#1174":http://github.com/elasticsearch/elasticsearch/issues/issue/1174)
+ * Index Cache Stats / JVM Stats: Add a refresh_interval to control when it gets refreshed ("#1200":http://github.com/elasticsearch/elasticsearch/issues/issue/1200)
+ * Mapping:
+ ** Root object non ISO date formats to support timezone ("#1181":http://github.com/elasticsearch/elasticsearch/issues/issue/1181)
+ ** Renamed root object @date_formats@ to @dynamic_date_formats@ (old value still works) ("#1183":http://github.com/elasticsearch/elasticsearch/issues/issue/1183)
+ * More Like This API: Allow to provide @search_size@ and @search_from@ ("#1179":http://github.com/elasticsearch/elasticsearch/issues/issue/1179)
+ * Queries: Optimize single clause boolean query ("#1206":http://github.com/elasticsearch/elasticsearch/issues/issue/1206)
+ * Query DSL:
+ ** Allow to control how all multi term queries are rewritten ("#1186":http://github.com/elasticsearch/elasticsearch/issues/issue/1186)
+ ** ids filter/parse to automatically use types provided as part of the search ("#1188":http://github.com/elasticsearch/elasticsearch/issues/issue/1188)
+ ** custom_filters_score allow to associate boost on filter instead of script ("#1204":http://github.com/elasticsearch/elasticsearch/issues/issue/1204)
+ ** custom_filters_score - add score_mode to control filters matching scoring ("#1205":http://github.com/elasticsearch/elasticsearch/issues/issue/1205)
+ * Rest API: Add an @X-Opaque-Id@ header, to be returned in the response if exists in the request ("#1202":http://github.com/elasticsearch/elasticsearch/issues/issue/1202)
+ * Search API: URI request allow to additional query_string parameters ("#1178":http://github.com/elasticsearch/elasticsearch/issues/issue/1178)
+
+
+h2. Bug fixes:
+ * When flushing, old transaction log is not removed ("#1180":http://github.com/elasticsearch/elasticsearch/issues/issue/1180)
+ * Failed to load uid from the index in match_all query with parent/child and _source disabled ("#1149":http://github.com/elasticsearch/elasticsearch/issues/issue/1149)
+ * Merge Policy type setting fails ("#1190":http://github.com/elasticsearch/elasticsearch/issues/issue/1190)
+ * Sorting on _score in the URI format / Java API is reversed ("#1191":http://github.com/elasticsearch/elasticsearch/issues/issue/1191)
+ * @highlight.fields@ should accept field names with the full path ("#1192":http://github.com/elasticsearch/elasticsearch/issues/issue/1192)
+ * Delete By Query wrongly persisted to translog ("#1198":http://github.com/elasticsearch/elasticsearch/issues/issue/1198)
+ * Automatic index creation can still cause "index missing" failures ("#1199":http://github.com/elasticsearch/elasticsearch/issues/issue/1199)
+ * Minor(?) scripting bug(?): (caching-related?) odd behavior when changing languages for the same script code ("#1150":http://github.com/elasticsearch/elasticsearch/issues/issue/1150)
+ * Unicast Discovery: When providing a comma separated list of addresses, trim them from whitespaces ("#1193":http://github.com/elasticsearch/elasticsearch/issues/issue/1193)

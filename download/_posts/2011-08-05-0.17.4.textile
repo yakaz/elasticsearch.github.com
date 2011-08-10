@@ -8,3 +8,5 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.4
 release_notes: true
 ---
+h2. Bug fixes:
+ * Stored fields with multiple values might not return in search request asking for them ("#1208":http://github.com/elasticsearch/elasticsearch/issues/issue/1208)
