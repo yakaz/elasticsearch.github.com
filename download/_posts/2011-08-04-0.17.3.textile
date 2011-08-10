@@ -36,7 +36,7 @@ h2. Enhancements:
 
 
 h2. Bug fixes:
- * When flushing, old transaction log is not removed ("#1180":http://github.com/elasticsearch/elasticsearch/issues/issue/1180)
+ * When flushing, old transaction log is not removed ("#1180":http://github.com/elasticsearch/elasticsearch/issues/issue/1180). Note, this feature has not been properly backported, and will be properly fixed in 0.17.5.
  * Failed to load uid from the index in match_all query with parent/child and _source disabled ("#1149":http://github.com/elasticsearch/elasticsearch/issues/issue/1149)
  * Merge Policy type setting fails ("#1190":http://github.com/elasticsearch/elasticsearch/issues/issue/1190)
  * Sorting on _score in the URI format / Java API is reversed ("#1191":http://github.com/elasticsearch/elasticsearch/issues/issue/1191)
