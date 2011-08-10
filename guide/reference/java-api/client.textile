@@ -79,3 +79,10 @@ p. The client may sniff the rest of the cluster in order to expand the list of m
 <pre class="prettyprint lang-java">
 TransportClient client = new TransportClient(settingsBuilder().put("client.transport.sniff", true));
 </pre>
+
+p. Note, when connecting to a cluster, the transport client should be configured with the client name, for example:
+
+<pre class="prettyprint lang-java">
+TransportClient client = new TransportClient(settingsBuilder().put("cluster.name", "my_cluster"));
+</pre>
+
