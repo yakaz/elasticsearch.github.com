@@ -20,6 +20,8 @@ gateway:
         bucket: bucket_name
 </pre>
 
+p. You’ll need to install the @cloud-aws@ plugin, by running @bin/plugin install cloud-aws@ before (re)starting elasticsearch.
+
 p. The following are a list of settings (prefixed with @gateway.s3@) that can further control the s3 gateway:
 
 |_. Setting |_. Description |
