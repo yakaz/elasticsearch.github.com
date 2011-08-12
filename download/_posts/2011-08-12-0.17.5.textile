@@ -8,3 +8,28 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.5
 release_notes: true
 ---
+h2. New features:
+ * Mapping: Allow to enable automatic numeric types detection new fields with a string value ("#1233":http://github.com/elasticsearch/elasticsearch/issues/issue/1233)
+
+
+h2. Enhancements:
+ * Invalidate cache stats when clearing the cache ("#1220":http://github.com/elasticsearch/elasticsearch/issues/issue/1220)
+ * Allow setting _index and _type with CouchDB river ("#1219":http://github.com/elasticsearch/elasticsearch/issues/issue/1219)
+ * Store/index content type  ("#1209":http://github.com/elasticsearch/elasticsearch/issues/issue/1209)
+ * Improve how versioning are read to reduce (deleted) open file handles ("#1230":http://github.com/elasticsearch/elasticsearch/issues/issue/1230)
+ * Highlighting: For fast term vector highlighting, allow to control the fragment offset ("#1223":http://github.com/elasticsearch/elasticsearch/issues/issue/1223)
+
+
+h2. Bug fixes:
+ * Rare deadlock when introducing new mapping fields/objects ("#1222":http://github.com/elasticsearch/elasticsearch/issues/issue/1222)
+ * When flushing, old transaction log is not removed ("#1180":http://github.com/elasticsearch/elasticsearch/issues/issue/1180)
+ * Full field paths not respected in sort parameters ("#1226":http://github.com/elasticsearch/elasticsearch/issues/issue/1226)
+ * Failed shard recovery can cause shard data to be deleted (replicas will still work) ("#1227":http://github.com/elasticsearch/elasticsearch/issues/issue/1227)
+ * Java API TransportClient can fail on remote node shutdown instead of retrying the next connected node under heavy load ("#1229":http://github.com/elasticsearch/elasticsearch/issues/issue/1229)
+ * Failure to reduce geo distance sorting (class case exception) ("#1234":http://github.com/elasticsearch/elasticsearch/issues/issue/1234)
+ * Updating @index.auto_expand_replicas@ might not be applied correctly ("#1237":http://github.com/elasticsearch/elasticsearch/issues/issue/1237)
+ * Peer recovery process can sometimes not reuse the same index files allocated on a possible node ("#1238":http://github.com/elasticsearch/elasticsearch/issues/issue/1238)
+ * CouchDB River: Custom script does not convert the modified doc properly to be indexed ("#1225":http://github.com/elasticsearch/elasticsearch/issues/issue/1225)
+ * Scripts: arrays: ".multiValued" returns true even when ".values" fails ("#1145":http://github.com/elasticsearch/elasticsearch/issues/issue/1145)
+ * Thrift Transport: Uses wrong array offset into the underlying buffer ("#1232":http://github.com/elasticsearch/elasticsearch/issues/issue/1232)
+
