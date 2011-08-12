@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.17.5 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.5@ has just been released. You can download it "here":/download. This is a bug fix release and minor feature enhancements. Upgrade is highly recommended.
