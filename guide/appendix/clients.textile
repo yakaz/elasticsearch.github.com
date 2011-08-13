@@ -23,7 +23,7 @@ h2. Integrations
 
 * "Grails":http://grails.org/plugin/elasticsearch: ElasticSearch Grails plugin.
 * "escargot":https://github.com/angelf/escargot: ElasticSearch connector for Rails (WIP).
-* "catalyst":http://www.catalystframework.org/calendar/2010/2: ElasticSearch and Catalyst integration.
+* "Catalyst":https://metacpan.org/module/Catalyst::Model::Search::ElasticSearch: ElasticSearch and Catalyst integration.
 * "django-elasticsearch":http://github.com/aparo/django-elasticsearch: Django ElasticSearch Backend.
 * "elasticflume":http://github.com/tallpsmith/elasticflume: "Flume":http://github.com/cloudera/flume sink implementation.
 * "Terrastore Search":http://code.google.com/p/terrastore/wiki/Search_Integration: "Terrastore":http://code.google.com/p/terrastore/ integration module with elasticsearch.
