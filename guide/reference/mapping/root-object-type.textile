@@ -78,6 +78,22 @@ p. Allows to disable automatic date type detection (a new field introduced and m
 }
 </pre>
 
+h1. numeric_detection
+
+p. Sometimes, even though json has support for native numeric types, numeric values are still provided as strings. In order to try and automatically detect numeric values from string, the @numeric_detection@ can be set to @true@. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "numeric_detection" : true,
+        "properties" : {
+            "message" : {"type" : "string"}
+        }
+    }
+}
+</pre>
+
+
 h1. dynamic_templates
 
 p. Dynamic templates allow to define mapping templates that will be applied when dynamic introduction of fields / objects happens.
