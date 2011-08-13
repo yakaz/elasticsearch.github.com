@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.17.6 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.6@ has just been released. You can download it "here":/download. This is is a quick release to fix a bug in automatic date detection when provided as @yyyy/MM/dd@ or @yyyy/MM/dd HH:mm:ss@.
