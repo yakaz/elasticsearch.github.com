@@ -51,7 +51,7 @@ p. Multiple index templates can potentially match an index, in this case, both t
 curl -XPUT localhost:9200/_template/template_1 -d '
 {
     "template" : "*",
-    "order" : 0
+    "order" : 0,
     "settings" : {
         "number_of_shards" : 1
     },
@@ -66,7 +66,7 @@ curl -XPUT localhost:9200/_template/template_1 -d '
 curl -XPUT localhost:9200/_template/template_2 -d '
 {
     "template" : "te*",
-    "order" : 1
+    "order" : 1,
     "settings" : {
         "number_of_shards" : 1
     },
