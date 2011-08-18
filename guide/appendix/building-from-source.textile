@@ -21,3 +21,11 @@ h1. Hacking
 p. *elasticsearch* comes with built in "IntelliJ IDEA":http://www.jetbrains.com/idea/ project files. Just download the "community edition":http://www.jetbrains.com/idea/download/, fire it up, and import the project.
 
 p. In order to get all the dependencies right, you will need to run @gradle@ and also @gradle test@ once to download all the dependencies.
+
+h1. Building from eclipse
+
+p. Once you have build *elasticsearch* (@gradle@ and @gradle test@), you could like to import it in Eclipse.
+
+p. Just run @gradle eclipse@, get a new beer and relax...
+
+p. You can now import all modules in your eclipse workspace. Et voila...
