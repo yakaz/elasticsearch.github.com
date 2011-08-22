@@ -1,0 +1,1150 @@
+---
+layout: tutorial
+title: elasticsearch on EC2
+cat: tutorials
+author: James Cook
+nick:
+tutorial_desc: Running elasticsearch on EC2
+---
+h1. elasticsearch on  EC2
+
+h2. Overview
+
+<p>
+    There are usually some differences between running an application
+    locally on a single machine, on a cluster of servers on a private network, or
+    in the cloud. Most of the differences have to do with network restrictions
+    placed on virtual machines in the cloud, or the heterogeneous nature of nodes
+    in the cloud. elasticsearch is specifically designed to work well on Amazon’s
+    EC2 platform and this tutorial should get you started.
+</p>
+
+<p>
+    elasticsearch had originally been developed to work with multiple cloud
+    platforms by leveraging the "jclouds":http://code.google.com/p/jclouds/ project.
+    However after version 0.8.0, the development effort has been focused on the
+    use of Amazon Web Services (AWS) and running elasticsearch on Amazon’s EC2
+    platform. To this end, elasticsearch will leverage the AWS API for two
+    purposes, discovery and gateway persistence.
+</p>
+
+h3. Discovery
+
+<p>
+    Discovery is the process of locating other nodes in the cluster and
+    elasticsearch will either perform dynamic discovery (Multicast), declarative
+    discovery (Unicast), or a hybrid of the two (EC2) which uses specific EC2
+    apis instead of multicast to find other potential cluster members..
+</p>
+
+h4. Declarative Discovery
+
+<p>
+    If you have assigned static, known IP addresses to all of your virtual
+    machines that comprise your cluster, you can configure elasticsearch with a
+    list of these addresses in its configuration file. Of course, you don’t have
+    to be using any EC2-specific services to accomplish this type of discovery.
+    You are simply using EC2 in much the same way you might use a common VPS or
+    dedicated hosting solution, and you will configure elasticsearch using
+    the "unicast discovery":http://www.elasticsearch.org/guide/reference/modules/discovery/zen.html  method.
+</p>
+
+
+h4. Dynamic Discovery
+
+<p>
+    Because you are running your cluster on EC2, multicast discovery is not
+    an option. Most hosting services do not allow the multicast protocol to be
+    used, and Amazon is no exception. This is why the EC2 discovery option is
+    important.
+</p>
+
+<p>
+    Amazon EC2 is a system built with failure in mind. At any moment Amazon
+    may decide that your running node instance has to be shut down, and you have
+    to plan for this failure condition. Depending on how you have EC2 configured,
+    it may spin up a new instance to replace the one it terminated. Fortunately,
+    elasticsearch has been developed to be resilient in these common use
+    cases.
+</p>
+
+<p>
+    With the proper libraries installed and the appropriate configuration,
+    your elasticsearch nodes will be able to discover each other in a fully
+    dynamic manner.
+</p>
+
+h3. Gateway
+
+
+<p>
+    The other feature you may want to take advantage of using the EC2
+    platform is the S3 Gateway. The elasticsearch gateway is responsible for long
+    term persistence of the cluster meta data and indexed data across all shards
+    in the cluster. If something happens where an index loses its local copy of
+    data because the nodes containing its primary shard and all of its replica
+    shards were terminated, the data could still be restored from the gateway
+    when the shards were reallocated.
+</p>
+
+<p>
+    This is a very important concept, especially in a cloud-based
+    environment. Out of the box, elasticsearch uses a local gateway. This means
+    that the local hard disk stores a copy of the cluster metadata, and the local
+    index data is used during recovery of an index. This works very well for
+    nodes that are tied to physical machines, or more importantly, physical hard
+    disks. Things can be much different in the cloud.
+</p>
+
+<p>
+    Amazon EC2 has the concept of a permanent block storage mechanism
+    called Elastic Block Storage (EBS). An EBS instance has a lifecycle
+    independent of the node on which it is mounted. This means that if a node
+    dies, you can instantiate a new one and mount the former node’s storage
+    volume. This type of setup is no different than if you were maintaining your
+    own server farm, so you can continue to use the local gateway as long as you
+    manage your EBS volumes carefully.
+</p>
+
+<p>
+    Note: When using the local gateway option, you cannot use
+    "memory caching":http://www.elasticsearch.org/guide/reference/index-modules/store.html  as your index store type. This would be a shame
+    if you were running a cluster of EC2 high memory instances with capacities
+    > 64GB per node!
+</p>
+
+
+<p>
+    Some people may have a need to run elasticsearch on EC2 instances
+    without the benefit of an EBS volume, or need the performance increase that
+    comes with a high memory instance. For these cases, there is the S3 Gateway.
+    This gateway configuration creates multiple (five by default) connections
+    between each node in the cluster and Amazon’s S3 service. S3 is an extremely
+    simple key/value storage system which stores all values in a flat format into
+    a storage location referred to as a bucket. elasticsearch asynchronously
+    writes changes in cluster state and index data to the S3 service.
+</p>
+
+<p>
+    If you were using pure memory storage or local storage without an EBS
+    volume, and you terminated all of your cluster nodes (or if Amazon decides to
+    do that for you), a restart of your nodes would begin to recover cluster
+    state from S3. Eventually, your index data would also be recovered. This
+    process is much slower than using a local index. There are no formal
+    benchmarks on how long it takes to recover a GB of data from an S3 gateway,
+    but it would be a welcome addition to this document.
+</p>
+
+h2. Adding the EC2 Plugin
+
+
+<p>
+    The libraries necessary to communicate with Amazon’s EC2 APIs are
+    installed in different ways depending on your environment. If you run EC2
+    from the command line or from a shell script, you can install the cloud
+    libraries using the plugin script.
+</p>
+
+<pre>
+    bin/plugin install cloud-aws
+</pre>
+
+<p>
+    If you are using Maven and embedding the elasticsearch libraries in a
+    web application or a GUI client, you would add the cloud dependency to the
+    elasticsearch dependency you already are using.
+</p>
+
+<pre>
+    <dependency>
+        <groupId>org.elasticsearch</groupId>
+        <artifactId>elasticsearch</artifactId>
+        <version>${elasticsearch-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.elasticsearch</groupId>
+        <artifactId>elasticsearch-cloud-aws</artifactId>
+        <version>${elasticsearch-version}</version>
+    </dependency>
+</pre>
+
+<p>
+    Note: The elasticsearch Maven artifacts are stored on
+    "Sonatype’s repository":http://oss.sonatype.org/content/repositories/releases/ , not Maven central.
+</p>
+
+<p>
+    If you are using the Java libraries directly by including them in your
+    projects runtime classpath, the easiest way to get the cloud libraries is to
+    download the jar file from an online archive stored on "googlecode":http://elasticsearch.googlecode.com/svn/plugins/cloud-aws/ .
+</p>
+
+h2. Creating an EC2 instance
+
+<p>
+    This document will deal with only those config issues related to EC2.
+    It also assumes you have some working knowledge of AWS including EC2 and S3,
+    the concept of access keys, creating instances, and SSH. If you need any help
+    on these things, consult the "AWS documentation":http://aws.amazon.com/products/ .
+</p>
+
+<p>
+    elasticsearch is pretty simple to install considering you just download
+    and extract it into a directory. When running on an EC2 instance, there are a
+    few additional configuration changes you may want to make. Navigate to
+    the "AWS console":https://console.aws.amazon.com/ec2/home , and
+    select the @Launch Instance@ option.
+</p>
+
+
+<p>
+    Create a new instance of the Basic 32-bit Amazon Linux AMI. You can
+    choose the 64-bit version if you would rather play around with that. The next
+    step is to select the instance type. I chose Micro, but you can choose
+    whatever you would like to pay for. For purposes of this demo, set your
+    region to US East (Virgina). The next page of instance details can be
+    configured as you see fit. I chose the defaults for this demo. The third page
+    of instance details deals with assigning key/value tags. I added a tag with
+    the key ‘stage’ and the value ‘dev’ for use later.
+</p>
+
+<p>
+    The next section of the AWS instance creation requires the generation
+    of a key pair. You cannot recover the public key once it has been downloaded,
+    so put it in a safe place.
+</p>
+
+<p>
+    The next section involves the creation of a security group. This is
+    where you control your AWS firewall, and it is important that we open some
+    ports for the EC2 elasticsearch instances to communicate with each other.
+    Create a new security group which opens ports @9300@ (elasticsearch transport),
+    @22@ (SSH), and port @9200@ (for HTTP testing). You can change your security
+    group rules at any time.
+</p>
+
+
+<p>
+    The next screen will review your settings and allow you to launch your
+    new instance. Make it so.
+</p>
+
+<p>
+    If all went well, your instance should be up and running in a minute or
+    so. Now we will SSH into it to make sure all is well. In order to find the
+    DNS name of your running instance, highlight the instance in the console. At
+    the bottom of the screen are the properties for the instance. You want the
+    address listed after Public DNS. The default user is @ec2-user@.
+</p>
+
+<pre>
+
+    $ ssh -i es-demo.pem ec2-user@ec2-50-19-128-95.compute-1.amazonaws.com
+    The authenticity of host 'ec2-50-19-128-95.compute-1.amazonaws.com (50.19.128.95)'
+    can't be established.
+    RSA key fingerprint is ef:19:54:bf:0b:59:6f:15:29:d8:12:95:fd:8b:89:89.
+    Are you sure you want to continue connecting (yes/no)? yes
+    Warning: Permanently added 'ec2-50-19-128-95.compute-1.amazonaws.com,50.19.128.95'
+    (RSA) to the list of known hosts.
+
+           __|  __|_)  Amazon Linux AMI
+           _|  (     /    Beta
+          ___|\___|___|
+
+    See /usr/share/doc/system-release-2011.02 for latest release notes. :-)
+
+    [ec2-user@domU-12-31-39-02-6D-65 ~]$
+</pre>
+
+h2. Installation of elasticsearch
+
+<p>
+    At the time this was written, the latest release of elasticsearch was
+    0.17.6. Let’s get it onto our elasticsearch instance.
+</p>
+
+<pre>
+    $ wget http://bit.ly/ES-0-17-6
+    $ sudo unzip elasticsearch-0.17.6.zip -d /usr/local/elasticsearch
+    $ cd /usr/local/elasticsearch/elasticsearch-0.17.6
+    $ sudo bin/plugin -install cloud-aws
+</pre>
+
+<p>
+    If all goes well, elasticsearch is now installed and ready to be
+    configured.
+</p>
+
+
+<p>
+    Note: There are a few other things you should be doing when installing
+    elasticsearch to run locally on a server, especially increasing the number of
+    file handles, disabling swap, creating a proper log directory, and creating
+    an elasticsearch user account and the accompanying security chmods. This is
+    not the focus of this document.
+</p>
+
+h2. The Simplest Configuration
+
+<p>
+    Like all settings for elasticsearch, there are multiple ways to
+    configure the nodes. Since we are running the standard download of
+    elasticsearch, we will be editing the elasticsearch.yml file in the config
+    directory. By default, every setting is commented out. We will give our
+    cluster a unique name, and add a few settings to enable EC2 discovery and the
+    S3 Gateway.
+</p>
+
+<pre>
+    cluster.name: es-demo
+    cloud:
+        aws:
+            access_key: <lookup in AWS>
+            secret_key: <lookup in AWS>
+    discovery:
+        type: ec2
+    gateway:
+        type: s3
+        s3:
+            bucket: <create bucket in S3>
+</pre>
+
+<p>
+    Note: Your access key id and secret access key are found in the
+    "Account section":https://aws-portal.amazon.com/gp/aws/developer/account?ie=UTF8&amp;action=access-key
+    of the AWS website. You will also have to create an S3 bucket for
+    the S3 gateway to function (use the "console":https://console.aws.amazon.com/s3/home ).
+    I used the name @es-demo@, so you will have to pick something else. An interesting
+    side note is that bucket names are not assigned per account; they are global
+    to the entire S3 platform.
+</p>
+
+<p>
+    Let’s go ahead and increase our log levels so we can see what is
+    occurring at startup. Edit the @config/logging.yml@ file and make sure these
+    lines are present.
+</p>
+
+<pre>
+    gateway: DEBUG
+    org.apache: WARN
+    discovery: TRACE
+</pre>
+
+h2. Running the Server
+
+<p>
+    Once configured, we can start the elasticsearch server from the root
+    installation directory using this command.
+</p>
+
+<pre>
+    sudo bin/elasticsearch -f
+</pre>
+
+<p>
+    On the screen you should see a bunch of log statements with many
+    pertaining to the state of the discovery and gateway services. Somewhere near
+    the end of this log you should see the successful start of the elasticsearch
+    node represented by the “started” message.
+</p>
+
+<pre>
+    [node] {elasticsearch/0.17.6}[20085]: started
+</pre>
+
+h3. Discovery
+
+<p>
+    Let’s take a look at a few key statements that indicate things are
+    working well.
+</p>
+
+<p>
+    Indicates that the cloud plugin was properly installed.
+</p>
+<pre>
+    [plugins] loaded [cloud-aws], sites []
+</pre>
+
+<p>
+    The amount of time the discovery will wait to hear a ping
+    response from each node in the cluster.
+</p>
+<pre>
+    [discovery.ec2] using ping.timeout [3s]
+</pre>
+
+<p>
+    A regurgitation of our ec2 settings. This is a bare bones
+    example.
+</p>
+<pre>
+    [discovery.ec2] using host_type [PRIVATE_IP],
+                    tags [{}],
+                    groups [[]] with any_group [true],
+                    availability_zones [[]]
+</pre>
+<p>
+    This is the value of the @initial_state_timeout@ property. I
+    couldn’t find much documentation regarding this setting, but it appears to be
+    the total amount of time discovery will look for other nodes in the cluster
+    before giving up and declaring the current node master.
+</p>
+<pre>
+    [discovery] waiting for 30s for the initial state to be set by the discovery
+</pre>
+
+<p>
+    Now we are getting to the good stuff. elasticsearch is about
+    to make an EC2 API call (@DescribeInstances@) to get a list of all running EC2
+    instances running under your EC2 account. Note: elasticsearch could choose to
+    filter this list be tags and groups at the time of querying EC2. My guess is
+    elasticsearch has chosen to get all
+    instances, then filter the list manually because additional
+    logging can be provided to let the developer know why things like filtering
+    are occurring.
+</p>
+<pre>
+    [discovery.ec2] building dynamic unicast discovery nodes...
+</pre>
+
+<p>
+    The private ip address of a particular EC2 instance has been
+    discovered matching our group and tag restrictions. If this is the only EC2
+    instance running on your account, then we have discovered ourself.
+</p>
+<pre>    
+    [discovery.ec2] adding i-bf072ede, address 10.248.114.147, 
+                    transport_address inet[/10.248.114.147:9300]
+</pre>
+
+<p>
+    elasticsearch now switches to unicast discovery mode in an
+    attempt to make a connection to the discovered server on port 9300.
+</p>
+
+<pre>
+    [discovery.ec2] using dynamic discovery nodes [[#cloud-i-bf072ede-0][inet[/10.248.114.147:9300]]]
+    [discovery.zen.ping.unicast] [1] connecting to [Donald Pierce]
+                                 [vhhIkdAFQwKP7hWmojytAQ][inet[/10.248.114.147:9300]]
+    [discovery.zen.ping.unicast] [1] received response from [Donald Pierce]
+                                 [vhhIkdAFQwKP7hWmojytAQ][inet[/10.248.114.147:9300]]:
+                                 [ ping_response{
+                                     target [
+                                        [Donald Pierce]
+                                        [vhhIkdAFQwKP7hWmojytAQ]
+                                        [inet[/10.248.114.147:9300]]
+                                     ],
+                                     master [null],
+                                     cluster_name [es-demo]
+                                   },
+                                   ping_response{
+                                     target [
+                                        [Donald Pierce]
+                                        [vhhIkdAFQwKP7hWmojytAQ]
+                                        [inet[/10.248.114.147:9300]]
+                                     ],
+                                     master [null],
+                                     cluster_name [es-demo]
+                                   }
+                                 ]
+</pre>
+
+<p>
+    We have successfully connected to the node (ourself in this
+    example), and received a response from the node named @Donald Pierce@. Note,
+    that this node had not yet discovered any master nodes in the cluster.
+</p>
+
+<pre>
+    [discovery.ec2] ping responses: {none}
+</pre>
+
+
+<p>
+    This doesn’t actually mean there were no ping responses. It
+    should probably read <br />@ping responses: [no masters]@. This process repeats
+    three times (@discovery.zen.fd.ping_retries@) until it is clear there is no
+    master yet in the cluster.<br />
+</p>
+
+<p>
+    Our new node is elected as the master.
+</p>
+
+<pre>
+    [cluster.service] new_master [Donald Pierce]
+                      [vhhIkdAFQwKP7hWmojytAQ][inet[/10.248.114.147:9300]],
+                      reason: zen-disco-join (elected_as_master)
+</pre>
+
+h3. S3 Gateway
+
+<p>
+    Next, let’s look at the log statements that will give us some
+    indication that the S3 gateway is working as expected. The following logs
+    show what is happening the first time you start up your node with no
+    elasticsearch data in your S3 bucket.
+</p>
+
+<p>
+    These are our barebones settings for controlling the S3
+    gateway data.
+</p>
+
+<pre>
+    [gateway.s3] using bucket [es-demo],
+                 region [null],
+                 chunk_size [100mb],
+                 concurrent_streams [5]
+</pre>
+
+<p>
+    elasticsearch has discovered that there is no content in the
+    S3 bucket.
+</p>
+
+<pre>
+    [gateway.s3] Latest metadata found at index [-1]
+    [gateway.s3] reading state from gateway [snip] ...
+    [gateway.s3] read state from gateway [snip], took 24ms
+    [gateway.s3] no state read from gateway
+</pre>
+
+<p>
+    So, it writes the latest index information and cluster
+    config into an S3 bucket. 
+</p>
+<pre>
+    [gateway.s3] writing to gateway [snip]...
+</pre>
+
+<p>
+    Curious as to what it stores? Well, it writes the following key and value:
+</p>
+<pre>
+        key: /es-demo/metadata/metadata-0
+        value: ZV +{"meta-data":{"templates":{},"indices":{}}}
+</pre>
+<p>
+    The first four bytes stored are @5A 56 00 00@
+</p>
+
+
+<pre>
+    [gateway] recovered [0] indices into cluster_state
+</pre>
+
+<p>
+    There has been some confusion regarding the verb “recover”.
+    It is used in some places to represent data going into S3, 
+    and coming out of S3. In this case, recover refers to
+    the process of writing the current index data into S3.
+</p>
+
+<pre>
+    [gateway.s3] wrote to gateway [snip], took 225ms
+</pre>
+
+<p>
+    If you weren’t fortunate enough to see these successful log messages,
+    please help us build out the Troubleshooting portion of the document by
+    adding your issue.
+</p>
+
+h3. Test the Single Node
+
+
+<p>
+    Before moving on to the cool stuff, let’s make sure we can index some
+    data. We will go with the most simple example.
+</p>
+
+<pre>
+    curl -XPUT 'http://<public EC2 dns>:9200/twitter/tweet/1' -d '{
+      "user": "kimchy",
+      "post_date" : "2011-08-18T16:20:00",
+      "message" : "trying out Elastic Search"
+    }'
+</pre>
+<p>
+    I would like you to try running this curl request from your local
+    computer. You can use a "Rest client":http://code.google.com/p/rest-client/  if
+    you don’t have curl, and there is a cool 
+    "Chrome extension":https://chrome.google.com/webstore/detail/cokgbflfommojglbmbpenpphppikmonn?hc=search&amp;hcp=main
+    to do this as well. The point to make
+    is that we can directly query elasticsearch in this manner from anywhere on
+    the Internet. This is because we opened port 9200 on the EC2 security group.
+    You obviously would not want to do this if you don’t want others to mess with
+    your data.
+</p>
+
+<p>
+    If all went well, you should see a success response.
+</p>
+
+<pre>
+    {"ok":true,"_index":"twitter","_type":"tweet","_id":"1","_version":1}
+</pre>
+
+<p>
+    Even more interesting is to check your S3 bucket. You should now see
+    there is a new “directory” in your bucket named @indices@, and also your
+    metadata folder has new metadata. elasticsearch has updated the gateway with
+    the necessary information to recreate your entire cluster. But still, it is a
+    cluster of a single node. Not terribly exciting, so let’s do something about
+    it.
+</p>
+
+h2. Clustering
+
+<p>
+    We really haven’t anything interesting yet. We still need to spin up
+    another instance on EC2 and make sure they can successfully cluster with each
+    other.
+</p>
+
+<p>
+    Since we already have a Linux VM running, you can launch another
+    instance of this AMI by going to the EC2 console, select the running AMI and
+    choose @Launch more like this@ from the action combobox.
+</p>
+
+<p>
+    Unfortunately, this is a version of the AMI before we installed and
+    configured elasticsearch. You will have to repeat the installation and config
+    steps on this new instance. I’ll wait while you make it so. Ready?
+</p>
+
+
+<p>
+    So now our second node should be configured exactly the same as our
+    first node, and our first node should still be running. Now we are ready to
+    start elasticsearch on our second node.
+</p>
+
+<pre>
+    $ sudo bin/elasticsearch -f
+</pre>
+
+<p>
+    Let’s take a look at the log file for this new node.
+</p>
+
+<p>
+    Both nodes are pointed to the same S3 bucket. This is where
+    state can be restored if the cluster is fubar.
+</p>
+
+<pre>
+    [gateway.s3] using bucket [es-demo], region [null],
+                 chunk_size [100mb],concurrent_streams [5]
+</pre>
+
+<p>
+    Just an acknowledgement that there is some index data stored
+    in the gateway. Nothing is restored yet.
+</p>
+
+<pre>
+    [gateway.s3] Latest metadata found at index [2]
+</pre>
+
+<p>
+    elasticsearch is going to use the AWS API to query for EC2
+    nodes under this account.
+</p>
+
+<pre>
+    [discovery.ec2] building dynamic unicast discovery nodes...
+</pre>
+<p>
+    elasticsearch found two EC2 instances running (or in pending
+    state). It will attempt to connect to these to see if they match this node’s
+    group, tag and cluster name settings. Of course, one of these nodes is our
+    current node.
+</p>
+
+<pre>
+    [discovery.ec2] adding i-bf072ede, address 10.248.114.147,
+                    transport_address inet[/10.248.114.147:9300]
+    [discovery.ec2] adding i-aba883ca, address 10.220.137.71,
+                    transport_address inet[/10.220.137.71:9300]
+    [discovery.ec2] using dynamic discovery nodes
+                    [[#cloud-i-bf072ede-0][inet[/10.248.114.147:9300]],
+                     [#cloud-i-aba883ca-0][inet[/10.220.137.71:9300]]]
+</pre>
+<p>
+    elasticsearch asynchronously attempts to connect to each
+    node. Note that @10.246.114.147@ is the first node, and @10.220.137.71@ is the
+    second node (this node) which doesn’t know anything yet.
+</p>
+<pre>
+    [discovery.zen.ping.unicast  ] [1] connecting to
+                                   [#cloud-i-bf072ede-0][inet[/10.248.114.147:9300]]
+    [discovery.zen.ping.unicast  ] [1] connecting to [All-American]
+                                   [VdpvmA8ARvqeBHm_yacQOw][inet[/10.220.137.71:9300]]
+
+</pre>
+<p>
+    The first node responded with the important information.
+    Note what I don’t show the response from the current node, because it is long
+    and didn’t provide any information. It has no idea who might be the
+    master.
+</p>
+<pre>
+    [discovery.zen.ping.unicast ] [1] received response from
+              [#cloud-i-bf072ede-0][inet[/10.248.114.147:9300]]:
+              [
+               ping_response{
+                 target[[All-American][VdpvmA8ARvqeBHm_yacQOw][inet[/10.220.137.71:9300]]],
+                 master [null], cluster_name[es-demo]
+               },
+               ping_response{
+                 target[[All-American][VdpvmA8ARvqeBHm_yacQOw][inet[/10.220.137.71:9300]]],  
+                 master [null], cluster_name[es-demo]
+               },
+               ping_response{
+                 target[[Ogre][N8Xbr35zS8CukC46-ZS2HQ][inet[/10.248.114.147:9300]]],
+                 master [[Ogre][N8Xbr35zS8CukC46-ZS2HQ][inet[/10.248.114.147:9300]]],
+                 cluster_name[es-demo]
+               }]
+
+</pre>
+
+<p>
+    elasticsearch has figured
+    out who the master node is in the cluster. It can now use information the
+    master contains to discover other nodes in the cluster (if there were
+    others).
+</p>
+
+<pre>
+    [discovery.ec2] ping responses: --> target [[Ogre]
+                   [N8Xbr35zS8CukC46-ZS2HQ][inet[/10.248.114.147:9300]]],
+                   master [[Ogre][N8Xbr35zS8CukC46-ZS2HQ][inet[/10.248.114.147:9300]]]
+</pre>
+
+<p>
+    A thread is created to monitor the health of the master
+    node. The master node also will poll each node in the cluster to make sure
+    they are healthy as well.
+</p>
+<pre>                   
+    [discovery.zen.fd] [master] starting fault detection against master 
+                       [[Ogre][N8Xbr35zS8CukC46-ZS2HQ]
+                       [inet[/10.248.114.147:9300]]], 
+                       reason [initial_join]
+</pre>             
+
+<p>
+    The second node has no knowledge of the cluster data, so it
+    has two options; get its state from the master or the S3 gateway. As it turns
+    out, it is usually much faster to get state from other nodes running in the
+    cluster than going to S3.
+</p>
+
+<pre>
+    [discovery.ec2] got a new state from master node, though we are
+                    already trying to rejoin the cluster
+    [discovery    ] initial state set from discovery
+</pre>
+
+<p>
+    The most authoritative technique to use to verify the cluster is up and
+    working correctly is to perform a health check.
+</p>
+
+<pre>
+    $ curl -XGET 'http://<ec2 dns of a node>:9200/_cluster/health?pretty=true'
+    {
+      "cluster_name" : "es-demo",
+      "status" : "green",
+      "timed_out" : false,
+      "number_of_nodes" : 2,
+      "number_of_data_nodes" : 2,
+      "active_primary_shards" : 5,
+      "active_shards" : 10,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 0
+    }
+</pre>
+<p>
+    As we can see, we are in a @green@ status meaning that all shards and
+    replicas are allocated appropriately across the cluster. By default, we are
+    running with 5 shards and 1 replica. It is worth noting that a cluster health
+    check before we added our second node would have resulted in a @yellow@
+    status, because in a single-node cluster the replicas can’t live on the same
+    node as its associated primary shard.
+</p>
+
+
+h2. Creating a Custom AMI
+
+<p>
+    Before we move on to tearing down nodes to see how the cluster
+    responds, let’s take a quick diversion and create our own personal AWS
+    virtual machine so we can quickly get a new node up and running. If one of
+    your nodes is currently running, SSH into it and follow the next steps to
+    prepare it to be a new AMI. If you killed your nodes already, create a new
+    one and configure elasticsearch.
+</p>
+
+h3. Install as Service
+
+<p>
+    We need to make sure elasticsearch starts as a service when the virtual
+    machine is started. We don’t want to have to keep shelling into each remote
+    server and manually starting elasticsearch. There are obviously more than one
+    way to skin this cat, but we will use the
+    "elasticsearch-servicewrapper technique":http://www.elasticsearch.org/guide/reference/setup/installation.html .
+</p>
+
+<pre>
+    $ cd ~
+    $ sudo wget https://github.com/elasticsearch/elasticsearch-servicewrapper/zipball/master
+    $ sudo unzip master
+    $ sudo mv elasticsearch-elasticsearch-servicewrapper-3e0b23d/service/ \
+      /usr/local/elasticsearch/elasticsearch-0.17.6/bin
+    $ cd /usr/local/elasticsearch/elasticsearch-0.17.6/
+    $ sudo nano bin/service/elasticsearch.conf
+</pre>
+
+<p>
+    We have to add our path to the elasticsearch installation to the conf
+    file. Find the property to set the @set.default.ES_HOME parameter@:
+</p>
+
+<pre>
+    set.default.ES_HOME=/usr/local/elasticsearch/elasticsearch-0.17.6
+</pre>
+
+
+<p>
+    Once the conf file is modified, you can install the service.
+</p>
+
+<p>
+    Note that this step requires you to choose from two different script
+    files depending in whether you are running on a 32-bit or 64-bit operating
+    system. elasticsearch32 and elasticsearch64 were not executable when I
+    extracted them from the archive. I had to execute sudo chmod a+x bin/service/elasticsearch32
+    bin/service/elasticsearch64.
+</p>
+
+
+<pre>
+    $ sudo bin/service/elasticsearch32 install
+    Detected Linux:
+    Installing the ElasticSearch daemon..
+</pre>
+
+<p>
+    Even though elasticsearch should be installed as a service at this
+    point, it is a good idea to make sure it can run.
+</p>
+
+<pre>
+    $ sudo bin/service/elasticsearch32 start
+    Starting ElasticSearch...
+    Waiting for ElasticSearch......
+    running: PID:1243
+</pre>
+
+<p>
+    Check the logs and make sure everything started as you would expect by
+    comparing them to our earlier set of logs. Finally, stop the running
+    elasticsearch server by using the service call to stop the node.
+</p>
+
+<pre>
+    $ sudo bin/service/elasticsearch32 stop
+    Stopping ElasticSearch...
+    Stopped ElasticSearch.
+</pre>
+
+h3. General cleanup
+
+<p>
+    There are just a couple things we will want to do once we have
+    elasticsearch installed and configured as a service. The first is to delete
+    the data and logs directories that were created when we ran elasticsearch the
+    first time. Make sure elasticsearch is not running and delete the
+    @$ES_HOME/data/@ and @$ES_HOME/logs/@ directories.
+</p>
+
+
+<pre>
+    $ sudo rm -fr data/ logs/
+</pre>
+
+h3. Remove the Private Key
+
+<p>
+    Whenever creating a new AMI (especially a public AMI) you will want to
+    delete the private key installed on the instance.
+</p>
+
+<pre>
+    $ sudo rm ~/.ssh/authorized_keys
+</pre>
+
+h3. Create the New AMI
+
+
+<p>
+    At this time, we are ready to create our new elasticsearch AMI. Go to
+    the AWS EC2 console and view your running instances. If you are follwoing
+    along with this tutorial carefully, you will see two of them. Select the one
+    that represents the instance we just modified.
+</p>
+
+<p>
+    Note: Sometimes it is hard to relate which node appears in the console,
+    and which one with which you have an ssh session. You can always type
+    hostname or ifconfig in your ssh session to see the private DNS name or IP
+    address of the virtual machine. Then you can select the instance in the EC2
+    console and match it using the properties for the instance.
+</p>
+
+<p>
+    With the appropriate node selected in the EC2 console, from the
+    instance actions combobox, select @Create image (EBS AMI)@. This will open a
+    dialog where you must give your image a name. I called mine ‘es-demo’. Select
+    the @Create Image@ button. It will take a few moments to create your image,
+    and it will terminate the currently running instance. Please take note of the
+    name of your pending AMI instance so you can find it later. You can also
+    search by name.
+</p>
+
+h2. Simulating a Total Cluster Failure
+
+<p>
+    At this time, lets do the unspeakable and simulate what any system
+    administrator fears. Select all of your running EC2 elasticsearch instances,
+    and from the @Instance Actions@ combobox, select terminate. While this isn’t
+    exactly the same abrupt stop as cutting the power to a running instance, it
+    will get our point across.
+</p>
+
+
+<p>
+    In under a minute, your instances should show that they have been
+    terminated. This means that our cluster metadata and index data only exists
+    in the S3 gateway.
+</p>
+
+h2. Starting our New AMI
+
+<p>
+    Launching a new instance of our AMI is very similar to how we launched
+    the Amazon Linux AMI earlier. Except when we are done launching the instance
+    this time there will be no installation or configuration os elasticsearch
+    required.
+</p>
+
+<p>
+    Select @Launch Instance@ from the EC2 console. When the dialog opens
+    this time, select the @My AMIs@ tab, and you should see an AMI that matches
+    the ID you wrote down earlier. If you forgot the AMI id, you can filter the
+    AMI list by the name you gave your instance. If you don’t see your AMI, try
+    changing the @Viewing@ drop down to @Private Images@ and see if it shows up
+    in the list. For the rest of the launch process, select the options as we did
+    earlier in the tutorial.
+</p>
+
+<p>
+    At the close of the dialog, your new instance should be listed as
+    @pending@ in the @My Instances@ section of the console. Once it is running,
+    let’s SSH into the new instance and start our elasticsearch node. The logs
+    will look a little different this time.
+</p>
+
+<p>
+    Our newly started node is elected as the master because no
+    other masters were detected.
+</p>
+
+<pre>
+    [discovery.ec2  ] ping responses: {none}
+    [cluster.service] new_master [Magus]
+                      [2s-VhyRrQoG81S8xlvKCSw][inet[/10.249.118.94:9300]],
+                      reason: zen-disco-join (elected_as_master)
+</pre>
+
+<p>
+    This time, we restored (recovered?) state from S3. Our
+    cluster is back in business.
+</p>
+
+<pre>
+    [gateway.s3] reading state from gateway [snip] ...
+    [gateway.s3] read state from gateway [snip], took 97ms
+    [gateway]    recovered [1] indices into cluster_state
+</pre>
+
+<p>
+    Let’s do our cluster health check.
+</p>
+
+<pre>
+    $ curl -XGET 'http://ec2-50-19-34-86.compute-1.amazonaws.com:9200/_cluster/health?pretty=true'
+    {
+      "cluster_name" : "es-demo",
+      "status" : "yellow",
+      "timed_out" : false,
+      "number_of_nodes" : 1,
+      "number_of_data_nodes" : 1,
+      "active_primary_shards" : 5,
+      "active_shards" : 5,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 5
+    }
+
+</pre>
+
+<p>
+    You can see that the cluster is in @yellow@ state which means our
+    primary shards are allocated, but replicas are not. Those five unassigned
+    shards represent our replicas.  And how about querying for that tweet we
+    added so long ago?
+</p>
+<pre>
+    $ curl -XGET 'http://ec2-50-19-34-86.compute-1.amazonaws.com:9200/twitter/tweet/1'
+    {"_index":"twitter","_type":"tweet","_id":"1","_version":1,"exists":true,
+    "_source" : {
+      "user": "kimchy",
+      "post_date" : "2011-08-18T16:20:00",
+      "message" : "trying out Elastic Search"
+    }}
+</pre>
+
+<p>
+    Isn’t life good?
+</p>
+
+h2. Massive Clustering
+
+<p>
+    Let’s push the envelope a bit and create nine more elasticsearch
+    instances for a total of 10. Go to the EC2 console and put a check next to
+    the instance we just launched created with our custom AMI. From the Instance
+    Actions combobox, select Launch more like this. In the now familiar launch
+    dialog, select the usual suspects, but increase the number of instance to 9.
+    Once you are done, look with awe upon the EC2 console showing your pending,
+    and soon to be running instances!
+</p>
+
+<p>
+    Because we are running an elasticsearch configuration using 5 shards
+    with 1 replica, there are a maximum of 10 shards under management. With our
+    ten node cluster we have maximized the utilization possible under
+    elasticsearch using this default configuration. Let’s check the health of our
+    cluster and make sure all nodes are participating in the cluster.
+</p>
+
+<pre>
+    $ curl -XGET 'http://<public ip>:9200/_cluster/health?pretty=true'
+    {
+      "cluster_name" : "es-demo",
+      "status" : "green",
+      "timed_out" : false,
+      "number_of_nodes" : 10,
+      "number_of_data_nodes" : 10,
+      "active_primary_shards" : 5,
+      "active_shards" : 10,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 0
+    }
+</pre>
+
+<p>
+    If everything went as expected, you will see the number of data nodes
+    equal to the number of instances started, which in our case is ten.
+</p>
+
+h2. Advanced Cases
+
+
+<p>
+    Working with elasticsearch on EC2, there are some other settings which
+    can be tweaked to optimize the discovery and gateway procedures.
+</p>
+
+h3. Filtering the Discovery
+
+<p>
+    Many people who run EC2 installations don’t just have elasticsearch
+    running in there enviroment. There is often a heterogeneous environment with
+    additional node instances for perhaps a cluster of web servers and one or
+    more database instances. All of these servers are under the same AWS
+    account.
+</p>
+
+<p>
+    If you recall the discovery process we discussed early in the tutorial,
+    elasticsearch uses the AWS DescribeInstances API call to get a list of
+    potential virtual machines to test as elasticsearch cluster members. Because
+    elasticsearch does not filter this list, these other server types may be
+    included in the resulting list. It may be possible because of this situation,
+    for elasticsearch to use all of its time interrogating MySQL servers and
+    timeout before discovering a node in the elasticsearch cluster.
+</p>
+
+<p>
+    Tags and groups are two ways that elasticsearch uses to filter down the
+    list of servers it will interrogate. When you create your EC2 instances,
+    remember the security group name we assign our instances? That is the group
+    setting. Because we open a very specific port, the likelihood that we will
+    create a specific group for just our elasticsearch instances is very high.
+    So, groups do a very good job of filtering down the list of nodes to just
+    those that are running elasticsearch.
+</p>
+
+
+<p>
+    In the elasticsearch configuration file, you can specify a group filter
+    using this syntax:
+</p>
+
+<pre>
+    discovery:
+        type: ec2
+            groups: es-demo[,optional other groups]
+</pre>
+
+<p>
+    This does not imply that every EC2 instance running elasticsearch and
+    assigned the elasticsearch security group belongs to the same cluster. For
+    example, it is not uncommon to run several clusters under a single AWS
+    account. Perhaps, they are used for different customers, or maybe they
+    reflect a staging (dev, qa, prod) level. In this case, the security group may
+    be the same for each instance.
+</p>
+
+<p>
+    You can solve this problem by using a different cluster name for each
+    group, but remember that elasticsearch has to interrogate each server
+    instance to determine its cluster name. That is exactly what leads to the
+    discovery process we are attempting to resolve. Instead, this is a good use
+    case for the use of tags. Just like security groups, tags are also specified
+    during the launch of an instance, and you can have multiple tags.
+</p>
+
+<pre>
+    discovery:
+        type: ec2
+            tag:
+               stage: dev
+</pre>               
+
+h2. Troubleshooting
+
+p.  "Add your troubleshooting questions here":https://github.com/elasticsearch/elasticsearch.github.com/issues
+
+
