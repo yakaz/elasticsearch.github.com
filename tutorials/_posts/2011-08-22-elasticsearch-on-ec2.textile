@@ -90,7 +90,7 @@ h3. Gateway
 <p>
     This is a very important concept, especially in a cloud-based
     environment. Out of the box, elasticsearch uses a local gateway. This means
-    that the local hard disk stores a copy of the cluster metadata, and the local
+    that the local / mounted hard disk stores a copy of the cluster metadata, and the local
     index data is used during recovery of an index. This works very well for
     nodes that are tied to physical machines, or more importantly, physical hard
     disks. Things can be much different in the cloud.
@@ -107,17 +107,8 @@ h3. Gateway
 </p>
 
 <p>
-    Note: When using the local gateway option, you cannot use
-    "memory caching":http://www.elasticsearch.org/guide/reference/index-modules/store.html  as your index store type. This would be a shame
-    if you were running a cluster of EC2 high memory instances with capacities
-    > 64GB per node!
-</p>
-
-
-<p>
     Some people may have a need to run elasticsearch on EC2 instances
-    without the benefit of an EBS volume, or need the performance increase that
-    comes with a high memory instance. For these cases, there is the S3 Gateway.
+    without the benefit of an EBS volume For these cases, there is the S3 Gateway.
     This gateway configuration creates multiple (five by default) connections
     between each node in the cluster and Amazon’s S3 service. S3 is an extremely
     simple key/value storage system which stores all values in a flat format into
@@ -132,7 +123,9 @@ h3. Gateway
     state from S3. Eventually, your index data would also be recovered. This
     process is much slower than using a local index. There are no formal
     benchmarks on how long it takes to recover a GB of data from an S3 gateway,
-    but it would be a welcome addition to this document.
+    but it would be a welcome addition to this document. Also, the S3 gateway does
+    come with an overhead of having to persist the delta changes happening to the index
+    to S3, which incurs network overhead.
 </p>
 
 h2. Adding the EC2 Plugin
@@ -171,13 +164,8 @@ h2. Adding the EC2 Plugin
 
 <p>
     Note: The elasticsearch Maven artifacts are stored on
-    "Sonatype’s repository":http://oss.sonatype.org/content/repositories/releases/ , not Maven central.
-</p>
-
-<p>
-    If you are using the Java libraries directly by including them in your
-    projects runtime classpath, the easiest way to get the cloud libraries is to
-    download the jar file from an online archive stored on "googlecode":http://elasticsearch.googlecode.com/svn/plugins/cloud-aws/ .
+    "Sonatype’s repository":http://oss.sonatype.org/content/repositories/releases/ , not Maven central. These
+    include also the aws cloud plugin.
 </p>
 
 h2. Creating an EC2 instance
@@ -317,7 +305,22 @@ h2. The Simplest Configuration
     the S3 gateway to function (use the "console":https://console.aws.amazon.com/s3/home ).
     I used the name @es-demo@, so you will have to pick something else. An interesting
     side note is that bucket names are not assigned per account; they are global
-    to the entire S3 platform.
+    to the entire S3 platform. Note, this only applies if you plan to use the s3
+    gateway.
+</p>
+
+<p>
+    Depending on your instance type, it is also important to configure the memory used
+    by the elasticsearch instance. This can be done by setting @ES_MIN_MEM@ and @ES_MAX_MEM@
+    environment variables. It is recommended to set them to the same value, with a good default
+    value of about half of the instance memory. For example, set them to @8gb@ on an @16gb@ instance.
+    Another recommended setting is to set @bootstrap.mlockall@ to @true@ in order to make sure
+    the elasticsearch process will not swap.
+</p>
+
+<p>
+    Also, the @gateway.recover_after_...@ settings are important to set, especially when using the
+    @S3@ gateway in order to try and reuse as much local data as possible on full cluster restart.
 </p>
 
 <p>
@@ -538,10 +541,9 @@ h3. S3 Gateway
 </pre>
 
 <p>
-    There has been some confusion regarding the verb “recover”.
-    It is used in some places to represent data going into S3, 
-    and coming out of S3. In this case, recover refers to
-    the process of writing the current index data into S3.
+    This indicates that number of indices that has been recovered from
+    the metadata stored in the S3 gateway and applied to the currently
+    running cluster.
 </p>
 
 <pre>
