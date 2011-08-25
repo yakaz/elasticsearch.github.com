@@ -28,7 +28,7 @@ p. The result of the above index operation is:
 
 h1. Automatic for the Index
 
-p. The index operation automatically creates an index if it has not been created before (check out the "create index API":admin-indices-create-index.html for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":admin-indices-put-mapping.html API for manually creating type mapping). 
+p. The index operation automatically creates an index if it has not been created before (check out the "create index API":admin-indices-create-index.html for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":admin-indices-put-mapping.html API for manually creating type mapping).
 
 p. The mapping itself is very flexible and is schema free, meaning that new fields / objects can be added and they will automatically be added to the mapping definition of the specific type. Check out the "mapping":/guide/reference/mapping section for more information on mapping definitions.
 
@@ -54,7 +54,7 @@ curl -XPUT 'localhost:9200/twitter/tweet/1?version=2' -d '{
 }'
 </pre>
 
-p. Note, versioning are completely real time, and are not affect by the near real time aspect of get and search operations. If no version is provided, then the operation is forced to be executed without any checks.
+p. Note, versioning are completely real time, and are not affect by the near real time aspect of search operations. If no version is provided, then the operation is forced to be executed without any checks.
 
 p. By default, an internal versioning systems will be used, but, the versioning can be provided as an external value (for example, if maintained in a database). It must be a numeric value, and when providing it, the @version_type@ should be set to @external@. In this case, the check will be if the provided version is greater than the current document version. If so, it will be set as the document version value and the document will be indexed. If the current document version is higher than the provided version, a version conflict will be returned / thrown.
 
