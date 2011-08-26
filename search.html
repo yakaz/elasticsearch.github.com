@@ -101,7 +101,6 @@ $(function() {
 				}
                 var q = request.term;
                 var re = /[^ *]/;
-                if (re.test(q)) { q = q + '*' }
 				searchRequest = $.ajax({
 					url: [ elastic_search_url, $.param( { 
                         fields : "title,category,url", 
