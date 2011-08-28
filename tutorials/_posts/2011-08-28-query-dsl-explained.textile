@@ -1,0 +1,14 @@
+---
+layout: tutorial
+title: Query DSL explained
+cat: tutorials
+author: Clinton Gormley
+nick: clintongormley
+tutorial_desc: The ElasticSearch Query DSL explained
+---
+
+This talk explains the difference between text and terms, how ElasticSearch can be configured to understand your data, and how complex, powerful queries can be built up using it's JSON query language. 
+
+<div style="width:595px" id="__ss_8882835"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/clintongormley/terms-of-endearment-the-elasticsearch-query-dsl-explained" title="Terms of endearment - the ElasticSearch Query DSL explained" target="_blank">Terms of endearment - the ElasticSearch Query DSL explained</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/8882835" width="595" height="497" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/clintongormley" target="_blank">clintongormley</a> </div> </div>
+
+These slides were first presented at the Perl conference YAPC::EU 2011 in Riga, Latvia.
