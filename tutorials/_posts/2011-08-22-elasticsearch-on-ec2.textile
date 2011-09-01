@@ -128,6 +128,14 @@ h3. Gateway
     to S3, which incurs network overhead.
 </p>
 
+<p>
+    So, which one to use? The local gateway with EBS provides better performance compared
+    to the S3 gateway, both in terms of less network used while the cluster is up
+    and faster full cluster restarts. The S3 gateway allows a more persistent backup
+    mechanism, and is simpler to start with compared to setting up EBS. More users of
+    elasticsearch use EBS.
+</p>
+
 h2. Adding the EC2 Plugin
 
 
