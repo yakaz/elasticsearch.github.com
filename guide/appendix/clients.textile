@@ -34,8 +34,8 @@ h2. Integrations
 h2. Misc
 
 * "Puppet":https://github.com/visibiz/puppet-elasticsearch: elasticsearch puppet module.
+* "Chef":http://community.opscode.com/cookbooks/elasticsearch: elasticsearch chef recipe.
 * "elasticsearch-rpms":https://github.com/tavisto/elasticsearch-rpms: RPMs for elasticsearch.
-
 
 h2. Front Ends
 
