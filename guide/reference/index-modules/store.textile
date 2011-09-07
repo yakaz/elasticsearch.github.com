@@ -11,7 +11,7 @@ p. The index can either be stored in-memory (no persistence) or on-disk (the def
 
 p. When using a local gateway (the default), file system storage with *no* in memory storage is required to maintain index consistency. This is required since the local gateway constructs its state from the local index state of each node. When using a shared gateway (like NFS or S3), the index can be safely stored in memory (with replicas).
 
-p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory":#Memory storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
+p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory" (see below) storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
 
 p. The following sections lists all the different storage types supported.
 
