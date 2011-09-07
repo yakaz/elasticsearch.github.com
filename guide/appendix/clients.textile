@@ -14,7 +14,7 @@ h2. Clients
 * "em-elasticsearch":http://github.com/ichverstehe/em-elasticsearch: elasticsearch library for eventmachine.
 *  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
-* "elasitcsearch":http://github.com/nervetattoo/elasticsearch PHP client.
+* "elasticsearch":http://github.com/nervetattoo/elasticsearch PHP client.
 * "NEST":https://github.com/Mpdreamz/NEST: .NET client.
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
@@ -30,6 +30,7 @@ h2. Integrations
 * "Wonderdog":https://github.com/infochimps/wonderdog: Hadoop bulk loader into elasticsearch.
 * "Play! Framework":http://geeks.aretotally.in/play-framework-module-elastic-search-distributed-searching-with-json-http-rest-or-java: Integrate with Play! Framework Application.
 * "ElasticaBundle":https://github.com/Exercise/FOQElasticaBundle: Symfony2 Bundle wrapping Elastica.
+* "Drupal":http://drupal.org/project/elasticsearch: Drupal ElasticSearch integration.
 
 h2. Misc
 
