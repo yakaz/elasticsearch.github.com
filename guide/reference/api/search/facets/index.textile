@@ -42,6 +42,8 @@ This request will return articles “Two” and “Three”, as well as the @tag
   "tags" : {
     "_type" : "terms",
     "missing" : 0,
+    "total": 5,
+    "other": 0,
     "terms" : [ {
       "term" : "foo",
       "count" : 2
@@ -58,7 +60,8 @@ This request will return articles “Two” and “Three”, as well as the @tag
 
 Notice that the counts are scoped for this query: _foo_ and _bar_ are counted twice, _baz_ is counted once. (This is because the primary purpose of facets is to enable "_faceted browsing_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet: restrict the search to a specific category, price or date range, etc., most probably with a "_filter_":/guide/reference/api/search/filter.html based on selected facet.)
 
-In the facet results, the @missing@ field represents the number of documents that have no value for that facet.
+In the facet results, the @missing@ field represents the number of documents that have no value for that facet. 
+For Term Facet, the @total@ field represents the total number terms count. The @other@ field represents all the terms that are not sent back because of the @size@ limit. See Feature Request "#1029":https://github.com/elasticsearch/elasticsearch/issues/1029 for more details.
 
 h2. Scope
 
