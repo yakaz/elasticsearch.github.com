@@ -1,0 +1,170 @@
+---
+layout: tutorial
+title: Creating a pluggable REST endpoint
+cat: tutorials
+author: Ivan Brusic
+nick: brusic
+tutorial_desc: How to create a pluggable REST endpoint 
+---
+
+A quick tutorial on how to create a plugin in elasticsearch that allows you to define new REST endpoints in elasticsearch.
+
+The new endpoint will be deployed to elasticsearch as a plugin.  "Elasticsearch plugins":http://www.elasticsearch.org/guide/reference/modules/plugins.html allow you to add code to the system with modifying the orginal source code.
+
+First up is the all important es-plugin.properties file. If this file is found as a resource within the classpath (defined from all the jars in the plugin zip file), the file is read and is used to bootstrap the system.  The tutorial uses maven for the build tool, so the file will be placed in the src/main/resources directory. The format is as follows:
+
+<pre class="prettyprint">
+ plugin=org.elasticsearch.plugin.helloworld.HelloWorldPlugin  
+</pre>
+
+The file contains a single "plugin" property which defines the main plugin class to be instantiated. Only one plugin class may be defined inside the es-plugin.properties file. The class defined by the plugin property must be a subclass of "org.elasticsearch.plugins.Plugin":https://github.com/elasticsearch/elasticsearch/blob/master/modules/elasticsearch/src/main/java/org/elasticsearch/plugins/Plugin.java. When the plugin class is instantiated, each module defined in the system is past to it via the processModule(Module module) method. Most modules can be ignored, the one we are interested is the RestModule. The "RestModule":https://github.com/elasticsearch/elasticsearch/blob/master/modules/elasticsearch/src/main/java/org/elasticsearch/rest/RestModule.java maintains all REST actions in the system. We can now add our not-yet-created REST action. 
+
+<pre class="prettyprint">
+   public class HelloWorldPlugin extends AbstractPlugin {  
+   
+     public String name() {  
+       return "hello-world";  
+     }  
+     
+     public String description() {  
+       return "Hello World Plugin";  
+     }  
+     
+     @Override public void processModule(Module module) {  
+       if (module instanceof RestModule) {  
+         ((RestModule) module).addRestAction(HelloWorldAction.class);  
+       }  
+     }  
+   }  
+</pre>
+
+Each REST action must be a subclass of "BaseRestHandler":https://github.com/elasticsearch/elasticsearch/blob/master/modules/elasticsearch/src/main/java/org/elasticsearch/rest/BaseRestHandler.java.  When the class is instantiated, the elasticsearch client and "RestController":https://github.com/elasticsearch/elasticsearch/blob/master/modules/elasticsearch/src/main/java/org/elasticsearch/rest/RestController.java are passed in via constructor injection via Google Guice.  The restController is where will define the actual endpoints.
+
+<pre class="prettyprint">
+   @Inject public HelloWorldAction(Settings settings, Client client, RestController controller) {  
+       super(settings, client);  
+   
+       // Define REST endpoints  
+       controller.registerHandler(GET, "/_hello/", this);  
+       controller.registerHandler(GET, "/_hello/{name}", this);  
+   }  
+</pre>
+
+One word of advice is to prepend all new endpoints with an underscore '_' in order to not confuse them with actual indices.
+
+From there we can implement the handleRequest method, which handles the request. Our simple example will simply return the first parameter passed in via the url or "world" if not.
+
+<pre class="prettyprint">
+   public void handleRequest(final RestRequest request, final RestChannel channel) {  
+     logger.debug("HelloWorldAction.handleRequest called");  
+   
+     String name = request.hasParam("name") ? request.param("name") : "world";  
+   
+     try {  
+       XContentBuilder builder = restContentBuilder(request);  
+       builder.startObject().field(new XContentBuilderString("hello"), name).endObject();  
+       channel.sendResponse(new XContentRestResponse(request, OK, builder));  
+     } catch (IOException e) {  
+       onFailure(channel, request, e);  
+     }  
+   }  
+   
+   public void onFailure(RestChannel channel, RestRequest request, Throwable e) {  
+     try {  
+       channel.sendResponse(new XContentThrowableRestResponse(request, e));  
+     } catch (IOException e1) {  
+       logger.error("Failed to send failure response", e1);  
+     }  
+   }  
+</pre>
+
+
+Intstalling the plugin. We will use maven, but any build tool can be used as long as the output if a zip file that adheres to the plugin format for Elasticsearch. Setup the BASEDIR and ES_HOME environmental variables as defined on your system.
+
+<pre class="prettyprint">
+ $ cd $BASEDIR
+ $ mvn package
+ $ $ES_HOME/bin/plugin -url ./target -install hello-world
+</pre>
+
+Elasticsearch must be restarted after the installation of a plugin. We can now test the plugin.
+
+<pre class="prettyprint">
+ $ curl -XGET http://localhost:9200/_hello/mike  
+ {"hello":"mike"}  
+</pre>
+
+This example does not interact at all with the underlying system.  Let's come up with another simple (and contrived) example that will issue a GET request with the same name parameter passed in.
+
+<pre class="prettyprint">
+   public void handleRequest(final RestRequest request, final RestChannel channel) {  
+     logger.debug("HelloWorldAction.handleRequest called");  
+   
+     final String name = request.hasParam("name") ? request.param("name") : "world";  
+   
+     final GetRequest getRequest = new GetRequest(INDEX, TYPE, name);  
+     getRequest.listenerThreaded(false);  
+     getRequest.operationThreaded(true);  
+   
+     String[] fields = {"msg"};  
+     getRequest.fields(fields);  
+   
+     client.get(getRequest, new ActionListener<GetResponse>() {  
+       @Override public void onResponse(GetResponse response) {  
+   
+         try {  
+           XContentBuilder builder = restContentBuilder(request);  
+           GetField field = response.field("msg");  
+           String greeting = (field!=null) ? (String)field.values().get(0) : "Sorry, do I know you?";  
+           builder  
+             .startObject()  
+             .field(new XContentBuilderString("hello"), name)  
+             .field(new XContentBuilderString("greeting"), greeting)  
+             .endObject();  
+   
+           if (!response.exists()) {  
+             channel.sendResponse(new XContentRestResponse(request, NOT_FOUND, builder));  
+           } else {  
+             channel.sendResponse(new XContentRestResponse(request, OK, builder));  
+           }  
+         } catch (Exception e) {  
+           onFailure(e);  
+         }  
+       }  
+   
+       @Override public void onFailure(Throwable e) {  
+         try {  
+           channel.sendResponse(new XContentThrowableRestResponse(request, e));  
+         } catch (IOException e1) {  
+           logger.error("Failed to send failure response", e1);  
+         }  
+       }  
+     });  
+   }  
+</pre>
+
+Please note most error checking is not done for reasons of brevity. Always check your values!  Also for this example, the index and type names are hardcoded.
+
+Reinstall the plugin and restart elasticsearch. Next, create the test index and add a value.
+
+<pre class="prettyprint">
+ curl -XPUT 'http://localhost:9200/example/'  
+   
+ curl -XPUT http://localhost:9200/example/person/dave -d '{  
+   "msg" : "Affirmative, Dave. I read you."  
+ }'  
+</pre>
+
+Now we can query the data
+
+<pre class="prettyprint">
+ $ curl -XGET http://localhost:9200/_hello/dave  
+ {"hello":"dave","greeting":"Affirmative, Dave. I read you."}  
+   
+ $ curl -XGET http://localhost:9200/_hello/susan  
+ {"hello":"susan","greeting":"Sorry, do I know you?"}  
+</pre>
+
+Although only one plugin can be defined by plugin file, multiple actions can be added in the processModule(Module module) method.
+
+Complete code and installation instructions can be found at "https://github.com/brusic/elasticsearch-hello-world-plugin/":https://github.com/brusic/elasticsearch-hello-world-plugin/
