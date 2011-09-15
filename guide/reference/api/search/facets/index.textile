@@ -144,28 +144,28 @@ p. Any @nested@ query allows to specify a @_scope@ associated with it. Any @face
 
 <pre class="prettyprint lang-js">
 {
-    "query" : {
-        "nested" : {
-            "_scope" : "my_scope"
-            "path" : "obj1",
-            "score_mode" : "avg"
-            "query" : {
-                "bool" : {
-                    "must" : [
-                        "text" : {"obj1.name" : "blue"},
-                        "range" : {"obj1.count" : {"gt" : 5}}
+    "query": {
+        "nested": {
+            "_scope": "my_scope",
+            "path": "obj1",
+            "score_mode": "avg",
+            "query": {
+                "bool": {
+                    "must": [
+                        {"text": {"obj1.name": "blue"}},
+                        {"range": {"obj1.count": {"gt": 3}}}
                     ]
                 }
             }
         }
     },
-    "facets" : {
-        "facet1" : {
-            "terms_stats" : {
-                "key_field" : "obj1.name",
-                "value_field" : "obj1.count",
+    "facets": {
+        "facet1": {
+            "terms_stats": {
+                "key_field": "obj1.name",
+                "value_field": "obj1.count"
             },
-            "scope" : "my_scope"
+            "scope": "my_scope"
         }
     }
 }
