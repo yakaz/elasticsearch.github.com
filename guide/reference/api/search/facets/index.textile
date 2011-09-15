@@ -177,16 +177,16 @@ p. Another option is to run the facet on all the nested documents matching the r
 
 <pre class="prettyprint lang-js">
 {
-    "query" : {
-        "match_all" : {}
+    "query": {
+        "match_all": {}
     },
-    "facets" : {
-        "facet1" : {
-            "terms_stats" : {
+    "facets": {
+        "facet1": {
+            "terms_stats": {
                 "key_field" : "name",
-                "value_field" : "count",
+                "value_field": "count"
             },
-            "nested" : "obj1"
+            "nested": "obj1"
         }
     }
 }
