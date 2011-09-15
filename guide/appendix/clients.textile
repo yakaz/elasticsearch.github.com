@@ -31,6 +31,7 @@ h2. Integrations
 * "Play! Framework":http://geeks.aretotally.in/play-framework-module-elastic-search-distributed-searching-with-json-http-rest-or-java: Integrate with Play! Framework Application.
 * "ElasticaBundle":https://github.com/Exercise/FOQElasticaBundle: Symfony2 Bundle wrapping Elastica.
 * "Drupal":http://drupal.org/project/elasticsearch: Drupal ElasticSearch integration.
+* "couch_es":https://github.com/refuge/couch_es: elasticsearch helper for couchdb based products (apache couchdb, bigcouch & refuge)
 
 h2. Misc
 
