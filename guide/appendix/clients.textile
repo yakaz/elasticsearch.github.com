@@ -46,7 +46,7 @@ h2. Front Ends
 
 h2. Plugins
 
-* "RSSRiver":https://github.com/dadoonet/rssriver: River Plugin for RSS feeds.
+* "RSSRiver":http://dadoonet.github.com/rssriver/: River Plugin for RSS feeds.
 
 h2. Github
 
