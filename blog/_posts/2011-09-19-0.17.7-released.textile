@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.17.7 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.17.7@ has just been released. You can download it "here":/download.
+
+p. This release include the usual list of bug fixes, and also include an upgrade to Lucene 3.4.0 (fixes critical bugs, so make sure you upgrade), as well as improvements to the couchdb river (memory usage wise).
