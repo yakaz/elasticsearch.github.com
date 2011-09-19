@@ -46,7 +46,7 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
 
 h1. Versioning
 
-p. Each indexed document is given a version number. The associated @version@ number is returned as part of the response to the index API request. The index API optionally allows for "optimistic concurrency control":http://en.wikipedia.org/wiki/Optimistic_concurrency_control when the @version@ parameter is specified. This will control the version of the document the operation is intended to be executed against. A good example of a use case for versioning is performing a transactional read-then-update. Specifying a @version@ from the document initially read ensures no changes have happened in the meantime (when reading, make sure to set the @preference@ to @_primary@). For example:
+p. Each indexed document is given a version number. The associated @version@ number is returned as part of the response to the index API request. The index API optionally allows for "optimistic concurrency control":http://en.wikipedia.org/wiki/Optimistic_concurrency_control when the @version@ parameter is specified. This will control the version of the document the operation is intended to be executed against. A good example of a use case for versioning is performing a transactional read-then-update. Specifying a @version@ from the document initially read ensures no changes have happened in the meantime (when reading in order to update, it is recommended to set @preference@ to @_primary@). For example:
 
 <pre class="prettyprint">
 curl -XPUT 'localhost:9200/twitter/tweet/1?version=2' -d '{
@@ -56,7 +56,7 @@ curl -XPUT 'localhost:9200/twitter/tweet/1?version=2' -d '{
 
 p. *NOTE:* versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, then the operation is executed without any version checks.
 
-p. By default, internal versioning is used that starts at 1 and increments with each update. Optionally, the version number can be supplemented with an external value (for example, if maintained in a database). To enable this functionality, @version_type@ should be set to @external@. The value provided must be a numeric, integer value greater than 0, and less than around 9.2e+18. When using the external version type, instead of checking for a matching version number, the system checks to see if the version number passed to the index request is greater than or equal to the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is lower than the stored document's version number, a version conflict will occur and the index operation will not fail.
+p. By default, internal versioning is used that starts at 1 and increments with each update. Optionally, the version number can be supplemented with an external value (for example, if maintained in a database). To enable this functionality, @version_type@ should be set to @external@. The value provided must be a numeric, long value greater than 0, and less than around 9.2e+18. When using the external version type, instead of checking for a matching version number, the system checks to see if the version number passed to the index request is greater than or equal to the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is lower than the stored document's version number, a version conflict will occur and the index operation will fail.
 
 p. A nice side effect is that there is no need to maintain strict ordering of async indexing operations executed a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations are out of order for whatever reason.
 
@@ -87,7 +87,7 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1/_create' -d '{
 
 h1. Automatic ID Generation
 
-The index operation can be executed without specifying the id. In such a case, an id will be generated automatically. In addition, the @opType@ will automatically be set to @create@. Here is an example (note the *POST* used instead of *PUT*):
+The index operation can be executed without specifying the id. In such a case, an id will be generated automatically. In addition, the @op_type@ will automatically be set to @create@. Here is an example (note the *POST* used instead of *PUT*):
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/twitter/tweet/' -d '{
@@ -110,7 +110,7 @@ p. The result of the above index operation is:
 
 h1. Routing
 
-p. By default, shard placement &mdash; or @routing@ &mdash; is controlled by using a hash of the document's id value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the @route@ parameter. For example:
+p. By default, shard placement &mdash; or @routing@ &mdash; is controlled by using a hash of the document's id value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the @routing@ parameter. For example:
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
@@ -163,17 +163,17 @@ p. The index operation is directed to the primary shard based on it's route (see
 
 h1. Write Consistency
 
-p. To prevent writes from taking place on the "wrong" side of a network partition, by default, index operations only succeed if a quorum (>replicas/2+1) of active shards are available. This default can be overridden on a node-by-node basis using the @action.write_consistency@ setting. To alter this behavior per-operation, the @consistency@ parameter can be used.
+p. To prevent writes from taking place on the "wrong" side of a network partition, by default, index operations only succeed if a quorum (>replicas/2+1) of active shards are available. This default can be overridden on a node-by-node basis using the @action.write_consistency@ setting. To alter this behavior per-operation, the @consistency@ request parameter can be used.
 
 p. Valid write consistency values are @one@, @quorum@, and @all@.
 
 h1. Asynchronous Replication
 
-p. By default, the index operation only returns after the number of replicas controlled by write consistency have received the update. To enable asynchronous replication, causing the replication process to take place in the background, set the @replication@ parameter to @async@. When asynchronous replication is used, the index operation will return as soon as the operation succeeds on the primary shard.
+p. By default, the index operation only returns after all shards within the replication group have indexed the document (sync replication). To enable asynchronous replication, causing the replication process to take place in the background, set the @replication@ parameter to @async@. When asynchronous replication is used, the index operation will return as soon as the operation succeeds on the primary shard.
 
 h1. Refresh
 
-p. To refresh the index immediately after the operation occurs, so that the document appears in search results immediately, the @refresh@ parameter can be set to @true@. Setting this option to @true@ should *ONLY* be done after careful thought and verification that it does not lead to poor performance, both from an indexing and a search standpoint.
+p. To refresh the index immediately after the operation occurs, so that the document appears in search results immediately, the @refresh@ parameter can be set to @true@. Setting this option to @true@ should *ONLY* be done after careful thought and verification that it does not lead to poor performance, both from an indexing and a search standpoint. Note, getting a document using the get API is completely realtime.
 
 h1. Timeout
 
