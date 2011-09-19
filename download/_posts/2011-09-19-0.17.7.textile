@@ -8,3 +8,35 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.7
 release_notes: true
 ---
+h2. New features:
+ * Upgrade to Lucene 3.4.0 ("#1335":http://github.com/elasticsearch/elasticsearch/issues/issue/1335)
+
+
+h2. Enhancements:
+ * Don't include CLASSPATH env var in elasticsearch.bat script ("#1287":http://github.com/elasticsearch/elasticsearch/issues/issue/1287)
+ * Support setting ctx._parent in CouchDB-River ("#1300":http://github.com/elasticsearch/elasticsearch/issues/issue/1300)
+ * Optimizing inactive (indexing wise) shard to only happen when there are no ongoing merges ("#1336":http://github.com/elasticsearch/elasticsearch/issues/issue/1336)
+ * Bulk API: Properly retry execution on temporal state changes ("#1343":http://github.com/elasticsearch/elasticsearch/issues/issue/1343)
+ * CouchDB River: Add throttling when indexing does not keep up with fetching _changes ("#1269":http://github.com/elasticsearch/elasticsearch/issues/issue/1269)
+ * Multi Get: Allow to specify fields to fetch in the URI, and apply it automatically to all docs to get without explicit fields ("#1281":http://github.com/elasticsearch/elasticsearch/issues/issue/1281)
+ * Rivers: Close rivers early allowing them to still do index operations ("#1330":http://github.com/elasticsearch/elasticsearch/issues/issue/1330)
+ * Versioning: Delete on an already deleted document should still affect versioning ("#1341":http://github.com/elasticsearch/elasticsearch/issues/issue/1341)
+
+
+h2. Bug fixes:
+ * Single node rolling restart into a new node can cause metadata loss ("#1249":http://github.com/elasticsearch/elasticsearch/issues/issue/1249)
+ * dynamic templates might cause elasticsearch to keep resync mappings ("#1257":http://github.com/elasticsearch/elasticsearch/issues/issue/1257)
+ * Query Parser caching does not take parsed query rewrite method into account ("#1260":http://github.com/elasticsearch/elasticsearch/issues/issue/1260)
+ * Using 57744018578214912 as an id can cause failure to route to the correct shard ("#1294":http://github.com/elasticsearch/elasticsearch/issues/issue/1294)
+ * Rapidly concurrent deleting/creating an index leaves index inconsistent ("#1296":http://github.com/elasticsearch/elasticsearch/issues/issue/1296)
+ * Negative total cpu time reported by the node stats REST API ("#1297":http://github.com/elasticsearch/elasticsearch/issues/issue/1297)
+ * Query with stopwords executed directly against a type fails ("#1320":http://github.com/elasticsearch/elasticsearch/issues/issue/1320)
+ * Indexation of document causes NullPointerException (on Linux) or ES process hanging ("#1325":http://github.com/elasticsearch/elasticsearch/issues/issue/1325)
+ * Rest Delete API does not honor the @version_type@ parameter ("#1337":http://github.com/elasticsearch/elasticsearch/issues/issue/1337)
+ * Nested Mapping: Nested object with a null value causes wrong indexing structure (resulting in wrong search responses) ("#1323":http://github.com/elasticsearch/elasticsearch/issues/issue/1323)
+ * Realtime Get: Under high concurrent indexing and immediate get, a get might be missed while flushing ("#1344":http://github.com/elasticsearch/elasticsearch/issues/issue/1344)
+ * Thread Pool: Blocking thread pool type configuration fails ("#1321":http://github.com/elasticsearch/elasticsearch/issues/issue/1321)
+ * Tiered merge policy setting: @max_merge_segment@ misnamed and should be @max_merged_segment@ ("#1280":http://github.com/elasticsearch/elasticsearch/issues/issue/1280)
+ * XContentBuilder.field : StackOverflowError with Integer[] parameters ("#1324":http://github.com/elasticsearch/elasticsearch/issues/issue/1324)
+ * wrong method signature: RangeFilterBuilder and NumericRangeFilterBuilder ("#1244":http://github.com/elasticsearch/elasticsearch/issues/issue/1244)
+
