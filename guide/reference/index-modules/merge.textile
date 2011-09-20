@@ -7,6 +7,8 @@ sidebar: reference_index_modules
 
 p. A shard in elasticsearch is a Lucene index, and a lucene index is broken down into segments. Segments are internal storage elements in the index where the index data is stored, and are immutable up to delete markers. Segments are, periodically, merged into larger segments to keep the index size at bay and expunge deletes.
 
+p. The more segments one has in the Lucene index mean slower searches and more memory used, but, low number of segments means more merging that has to go on.
+
 h1. Policy
 
 p. The index merge policy module allows one to control which segments of a shard index are to be merged. There are several types of policies with the default set to @tiered@.
@@ -22,7 +24,7 @@ p. This policy has the following settings:
 |@index.merge.policy.floor_segment@|Segments smaller than this are "rounded up" to this size, ie treated as equal (floor) size for merge selection. This is to prevent frequent flushing of tiny segments from allowing a long tail in the index. Default is @2mb@.|
 |@index.merge.policy.max_merge_at_once@|Maximum number of segments to be merged at a time during "normal" merging. Default is @10@.|
 |@index.merge.policy.max_merge_at_once_explicit@|Maximum number of segments to be merged at a time, during optimize or expungeDeletes. Default is @30@.|
-|@index.merge.policy.max_merged_segment@|Maximum sized segment to produce during normal merging. This setting is approximate: the estimate of the merged segment size is made by summing sizes of to-be-merged segments (compensating for percent deleted docs). Default is @5gb@.|
+|@index.merge.policy.max_merged_segment@|Maximum sized segment to produce during normal merging (not explicit optimize). This setting is approximate: the estimate of the merged segment size is made by summing sizes of to-be-merged segments (compensating for percent deleted docs). Default is @5gb@.|
 |@index.merge.policy.segments_per_tier@|Sets the allowed number of segments per tier. Smaller values mean more merging but fewer segments. Default is @10@.|
 |@index.reclaim_deletes_weight@|Controls how aggressively merges that reclaim more deletions are favored. Higher values favor selecting merges that reclaim deletions. A value of @0.0@ means deletions don't impact merge selection. Defaults to @2.0@.|
 |@index.compound_format@|Should the index be stored in compound format or not. Defaults to @false@.|
@@ -30,6 +32,8 @@ p. This policy has the following settings:
 p. For normal merging, this policy first computes a "budget" of how many segments are allowed by be in the index.  If the index is over-budget, then the policy sorts segments by decreasing size (pro-rating by percent deletes), and then finds the least-cost merge.  Merge cost is measured by a combination of the "skew" of the merge (size of largest seg divided by smallest seg), total merge size and pct deletes reclaimed, so that merges with lower skew, smaller size and those reclaiming more deletes, are favored.
 
 p. If a merge will produce a segment that's larger than @max_merged_segment@ then the policy will merge fewer segments (down to 1 at once, if that one has deletions) to keep the segment size under budget.
+
+p. Note, this can mean that for large shards that holds many gigabytes of data, the default of @max_merged_segment@ (@5gb@) can cause for many segments to be in an index, and causing searches to be slower. Use the indices segments API to see the segments that an index have, and possibly either increase the @max_merged_segment@ or issue an optimize call for the index (try and aim to issue it on a low traffic time).
 
 h2. log_byte_size
 
