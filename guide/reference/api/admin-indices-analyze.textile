@@ -17,6 +17,15 @@ p. The above will run an analysis on the "this is a test" text, using the defaul
 curl -XGET 'localhost:9200/test/_analyze?analyzer=whitespace' -d 'this is a test'
 </pre>
 
+p. Also, the analyzer can be derived based on a field mapping, for example:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/test/_analyze?field=obj1.field1' -d 'this is a test'
+</pre>
+
+p. Will cause the analysis to happen based on the analyzer configure in the mapping for @obj1.field1@ (and if not, the default index analyzer).
+
+
 p. Also, the text can be provided as part of the request body, and not as a parameter.
 
 h2. Format
