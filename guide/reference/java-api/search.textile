@@ -8,8 +8,8 @@ sidebar: reference_java_api
 The search API allows to execute a search query and get back search hits that match the query. It can be executed across one or more indices and across one or more types. The query can either be provided using the "Query DSL":query-dsl.html. The body of the search request is built using the @SearchSourceBuilder@. Here is an example:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
-import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
+import static org.elasticsearch.index.query.FilterBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 SearchResponse response = client.prepareSearch("test")
         .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
@@ -26,8 +26,8 @@ h1. Using scrolls in Java
 Read the "scroll documentation":/guide/reference/api/search/scroll.html first!
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
-import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
+import static org.elasticsearch.index.query.FilterBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 QueryBuilder qb = termQuery("multi", "test");
 
