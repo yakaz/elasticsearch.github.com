@@ -45,6 +45,12 @@ p. And the matches are part of the response:
 {"ok":true, "matches":["kuku"]}
 </pre>
 
+p. You can unregister the previous percolator query with the same API you use to delete any document in an index:
+
+<pre class="prettyprint">
+curl -XDELETE localhost:9200/_percolator/test/kuku
+</pre>
+
 h1. Filtering Executed Queries
 
 p. Since the registered percolator queries are just docs in an index, one can filter the queries that will be used to percolate a doc. For example, we can add a @color@ field to the registered query:
