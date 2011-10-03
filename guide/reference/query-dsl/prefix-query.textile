@@ -9,7 +9,7 @@ p. Matches documents that have fields containing terms with a specified prefix (
 
 <pre class="prettyprint lang-js">
 {
-    "prefix" : { "user" : "sh" }
+    "prefix" : { "user" : "ki" }
 }
 </pre>
 
