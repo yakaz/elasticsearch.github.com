@@ -161,3 +161,5 @@ p. Complete generic settings can also be applied, for example, to have all mappi
     }
 }
 </pre>
+
+p. Such generic templates should be placed at the end of the @dynamic_templates@ list because when two or more dynamic templates match a field, only the first matching one from the list is used.
