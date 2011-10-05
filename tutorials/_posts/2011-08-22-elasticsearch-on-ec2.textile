@@ -1149,8 +1149,9 @@ h3. Filtering the Discovery
 <pre>
     discovery:
         type: ec2
+        ec2:
             tag:
-               stage: dev
+                stage: dev
 </pre>               
 
 h2. Troubleshooting
