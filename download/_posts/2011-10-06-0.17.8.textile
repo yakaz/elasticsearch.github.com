@@ -8,3 +8,12 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.8
 release_notes: true
 ---
+h2. Enhancements:
+ * Support external versioning for deletes arriving before initial update ("#1351":http://github.com/elasticsearch/elasticsearch/issues/issue/1351)
+ * No need to reroute (check for possible shard allocations) when a new *non* data node is added to the cluster ("#1368":http://github.com/elasticsearch/elasticsearch/issues/issue/1368)
+
+
+h2. Bug fixes:
+ * Put mapping on a single node with new mapping will not wait for the mapping to be applied ("#1355":http://github.com/elasticsearch/elasticsearch/issues/issue/1355)
+ * Malformed REST create index causes the index to still be created ("#1359":http://github.com/elasticsearch/elasticsearch/issues/issue/1359)
+ * Fetch phase when searching might fail when mapping are updated with type missing ("#1369":http://github.com/elasticsearch/elasticsearch/issues/issue/1369)
