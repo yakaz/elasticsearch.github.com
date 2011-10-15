@@ -48,6 +48,6 @@ h2. Plugins
 
 * "RSSRiver":http://dadoonet.github.com/rssriver/: River Plugin for RSS feeds.
 
-h2. Github
+h2. GitHub
 
-p. Github is a place where a lot of development is done around *elasticsearch*, here is a simple search for "repos":https://github.com/search?q=elasticsearch&type=Repositories.
+p. GitHub is a place where a lot of development is done around *elasticsearch*, here is a simple search for "repos":https://github.com/search?q=elasticsearch&type=Repositories.
