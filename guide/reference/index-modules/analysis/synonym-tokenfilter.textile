@@ -30,6 +30,8 @@ p. The @synonym@ token filter allows to easily handle synonyms during the analys
 
 p. The above configures a @synonym@ filter, with a path of @analysis/synonym.txt@ (relative to the @config@ location). The @synonym@ analyzer is then configured with the filter. Additional settings are: @ignore_case@ (defaults to @false@), and @expand@ (defaults to @true@).
 
+p. The @tokenizer@ parameter controls the tokenizers that will be used to tokenize the a synonym, and defaults to the @whitespace@ tokenizer.
+
 p. Here is a sample format of the file (uses the same solr file format):
 
 <pre class="prettyprint">
