@@ -67,7 +67,7 @@ p. The fields parameter can also include pattern based field names, allowing to 
 }
 </pre>
 
-h1(#Syntax_Extension). Syntax Extension
+<h1 id="Syntax_Extension">Syntax Extension</h1>
 
 p. There are several syntax extensions to the Lucene query language.
 
