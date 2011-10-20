@@ -10,7 +10,7 @@ release_notes: true
 ---
 h2. Enhancements:
  * Twitter4j needs an update ("#1393":http://github.com/elasticsearch/elasticsearch/issues/issue/1393)
-
+ * Synonym filter supports Wordnet synonym format.
 
 h2. Bug fixes:
  * Synonym filter fails to properly load synonyms (since 0.17.7) ("#1392":http://github.com/elasticsearch/elasticsearch/issues/issue/1392)
