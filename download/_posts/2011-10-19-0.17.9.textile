@@ -8,3 +8,15 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.9
 release_notes: true
 ---
+h2. Enhancements:
+ * Twitter4j needs an update ("#1393":http://github.com/elasticsearch/elasticsearch/issues/issue/1393)
+
+
+h2. Bug fixes:
+ * Synonym filter fails to properly load synonyms (since 0.17.7) ("#1392":http://github.com/elasticsearch/elasticsearch/issues/issue/1392)
+ * Array out-of-bounds exception with bool filter ("#1400":http://github.com/elasticsearch/elasticsearch/issues/issue/1400)
+ * Script sorting doesn't accept parameters ("#1382":http://github.com/elasticsearch/elasticsearch/issues/issue/1382)
+ * Exception:
+ ** TokenStream implementation classes or at least their incrementToken() implementation must be final ("#1397":http://github.com/elasticsearch/elasticsearch/issues/issue/1397)
+ ** TokenStream implementation classes or at least their incrementToken() implementation must be final ("#1397":http://github.com/elasticsearch/elasticsearch/issues/issue/1397)
+ * Search: A failed search request might get overrun when trying another shard ("#1403":http://github.com/elasticsearch/elasticsearch/issues/issue/1403)
