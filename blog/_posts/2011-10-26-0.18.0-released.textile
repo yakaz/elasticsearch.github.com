@@ -1,0 +1,39 @@
+---
+layout: blogpost
+title: 0.18.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.18.0@ has just been released. You can download it "here":/download. This is a major release, and includes the following major features:
+
+h2. Shard Allocation Awareness and Filtering
+
+p. Shard allocation within a cluster can now be "aware" of which node replicas are allocated on (similar to rack awareness). It allows to make sure that a shard and a replica will be allocated across logical grouping of nodes. The awareness can also be forced, by not over allocating replicas within the same logical node group. Search and Get operations will automatically prefer shards that are allocated within the same logical node group the search is executing on.
+
+p. Filtering allows to explicitly control which nodes indices are allowed, or not allowed, to be allocated on, again, based on custom logical grouping of nodes (called node attributes).
+
+p. Both settings can be updated in realtime using either the cluster wide or index level update settings API. More info can be found "here":/guide/reference/modules/cluster.html.
+
+h2. Cluster Update Settings API
+
+p. The cluster update settings API allow to update node level settings (and not index level settings) in realtime on a live cluster. The settings allowed and more docs on the API are provided "here":/guide/reference/api/admin-cluster-update-settings.html.
+
+h2. Timestamp and TTL
+
+p. A document can now automatically be indexed with a timestamp associated with it, and have a TTL (time to live), which, when expired, will cause the document to be deleted. (docs will be provided soon).
+
+h2. Improved Geo Execution
+
+p. Geo distance filter and facet good a considerable performance boost by doing bounding box optimization. Also, an option to use indexed lat lon for the checks (must be enabled in the @geo_type@ mapping) is provided which can provide even faster executing under certain conditions (compared to in memory checks).
+
+h2. More Statistics
+
+p. More statistics are now provided out of the box, including a new index stats API (the status API should not be used for stats anymore). Statistics for APIs such as index, get, and search are also being aggregated, with search allowing to specific specific stats grouping aggregation (to further distinguish search "types").
+
+h2. Smaller improvements and bug fixes
+
+p. Many more bug fixes and smaller improvement have went into this release. Full release notes can be found "here":https://github.com/elasticsearch/elasticsearch/issues?sort=created&direction=desc&labels=v0.18.0&state=closed.
+
+-shay.banon
