@@ -37,3 +37,7 @@ p. One practical use for tag filtering is when an ec2 cluster contains many node
 h1. Region
 
 p. The @cloud.aws.region@ can be set to a region and will automatically use the relevant settings for both @ec2@ and @s3@. The available values are: @us-east-1@, @us-west-1@, @ap-southeast-1@, @eu-west-1@.
+
+h1. Automatic Node Attributes
+
+p. Though not dependent on actually using @ec2@ as discovery (but still requires the cloud aws plugin installed), the plugin can automatically add node attributes relating to ec2 (for example, availability zone, that can be used with the awareness allocation feature). In order to enable it, set @cloud.node.auto_attributes@ to @true@ in the settings.

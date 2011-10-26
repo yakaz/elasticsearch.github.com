@@ -41,3 +41,16 @@ $ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '{
 </pre>
 
 p. The routing parameter can be multi valued represented as a comma separated string. This will result in hitting the relevant shards where the routing values match to.
+
+h1. Stats Groups
+
+p. A search can be associated with stats groups, which maintains a statistics aggregation per group. It can later be retrieved using the indices stats API specifically. For example, here is a search body request that associate the request with two different groups:
+
+<pre class="prettyprint">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "stats" : ["group1", "group2"]
+}
+</pre>

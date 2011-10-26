@@ -13,6 +13,8 @@ $ curl -XPOST 'http://localhost:9200/twitter/_cache/clear'
 
 p. The API, by default, will clear all cached. Specific caches can cleaned explicitly by setting @filter@, @field_data@ or @bloom@ to @true@.
 
+p. All caches relating to a specific field(s) can also be cleared by specifying @fields@ parameter with a comma delimited list of the relevant fields.
+
 h1. Multi Index
 
 p. The flush API can be applied to more than one index with a single call, or even on @_all@ the indices.

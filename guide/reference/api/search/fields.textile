@@ -31,4 +31,4 @@ p. An empty array will cause only the @_id@ and @_type@ for each hit to be retur
 }
 </pre>
 
-p. Script fields can also be automatically detected and used as fields, so things like @_source.obj1.obj2@ can be used.
+p. Script fields can also be automatically detected and used as fields, so things like @_source.obj1.obj2@ can be used, though not recommended, as @obj1.obj2@ will work as well.

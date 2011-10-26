@@ -32,6 +32,7 @@ p. The @query_string@ top level parameters include:
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
 | @analyze_wildcard@ | By default, wildcards terms in a query string are not analyzed. By setting this value to @true@, a best effort will be made to analyze those as well. |
 | @auto_generate_phrase_queries@ | Default to @false@. |
+| @minimum_should_match@ | A percent value (for example @20%@) controlling how many "should" clauses in the resulting boolean query should match.|
 
 p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":multi-term-rewrite.html parameter.
 
