@@ -8,6 +8,8 @@ nick: kimchy
 
 p. *elasticsearch* version @0.18.0@ has just been released. You can download it "here":/download. This is a major release, and includes the following major features:
 
+p. UPDATE: @0.18.1@ was quickly released to fix a bug with custom @path.data@ location configuration.
+
 h2. Shard Allocation Awareness and Filtering
 
 p. Shard allocation within a cluster can now be "aware" of which node replicas are allocated on (similar to rack awareness). It allows to make sure that a shard and a replica will be allocated across logical grouping of nodes. The awareness can also be forced, by not over allocating replicas within the same logical node group. Search and Get operations will automatically prefer shards that are allocated within the same logical node group the search is executing on.
