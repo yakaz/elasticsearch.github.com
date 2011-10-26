@@ -32,6 +32,10 @@ h2. More Statistics
 
 p. More statistics are now provided out of the box, including a new index stats API (the status API should not be used for stats anymore). Statistics for APIs such as index, get, and search are also being aggregated, with search allowing to specific specific stats grouping aggregation (to further distinguish search "types").
 
+h2. Multi Data locations
+
+p. A node can now work with multiple data locations, spreading the index files across those locations in a RAID 0 like behavior.
+
 h2. Smaller improvements and bug fixes
 
 p. Many more bug fixes and smaller improvement have went into this release. Full release notes can be found "here":https://github.com/elasticsearch/elasticsearch/issues?sort=created&direction=desc&labels=v0.18.0&state=closed.
