@@ -24,7 +24,7 @@ p. The cluster update settings API allow to update node level settings (and not 
 
 h2. Timestamp and TTL
 
-p. A document can now automatically be indexed with a timestamp associated with it, and have a TTL (time to live), which, when expired, will cause the document to be deleted. (docs will be provided soon).
+p. A document can now automatically be indexed with a timestamp associated with it, and have a TTL (time to live), which, when expired, will cause the document to be deleted. More info can be found "here":/guide/reference/mapping/timestamp-field.html and "here":/guide/reference/mapping/ttl-field.html.
 
 h2. Improved Geo Execution
 
