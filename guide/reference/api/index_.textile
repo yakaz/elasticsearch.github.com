@@ -134,7 +134,48 @@ $ curl -XPUT localhost:9200/blogs/blog_tag/1122?parent=1111 -d '{
 }'
 </pre>
 
-p. When indexing a child document, the routing value is automatically set to be the same as it's parent, unless the routing value is explicitly specified using the @routing@ parameter. 
+p. When indexing a child document, the routing value is automatically set to be the same as it's parent, unless the routing value is explicitly specified using the @routing@ parameter.
+
+h1. Timestamp
+
+p. A document can be indexed with a @timestamp@ associated with it. The @timestamp@ value of a document can be set using the @timestamp@ parameter. For example:
+
+<pre class="prettyprint">
+$ curl -XPUT localhost:9200/twitter/tweet/1?timestamp=2009-11-15T14%3A12%3A12 -d '{
+    "user" : "kimchy",
+    "message" : "trying out Elastic Search",
+}'
+</pre>
+
+p. If the @timestamp@ value is not provided externally or in the @_source@, the @timestamp@ will be automatically set to the date the document was processed by the indexing chain. More information can be found on the "_timestamp mapping page":../mapping/timestamp-field.html.
+
+h1. TTL
+
+p. A document can be indexed with a @ttl@ (time to live) associated with it. Expired documents will be expunged automatically. The expiration date that will be set for a document with a provided @ttl@ is relative to the @timestamp@ of the document, meaning it can be based on the time of indexing or on any time provided. The provided @ttl@ must be strictly positive and can be a number (in milliseconds) or any valid time value as shown in the following examples:
+
+<pre class="prettyprint">
+curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=86400000' -d '{
+    "user": "kimchy",
+    "message": "Trying out elasticsearch, so far so good?"
+}'
+</pre>
+
+<pre class="prettyprint">
+curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1d' -d '{
+    "user": "kimchy",
+    "message": "Trying out elasticsearch, so far so good?"
+}'
+</pre>
+
+<pre class="prettyprint">
+curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
+    "_ttl": "1d",
+    "user": "kimchy",
+    "message": "Trying out elasticsearch, so far so good?"
+}'
+</pre>
+
+More information can be found on the "_ttl mapping page":../mapping/ttl-field.html.
 
 h1. Percolate
 
