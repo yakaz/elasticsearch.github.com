@@ -8,7 +8,7 @@ nick: kimchy
 
 p. *elasticsearch* version @0.18.0@ has just been released. You can download it "here":/download. This is a major release, and includes the following major features:
 
-p. UPDATE: @0.18.1@ was quickly released to fix a bug with custom @path.data@ location configuration.
+p. UPDATE: @0.18.2@ was quickly released to fix a bug with custom @path.data@ location configuration and fetching inner fields from a source doc.
 
 h2. Shard Allocation Awareness and Filtering
 
