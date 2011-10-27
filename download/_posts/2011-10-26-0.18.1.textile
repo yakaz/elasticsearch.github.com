@@ -8,3 +8,6 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.1
 release_notes: true
 ---
+h2. Bug fixes:
+ * External data location configuration fails (path.data setting) ("#1429":http://github.com/elasticsearch/elasticsearch/issues/issue/1429)
+
