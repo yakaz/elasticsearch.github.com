@@ -8,4 +8,10 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.2
 release_notes: true
 ---
+h2. Enhancements:
+ * Merge Scheduler: Allow to set index.merge.scheduler.max_merge_count ("#1430":http://github.com/elasticsearch/elasticsearch/issues/issue/1430)
+
+
+h2. Bug fixes:
+ * Search: Fetching fields that end up extracted from source might fail ("#1431":http://github.com/elasticsearch/elasticsearch/issues/issue/1431)
 
