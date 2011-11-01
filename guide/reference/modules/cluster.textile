@@ -53,7 +53,7 @@ p. Sometimes, we know in advance the number of values an awareness attribute can
 p. For example, lets say we have an awareness attribute called @zone@, and we know we are going to have two zones, @zone1@ and @zone2@. Here is how we can force awareness one a node:
 
 <pre>
-cluster.routing.allocation.awareness.force.zone: zone1,zone2
+cluster.routing.allocation.awareness.force.zone.values: zone1,zone2
 cluster.routing.allocation.awareness.attributes: zone
 </pre>
 
