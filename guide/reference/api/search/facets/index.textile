@@ -7,13 +7,15 @@ sidebar: reference_api_search_facets
 
 The usual purpose of a full-text search engine is to return a small number of documents matching your query.
 
-_Facets_ provide aggregated data based on a search query. In the simple case, a facet can return _facet counts_ for various _facet values_ for a specific _field_. ElasticSearch supports more advanced facet implementations, such as "statistical":/guide/reference/api/search/facets/statistical-facet.html or "date histogram":/guide/reference/api/search/facets/date-histogram-facet.html facets.
+_Facets_ provide aggregated data based on a search query. In the simplest case, a "terms facet":/guide/reference/api/search/facets/terms-facet.html can return _facet counts_ for various _facet values_ for a specific _field_. ElasticSearch supports more more facet implementations, such as "statistical":/guide/reference/api/search/facets/statistical-facet.html or "date histogram":/guide/reference/api/search/facets/date-histogram-facet.html facets.
 
-The field used for facet calculations must be of type numeric, date/time or analyzed as a single token. You can give the facet an arbitrary _name_ and return multiple facets in one request.
+The field used for facet calculations _must_ be of type numeric, date/time or be analyzed as a single token &mdash; see the "_Mapping_":/guide/reference/mapping/index.html guide for details on the analysis process.
 
-For example, let's suppose you have a number of articles with a field called @tags@. Facet can return counts for the most popular tags across the documents matching your query — or across all documents in the index.
+You can give the facet a custom _name_ and return multiple facets in one request.
 
-Let's check out this simple example. We will store some example data first:
+Let's try it out with a simple example. Suppose we have a number of articles with a field called @tags@, preferably analyzed with the "keyword":/guide/reference/index-modules/analysis/keyword-analyzer.html analyzer. The facet aggregation will return counts for the most popular tags across the documents matching your query &mdash; or across all documents in the index.
+
+We will store some example data first:
 
 <pre class="prettyprint lang-bash">
 curl -X DELETE "http://localhost:9200/articles"
@@ -22,7 +24,7 @@ curl -X POST "http://localhost:9200/articles/article" -d '{"title" : "Two",   "t
 curl -X POST "http://localhost:9200/articles/article" -d '{"title" : "Three", "tags" : ["foo", "bar", "baz"]}'
 </pre>
 
-Now, let's query the index for articles beginning with letter “T” and retrieve a "_terms facet_":/guide/reference/api/search/facets/terms-facet.html for the @tags@ field:
+Now, let's query the index for articles beginning with letter “T” and retrieve a "_terms facet_":/guide/reference/api/search/facets/terms-facet.html for the @tags@ field. We will name the facet simply: _tags_.
 
 <pre class="prettyprint lang-bash">
 curl -X POST "http://localhost:9200/articles/_search?pretty=true" -d '
@@ -35,7 +37,7 @@ curl -X POST "http://localhost:9200/articles/_search?pretty=true" -d '
 '
 </pre>
 
-This request will return articles “Two” and “Three”, as well as the @tags@ facet:
+This request will return articles “Two” and “Three” (because they match our query), as well as the @tags@ facet:
 
 <pre class="prettyprint lang-js">
 "facets" : {
@@ -58,16 +60,19 @@ This request will return articles “Two” and “Three”, as well as the @tag
 }
 </pre>
 
-Notice that the counts are scoped for this query: _foo_ and _bar_ are counted twice, _baz_ is counted once. (This is because the primary purpose of facets is to enable "_faceted browsing_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet: restrict the search to a specific category, price or date range, etc., most probably with a "_filter_":/guide/reference/api/search/filter.html based on selected facet.)
+In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probably want to display these to your users. The facet also returns the number of documents which have no value for the field (@missing@), the number of facet values not included in the returned facets (@other@), and the total number of tokens in the facet (@total@).
 
-In the facet results, the @missing@ field represents the number of documents that have no value for that facet. 
-For Term Facet, the @total@ field represents the total number terms count. The @other@ field represents all the terms that are not sent back because of the @size@ limit. See Feature Request "#1029":https://github.com/elasticsearch/elasticsearch/issues/1029 for more details.
+Notice, that the counts are scoped to the current query: _foo_ is counted only twice (not three times), _bar_ is counted twice and _baz_ once.
+
+That's because the primary purpose of facets is to enable "_faceted navigation_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet, ie. restrict the search to a specific category, price or date range. See the example of faceted navigation at _LinkedIn_ below:
+
+!/guide/images/linkedin-faceted-search.png(Faceted Search at LinkedIn)!
+
+Facets can be used, however, for other purposes: computing histograms, statistical aggregations, and more. See the article about "data visualization":/blog/2011/05/13/data-visualization-with-elasticsearch-and-protovis.html on the ElasticSearch's blog for inspiration.
 
 h2. Scope
 
-Facets are bound to the current query by default, called @main@. Every facet can be set with the @global@ scope, in which case it will return facet calculations for all documents in the index.
-
-A shorthand to set a facet to run globally is to set the @global@ parameter to @true@:
+As we have already mentioned, facet computation is restricted to the scope of the current query, called @main@, by default. Facets can be computed within the @global@ scope as well, in which case it will return values computed acrosss all documents in the index:
 
 <pre class="prettyprint lang-js">
 {
@@ -80,11 +85,13 @@ A shorthand to set a facet to run globally is to set the @global@ parameter to @
 }    
 </pre>
 
-Custom scope names works in conjunction with child queries or filters, allowing to force the facets to run on the child documents matching the child specific query.
+There's one **important distinction** to keep in mind. While search _queries_ restrict both the returned documents and facet counts, search _filters_ restrict only returned documents &mdash; but _not_ facet counts.
 
-h2. Filter
+If you need to restrict both the documents and facets, and you're not willing or able to use a query, you may use a _facet filter_.
 
-All facets can be configured with an additional filter (explained in the "Query DSL":/guide/reference/query-dsl section), which will further reduce the documents they execute on. For example:
+h2. Facet Filter
+
+All facets can be configured with an additional filter (explained in the "Query DSL":/guide/reference/query-dsl section), which _will_ reduce the documents they use for computing results. An example with a _term_ filter:
 
 <pre class="prettyprint lang-js">
 {
@@ -101,11 +108,11 @@ All facets can be configured with an additional filter (explained in the "Query 
 }    
 </pre>
 
-h2. Facets on nested mapping
+h2. Facets with the _nested_ types
 
-p. "nested":/guide/reference/mapping/nested-type.html mapping allows for better support for "inner" documents faceting, especially when it comes to multi valued key and value facets (like histograms, or term stats).
+p. "Nested":/guide/reference/mapping/nested-type.html mapping allows for better support for "inner" documents faceting, especially when it comes to multi valued key and value facets (like histograms, or term stats).
 
-p. Why is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and thats the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
+p. Why is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and that's the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
 
 p. For example, lets use the following mapping:
 
