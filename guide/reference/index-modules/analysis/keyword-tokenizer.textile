@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. A tokenizer of type @keyoword@ that emits the entire input as a single input.
+p. A tokenizer of type @keyword@ that emits the entire input as a single input.
 
 p. The following are settings that can be set for a @keyword@ tokenizer type:
 
