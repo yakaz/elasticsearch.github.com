@@ -108,6 +108,8 @@ All facets can be configured with an additional filter (explained in the "Query 
 }    
 </pre>
 
+Note that this is different from a facet of the "filter":/guide/reference/api/search/facets/filter-facet.html type.
+
 h2. Facets with the _nested_ types
 
 p. "Nested":/guide/reference/mapping/nested-type.html mapping allows for better support for "inner" documents faceting, especially when it comes to multi valued key and value facets (like histograms, or term stats).
