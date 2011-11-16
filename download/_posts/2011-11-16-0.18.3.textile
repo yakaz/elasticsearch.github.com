@@ -8,3 +8,28 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.3
 release_notes: true
 ---
+h2. Breaking changes:
+ * Blank routing should be ignored ("#1450":http://github.com/elasticsearch/elasticsearch/issues/issue/1450)
+ * Highlighting on term vector enabled field should not highlight filters by default ("#1469":http://github.com/elasticsearch/elasticsearch/issues/issue/1469)
+ * Date Range: Inclusive upper range does not round up properly ("#1463":http://github.com/elasticsearch/elasticsearch/issues/issue/1463)
+
+
+h2. New features:
+ * Index shard search slow log (query and fetch) ("#1462":http://github.com/elasticsearch/elasticsearch/issues/issue/1462)
+
+
+h2. Enhancements:
+ * AbstractCompoundWordTokenFilterFactory should store the dictionary as a CharArraySet instance, not a Set ("#1449":http://github.com/elasticsearch/elasticsearch/issues/issue/1449)
+ * XContentBuilder to handle extended classes of java.util.Date ("#1465":http://github.com/elasticsearch/elasticsearch/issues/issue/1465)
+ * Mapping: Improve applying guessed types on dynamic templates ("#1446":http://github.com/elasticsearch/elasticsearch/issues/issue/1446)
+
+
+h2. Bug fixes:
+ * data.path locations are unevenly filled (0.18.2) ("#1436":http://github.com/elasticsearch/elasticsearch/issues/issue/1436)
+ * Percolate / Analyzer API can hang if it fails to execute ("#1457":http://github.com/elasticsearch/elasticsearch/issues/issue/1457)
+ * Using root object level mapping (_size, _source) can cause reparsing of the mapping on startup ("#1458":http://github.com/elasticsearch/elasticsearch/issues/issue/1458)
+ * Nested facet execution can fail with ArrayIndexOutOfBounds ("#1467":http://github.com/elasticsearch/elasticsearch/issues/issue/1467)
+ * Inner queries not resolved correctly in has_child filter when searching directly against the parent type (in the URI for example) ("#1471":http://github.com/elasticsearch/elasticsearch/issues/issue/1471)
+ * Couchdb River: since changes parameter (seq) is not url encoded ("#1470":http://github.com/elasticsearch/elasticsearch/issues/issue/1470)
+ * Indices Stats API: Providing groups as part of the HTTP API does not return stats for those groups ("#1468":http://github.com/elasticsearch/elasticsearch/issues/issue/1468)
+ * Search: Search requests execute by mistake on the networking http IO thread, causing other http operations to hang ("#1455":http://github.com/elasticsearch/elasticsearch/issues/issue/1455)

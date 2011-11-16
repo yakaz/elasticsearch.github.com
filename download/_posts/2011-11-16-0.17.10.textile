@@ -8,3 +8,7 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.17.10
 release_notes: true
 ---
+h2. Bug fixes:
+ * Bool Filter fails with ArrayIndexOutOfBoundsException  ("#1419":http://github.com/elasticsearch/elasticsearch/issues/issue/1419)
+ * Nested facet execution can fail with ArrayIndexOutOfBounds ("#1467":http://github.com/elasticsearch/elasticsearch/issues/issue/1467)
+ * Search: Search requests execute by mistake on the networking http IO thread, causing other http operations to hang ("#1455":http://github.com/elasticsearch/elasticsearch/issues/issue/1455)
