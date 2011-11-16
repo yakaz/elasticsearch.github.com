@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-title: 0.18.0 Released
+title: 0.18.3 Released
 cat: blog
 author: Shay Banon
 nick: kimchy
