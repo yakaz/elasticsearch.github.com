@@ -12,4 +12,6 @@ p. The release also includes additional bug fixes, and some features including "
 
 p. [Update]: Heads up that this release includes a broken plugin script, more info "here":https://github.com/elasticsearch/elasticsearch/issues/1474.
 
+p. [Update 2]: @0.18.4@ has been released fixing the plugin script.
+
 -shay.banon
