@@ -1,0 +1,13 @@
+---
+layout: blogpost
+title: 0.18.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.18.3@ has just been released. You can download it "here":/download. Its an important bug fix release, including a fix for a "major bug":https://github.com/elasticsearch/elasticsearch/issues/1455 and upgrade is highly recommended. An @0.17.10@ version with the bug fixed has also been released.
+
+p. The release also includes additional bug fixes, and some features including "shard level slow search log":https://github.com/elasticsearch/elasticsearch/issues/1462, and improved "upper inclusive range":https://github.com/elasticsearch/elasticsearch/issues/1463 handling for dates.
+
+-shay.banon
