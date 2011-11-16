@@ -10,4 +10,6 @@ p. *elasticsearch* version @0.18.3@ has just been released. You can download it 
 
 p. The release also includes additional bug fixes, and some features including "shard level slow search log":https://github.com/elasticsearch/elasticsearch/issues/1462, and improved "upper inclusive range":https://github.com/elasticsearch/elasticsearch/issues/1463 handling for dates.
 
+p. [Update]: Heads up that this release includes a broken plugin script, more info "here":https://github.com/elasticsearch/elasticsearch/issues/1474.
+
 -shay.banon
