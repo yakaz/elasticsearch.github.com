@@ -27,10 +27,9 @@ p. Because this format uses literal @\n@'s as delimiters, please be sure that th
 { "delete" : { "_index" : "test", "_type" : "type1", "_id" : "2" } }
 { "create" : { "_index" : "test", "_type" : "type1", "_id" : "3" } }
 { "field1" : "value3" }
+</pre>
 
 p. The endpoints are @/_bulk@, @/{index}/_bulk@, and @{index}/type/_bulk@. When the index or the index/type are provided, they will be used by default on bulk items that don't provide them explicitly.
-
-</pre>
 
 p. A note on the format. The idea here is to make processing of this as fast as possible. As some of the actions will be redirected to other shards on other nodes, only @action_meta_data@ is parsed on the receiving node side.
 
