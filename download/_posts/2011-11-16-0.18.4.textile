@@ -8,3 +8,6 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.4
 release_notes: true
 ---
+h2. Bug fixes:
+ * Broken plugin script ("#1474":http://github.com/elasticsearch/elasticsearch/issues/issue/1474)
+
