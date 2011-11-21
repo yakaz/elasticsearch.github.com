@@ -43,7 +43,7 @@ p. If using the HTTP API, make sure that the client does not send HTTP chunks, a
 
 h1. Versioning
 
-p. Each bulk item can include the version value using the @_version@/@version@ field. It automatically follows the behavior of the index / delete operation based on the @_version@ mapping. It also support the @version_type@ when using @external@ versioning.
+p. Each bulk item can include the version value using the @_version@/@version@ field. It automatically follows the behavior of the index / delete operation based on the @_version@ mapping. It also support the @version_type@/@_version_type@ when using @external@ versioning.
 
 h1. Routing
 
@@ -51,7 +51,7 @@ p. Each bulk item can include the routing value using the @_routing@/@routing@ f
 
 h1. Percolator
 
-p. Each bulk index action can include a percolate value using the @_percolate@ field.
+p. Each bulk index action can include a percolate value using the @_percolate@/@percolate@ field.
 
 h1. Parent
 
