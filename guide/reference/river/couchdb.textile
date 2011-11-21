@@ -71,3 +71,32 @@ p. Here is an example setting that adds `field1` with value `value1` to all docs
     }
 }
 </pre>
+
+h1. Basic Authentication
+
+Basic Authentication can be used by passing the @user@ and @password@ attributes.
+
+<pre class="prettyprint lang-js">
+{
+    "type" : "couchdb",
+    "couchdb" : {
+        "user" : "alice",
+        "password" : "secret"
+    }
+}
+</pre>
+
+h1. HTTPS
+
+To use HTTPS, pass the @protocol@ field. Most likely, you will also have to change the @port@. If you have unfixable problems with the servers certificates for any reason, you can disable hostname verification by passing @no_verify@.
+
+<pre class="prettyprint lang-js">
+{
+    "type" : "couchdb",
+    "couchdb" : {
+        "protocol" : "https",
+        "port" : 443,
+        "no_verify" : "true"
+    }
+}
+</pre>
