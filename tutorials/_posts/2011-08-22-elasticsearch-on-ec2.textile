@@ -323,12 +323,18 @@ h2. The Simplest Configuration
     environment variables. It is recommended to set them to the same value, with a good default
     value of about half of the instance memory. For example, set them to @8gb@ on an @16gb@ instance.
     Another recommended setting is to set @bootstrap.mlockall@ to @true@ in order to make sure
-    the elasticsearch process will not swap.
+    the elasticsearch process will not swap. Also it might be possible that you need to specify
+    the server jvm via the additional @-server@ parameter for the jvm.
 </p>
 
 <p>
     Also, the @gateway.recover_after_...@ settings are important to set, especially when using the
     @S3@ gateway in order to try and reuse as much local data as possible on full cluster restart.
+</p>
+
+<p>
+    When you have problems with discovery of the instances specify a region in @cloud.aws.region@
+    or use @cloud.aws.ec2.endpoint@ if your region is not supported. E.g. @us-east-1@
 </p>
 
 <p>
