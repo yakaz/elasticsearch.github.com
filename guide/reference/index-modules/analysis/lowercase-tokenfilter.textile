@@ -7,7 +7,7 @@ sidebar: reference_index_modules_analysis
 
 p. A token filter of type @lowercase@ that normalizes token text to lower case.
 
-p. Lowercase token filter supports Greek and Turkish lowercase token filters through the @lang@ parameter. Below is a usage example in a custom analyzer
+p. Lowercase token filter supports Greek and Turkish lowercase token filters through the @language@ parameter. Below is a usage example in a custom analyzer
 
 <pre class="prettyprint">
 index :
@@ -28,7 +28,7 @@ index :
                 stopwords : [stop1, stop2, stop3, stop4]
             myGreekLowerCaseFilter :
                 type : lowercase
-                lang : greek
+                language : greek
         char_filter :
               my_html :
                 type : html_strip
