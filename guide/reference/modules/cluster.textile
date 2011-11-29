@@ -117,7 +117,7 @@ p. The provided settings can also be updated in real time using the update setti
 p. Cluster wide filtering can also be defined, and be updated in real time using the cluster update settings API. This setting can come in handy for things like decommissioning nodes (even if the replica count is set to 0). Here is a sample of how to decommission a node based on @_ip@ address:
 
 <pre class="prettyprint">
-curl -XPUT localhost:9200/_cluster/_settings -d '{
+curl -XPUT localhost:9200/_cluster/settings -d '{
     "transient" : {
         "cluster.routing.allocation.exclude._ip" : "10.0.0.1"
     }
