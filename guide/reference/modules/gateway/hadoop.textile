@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_modules_gateway
 ---
 
-p. The hadoop (HDFS) based gateway stores the cluster meta and indices data in hadoop. Hadoop support is provided as a plugin and installing is as simply as executing @plugin -install hadoop@ or downloading the hadoop plugin and placing it under the @plugins@ directory. Here is an example config to enable it:
+p. The hadoop (HDFS) based gateway stores the cluster meta and indices data in hadoop. Hadoop support is provided as a plugin and installing is explained "here":https://github.com/elasticsearch/elasticsearch-hadoop or downloading the hadoop plugin and placing it under the @plugins@ directory. Here is an example config to enable it:
 
 <pre class="prettyprint">
 gateway:

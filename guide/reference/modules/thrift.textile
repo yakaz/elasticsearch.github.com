@@ -7,9 +7,9 @@ sidebar: reference_modules
 
 p. The thrift transport module allows to expose the REST interface of elasticsearch using thrift. Thrift should provide better performance over http. Since thrift provides both the wire protocol and the transport, it should make using it simpler (thought its lacking on docs...).
 
-p. Using thrift requires installing the @transport-thrift@ plugin using @bin/plugin -install transport-thrift@.
+p. Using thrift requires installing the @transport-thrift@ plugin, located "here":https://github.com/elasticsearch/elasticsearch-transport-thrift.
 
-p. The thrift "schema":http://github.com/elasticsearch/elasticsearch/blob/master/plugins/transport/thrift/elasticsearch.thrift can be used to generate thrift clients.
+p. The thrift "schema":https://github.com/elasticsearch/elasticsearch-transport-thrift/blob/master/elasticsearch.thrift can be used to generate thrift clients.
 
 |_. Setting |_. Description |
 |@thrift.port@|The port to bind to. Defaults to 9500-9600|

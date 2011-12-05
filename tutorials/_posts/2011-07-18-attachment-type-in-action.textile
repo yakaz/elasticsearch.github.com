@@ -7,19 +7,11 @@ nick: lukasvlcek
 tutorial_desc: Attachment Type in Action
 ---
 
-This tutorial will walk you through basic attachment type setup and use in search including highighting.
+This tutorial will walk you through basic attachment type setup and use in search including highlighting.
 
 h1. Installation
 
-First we need to install the attachments plugin. Navigate to @ES_HOME@ and execute the following from the command line:
-
-<pre class="prettyprint">
-./bin/plugin install mapper-attachments
-</pre>
-
-This will download the attachments plugin from "plugins repository":http://elasticsearch.googlecode.com/svn/plugins/ and install it into @ES_HOME/plugins/mapper-attachments/@ folder.
-
-You can also install plugins manually by copying relevant files directly into @ES_HOME/lib/@ folder. For example you extract mapper attachment zip file from @ES_HOME/build/distributions/plugins/@ into @ES_HOME/lib/@ folder (this can be useful if you work with SNAPSHOT version of ES).
+First we need to install the attachments plugin, follow the instructions listed "here":https://github.com/elasticsearch/elasticsearch-mapper-attachments.
 
 Make sure you *restart ElasticSearch*, so the plugins are picked up.
 

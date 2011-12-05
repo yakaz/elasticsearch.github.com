@@ -143,12 +143,8 @@ h2. Adding the EC2 Plugin
     The libraries necessary to communicate with Amazon’s EC2 APIs are
     installed in different ways depending on your environment. If you run EC2
     from the command line or from a shell script, you can install the cloud
-    libraries using the plugin script.
+    libraries using the plugin script explained "here":https://github.com/elasticsearch/elasticsearch-cloud-aws.
 </p>
-
-<pre>
-    bin/plugin install cloud-aws
-</pre>
 
 <p>
     If you are using Maven and embedding the elasticsearch libraries in a
