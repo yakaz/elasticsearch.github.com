@@ -8,3 +8,28 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.5
 release_notes: true
 ---
+h2. New features:
+ * Upgrade to Lucene 3.5 ("#1502":http://github.com/elasticsearch/elasticsearch/issues/issue/1502)
+
+
+h2. Enhancements:
+ * HTTPS support for CouchDB river ("#1480":http://github.com/elasticsearch/elasticsearch/issues/issue/1480)
+ * By default, set http.compression to false ("#1482":http://github.com/elasticsearch/elasticsearch/issues/issue/1482)
+ * DocumentMapper.java wrong order on build rootMappers ("#1493":http://github.com/elasticsearch/elasticsearch/issues/issue/1493)
+ * Support using _id:1234, or using term query/filter on _id even when _id is not indexed ("#1496":http://github.com/elasticsearch/elasticsearch/issues/issue/1496)
+ * Upgrade to netty 3.2.7 ("#1506":http://github.com/elasticsearch/elasticsearch/issues/issue/1506)
+ * When _source is disabled, don't return it in realtime get fetching the document from the transaction log ("#1509":http://github.com/elasticsearch/elasticsearch/issues/issue/1509)
+ * AWS Plugin: Add more automatic region configuration ("#1490":http://github.com/elasticsearch/elasticsearch/issues/issue/1490)
+ * Analysis:
+ ** Add language setting to lowercase filter, supporting greek and turkish ("#1503":http://github.com/elasticsearch/elasticsearch/issues/issue/1503)
+ ** Support greek language in the stemmer filter ("#1504":http://github.com/elasticsearch/elasticsearch/issues/issue/1504)
+ * Query DSL: indices query to allow to set a @no_match_query@ ("#1492":http://github.com/elasticsearch/elasticsearch/issues/issue/1492)
+
+
+h2. Bug fixes:
+ * Thrift transport handling unexpected URI hangs ("#1484":http://github.com/elasticsearch/elasticsearch/issues/issue/1484)
+ * IndicesQueryBuilder generates the wrong query name ("#1485":http://github.com/elasticsearch/elasticsearch/issues/issue/1485)
+ * Multi field mapper with more than one extra mapping can cause endless re-sync'ing of mapping between nodes ("#1487":http://github.com/elasticsearch/elasticsearch/issues/issue/1487)
+ * Using _parent:123 in a query string query fails to fetch docs ("#1497":http://github.com/elasticsearch/elasticsearch/issues/issue/1497)
+ * Registering a percolate query with additional "object" level metadata can fail ("#1505":http://github.com/elasticsearch/elasticsearch/issues/issue/1505)
+
