@@ -10,7 +10,7 @@ p. Once downloaded, building an elasticsearch distribution is simple. You'll nee
 or see below for IDE integration. Then compile ElasticSearch via:
 
 <pre class="prettify">
-$ mvn package -Dmaven.test.skip=true
+$ mvn package -DskipTests
 </pre>
 
 p. If you are running it for the first time, go get a cup of coffee (or better yet, a beer), it will take some time to download all the dependencies *elasticsearch* has. Once finished, a full distribution of the elasticsearch will be created under @target/releases/@.
