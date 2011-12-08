@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.18.5 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.18.5@ is out. You can download it "here":/download. It includes an upgraded Lucene version (3.5), featuring bug fixes and memory improvements, as well as more bug fixes in elasticsearch itself. Changes can be found "here":https://github.com/elasticsearch/elasticsearch/issues?labels=v0.18.5&sort=created&direction=desc&state=closed&page=1.

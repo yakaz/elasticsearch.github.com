@@ -7,7 +7,7 @@ sidebar: reference_river
 
 p. The twitter river indexes the public "twitter stream":http://dev.twitter.com/pages/streaming_api, aka the hose, and makes it searchable.
 
-p. The twitter river is provided as a plugin and can be installed using @plugin -install river-twitter@.
+p. The twitter river is provided as a "plugin":https://github.com/elasticsearch/elasticsearch-river-twitter, including information on how to install it.
 
 p. Creating the twitter river can be done using:
 

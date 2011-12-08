@@ -11,11 +11,7 @@ p. Plugins are a way to enhance the basic elasticsearch functionality in a custo
 
 h2. Installing plugins
 
-p. Installing plugins can either be done manually by placing them under the @plugins@ directory, or using the @plugin@ script. Formal "built in" plugins can be installed simply by running the command with the name of the plugin, for example:
-
-<pre class="prettyprint">
-bin/plugin -install cloud-aws
-</pre>
+p. Installing plugins can either be done manually by placing them under the @plugins@ directory, or using the @plugin@ script. Several plugins can be found under the "elasticsearch":https://github.com/elasticsearch organization in GitHub, starting with @elasticsearch-@.
 
 p. Plugins can also be automatically downloaded and installed from gitub using: @user_name/repo_name@ structure, or, for explicit versions, using @user_name/repo_name/version_number@. When no version number is specified, first a version based on the elasticsearch version is tried, and if it does not work, then master is used.
 

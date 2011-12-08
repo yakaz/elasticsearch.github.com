@@ -27,7 +27,7 @@ curl -XPUT 'localhost:9200/_river/my_db/_meta' -d '{
 
 p. This call will create a river that uses the @_changes@ stream to index all data within couchdb. Moreover, any "future" changes will automatically be indexed as well, making your search index and couchdb synchronized at all times.
 
-p. The couchdb river is provided as a plugin and can be installed using @plugin -install river-couchdb@.
+p. The couchdb river is provided as a "plugin":https://github.com/elasticsearch/elasticsearch-river-couchdb (including explanation on how to install it).
 
 p. On top of that, in case of a failover, the couchdb river will automatically be started on another elasticsearch node, and continue indexing from the last indexed seq.
 
