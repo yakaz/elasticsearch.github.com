@@ -20,6 +20,6 @@ p. In order to use it, just get either the @deb@ package, the @zip@ or @tar.gz@ 
 h1. Hacking
 
 p. Maven is supported by all major IDEs these days:
-   * "IntelliJ IDEA":http://www.jetbrains.com/idea/features/ant_maven.html - Just open the project
-   * "NetBeans":http://wiki.netbeans.org/Maven - Just open the project
-   * "Eclipse":http://maven.apache.org/eclipse-plugin.html - Download the maven plugin and execute @mvn eclipse:eclipse@
+   * "IntelliJ IDEA":http://www.jetbrains.com/idea/features/ant_maven.html
+   * "NetBeans":http://wiki.netbeans.org/Maven
+   * "Eclipse":http://maven.apache.org/eclipse-plugin.html - You'll need a maven plugin
