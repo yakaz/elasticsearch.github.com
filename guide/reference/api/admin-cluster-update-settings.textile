@@ -29,7 +29,7 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
 There is a specific list of settings that can be updated, those include:
 
 * @discovery.zen.minimum_master_nodes@
-* @index.shard.recovery.concurrent_streams@
+* @indices.recovery.concurrent_streams@
 * @cluster.routing.allocation.node_initial_primaries_recoveries@, @cluster.routing.allocation.node_concurrent_recoveries@
 * @cluster.routing.allocation.cluster_concurrent_rebalance@
 * @cluster.routing.allocation.awareness.attributes@
@@ -41,7 +41,6 @@ There is a specific list of settings that can be updated, those include:
 * @indices.cache.filter.size@
 * @indices.ttl.interval@
 * @indices.recovery.file_chunk_size@, @indices.recovery.translog_ops@, @indices.recovery.translog_size@, @indices.recovery.compress@, @indices.recovery.concurrent_streams@, @indices.recovery.max_size_per_sec@.
-* @@
 
 p. Logger values can also be updated by setting @logger.@ prefix. More settings will be allowed to be updated.
 
