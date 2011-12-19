@@ -1,0 +1,8 @@
+layout: blogpost
+title: 0.18.6 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.18.6@ is out. You can download it "here":/download. It includes minor features and important bug fixes. Changes can be found "here":https://github.com/elasticsearch/elasticsearch/issues?labels=v0.18.6&sort=created&direction=desc&state=closed&page=1.
