@@ -24,7 +24,7 @@ p. Installed plugins that do not contain any java related content, will automati
 p. The ability to install plugins from github allows to easily install site plugins hosted there, for example, running:
 
 <pre class="prettyprint">
-bin/plugin -install mobz/elasticsearch-head
+bin/plugin -install Aconex/elasticsearch-head
 bin/plugin -install lukas-vlcek/bigdesk
 </pre>
 
