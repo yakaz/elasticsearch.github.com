@@ -47,6 +47,7 @@ h2. Front Ends
 
 h2. Plugins
 
+* "CouchDB River":https://github.com/elasticsearch/elasticsearch-river-couchdb: River Plugin for CouchDB.
 * "RSSRiver":http://dadoonet.github.com/rssriver/: River Plugin for RSS feeds.
 
 h2. GitHub
