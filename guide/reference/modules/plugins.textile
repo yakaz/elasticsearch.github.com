@@ -30,3 +30,49 @@ bin/plugin -install lukas-vlcek/bigdesk
 
 p. Will install both of those site plugins, with @elasticsearch-head@ available under @http://localhost:9200/_plugin/head/@ and @bigdesk@ available under @http://localhost:9200/_plugin/bigdesk/@.
 
+h1. Known Plugins
+
+h2. Analysis Plugins
+
+* "Smart Chinese Analysis Plugin":https://github.com/elasticsearch/elasticsearch-analysis-smartcn (by elasticsearch team)
+* "ICU Analysis plugin":https://github.com/elasticsearch/elasticsearch-analysis-icu (by elasticsearch team)
+* "IK Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-ik (by Medcl)
+* "Mmseg Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-mmseg (by Medcl)
+* "Hunspell Analysis Plugin":https://github.com/jprante/elasticsearch-analysis-hunspell (by Jörg Prante)
+
+h2. River Plugins
+
+* "CouchDB River Plugin":https://github.com/elasticsearch/elasticsearch-river-couchdb (by elasticsearch team)
+* "Wikipedia River Plugin":https://github.com/elasticsearch/elasticsearch-river-wikipedia (by elasticsearch team)
+* "Twitter River Plugin":https://github.com/elasticsearch/elasticsearch-river-twitter (by elasticsearch team)
+* "RabbitMQ River Plugin":https://github.com/elasticsearch/elasticsearch-river-rabbitmq (by elasticsearch team)
+* "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
+
+h2. Transport Plugins
+
+* "Servlet transport":https://github.com/elasticsearch/elasticsearch-transport-wares (by elasticsearch team)
+* "Memcached transport plugin":https://github.com/elasticsearch/elasticsearch-transport-memcached (by elasticsearch team)
+* "Thrift Transport":https://github.com/elasticsearch/elasticsearch-transport-thrift (by elasticsearch team)
+* "ZeroMQ transport layer plugin":https://github.com/tlrx/transport-zeromq (by Tanguy Leroux)
+
+h2. Scripting Plugins
+
+* "Python language Plugin":https://github.com/elasticsearch/elasticsearch-lang-python (by elasticsearch team)
+* "JavaScript language Plugin":https://github.com/elasticsearch/elasticsearch-lang-javascript (by elasticsearch team)
+* "Groovy lang Plugin":https://github.com/elasticsearch/elasticsearch-lang-groovy (by elasticsearch team)
+
+h2. Site Plugins
+
+* "BigDesk Plugin":https://github.com/lukas-vlcek/bigdesk (by Lukáš Vlček)
+* "Elasticsearch Head Plugin":https://github.com/Aconex/elasticsearch-head (by Ben Birch)
+
+h2. Misc Plugins
+
+* "Mapper Attachments Type plugin":https://github.com/elasticsearch/elasticsearch-mapper-attachments (by elasticsearch team)
+* "Hadoop Plugin":https://github.com/elasticsearch/elasticsearch-hadoop (by elasticsearch team)
+* "AWS Cloud Plugin":https://github.com/elasticsearch/elasticsearch-cloud-aws (by elasticsearch team)
+* "ElasticSearch Mock Solr Plugin":https://github.com/mattweber/elasticsearch-mocksolrplugin (by Matt Weber)
+* "Suggester Plugin":https://github.com/spinscale/elasticsearch-suggest-plugin (by Alexander Reelsen)
+* "ElasticSearch PartialUpdate Plugin":https://github.com/medcl/elasticsearch-partialupdate (by Medcl)
+
+
