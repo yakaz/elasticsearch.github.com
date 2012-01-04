@@ -154,9 +154,9 @@ p. In the "core_types":core-types.html section, a field can have a @index_name@ 
 
 p. In the above example, the @name1@ and @name2@ objects within the @person@ object have different combination of @path@ and @index_name@. The document fields that will be stored in the index as a result of that are:
 
-|_. JSON Name | Document Field Name |
+|_. JSON Name |_. Document Field Name |
 |@name1@/@first1@|@first1@|
-|@name1@/@last1@|@i_last_2@|
+|@name1@/@last1@|@i_last_1@|
 |@name2@/@first2@|@name2.first2@|
 |@name2@/@last2@|@name2.i_last_2@|
 
