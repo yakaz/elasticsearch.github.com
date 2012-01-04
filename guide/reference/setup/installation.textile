@@ -27,6 +27,8 @@ p. Most times it is better to leave the default @JAVA_OPTS@ as they are, and use
 
 p. The @ES_MIN_MEM@ and @ES_MAX_MEM@ environment variables to set the minimum and maximum memory allocation for the JVM (set in mega bytes). It defaults to @256m@ and @1g@ respectively.
 
+p. It is recommended to set the min and max memory to the same value, and enable @mlockall@ see later.
+
 h2. *NIX
 
 p. There are added features when using the @elasticsearch@ shell script. The first, which was explained earlier, is the ability to easily run the process either in the foreground or the background.
@@ -54,6 +56,8 @@ p. In order to see if this works or not, set the @common.jna@ logging to DEBUG l
 p. Note, this is experimental feature, and might cause the JVM or shell session to exit if failing to allocate the memory (because not enough memory is available on the machine).
 
 h1. Running As a Service
+
+p. It should be simple to wrap the @elasticsearch@ script in an @init.d@ or the like. But, elasticsearch also supports running it using the "Java Service Wrapper":http://wrapper.tanukisoftware.com/.
 
 p. ElasticSearch can be run as a service using the @elasticsearch@ script located under @bin/service@ location. The repo for it is located "here":http://github.com/elasticsearch/elasticsearch-servicewrapper. The script accepts a single parameter with the following values:
 
