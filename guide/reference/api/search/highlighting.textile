@@ -75,6 +75,8 @@ p. And post tag of @</em>@. If you think of more nice to have built in tag schem
 }
 </pre>
 
+p. An @encoder@ parameter can be used to define how highlighted text will be encoded. It can be either @default@ (no encoding) or @html@ (will escape html, if you use html highlighting tags).
+
 h1. Highlighted Fragments
 
 p. Each field highlighted can control the size of the highlighted fragment in characters (defaults to @100@), and the maximum number of fragments to return (defaults to @5@). For example:
