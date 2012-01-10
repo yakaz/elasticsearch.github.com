@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.18.7 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.18.7@ is out. You can download it "here":/download. It includes bug fixes including major bug fix in state storage with shared gateways (s3 for example), and support for nested documents in delete by query.
