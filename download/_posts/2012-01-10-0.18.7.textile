@@ -8,3 +8,11 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.18.7
 release_notes: true
 ---
+h2. Bug fixes:
+ * Cluster metadata files destroyed when using blob store gateway causing data loss ("#1564":http://github.com/elasticsearch/elasticsearch/issues/issue/1564)
+ * Nested objects not deleted on "delete by query" ("#1537":http://github.com/elasticsearch/elasticsearch/issues/issue/1537)
+ * Two different indexes with the same nested object name causing ArrayIndexOutOfBoundsException ("#1575":http://github.com/elasticsearch/elasticsearch/issues/issue/1575)
+ * TTL does not respect routing when expiring (deleting) documents ("#1586":http://github.com/elasticsearch/elasticsearch/issues/issue/1586)
+ * Java API: ScriptSortBuilder does not pass the lang used ("#1569":http://github.com/elasticsearch/elasticsearch/issues/issue/1569)
+ * S3 blob storage gateway: deleting an index named x destroys data for any index with name beginning with x ("#1582":http://github.com/elasticsearch/elasticsearch/issues/issue/1582)
+
