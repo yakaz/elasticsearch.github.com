@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. A tokenizer of type @uax_url_email@ which works exactly like the @standard@ tokenizer, but also handles emails and urls.
+p. A tokenizer of type @uax_url_email@ which works exactly like the @standard@ tokenizer, but tokenizes emails and urls as single tokens.
 
 p. The following are settings that can be set for a @uax_url_email@ tokenizer type:
 
