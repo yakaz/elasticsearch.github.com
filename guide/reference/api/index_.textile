@@ -44,7 +44,7 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
 }'
 </pre>
 
-p. Automatic index creation can be disabled by setting @action.auto_create_index@ to @false@ in the config file of all nodes. Automatic mapping creation can be disabled by setting @index.mapper.dynamic@ to @false@ in the config files of all nodes.
+p. Automatic index creation can be disabled by setting @action.auto_create_index@ to @false@ in the config file of all nodes. Automatic mapping creation can be disabled by setting @index.mapper.dynamic@ to @false@ in the config files of all nodes (or on the specific index settings).
 
 h1. Versioning
 
