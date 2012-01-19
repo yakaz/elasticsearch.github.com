@@ -44,6 +44,8 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
 }'
 </pre>
 
+p. Automatic index creation can be disabled by setting @action.auto_create_index@ to @false@ in the config file of all nodes. Automatic mapping creation can be disabled by setting @index.mapper.dynamic@ to @false@ in the config files of all nodes.
+
 h1. Versioning
 
 p. Each indexed document is given a version number. The associated @version@ number is returned as part of the response to the index API request. The index API optionally allows for "optimistic concurrency control":http://en.wikipedia.org/wiki/Optimistic_concurrency_control when the @version@ parameter is specified. This will control the version of the document the operation is intended to be executed against. A good example of a use case for versioning is performing a transactional read-then-update. Specifying a @version@ from the document initially read ensures no changes have happened in the meantime (when reading in order to update, it is recommended to set @preference@ to @_primary@). For example:
