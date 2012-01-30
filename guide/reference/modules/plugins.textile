@@ -49,6 +49,7 @@ h2. River Plugins
 * "Twitter River Plugin":https://github.com/elasticsearch/elasticsearch-river-twitter (by elasticsearch team)
 * "RabbitMQ River Plugin":https://github.com/elasticsearch/elasticsearch-river-rabbitmq (by elasticsearch team)
 * "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
+* "MongoDB River Plugin":https://github.com/richardwilly98/elasticsearch-river-mongodb/ (by Richard Louapre)
 
 h2. Transport Plugins
 
