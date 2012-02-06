@@ -18,7 +18,7 @@ h2. Clients
 * "NEST":https://github.com/Mpdreamz/NEST: .NET client.
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
-* "Elastisch":http://github.com/ifesdjeen/elastisch: Clojure client.
+* "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
 
 h2. Integrations
 
