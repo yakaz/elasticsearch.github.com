@@ -7,6 +7,8 @@ nick: lukasvlcek
 tutorial_desc: Getting Started with the source code
 ---
 
+p. Note: This tutorial applies to elasticsearch 0.18 and below. 0.19 has moved to use @mvn@ as the build system, which makes it simpler to import it easily to IDEs. Creating a packaged distribution is simple as running @mvn package -DskipTests@ with the distribution existing under @target/releases@ directory.
+
 p. The following is a step-by-step tutorial which shows how to download, setup and explore ElasticSearch source code, especially if you do not have prior experience with Gradle.
 
 p. elasticsearch (ES) source code build and dependency management is handled by "Gradle":http://gradle.org/. If you haven't been using Gradle so far, do not worry, it is very easy to utilize provided gradle scripts. 

@@ -7,7 +7,7 @@ sidebar: reference_mapping
 
 p. Each document indexed is associated with an id and a type. The @_id@ field can be used to index just the id, and possible also store it. By default it is not indexed and not stored (thus, not created).
 
-p. Note, even though the @_id@ is not indexed, all the APIs still work (since they work with the @_uid@ field), as well as fetching by ids using the @ids@ query/filter.
+p. Note, even though the @_id@ is not indexed, all the APIs still work (since they work with the @_uid@ field), as well as fetching by ids using @term@, @term@ or @prefix@ queries / filters (including the specific @ids@ query/filter).
 
 p. The @_id@ field can be enabled to be indexed, and possibly stored, using:
 

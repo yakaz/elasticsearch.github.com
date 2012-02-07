@@ -9,3 +9,4 @@ release_notes: true
 ---
 
 
+p. Building from source can be done by executing @mvn package -DskipTests@. The distribution will be under @target/releases@.

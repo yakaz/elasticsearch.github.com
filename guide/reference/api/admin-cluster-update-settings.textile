@@ -28,6 +28,7 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
 
 There is a specific list of settings that can be updated, those include:
 
+* @cluster.blocks.read_only@: Have the whole cluster read only (indices do not accept write operations), metadata is not allowed to be modified (create or delete indices).
 * @discovery.zen.minimum_master_nodes@
 * @indices.recovery.concurrent_streams@
 * @cluster.routing.allocation.node_initial_primaries_recoveries@, @cluster.routing.allocation.node_concurrent_recoveries@

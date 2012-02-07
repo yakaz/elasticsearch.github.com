@@ -5,7 +5,21 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. Performs the analysis process on a text and return the tokens breakdown of the text. Here is an example:
+p. Performs the analysis process on a text and return the tokens breakdown of the text. 
+
+p. Can be used without specifying an index against one of the many built in analyzers:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/_analyze?analyzer=standard' -d 'this is a test'
+</pre>
+
+p. Or by building a custom transient analyzer out of tokenizers and filters:
+
+<pre class="prettyprint">
+curl -XGET 'localhost:9200/_analyze?tokenizer=keyword&filters=lowercase' -d 'this is a test'
+</pre>
+
+p. It can also run against a specific index:
 
 <pre class="prettyprint">
 curl -XGET 'localhost:9200/test/_analyze?text=this+is+a+test'
