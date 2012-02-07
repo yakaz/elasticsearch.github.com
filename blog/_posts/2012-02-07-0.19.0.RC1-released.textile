@@ -1,0 +1,22 @@
+---
+layout: blogpost
+title: 0.19.0.RC1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.0.RC1@ is out. You can download it "here":/download. It is a major release candidate release of elasticsearch.
+
+p. This is the first time we release a "release candidate" for elasticsearch. The aim is to get users to try it out, fix any problems found with it, and release a final @0.19.0@ release as soon as possible.
+
+p. Major features include improved indexing performance, more control over shard allocation, more statistics and simpler API for stats, an update API that accepts a script to perform an update on a document, better state storage when using local gateway, and many bug fixes.
+
+h2. Upgrading
+
+p. This release requires a full cluster restart in order to upgrade to the new version. If you are using the (default) local gateway, it will automatically be upgraded to a new and improved state format (with backups of the original state).
+
+p. The structure of the project has also changed, moving all the plugins to their own repos under "github":github.com/elasticsearch/. Installing a plugin now requires specifying the location and version to install it from.
+
+
+
