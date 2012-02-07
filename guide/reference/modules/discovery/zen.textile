@@ -55,3 +55,32 @@ p. The following settings control the fault detection process using the @discove
 |@ping_interval@|How often a node gets pinged. Defaults to @1s@.|
 |@ping_timeout@|How long to wait for a ping response, defaults to @30s@.|
 |@ping_retries@|How many ping failures / timeouts cause a node to be considered failed. Defaults to @3@.|
+
+h1. External Multicast
+
+p. The multicast discovery also supports external multicast requests to discover nodes. The external client can send a request to the multicast IP/group and port, in the form of:
+
+<pre class="prettyprint">
+{
+    "request" : {
+        "cluster_name": "test_cluster"
+    }
+}
+</pre>
+
+p. And the response will be similar to node info response (with node level information only, including transport/http addresses, and node attributes):
+
+<pre class="prettyprint">
+{
+    "response" : {
+        "cluster_name" : "test_cluster",
+        "transport_address" : "...",
+        "http_address" : "...",
+        "attributes" : {
+            "..."
+        }
+    }
+}
+</pre>
+
+p. Note, it can still be enabled, with disabled internal multicast discovery, but still have external discovery working by keeping @discovery.zen.ping.multicast.enabled@ set to @true@ (the default), but, setting @discovery.zen.ping.multicast.ping.enabled@ to @false@.
