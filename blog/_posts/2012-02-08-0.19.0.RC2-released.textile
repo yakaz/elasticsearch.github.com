@@ -1,0 +1,13 @@
+---
+layout: blogpost
+title: 0.19.0.RC2 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.0.RC2@ is out. You can download it "here":/download. Its a bug fix release mainly fixing a major bug in how buffers are read and reused over the network (the optimization done in 0.19.0.RC1 was not complete).
+
+p. It also include two nice features, the first is the ability to disallow a shard and its replica to be allocated on the same machine when running more than one instance on said machine. It can be enabled by setting @cluster.routing.allocation.same_shard.host@ to @true@.
+
+p. The second is an effort to better log GC pause times (without needing to turn on GC logging), with GC type thresholds and logging thresholds (comes with built in default values).
