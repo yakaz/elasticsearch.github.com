@@ -11,6 +11,7 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@).
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
 h2. Breaking changes:
  * Blank routing should be ignored ("#1450":http://github.com/elasticsearch/elasticsearch/issues/issue/1450)
  * Highlighting on term vector enabled field should not highlight filters by default ("#1469":http://github.com/elasticsearch/elasticsearch/issues/issue/1469)
