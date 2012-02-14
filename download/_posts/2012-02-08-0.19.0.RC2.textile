@@ -8,3 +8,13 @@ download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.19.0.RC2
 release_notes: true
 ---
+h2. Enhancements:
+ * Avoid placing a shard replica on the same machine as shard itself ("#1680":http://github.com/elasticsearch/elasticsearch/issues/issue/1680)
+ * GC logging: Enable back automatic gc logging based on thresholds (even if last gc is not available) ("#1679":http://github.com/elasticsearch/elasticsearch/issues/issue/1679)
+ * Index API: Don't wait for new mappings to be applied on the cluster by default ("#1677":http://github.com/elasticsearch/elasticsearch/issues/issue/1677)
+ * Nodes Info API: Add @all@ flag to return all data ("#1676":http://github.com/elasticsearch/elasticsearch/issues/issue/1676)
+
+
+h2. Bug fixes:
+ * Transport buffer overrun can happen because of byte buffer reading optimization introduced in 0.19.0.RC1 ("#1686":http://github.com/elasticsearch/elasticsearch/issues/issue/1686)
+
