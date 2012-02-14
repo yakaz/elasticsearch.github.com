@@ -8,7 +8,7 @@ sidebar: reference_query_dsl
 p. @custom_boost_factor@ query allows to wrap another query and multiply its score by the provided @boost_factor@. This can sometimes be desired since @boost@ value set on specific queries gets normalized, while this query boost factor does not.
 
 <pre class="prettyprint lang-js">
-"custom_score" : {
+"custom_boost_factor" : {
     "query" : {
         ....
     },
