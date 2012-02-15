@@ -51,14 +51,15 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 }'
 </pre>
 
-p. The update operation supports similar parameters are the index API, including:
+p. The update operation supports similar parameters as the index API, including:
 
 * @routing@: Sets the routing that will be used to route the document to the relevant shard.
 * @parent@: Simply sets the routing.
 * @timeout@: Timeout waiting for a shard to become available.
 * @replication@: The replication type for the delete/index operation (sync or async).
 * @consistency@: The write consistency of the index/delete operation.
+* @percolate@: Enables percolation and filters out which percolator queries will be executed.
 
 p. And also support @retry_on_conflict@ which controls how many times to retry if there is a version conflict between getting the document and indexing / deleting it. Defaults to @0@.
 
-p. It also allows to update the @ttl@ of a document using @ctx._ttl@ and timestamp using @ctx._timestamp@.
+p. It also allows to update the @ttl@ of a document using @ctx._ttl@ and timestamp using @ctx._timestamp@. Note that if the timestamp is not updated and not extracted from the @_source@ it will be set to the update date.
