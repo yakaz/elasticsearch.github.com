@@ -25,7 +25,7 @@ p. This policy has the following settings:
 |@index.merge.policy.max_merge_at_once@|Maximum number of segments to be merged at a time during "normal" merging. Default is @10@.|
 |@index.merge.policy.max_merge_at_once_explicit@|Maximum number of segments to be merged at a time, during optimize or expungeDeletes. Default is @30@.|
 |@index.merge.policy.max_merged_segment@|Maximum sized segment to produce during normal merging (not explicit optimize). This setting is approximate: the estimate of the merged segment size is made by summing sizes of to-be-merged segments (compensating for percent deleted docs). Default is @5gb@.|
-|@index.merge.policy.segments_per_tier@|Sets the allowed number of segments per tier. Smaller values mean more merging but fewer segments. Default is @10@.|
+|@index.merge.policy.segments_per_tier@|Sets the allowed number of segments per tier. Smaller values mean more merging but fewer segments. Default is @10@. Note, this value needs to be >= then the @max_merge_at_once_@ otherwise you'll force too many merges to occur.|
 |@index.reclaim_deletes_weight@|Controls how aggressively merges that reclaim more deletions are favored. Higher values favor selecting merges that reclaim deletions. A value of @0.0@ means deletions don't impact merge selection. Defaults to @2.0@.|
 |@index.compound_format@|Should the index be stored in compound format or not. Defaults to @false@.|
 
