@@ -1,0 +1,13 @@
+---
+layout: blogpost
+title: 0.19.0.RC3 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.0.RC2@ is out. You can download it "here":/download. Its another bug fix released and (hopefully) the final release of 0.19.0 release candidates.
+
+p. It also includes two nice features. The first is the ability to use "date math" on @date@ types (especially useful in @range@ queries/filters). See more info in the "issue":https://github.com/elasticsearch/elasticsearch/issues/1708 (and documented under the mapping date type).
+
+p. The second feature is a new API called "Multi Search" (or @msearch@). It allows to construct a single request holding several search requests, executing them in the cluster (in parallel) and returning the results. More info on the format and how to use it can be found in the "issue":https://github.com/elasticsearch/elasticsearch/issues/1722 (and documented under the guide API section).
