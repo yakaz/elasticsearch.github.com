@@ -8,6 +8,9 @@ title_in_header: false
 {% if page.download_nix_url != null  %}
 / <a href="{{page.download_nix_url}}">tar.gz</a>
 {% endif  %}
+{% if page.download_deb_url != null  %}
+/ <a href="{{page.download_deb_url}}">deb</a>
+{% endif  %}
 / <a href="https://github.com/elasticsearch/elasticsearch/issues?labels=v{{page.version}}&amp;sort=created&amp;direction=desc&amp;state=closed&amp;page=1">issues</a>
 </h2>
 
