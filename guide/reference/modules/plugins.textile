@@ -30,6 +30,16 @@ bin/plugin -install lukas-vlcek/bigdesk
 
 p. Will install both of those site plugins, with @elasticsearch-head@ available under @http://localhost:9200/_plugin/head/@ and @bigdesk@ available under @http://localhost:9200/_plugin/bigdesk/@.
 
+h2. Mandatory Plugins
+
+p. If you rely on some plugins, you can define mandatory plugins using the @plugin.mandatory@ attribute, for example, here is a sample config:
+
+<pre class="prettyprint">
+plugin.mandatory: mapper-attachments,lang-groovy
+</pre>
+
+p. For safety reasons, if a mandatory plugin is not installed, the node will not start.
+
 h1. Known Plugins
 
 h2. Analysis Plugins
