@@ -6,7 +6,7 @@ author: Shay Banon
 nick: kimchy
 ---
 
-p. *elasticsearch* version @0.19.0.RC2@ is out. You can download it "here":/download. Its another bug fix released and (hopefully) the final release of 0.19.0 release candidates.
+p. *elasticsearch* version @0.19.0.RC3@ is out. You can download it "here":/download. Its another bug fix released and (hopefully) the final release of 0.19.0 release candidates.
 
 p. It also includes two nice features. The first is the ability to use "date math" on @date@ types (especially useful in @range@ queries/filters). See more info in the "issue":https://github.com/elasticsearch/elasticsearch/issues/1708 (and documented under the mapping date type).
 
