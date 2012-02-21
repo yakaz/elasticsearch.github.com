@@ -13,3 +13,25 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. New features:
+ * API: Multi Search ("#1722":http://github.com/elasticsearch/elasticsearch/issues/issue/1722)
+ * Date Mapping: Support "date math" when searching ("#1708":http://github.com/elasticsearch/elasticsearch/issues/issue/1708)
+
+
+h2. Enhancements:
+ * Indices query should accept alias names ("#1698":http://github.com/elasticsearch/elasticsearch/issues/issue/1698)
+ * Return 503 for search against a node which is not yet ready ("#1713":http://github.com/elasticsearch/elasticsearch/issues/issue/1713)
+ * Failed shards allocation can "poison" allocation and might cause not allocating other shards ("#1717":http://github.com/elasticsearch/elasticsearch/issues/issue/1717)
+ * Analysis: Add trim token filter that trims whitespaces ("#1693":http://github.com/elasticsearch/elasticsearch/issues/issue/1693)
+ * Index Templates: Allow to place them under config/templates ("#1703":http://github.com/elasticsearch/elasticsearch/issues/issue/1703)
+ * Local Gateway: Delete dangling indices after a (configurable) timeout, and not immediately  ("#1718":http://github.com/elasticsearch/elasticsearch/issues/issue/1718)
+ * Search: Allow to execute search with no parameters ("#1696":http://github.com/elasticsearch/elasticsearch/issues/issue/1696)
+
+
+h2. Bug fixes:
+ * Retrieving byte type stored field fails ("#1702":http://github.com/elasticsearch/elasticsearch/issues/issue/1702)
+ * StackOverflowError when accessing NodeIndicesStats.refresh() ("#1706":http://github.com/elasticsearch/elasticsearch/issues/issue/1706)
+ * top_children query returns no results when child field has the same name as a nested field as a nested field in the parent mapping ("#1709":http://github.com/elasticsearch/elasticsearch/issues/issue/1709)
+ * Search: When using @_all@ for types, field name/type resolution might fail ("#1704":http://github.com/elasticsearch/elasticsearch/issues/issue/1704)
+
