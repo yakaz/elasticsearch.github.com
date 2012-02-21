@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. The multi search API allows to execute several search requests within the same API. The endpoint for it is @_msearch@. 
+p. The multi search API allows to execute several search requests within the same API. The endpoint for it is @_msearch@ (available from @0.19@ onwards). 
 
 p. The format of the request is similar to the bulk API format, and the structure is as follows (the structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node):
 
