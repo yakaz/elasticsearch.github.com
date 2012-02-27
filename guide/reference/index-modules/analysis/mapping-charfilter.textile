@@ -1,0 +1,38 @@
+---
+layout: guide
+title: Mapping Char Filter
+cat: guide
+sidebar: reference_index_modules_analysis
+---
+
+p. A char filter of type @mapping@ replacing characters of an analyzed text with given mapping.
+
+p. Here is a sample configuration:
+
+<pre class="prettyprint">
+{
+    "index" : {
+        "analysis" : {
+            "char_filter" : {
+                "my_mapping" : {
+                    "type" : "mapping",
+                    "mappings" : ["ph=>f", "qu=>q"]
+                }
+            },
+            "analyzer" : {
+                "custom_with_char_filter" : {
+                    "tokenizer" : "standard",
+                    "char_filter" : ["my_mapping"]
+                },
+            }
+        }
+    }
+}
+</pre>
+
+p. Otherwise the setting @mappings_path@ can specify a file where you can put the list of char mapping :
+
+<pre class="prettyprint">
+ph => f
+qu => k
+</pre>
