@@ -67,6 +67,7 @@ h2. Transport Plugins
 * "Memcached transport plugin":https://github.com/elasticsearch/elasticsearch-transport-memcached (by elasticsearch team)
 * "Thrift Transport":https://github.com/elasticsearch/elasticsearch-transport-thrift (by elasticsearch team)
 * "ZeroMQ transport layer plugin":https://github.com/tlrx/transport-zeromq (by Tanguy Leroux)
+* "Jetty HTTP transport plugin":https://github.com/sonian/elasticsearch-jetty (by Sonian Inc.)
 
 h2. Scripting Plugins
 
