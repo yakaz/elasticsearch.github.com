@@ -33,6 +33,7 @@ h2. Integrations
 * "ElasticaBundle":https://github.com/Exercise/FOQElasticaBundle: Symfony2 Bundle wrapping Elastica.
 * "Drupal":http://drupal.org/project/elasticsearch: Drupal ElasticSearch integration.
 * "couch_es":https://github.com/refuge/couch_es: elasticsearch helper for couchdb based products (apache couchdb, bigcouch & refuge)
+* "Jetty":https://github.com/sonian/elasticsearch-jetty: Jetty HTTP Transport
 
 h2. Misc
 
