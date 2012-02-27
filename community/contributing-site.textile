@@ -11,3 +11,10 @@ p. Interesting places to start is to write a "tutorial":/tutorials about your us
 p. Once the repo is forked / cloned, writing content is pretty simple with many examples already there. For example, if you are writing a tutorial, just start from an existing one. Don't worry about getting everything right, the content is what matters, we are here to help with the rest.
 
 p. If you want to "build" the site, "jekyll":https://github.com/mojombo/jekyll is used to generate it. Once you "installed":https://github.com/mojombo/jekyll/wiki/Install it, just run @jekyll --server@ to get the site running and head over to @localhost:4000@.
+
+<pre class="prettyprint">
+  gem install jekyll
+  gem install RedCloth
+
+  jekyll --server
+</pre>
