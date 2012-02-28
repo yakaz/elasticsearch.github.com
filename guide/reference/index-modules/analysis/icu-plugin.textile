@@ -19,7 +19,7 @@ p. Normalizes characters as explained "here":http://userguide.icu-project.org/tr
     "index" : {
         "analysis" : {
             "analyzer" : {
-                "collation" : {
+                "normalization" : {
                     "tokenizer" : "keyword",
                     "filter" : ["icu_normalizer"]
                 }
@@ -31,16 +31,44 @@ p. Normalizes characters as explained "here":http://userguide.icu-project.org/tr
 
 h1. ICU Folding
 
-p. Folding of unicode characters based on @UTR#30@. It registers itself under @icu_folding@ and @icuFolding@ names. Sample setting:
+p. Folding of unicode characters based on @UTR#30@. It registers itself under @icu_folding@ and @icuFolding@ names. 
+The filter also does lowercasing, which means the lowercase filter can normally be left out. Sample setting:
 
 <pre class="prettyprint">
 {
     "index" : {
         "analysis" : {
             "analyzer" : {
-                "collation" : {
+                "folding" : {
                     "tokenizer" : "keyword",
                     "filter" : ["icu_folding"]
+                }
+            }
+        }
+    }
+}
+</pre>
+
+h2. Filtering
+
+p. The folding can be filtered by a set of unicode characters with the parameter @unicodeSetFilter@. This is useful for a non-internationalized search engine where retaining a set of national characters which are primary letters in a specific language is wanted. See syntax for the UnicodeSet "here":http://icu-project.org/apiref/icu4j/com/ibm/icu/text/UnicodeSet.html.
+
+p. The Following example excempt Swedish characters from the folding. Note that the filtered characters are NOT lowercased which is why we add that filter below.
+
+<pre class="prettyprint">
+{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "folding" : {
+                    "tokenizer" : "standard",
+                    "filter" : ["my_icu_folding", "lowercase"]
+                }
+            }
+            "filter" : {
+                "my_icu_folding" : {
+                    "type" : "icu_folding"
+                    "unicodeSetFilter" : "[^åäöÅÄÖ]"
                 }
             }
         }
