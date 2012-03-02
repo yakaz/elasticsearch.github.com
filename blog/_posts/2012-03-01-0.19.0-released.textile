@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.19.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.0@ is out. You can download it "here":/download. It is the final 0.19.0 release (after 3 release candidates). 0.19 major features have been outlined in the previous blog posts for each release candidate release, but, it also marks an important bug fix and stability release over 0.18, upgrade is highly encouraged to all elasticsearch users.
