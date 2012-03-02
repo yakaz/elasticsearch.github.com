@@ -14,3 +14,21 @@ h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
 
+h2. Enhancements:
+ * msearch should accept a leading \n ("#1736":http://github.com/elasticsearch/elasticsearch/issues/issue/1736)
+ * Date Histogram Facet: Add @pre_zone_adjust_large_interval@ ("#1744":http://github.com/elasticsearch/elasticsearch/issues/issue/1744)
+ * Flush: Add a specific thread pool for flush operations (scheduled and API) ("#1734":http://github.com/elasticsearch/elasticsearch/issues/issue/1734)
+ * Translog Flush: When disabling flush and enabling it again, scheduled flush stops executing ("#1727":http://github.com/elasticsearch/elasticsearch/issues/issue/1727)
+
+
+h2. Bug fixes:
+ * Real time get on a stored _size field does not return its value ("#1724":http://github.com/elasticsearch/elasticsearch/issues/issue/1724)
+ * query never returns ("#1725":http://github.com/elasticsearch/elasticsearch/issues/issue/1725)
+ * Orderly shutdown with unicast discovery might cause the shutdown node to still be part of the election process ("#1740":http://github.com/elasticsearch/elasticsearch/issues/issue/1740)
+ * NullPointerException when asking for null valued json field when fetching search request ("#1749":http://github.com/elasticsearch/elasticsearch/issues/issue/1749)
+ * Multi level parent/child mapping and search fails ("#1751":http://github.com/elasticsearch/elasticsearch/issues/issue/1751)
+
+Also see release notes for:
+ * "0.19.0.RC3":http://www.elasticsearch.org/download/2012/02/21/0.19.0.RC3.html
+ * "0.19.0.RC2":http://www.elasticsearch.org/download/2012/02/08/0.19.0.RC2.html
+ * "0.19.0.RC1":http://www.elasticsearch.org/download/2012/02/07/0.19.0.RC1.html
