@@ -19,6 +19,7 @@ h2. Clients
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
 * "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
+* "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch
 
 h2. Integrations
 
