@@ -16,7 +16,7 @@ h2. Upgrading
 
 p. This release requires a full cluster restart in order to upgrade to the new version (including issuing a flush across all indices before the restart). If you are using the (default) local gateway, it will automatically be upgraded to a new and improved state format (with backups of the original state).
 
-p. The structure of the project has also changed, moving all the plugins to their own repos under "github":github.com/elasticsearch/. Installing a plugin now requires specifying the location and version to install it from.
+p. The structure of the project has also changed, moving all the plugins to their own repos under "github":http://github.com/elasticsearch/. Installing a plugin now requires specifying the location and version to install it from.
 
 
 
