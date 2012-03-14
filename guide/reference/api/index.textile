@@ -51,4 +51,8 @@ p. All REST APIs accept the @case@ parameter. When set to @camelCase@, all field
 h2. JSONP
 
 p. All REST APIs accept a @callback@ parameter resulting in a "JSONP":http://en.wikipedia.org/wiki/JSONP result.
-p. You can also use the @source@ query string parameter to substitute for the body of the request.
+
+h2. Request body in query string
+
+p. For libraries that don't accept a request body for non-POST requests, you can pass the request body as the @source@ query string parameter instead.
+
