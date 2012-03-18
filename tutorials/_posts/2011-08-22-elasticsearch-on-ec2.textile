@@ -257,10 +257,10 @@ h2. Installation of elasticsearch
 </p>
 
 <pre>
-    $ wget http://bit.ly/ES-0-17-6
+    $ wget https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.0.zip
     $ sudo unzip elasticsearch-0.17.6.zip -d /usr/local/elasticsearch
     $ cd /usr/local/elasticsearch/elasticsearch-0.17.6
-    $ sudo bin/plugin -install cloud-aws
+    $ sudo bin/plugin -install elasticsearch/elasticsearch-cloud-aws/1.4.0
 </pre>
 
 <p>
