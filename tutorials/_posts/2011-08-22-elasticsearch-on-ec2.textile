@@ -258,8 +258,8 @@ h2. Installation of elasticsearch
 
 <pre>
     $ wget https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.0.zip
-    $ sudo unzip elasticsearch-0.17.6.zip -d /usr/local/elasticsearch
-    $ cd /usr/local/elasticsearch/elasticsearch-0.17.6
+    $ sudo unzip elasticsearch-0.19.0.zip -d /usr/local/elasticsearch
+    $ cd /usr/local/elasticsearch/elasticsearch-0.19.0
     $ sudo bin/plugin -install elasticsearch/elasticsearch-cloud-aws/1.4.0
 </pre>
 
@@ -613,7 +613,7 @@ h3. Test the Single Node
 h2. Clustering
 
 <p>
-    We really haven’t anything interesting yet. We still need to spin up
+    We really haven’t done anything interesting yet. We still need to spin up
     another instance on EC2 and make sure they can successfully cluster with each
     other.
 </p>
@@ -820,8 +820,8 @@ h3. Install as Service
     $ sudo wget https://github.com/elasticsearch/elasticsearch-servicewrapper/zipball/master
     $ sudo unzip master
     $ sudo mv elasticsearch-elasticsearch-servicewrapper-3e0b23d/service/ \
-      /usr/local/elasticsearch/elasticsearch-0.17.6/bin
-    $ cd /usr/local/elasticsearch/elasticsearch-0.17.6/
+      /usr/local/elasticsearch/elasticsearch-0.19.0/bin/
+    $ cd /usr/local/elasticsearch/elasticsearch-0.19.0/
     $ sudo nano bin/service/elasticsearch.conf
 </pre>
 
@@ -831,7 +831,7 @@ h3. Install as Service
 </p>
 
 <pre>
-    set.default.ES_HOME=/usr/local/elasticsearch/elasticsearch-0.17.6
+    set.default.ES_HOME=/usr/local/elasticsearch/elasticsearch-0.19.0
 </pre>
 
 
