@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.19.1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.1@ is out. You can download it "here":/download. It is a bug fix release fixing several bugs including a major bug where a thread can get into CPU spin when its relocated and a search/stats operation is executed against it.
+
+p. The release also includes an update to the `read_only` option on an index. The option caused both write and metadata operations to be disabled for the relevant index. Now, in 0.19.1, specific read, write and metadata blocks can be set. See more "here":https://github.com/elasticsearch/elasticsearch/issues/1771.
