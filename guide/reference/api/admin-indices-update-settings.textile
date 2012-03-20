@@ -34,7 +34,10 @@ p. Below is the list of settings that can be changed using the update settings A
 |_. Setting |_. Description |
 |@index.number_of_replicas@|The number of replicas each shard has.|
 |@index.auto_expand_replicas@|Set to an actual value (like @0-all@) or @false@ to disable it.|
-|@index.blocks.read_only@|Set to @true@ to have the index read only. @false@ to allow writes.|
+|@index.blocks.read_only@|Set to @true@ to have the index read only. @false@ to allow writes and metadata changes.|
+|@index.blocks.read@|Set to @true@ to disable read operations against the index.|
+|@index.blocks.write@|Set to @true@ to disable write operations against the index.|
+|@index.blocks.metadata@|Set to @true@ to disable metadata operations against the index.|
 |@index.refresh_interval@|The async refresh interval of a shard.|
 |@index.term_index_interval@|The Lucene index term interval. Only applies to newly created docs.|
 |@index.term_index_divisor@|The Lucene reader term index divisor.|
