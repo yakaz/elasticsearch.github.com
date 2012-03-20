@@ -13,3 +13,30 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Breaking changes:
+ * [Code refactoring] IndicesStats -> IndicesStatsResponse ("#1782":http://github.com/elasticsearch/elasticsearch/issues/issue/1782)
+
+
+h2. New features:
+ * Index Blocks: Add index.blocks.write, index.blocks.read, and index.blocks.metadata settings ("#1771":http://github.com/elasticsearch/elasticsearch/issues/issue/1771)
+
+
+h2. Enhancements:
+ * Add @cache@ thread pool to handle cache loading of async caches (bloom filter)  ("#1777":http://github.com/elasticsearch/elasticsearch/issues/issue/1777)
+ * Java API for require_field_match  ("#1795":http://github.com/elasticsearch/elasticsearch/issues/issue/1795)
+ * Highlighting using the default highlighter (not using term vectors) only highlights on the first 50*1024 chars ("#1796":http://github.com/elasticsearch/elasticsearch/issues/issue/1796)
+ * Get: Add a specific @get@ thread pool that handles get request ("#1778":http://github.com/elasticsearch/elasticsearch/issues/issue/1778)
+ * Query DSL: indices filter type ("#1787":http://github.com/elasticsearch/elasticsearch/issues/issue/1787)
+ * Scripting: Allow to disable dynamic script execution ("#1763":http://github.com/elasticsearch/elasticsearch/issues/issue/1763)
+
+
+h2. Bug fixes:
+ * Special host config notation @_[interfaceName]_@ might fail to resolve the host address ("#1754":http://github.com/elasticsearch/elasticsearch/issues/issue/1754)
+ * RemoteTransportException on _analyze request to specific index ("#1770":http://github.com/elasticsearch/elasticsearch/issues/issue/1770)
+ * Closing a shard can cause a search/stats request that tries to acquire a handle to search while its closing to spin ("#1772":http://github.com/elasticsearch/elasticsearch/issues/issue/1772)
+ * IOException when restricting fields and returning nested arrays. ("#1774":http://github.com/elasticsearch/elasticsearch/issues/issue/1774)
+ * mlt_field doesn't support boost ("#1773":http://github.com/elasticsearch/elasticsearch/issues/issue/1773)
+ * When @node.data@ is set to @false@, the upgrade shards process from 0.18 fails ("#1793":http://github.com/elasticsearch/elasticsearch/issues/issue/1793)
+ * Get/MultiGet API with no type provided and doc does not exists causes a failure ("#1794":http://github.com/elasticsearch/elasticsearch/issues/issue/1794)
+
