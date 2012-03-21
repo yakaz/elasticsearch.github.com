@@ -549,7 +549,7 @@ ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch-env.sh
 </pre>
 
 Where does the value `Xmx4982m`, or nearly 5 GB, come from? How does _Chef_ know this value? Well,
-[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/master/attributes/default.rb#L14-21)
+[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/f5d7025/attributes/default.rb#L18-25)
 did the computation, based on the total available memory on the EC2 large instance type (7.5 GB):
 
 <pre class="prettyprint lang-ruby">
