@@ -34,18 +34,16 @@ QueryBuilder qb = termQuery("multi", "test");
 SearchResponse scrollResp = client.prepareSearch(test)
 		.setSearchType(SearchType.SCAN)
 		.setScroll(new TimeValue(60000))
-		.setQuery(qb.buildAsBytes())
+		.setQuery(qb)
 		.setSize(100).execute().actionGet(); //100 hits per shard will be returned for each scroll
 //Scroll until no hits are returned
 while (true) {
     scrollResp = client.prepareSearchScroll(scrollResp.getScrollId()).setScroll(new TimeValue(600000)).execute().actionGet();
-    boolean hitsRead = false;
     for (SearchHit hit : scrollResp.getHits()) {
-        hitsRead = true;
         //Handle the hit...
     }
     //Break condition: No hits are returned
-    if (!hitsRead) {
+    if (searchResponse.hits().hits().length == 0) {
         break;
     }
 }
