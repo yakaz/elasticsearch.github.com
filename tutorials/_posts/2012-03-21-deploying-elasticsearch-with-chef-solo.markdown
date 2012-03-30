@@ -467,7 +467,7 @@ If we check the status in _Monit_ after a while, when the next _Monit_ tick fire
 it should also report the process not running and complain about all sorts of other problems:
 
 <pre class="prettyprint lang-bash">
-ssh -t $SSH_OPTIONS $HOST "sudo service elasticsearch status"
+ssh -t $SSH_OPTIONS $HOST "sudo monit status"
 </pre>
 
 If you configured the e-mail adress for _Monit_ properly, you'll also receive a e-mail notification
