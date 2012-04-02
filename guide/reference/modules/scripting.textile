@@ -75,7 +75,7 @@ h1. mvel Built In Functions
 p. There are several built in functions that can be used within scripts. They include:
 
 |_. Function |_. Description |
-|@time@|The current time in milliseconds.|
+|@time()@|The current time in milliseconds.|
 |@sin(a)@|Returns the trigonometric sine of an angle.|
 |@cos(a)@|Returns the trigonometric cosine of an angle.|
 |@tan(a)@|Returns the trigonometric tangent of an angle.|
