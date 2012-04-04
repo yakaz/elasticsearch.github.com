@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.19.2 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.2@ is out. You can download it "here":/download. It is a bug fix release fixing several bugs including a bug not being able to update index level settings on a live index using the index update settings API.
