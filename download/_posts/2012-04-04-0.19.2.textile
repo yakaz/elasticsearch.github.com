@@ -13,3 +13,28 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Enhancements:
+ * Have streams provided to gateway (shared one) allow marking ("#1803":http://github.com/elasticsearch/elasticsearch/issues/issue/1803)
+ * add an index level setting to disable/enable purging of expired docs (is... ("#1808":http://github.com/elasticsearch/elasticsearch/issues/issue/1808)
+ * Add an index level setting to disable/enable purging of expired docs ("#1791":http://github.com/elasticsearch/elasticsearch/issues/issue/1791)
+ * Analysis: Custom analyzer to allow to configure position_offset_gap and offset_gap ("#1812":http://github.com/elasticsearch/elasticsearch/issues/issue/1812)
+ * Java API Query DSL: Add wrapper filter similar to wrapper query accepting a json filter in raw format ("#1844":http://github.com/elasticsearch/elasticsearch/issues/issue/1844)
+ * Mapping: Allow to configure position_offset_gap for string mapping ("#1813":http://github.com/elasticsearch/elasticsearch/issues/issue/1813)
+ * Query DSL: @term@ filter to support the more "complex" form similar to @term@ query ("#1830":http://github.com/elasticsearch/elasticsearch/issues/issue/1830)
+ * Search/Get: Add preference option of @_primary_first@ trying to primary first and then replicas ("#1824":http://github.com/elasticsearch/elasticsearch/issues/issue/1824)
+ * Support for Latvian stemming: @latvian@ analyzer and @latvian@ language for stemmer filter ("#1842":http://github.com/elasticsearch/elasticsearch/issues/issue/1842)
+
+
+h2. Bug fixes:
+ * Index Update Settings API does not update settings in real time ("#1807":http://github.com/elasticsearch/elasticsearch/issues/issue/1807)
+ * Indexing a document in smile format and getting it through REST in json format fails ("#1816":http://github.com/elasticsearch/elasticsearch/issues/issue/1816)
+ * TransportClient hangs when in sniff mode and no node running  ("#1818":http://github.com/elasticsearch/elasticsearch/issues/issue/1818)
+ * TransportClient (sniff) fails to reconnect to nodes once removed if all nodes are removed ("#1819":http://github.com/elasticsearch/elasticsearch/issues/issue/1819)
+ * Disabling deletion of all indices does not work when using _all ("#1834":http://github.com/elasticsearch/elasticsearch/issues/issue/1834)
+ * requesting fields=_timestamp,_source won't return _source ("#1833":http://github.com/elasticsearch/elasticsearch/issues/issue/1833)
+ * Getting _settings or _mapping for non-existing index returns 200 OK ("#1828":http://github.com/elasticsearch/elasticsearch/issues/issue/1828)
+ * Number of replicas setting can not be set on a closed index ("#1845":http://github.com/elasticsearch/elasticsearch/issues/issue/1845)
+ * Java API: Calling SearchHit#sourceAsString will not decompress the source to convert it to string ("#1814":http://github.com/elasticsearch/elasticsearch/issues/issue/1814)
+ * Node Stats: OS stats reporting free as the key instead of used ("#1804":http://github.com/elasticsearch/elasticsearch/issues/issue/1804)
+
