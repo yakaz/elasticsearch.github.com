@@ -1,0 +1,17 @@
+---
+layout: guide
+sidebar: glossary
+---
+<dl>
+    {% for item in page.glossary %}
+        <dt id="{{ item.id | replace:' ','_' }}">
+            <a href="#{{ item.id | replace:' ','_' }}"
+                >{{ item.id }}</a>
+        </dt>
+        <dd>
+            {{ item.text | textilize }}
+        </dd>
+    {% endfor %}
+</dl>
+
+

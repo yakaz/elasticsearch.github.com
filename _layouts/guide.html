@@ -390,6 +390,15 @@ layout: default
     </ul>
     {% endif %}
 
+    {% if page.sidebar == 'glossary' %}
+    <h3><a href="/guide">Guide</a></h3>
+    <ul>
+        {% for item in page.glossary %}
+        <li><a href="#{{ item.id | replace:' ','_' }}">{{ item.id }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
 </div>
 <div class="guide_content">
     {{ content }}
