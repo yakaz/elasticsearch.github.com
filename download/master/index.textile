@@ -1,7 +1,7 @@
 ---
 layout: download
-version: 0.19.0
-title: master (0.19.0)
+version: 0.20.0
+title: master (0.20.0)
 cat: download
 download_url: https://github.com/elasticsearch/elasticsearch/zipball/master
 download_type: source
