@@ -45,7 +45,7 @@ p. The above JSON has the @tags@ property defining a list of a simple @string@ t
 }
 </pre>
 
-p. The fact that array types are automatically support can be shown by the fact that the following JSON document is perfectly fine:
+p. The fact that array types are automatically supported can be shown by the fact that the following JSON document is perfectly fine:
 
 <pre class="prettyprint lang-js">
 {
