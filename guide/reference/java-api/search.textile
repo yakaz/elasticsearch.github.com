@@ -43,7 +43,7 @@ while (true) {
         //Handle the hit...
     }
     //Break condition: No hits are returned
-    if (searchResponse.hits().hits().length == 0) {
+    if (scrollResp.hits().hits().length == 0) {
         break;
     }
 }
