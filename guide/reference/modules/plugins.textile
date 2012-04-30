@@ -50,6 +50,7 @@ h2. Analysis Plugins
 * "IK Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-ik (by Medcl)
 * "Mmseg Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-mmseg (by Medcl)
 * "Hunspell Analysis Plugin":https://github.com/jprante/elasticsearch-analysis-hunspell (by Jörg Prante)
+* "Japanese (Kuromoji) Analysis plugin":https://github.com/suguru/elasticsearch-analysis-kuromoji (by elasticsearch team).
 * "Japanese Analysis plugin":https://github.com/suguru/elasticsearch-analysis-japanese (by suguru).
 * "Russian and English Morphological Analysis Plugin":https://github.com/imotov/elasticsearch-analysis-morphology (by Igor Motov)
 
