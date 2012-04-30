@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.19.3 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.3@ is out. You can download it "here":/download. The release includes an upgraded Lucene 3.6 version, and several bug fixes, including better handling of network splits with node client nodes and with minimum master nodes.
