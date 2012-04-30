@@ -9,3 +9,27 @@ download_deb_url: https://github.com/downloads/elasticsearch/elasticsearch/elast
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.19.3
 release_notes: true
 ---
+h2. New features:
+ * Upgrade to Lucene 3.6 ("#1862":http://github.com/elasticsearch/elasticsearch/issues/issue/1862)
+
+
+h2. Enhancements:
+ * Upgrade to Netty 3.4.1 ("#1863":http://github.com/elasticsearch/elasticsearch/issues/issue/1863)
+ * Better handling of fields that have @.@ in their name when doing property based navigation ("#1875":http://github.com/elasticsearch/elasticsearch/issues/issue/1875)
+ * Upgrade to Netty 3.4.1.Final ("#1878":http://github.com/elasticsearch/elasticsearch/issues/issue/1878)
+ * Bulk API: Allow to control if its compressed or not using @action.bulk.compress@ (defaults to true which is current behavior) ("#1850":http://github.com/elasticsearch/elasticsearch/issues/issue/1850)
+ * Date Histogram Facet: Add @quarter@ as an interval  ("#1884":http://github.com/elasticsearch/elasticsearch/issues/issue/1884)
+ * Node Stats: Add timestamp per node stats element ("#1851":http://github.com/elasticsearch/elasticsearch/issues/issue/1851)
+
+
+h2. Bug fixes:
+ * Relocation of shards causes bulk indexing client to hang ("#1839":http://github.com/elasticsearch/elasticsearch/issues/issue/1839)
+ * Setting index.auto_expand_replicas in the elasticsearch config file does not apply ("#1852":http://github.com/elasticsearch/elasticsearch/issues/issue/1852)
+ * XContentBuilder throws NPE on null Boolean ("#1853":http://github.com/elasticsearch/elasticsearch/issues/issue/1853)
+ * On recovery (startup), the recovery translog file handle is not properly closed ("#1866":http://github.com/elasticsearch/elasticsearch/issues/issue/1866)
+ * NullPointerException in geo_distance_range without to ("#1865":http://github.com/elasticsearch/elasticsearch/issues/issue/1865)
+ * JDK 7 requires minimum of 256k stack size, update scripts to set it ("#1892":http://github.com/elasticsearch/elasticsearch/issues/issue/1892)
+ * When a node disconnects from the cluster (not enough master nodes, or a client node) and rejoins it might not update its internal routing table ("#1896":http://github.com/elasticsearch/elasticsearch/issues/issue/1896)
+ * Highlighting: Using "plain" (non term vector) highlighting with custom score within a filtered query fails to highlight ("#1894":http://github.com/elasticsearch/elasticsearch/issues/issue/1894)
+ * Translog: Buffering translog does not write directly to the file channel but to RAF, which causes problems reading from the channel on windows ("#1887":http://github.com/elasticsearch/elasticsearch/issues/issue/1887)
+
