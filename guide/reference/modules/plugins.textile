@@ -62,6 +62,7 @@ h2. River Plugins
 * "RabbitMQ River Plugin":https://github.com/elasticsearch/elasticsearch-river-rabbitmq (by elasticsearch team)
 * "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
 * "MongoDB River Plugin":https://github.com/richardwilly98/elasticsearch-river-mongodb/ (by Richard Louapre)
+* "Open Archives Initiative (OAI) River Plugin":https://github.com/jprante/elasticsearch-river-oai/ (by Jörg Prante)
 
 h2. Transport Plugins
 
