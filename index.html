@@ -111,8 +111,10 @@ $ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{
 $ curl -XPUT http://localhost:9200/twitter
 
 $ curl -XPUT http://localhost:9200/twitter/user/_mapping -d '{
-    "properties" : {
-        "name" : { "type" : "string" }
+    "user" : {
+        "properties" : {
+            "name" : { "type" : "string" }
+        }
     }
 }'
 </pre>
