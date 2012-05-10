@@ -56,6 +56,19 @@ p. The @query_string@ query can also run against multiple fields. The idea of ru
 }
 </pre>
 
+p. Simple wildcard can also be used to search "within" specific inner elements of the document. For example, if we have a @city@ object with several fields (or inner object with fields) in it, we can automatically search on all "city" fields:
+
+<pre class="prettyprint lang-js">
+{
+    "query_string" : {
+        "fields" : ["city.*"],
+        "query" : "this AND that OR thus",
+        "use_dis_max" : true
+    }
+}
+</pre>
+
+
 p. When running the @query_string@ query against multiple fields, the following additional parameters are allowed:
 
 |_. Parameter |_. Description |
