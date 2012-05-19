@@ -1,0 +1,106 @@
+---
+layout: tutorial
+title: Using Elasticsearch for logs
+cat: tutorials
+author: Radu Gheorghe
+tutorial_desc: Using Elasticsearch for logs
+---
+
+h2. Introduction
+
+If you use Elasticsearch for storing your logs, here you can find some advice on how to set it up.
+
+You have quite a few choices if you want to aggregate logs from multiple hosts to Elasticsearch:
+- "Graylog2":http://graylog2.org/ You install this on a central server and it will take care about inserting your logs in Elasticsearch, then you can use its pretty interface to search through them
+- "Logstash":http://logstash.net/ It comes with quite a lot of features in terms of what kind of logs you can get (inputs), how you can transform them (filters), and where you can throw them (outputs). Amongst others, you can output to Elasticsearch directly, or via RabbitMQ and "its Elasticsearch river":http://www.elasticsearch.org/guide/reference/river/rabbitmq.html
+- "Apache Flume":https://cwiki.apache.org/FLUME/ This one can also take logs from loads of "data sources", use "decorators" to alter them, and has various "sinks" for you to output your logs into. Here, we're interested in the "elasticflume sink":https://github.com/Aconex/elasticflume
+- <code>omelasticsearch</code> output module for rsyslog. You can either use rsyslog from your application servers to output directly to Elasticsearch, or you can use rsyslog on a central server to insert your logs. Or, you can do both. A tutorial on how to set it up can be found "in the rsyslog Wiki":http://wiki.rsyslog.com/index.php/HOWTO:_rsyslog_%2B_elasticsearch
+- a custom solution. For example, use a custom script to take your logs from wherever they normally go to Elasticsearch.
+
+Depending on your particular setup, the "best configuration" will vary. But you should find some useful guidelines below.
+
+h2. Memory and open files
+
+If you use the server(s) for Elasticsearch only, the rule of thumb is to allocate half the total RAM size to Elasticsearch. The other half would be used for system caches, which is important as well.
+
+You set it up by changing the <code>ES_HEAP_SIZE</code> environment variable. Set it to the desired value (eg: 2g) before starting Elasticsearch. Another option is to change the Elasticsearch JAVA_OPTS variable that is passed by the scripts (elasticsearch.in.sh or elasticsearch.bat). You have to look for <code>-Xms</code> and <code>-Xmx</code>. These are the minimum and maximum memory allocated to the process. It's recommended to set them both to the same size.<code>ES_HEAP_SIZE</code> does just that.
+
+You also have to make sure that the open files limit is high enough for Elasticsearch. It's recommended to set it to 32000 or 64000. There's a tutorial about setting open files limits "here":http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html
+
+h2. Number of indices
+
+One option when working with logs is to store them all in one index, and then use the "ttl field":http://www.elasticsearch.org/guide/reference/mapping/ttl-field.html to make sure old logs are dropped. But this becomes problematic when you have many logs, because using TTL adds an overhead. Plus, optimizing your huge and unique index might take too long and be too resource-intensive.
+
+The recommended option is to use indices based on time. For example, the index name can be the date in a format like <code>YYYY-MM-DD</code>. The timeframe depends on how long you intend to keep logs. If you keep them for a week, it's probably a good idea to have one index per day. If you keep them for one year, you're probably better of with one index per month. You don't want to have too many indices, because searching in all of them at once implies an overhead as well.
+
+If you choose to store your indices by time, you can also narrow your searches to the relevant indices. For example, if most of your searches are for recent logs, you can have a "quick search" option in your GUI that only looks in the last index.
+
+h2. Rotate and optimize
+
+Removing old logs, when you have time-based indices, is as easy as:
+
+<pre>
+$ curl -XDELETE 'http://localhost:9200/old-index-name/'
+</pre>
+
+The operation is quite quick (similar to deleting a few files of similar size). You can do that in a nightly cron job.
+
+"Optimizing indices":http://www.elasticsearch.org/guide/reference/api/admin-indices-optimize.html is also a good thing to do at off-peak times, because it improves your search speed. This is recommended especially when you have time-based indices, because (with the exception of the "current" one) they never change, so you only have to do this once on an "old" index:
+
+<pre>
+$ curl -XPOST 'http://localhost:9200/old-index-name/_optimize'
+</pre>
+
+h2. Shards and replicas
+
+From elasticsearch.yml, or using the REST API, you can configure per-index settings. Some more details can be found "here":http://www.elasticsearch.org/guide/reference/setup/configuration.html
+
+Very interesting are the number of shards and replicas. By default, each index is divided in 5 shards. If there's more than one node in the cluster, each shard will have one replica. So a total of 10 shards per index. Shards are automatically balanced when adding new nodes to the cluster. So if you have one default index and 11 servers in an Elasticsearch cluster, one of the servers won't be able to store any data.
+
+Each shard is a Lucene index, so the smaller the shard, the less it takes Elasticsearch to put new data in it. Therefore, if you divide your indices in more shards, you will get faster inserts. Please note that if you use time-based indices, you insert logs only in the "current" index, as "old" indices will remain unchanged.
+
+Having many shards implies a penalty - both in space used and in search time. So you need to find a balance, that depends a lot on your insert and search requirements, and on the used hardware.
+
+Replicas on the other hand, help your cluster continue running when one or more nodes go down. The more replicas, the less nodes you need to have up for your cluster to work as expected. But replicas are also used for searching. So more replicas usually come with faster searches, but hurt the indexing time, because changes to the primary shards have to be propagated to more replicas.
+
+h2. Mappings. _source and _all
+
+"Mappings":http://www.elasticsearch.org/guide/reference/mapping/ define how your documents are indexed and stored. You can, for example, define which type each field is - like your syslog message should be a string, or the severity field should be an integer. Take a look "here":http://www.elasticsearch.org/guide/reference/api/admin-indices-put-mapping.html to see how you can manually define a mapping.
+
+Mappings have sensible defaults, and types of fields are automatically detected when the first document is inserted in a new index. But you might like to have some control over that. For example, if the first log that comes to a new index has only a number in the "message" field, that field might be mapped as <code>long</code>. When the next 99% of logs come up as strings, Elasticsearch will not index them, logging an error saying that field is not <code>long</code>. That's when an explicit mapping that says <code>"message" : {"type" : "string"}</code> will come in handy. Take a look "here":http://www.elasticsearch.org/guide/reference/api/admin-indices-put-mapping.html to see how you can register a specific mapping.
+
+Especially if you use time-based index names, you would be better off by creating index template(s) in your configuration. Take a look "here":http://www.elasticsearch.org/guide/reference/api/admin-indices-templates.html for details. Besides your mapping, you can define other index properties there, such as your number of shards.
+
+Within the mapping, you can choose to compress the <code>_source</code> of the document. That would be the actual log line - so enabling this would reduce your index size and, depending on your setup, improve the performance. The rule of thumb would be that it's faster with compressed source when you're limited by RAM size and storage speed, as opposed to when you're limited by CPU power. More details on the source field "here":http://www.elasticsearch.org/guide/reference/mapping/source-field.html 
+
+By default, besides indexing all your fields separately, Elasticsearch indexes them together in a new field called <code>_all</code>. The good thing about this is you can search in <code>_all</code> for something and you get results no matter in which field it's found. The flipside of that is that it uses extra CPU when indexing and increases index size. So if you don't use it, you might as well disable it. And if you do, you might consider defining a limited set of fields to be included in <code>_all</code>. More details "here":http://www.elasticsearch.org/guide/reference/mapping/all-field.html
+
+h2. Refresh interval
+
+Elasticsearch is near-realtime in the sense that after a document is indexed, that index needs to be refreshed before you can find that document in searches. By default, indices are refreshed asynchronously and automaticaly each second.
+
+Refreshing is quite an expensive operation, so if you increase this value you will see a better insert rate. How much you can increase it depends on what is acceptable for your users.
+
+You might save the desired refresh_interval in your "index template":http://www.elasticsearch.org/guide/reference/api/admin-indices-templates.html Or, you can do it in your elasticsearch.yaml configuration file, or you can update index settings "via the REST API":http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings.html
+
+Another way to deal with this is to disable the automatic refreshing by setting the value to -1, and do the refreshes manually, "using the REST API":http://www.elasticsearch.org/guide/reference/api/admin-indices-refresh.html This might make sense if you want to insert a huge number of logs at a time, but in normal conditions you probably got two options: refresh after every bulk of inserts or refresh before every search. Both of which would delay the respective operations.
+
+h2. Thrift
+
+Normally, the REST interface is via HTTP, but you can use Thrift instead, which should be faster. You need to install the "transport-thrift plugin":https://github.com/elasticsearch/elasticsearch-transport-thrift and you need your client to support it. For example, if you use the "pyes Python client":https://github.com/aparo/pyes it's just a matter of changing the connect port from the default 9200 for HTTP to 9500, which is the default for Thrift.
+
+h2. Asynchronous replication
+
+Normally, an index operation returns after all the shards (including replicas) have finished indexing the document. You can enable the replication to take place in the background by setting <code>replication</code> to <code>async</code> from the "index API":http://www.elasticsearch.org/guide/reference/api/index_.html This can be done if you use directly this API for indexing. If you use a ready-made client (like pyes or rsyslog's omelasticsearch), that client has to support it.
+
+h2. Use filters instead of queries
+
+Normally, when you work with logs, you're interested in sorting them by date instead of score. In this case the score becomes irrelevant. So you would be better off using filters to find those logs instead of queries, because no scoring is performed and they are automatically cached. More details on both can be found "here":http://www.elasticsearch.org/guide/reference/query-dsl/
+
+h2. Bulk indexing
+
+It's recommended to use the "bulk API":http://www.elasticsearch.org/guide/reference/api/bulk.html for indexing. It will do the job much faster than indexing one log at a time.
+
+There are two things to consider here:
+- optimum bulk size. That depends a lot on your setup. If you need a starting point, the default in pyes in 400
+- set a timer for your bulk. If you add logs to a buffer and wait for its size to hit the limit in order to issue a bulk insert, make sure there's also a time limit, in addition to the size limit. Otherwise, if your logs come rarely, you will see a big delay from when they're issued and when they end up in Elasticsearch
