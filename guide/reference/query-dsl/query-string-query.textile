@@ -33,6 +33,7 @@ p. The @query_string@ top level parameters include:
 | @analyze_wildcard@ | By default, wildcards terms in a query string are not analyzed. By setting this value to @true@, a best effort will be made to analyze those as well. |
 | @auto_generate_phrase_queries@ | Default to @false@. |
 | @minimum_should_match@ | A percent value (for example @20%@) controlling how many "should" clauses in the resulting boolean query should match.|
+|@lenient@|If set to @true@ will cause format based failures (like providing text to a numeric field) to be ignored. (since 0.19.4).|
 
 p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":multi-term-rewrite.html parameter.
 
@@ -67,6 +68,8 @@ p. Simple wildcard can also be used to search "within" specific inner elements o
     }
 }
 </pre>
+
+p. Another option is to provide the wildcard fields search in the query string itself (properly escapign the @*@ sign), for example: @city.\*:something@. (since 0.19.4).
 
 
 p. When running the @query_string@ query against multiple fields, the following additional parameters are allowed:

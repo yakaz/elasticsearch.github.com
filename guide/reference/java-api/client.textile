@@ -89,3 +89,10 @@ Settings settings = ImmutableSettings.settingsBuilder()
 		.put("client.transport.sniff", true).build();
 TransportClient client = new TransportClient(settings);
 </pre>
+
+p. Other transport client level settings include:
+
+|_. Parameter |_. Description |
+| @client.transport.ignore_cluster_name@ | Set to @true@ to ignore cluster name validation of connected nodes. (since 0.19.4) |
+| @client.transport.ping_timeout@ | The time to wait for a ping response from a node. Defaults to @5s@. |
+| @client.transport.nodes_sampler_interval@ | How often to sample / ping the nodes listed and connected. Defaults to @5s@. |
