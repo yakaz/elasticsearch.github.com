@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.19.4 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.4@ is out. You can download it "here":/download. The release includes serveral bug fixes, mainly around percolator, @_default_@ mapping type, and file based config index tempaltes.
+
+p. It also includes an enahcement allowing to configure the @query_string@ query to be @lenient@, not failing when wrong format of a value is provided (for example, a text to a numeric field), as well as the ability to search "within" objets using wildcards in the @query_string@ syntax (it was already provided if it was used in the @fields@ section), for example: @city.\*:something@. 
