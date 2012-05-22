@@ -13,3 +13,50 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+
+h2. New features:
+ * Allow to customize quote analyzer to be used when quoting text in a query_string ("#1931":http://github.com/elasticsearch/elasticsearch/issues/issue/1931)
+ * Query DSL: query_string syntax to support wildcard fieldnames in the query text ("#1936":http://github.com/elasticsearch/elasticsearch/issues/issue/1936)
+
+
+h2. Enhancements:
+ * Support Java Date when serializing update parameters ("#1902":http://github.com/elasticsearch/elasticsearch/issues/issue/1902)
+ * Upgrade to jackson 1.9.7 ("#1908":http://github.com/elasticsearch/elasticsearch/issues/issue/1908)
+ * Upgrade to Netty 3.4.2 ("#1909":http://github.com/elasticsearch/elasticsearch/issues/issue/1909)
+ * Upgrade to netty 3.4.3.Final ("#1914":http://github.com/elasticsearch/elasticsearch/issues/issue/1914)
+ * Upgrade to guava 12.0 ("#1920":http://github.com/elasticsearch/elasticsearch/issues/issue/1920)
+ * Binary field is stored by default, allow to disable it ("#1919":http://github.com/elasticsearch/elasticsearch/issues/issue/1919)
+ * Upgrade to Netty 3.4.5 ("#1958":http://github.com/elasticsearch/elasticsearch/issues/issue/1958)
+ * Debian: Update deps to be on openjdk-7-jre-headless first, then 6 ("#1929":http://github.com/elasticsearch/elasticsearch/issues/issue/1929)
+ * Get API:
+ ** When _source is disabled, the source is still used if fetched from the transaction log ("#1927":http://github.com/elasticsearch/elasticsearch/issues/issue/1927)
+ ** Allow to provide a parent value which automatically set the routing value ("#1961":http://github.com/elasticsearch/elasticsearch/issues/issue/1961)
+ * Java API: Improve TransportClient in sniff mode to be more lightweight on connections and API ("#1898":http://github.com/elasticsearch/elasticsearch/issues/issue/1898)
+ * Mapping: Allow to specify enabled set to false on a property without specifying the type ("#1959":http://github.com/elasticsearch/elasticsearch/issues/issue/1959)
+ * Network: Add network.address.serialization.resolve setting (defaults to false) to always resolve publish address based on host name ("#1899":http://github.com/elasticsearch/elasticsearch/issues/issue/1899)
+ * Percolator Index: Don't index the @query@ element in a percolated query ("#1949":http://github.com/elasticsearch/elasticsearch/issues/issue/1949)
+ * Query DSL: filtered query to support null filter or {} filter (in which case, just the query is executed) ("#1900":http://github.com/elasticsearch/elasticsearch/issues/issue/1900)
+ * Query String: Add @lenient@ flag to support *value* parse failures ("#1932":http://github.com/elasticsearch/elasticsearch/issues/issue/1932)
+ * Query String URI: Add @lenient@ to the URI @q@ parameters. ("#1937":http://github.com/elasticsearch/elasticsearch/issues/issue/1937)
+ * Search Preference: Add _shards prefix to explicitly list shards, and add _prefer_node option ("#1904":http://github.com/elasticsearch/elasticsearch/issues/issue/1904)
+ * Transport Client:
+ ** When adding an address was already added, ignore it ("#1906":http://github.com/elasticsearch/elasticsearch/issues/issue/1906)
+ ** Add @client.transport.ignore_cluster_name@ to ignore the cluster name validation, defaults to @false@ ("#1910":http://github.com/elasticsearch/elasticsearch/issues/issue/1910)
+
+
+h2. Bug fixes:
+ * ClassCastException during percolation query ("#1905":http://github.com/elasticsearch/elasticsearch/issues/issue/1905)
+ * When setting @index.recovery.initial_shards@ in the config file, it is ignored ("#1912":http://github.com/elasticsearch/elasticsearch/issues/issue/1912)
+ * Index Templates settings provided in a config file fails to load properly ("#1960":http://github.com/elasticsearch/elasticsearch/issues/issue/1960)
+ * Index Merge Scheduler: Configuring using @serial@ fails to load ("#1901":http://github.com/elasticsearch/elasticsearch/issues/issue/1901)
+ * Mapping:
+ ** default mapping with dynamic templates can cause them to double on each restart ("#1964":http://github.com/elasticsearch/elasticsearch/issues/issue/1964)
+ ** Using _default_ mapping _routing mapping definition fails to apply when introducing type through indexing ("#1967":http://github.com/elasticsearch/elasticsearch/issues/issue/1967)
+ * Percolator:
+ ** Filtering percolators based on a query can cause wrong matches to be returned ("#1925":http://github.com/elasticsearch/elasticsearch/issues/issue/1925)
+ ** Wrongly using analyzer configured for the actual index on percolator filtering ("#1948":http://github.com/elasticsearch/elasticsearch/issues/issue/1948)
+ ** Registering (indexing) a new percolator query will still be stored in memory if actually indexing it fails ("#1965":http://github.com/elasticsearch/elasticsearch/issues/issue/1965)
+ * Shutdown API: When sending an "all" shutdown, it also shutsdown node clients ("#1939":http://github.com/elasticsearch/elasticsearch/issues/issue/1939)
+ * deb: ES_HEAP_SIZE not exported ("#1947":http://github.com/elasticsearch/elasticsearch/issues/issue/1947)
+
