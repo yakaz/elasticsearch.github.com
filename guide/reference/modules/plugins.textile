@@ -53,6 +53,7 @@ h2. Analysis Plugins
 * "Japanese (Kuromoji) Analysis plugin":https://github.com/suguru/elasticsearch-analysis-kuromoji (by elasticsearch team).
 * "Japanese Analysis plugin":https://github.com/suguru/elasticsearch-analysis-japanese (by suguru).
 * "Russian and English Morphological Analysis Plugin":https://github.com/imotov/elasticsearch-analysis-morphology (by Igor Motov)
+* "Pinyin Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-pinyin (by Medcl)
 
 h2. River Plugins
 
