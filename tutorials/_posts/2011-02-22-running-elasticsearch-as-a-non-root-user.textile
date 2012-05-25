@@ -14,7 +14,7 @@ First, make sure that you have the service wrapper installed (see "Setting up El
 <p>We assume that <code>$ES_HOME</code> is set to the ElasticSearch install path, eg:</p>
 <pre>    export ES_HOME=/opt/elasticsearch</pre>
 * Create the user:
-<pre>    useradd -d $ES_HOME elasticsearch</pre>
+<pre>    useradd -d $ES_HOME elasticsearch -s /bin/sh</pre>
 * Open the service wrapper script in a text editor:
 <pre>    vi $ES_HOME/bin/service/elasticsearch</pre>
 ** uncomment the line starting <code>RUN_AS_USER</code> and change it to: <code>  RUN_AS_USER=elasticsearch</code>
