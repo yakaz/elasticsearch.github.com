@@ -64,6 +64,9 @@ h2. River Plugins
 * "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
 * "MongoDB River Plugin":https://github.com/richardwilly98/elasticsearch-river-mongodb/ (by Richard Louapre)
 * "Open Archives Initiative (OAI) River Plugin":https://github.com/jprante/elasticsearch-river-oai/ (by Jörg Prante)
+* "St9 River Plugin":https://github.com/sunnygleason/elasticsearch-river-st9 (by Sunny Gleason) 
+* "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts) 
+* "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B) 
 
 h2. Transport Plugins
 
