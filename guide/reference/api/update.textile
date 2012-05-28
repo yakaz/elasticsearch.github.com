@@ -40,6 +40,22 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 }'
 </pre>
 
+p. We can also add a new field to the document:
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
+    "script" : "ctx._source.text = \"some text\""
+}'
+</pre>
+
+p. We can also remove a field from the document:
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
+    "script" : "ctx._source.remove(\"text\")"
+}'
+</pre>
+
 p. And, we can delete the doc if the tags contain blue, or ignore (noop):
 
 <pre class="prettyprint">
