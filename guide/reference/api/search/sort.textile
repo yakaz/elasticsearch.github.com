@@ -56,6 +56,22 @@ p. Numeric fields support specific handling for missing fields in a doc. The @mi
 }
 </pre>
 
+h1. Ignoring Unmapped Fields
+
+p. By default, the search request will fail if there is no mapping associated with a field. The @ignore_unmapped@ option allows to ignore fields that have no mapping and not sort by them. Here is an example of how it can be used:
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        { "price" : {"ignore_unmapped" : true} },
+    ],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+
 h1. Geo Distance Sorting
 
 p. Allow to sort by @_geo_distance@. Here is an example:
