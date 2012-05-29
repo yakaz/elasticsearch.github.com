@@ -23,7 +23,7 @@ h2. Memory and open files
 
 If you use the server(s) for Elasticsearch only, the rule of thumb is to allocate half the total RAM size to Elasticsearch. The other half would be used for system caches, which is important as well.
 
-You set it up by changing the <code>ES_HEAP_SIZE</code> environment variable. Set it to the desired value (eg: 2g) before starting Elasticsearch. Another option is to change the Elasticsearch JAVA_OPTS variable that is passed by the scripts (elasticsearch.in.sh or elasticsearch.bat). You have to look for <code>-Xms</code> and <code>-Xmx</code>. These are the minimum and maximum memory allocated to the process. It's recommended to set them both to the same size.<code>ES_HEAP_SIZE</code> does just that.
+You set it up by changing the <code>ES_HEAP_SIZE</code> environment variable. Set it to the desired value (eg: 2g) before starting Elasticsearch. Another option is to change the Elasticsearch @ES_JAVA_OPTS@ variable that is passed by the scripts (elasticsearch.in.sh or elasticsearch.bat). You have to look for <code>-Xms</code> and <code>-Xmx</code>. These are the minimum and maximum memory allocated to the process. It's recommended to set them both to the same size.<code>ES_HEAP_SIZE</code> does just that.
 
 You also have to make sure that the open files limit is high enough for Elasticsearch. It's recommended to set it to 32000 or 64000. There's a tutorial about setting open files limits "here":http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html
 
