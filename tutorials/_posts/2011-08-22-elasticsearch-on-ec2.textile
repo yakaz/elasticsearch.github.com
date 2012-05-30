@@ -909,7 +909,7 @@ h3. Create the New AMI
 
 <p>
     At this time, we are ready to create our new elasticsearch AMI. Go to
-    the AWS EC2 console and view your running instances. If you are follwoing
+    the AWS EC2 console and view your running instances. If you are following
     along with this tutorial carefully, you will see two of them. Select the one
     that represents the instance we just modified.
 </p>
