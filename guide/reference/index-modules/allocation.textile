@@ -14,7 +14,7 @@ p. Lets say we have 4 nodes, each has specific attribute called @tag@ associated
 p. We can create an index that will only deploy on nodes that have @tag@ set to @value1@ and @value2@ by setting @index.routing.allocation.include.tag@ to @value1,value2@. For example:
 
 <pre class="prettyprint">
-curl -XPUT localhost:9200/test -d '{
+curl -XPUT localhost:9200/test/_settings -d '{
     "index.routing.allocation.include.tag" : "value1,value2"
 }'
 </pre>
@@ -23,7 +23,7 @@ curl -XPUT localhost:9200/test -d '{
 p. On the other hand, we can create an index that will be deployed on all nodes except for nodes with a @tag@ of value @value3@ by setting @index.routing.allocation.exclude.tag@ to @value3@. For example:
 
 <pre class="prettyprint">
-curl -XPUT localhost:9200/test -d '{
+curl -XPUT localhost:9200/test/_settings -d '{
     "index.routing.allocation.exclude.tag" : "value3"
 }'
 </pre>
@@ -40,7 +40,7 @@ node.group2: group2_value4
 In the same manner, @include@ and @exclude@ can work against several attributes, for example:
 
 <pre class="prettyprint">
-curl -XPUT localhost:9200/test -d '{
+curl -XPUT localhost:9200/test/_settings -d '{
     "index.routing.allocation.include.group1" : "xxx"
     "index.routing.allocation.include.group2" : "yyy",
     "index.routing.allocation.exclude.group3" : "zzz",
