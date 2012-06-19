@@ -67,6 +67,7 @@ h2. River Plugins
 * "St9 River Plugin":https://github.com/sunnygleason/elasticsearch-river-st9 (by Sunny Gleason) 
 * "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts) 
 * "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B) 
+* "JDBC River Plugin":https://github.com/jprante/elasticsearch-river-jdbc (by Jörg Prante) 
 
 h2. Transport Plugins
 
