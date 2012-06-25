@@ -16,6 +16,3 @@ h2. Upgrade Notes:
 
 h2. Bug fixes:
  * elasticsearch fails to start due to verification error ("#2051":http://github.com/elasticsearch/elasticsearch/issues/issue/2051)
- 
-
-
