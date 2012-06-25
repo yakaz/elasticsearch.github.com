@@ -47,6 +47,8 @@ p. It also means that its easy to provide the settings externally either using t
 $ elasticsearch -f -Des.network.host=10.0.0.4
 </pre>
 
+p. Another option is to set @es.default.@ prefix instead of @es.@ prefix, which means the default setting will be used only if not explicitly set in the configuration file.
+
 p. Another option is to use the @${...}@ notation within the configuration file which will resolve to an environment setting, for example:
 
 <pre class="prettyprint">

@@ -34,6 +34,10 @@ h2. Score Mode
 
 p. A @score_mode@ can be defined to control how multiple matching filters control the score. By default, it is set to @first@ which means the first matching filter will control the score of the result. It can also be set to @min@/@max@/@total@/@avg@/@multiply@ which will aggregate the result from all matching filters based on the aggregation type.  
 
+h2. max_boost
+
+p. An option to cap the boost value computed.
+
 h2. Script
 
 p. A @script@ can be used instead of @boost@ for more complex score calculations. With optional @params@ and @lang@ (on the same level as @query@ and @filters@).

@@ -54,3 +54,5 @@ $ curl -XGET localhost:9200/test/_msearch --data-binary @requests; echo
 
 p. The above will execute the search against the @test@ index for all the requests that don't define an index, and the last one will be executed against the @test2@ index.
 
+p. The @search_type@ can be set in a similar manner to globally apply to all search requests.
+

@@ -28,6 +28,12 @@ p. The result of the above get operation is:
 
 p. The above result includes the @_index@, @_type@, and @_id@ of the document we wish to retrieve, including the actual source of the document that was indexed.
 
+p. The API also allows to check for the existance of a document using @HEAD@, for example:
+
+<pre class="prettyprint">
+curl -XHEAD 'http://localhost:9200/twitter/tweet/1'
+</pre>
+
 h1. Realtime
 
 p. By default, the get API is realtime, and is not affected by the refresh rate of the index (when data will become visible for search).
