@@ -8,6 +8,8 @@ nick: kimchy
 
 p. *elasticsearch* version @0.19.5@ is out. You can download it "here":/download. The release includes critical bug fixes in elasticsearch cluster management and peer recovery process, and it is highly recommended for all users.
 
+p. [Update]: Some users reported a problem when starting elasticsearch with @0.19.5@ due to verification error. This problem has been fixed in @0.19.6@.
+
 p. The release also includes several features, including:
 
 h2. Store Compression
