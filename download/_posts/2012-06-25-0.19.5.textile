@@ -13,3 +13,38 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. New features:
+ * Store Throttling (node level and/or index level) with options on merge or all ("#2041":http://github.com/elasticsearch/elasticsearch/issues/issue/2041)
+ * Stored Fields Compression ("#2037":http://github.com/elasticsearch/elasticsearch/issues/issue/2037)
+ * Store Compression: Term Vector Vector ("#2049":http://github.com/elasticsearch/elasticsearch/issues/issue/2049)
+
+
+h2. Enhancements:
+ * Return 503 when threadpool limit is reached ("#2048":http://github.com/elasticsearch/elasticsearch/issues/issue/2048)
+ * Allow to pass es.default. settings to the process, using it as default value unless specified in the config file ("#2016":http://github.com/elasticsearch/elasticsearch/issues/issue/2016)
+ * Allow to filter client and "just" data nodes from controlling elected master (default client to true) ("#2014":http://github.com/elasticsearch/elasticsearch/issues/issue/2014)
+ * Upgrade to Netty 3.5.0.Final ("#2013":http://github.com/elasticsearch/elasticsearch/issues/issue/2013)
+ * Init script in Debian package ignores some options in elasticsearch.yml ("#1765":http://github.com/elasticsearch/elasticsearch/issues/issue/1765)
+ * Index level allocation filtering: Add _host option ("#1991":http://github.com/elasticsearch/elasticsearch/issues/issue/1991)
+ * Multi Search API: Allow to set search_type on REST endpoint URI to apply to all search requests ("#2023":http://github.com/elasticsearch/elasticsearch/issues/issue/2023)
+ * Query DSL:
+ ** Add more fuzzy options in different queries (text, query_string/field) ("#1974":http://github.com/elasticsearch/elasticsearch/issues/issue/1974)
+ ** Add max_boost to custom_filters_score to cap boosting ("#1973":http://github.com/elasticsearch/elasticsearch/issues/issue/1973)
+ ** term/terms filter performance improvement (bulk reading) ("#1972":http://github.com/elasticsearch/elasticsearch/issues/issue/1972)
+ ** text query to support minimum_should_match ("#1971":http://github.com/elasticsearch/elasticsearch/issues/issue/1971)
+ ** Add null_value and existence to missing filter, filtering both null values and missing fields ("#1970":http://github.com/elasticsearch/elasticsearch/issues/issue/1970)
+ * Rest API: Add @HEAD@ support for @/{index}/{type}/{id}@ to quickly check if doc exists or not ("#2047":http://github.com/elasticsearch/elasticsearch/issues/issue/2047)
+
+
+h2. Bug fixes:
+ * Failure to recover properly on node(s) restart ("#2046":http://github.com/elasticsearch/elasticsearch/issues/issue/2046)
+ * Improve cluster resiliency to disconnected sub clusters + fix a shard allocation bug with quick rolling restarts ("#2042":http://github.com/elasticsearch/elasticsearch/issues/issue/2042)
+ * fix bug index.ttl.disable_purge should be in IndexMetaData ("#2020":http://github.com/elasticsearch/elasticsearch/issues/issue/2020)
+ * .DS_Store file in .deb package ("#2017":http://github.com/elasticsearch/elasticsearch/issues/issue/2017)
+ * Quoted query_string gives NullPointerException with not_analyzed field (0.19.4) ("#2006":http://github.com/elasticsearch/elasticsearch/issues/issue/2006)
+ * TransportClient does not load plugins ("#1982":http://github.com/elasticsearch/elasticsearch/issues/issue/1982)
+ * Get mapping with no index specified on an empty cluster returns 404 ("#1976":http://github.com/elasticsearch/elasticsearch/issues/issue/1976)
+ * River name re-use not possible between node shutdowns ("#1921":http://github.com/elasticsearch/elasticsearch/issues/issue/1921)
+
+
