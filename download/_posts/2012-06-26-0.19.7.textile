@@ -13,3 +13,12 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Enhancements:
+ * Use bloom filter when flushing (applying deletes) ("#2058":http://github.com/elasticsearch/elasticsearch/issues/issue/2058)
+ * "index_analyzer" and "search_analyzer" should override "analyzer" ("#2052":http://github.com/elasticsearch/elasticsearch/issues/issue/2052)
+
+
+h2. Bug fixes:
+ * deb package fails to start elasticsearch ("#2053":http://github.com/elasticsearch/elasticsearch/issues/issue/2053)
+ * Stored Compression: failure to fetch document in certain cases (read failure, index compression works) ("#2055":http://github.com/elasticsearch/elasticsearch/issues/issue/2055)
