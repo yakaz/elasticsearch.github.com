@@ -10,6 +10,7 @@ p. *elasticsearch* version @0.19.5@ is out. You can download it "here":/download
 
 p. [Update]: Some users reported a problem when starting elasticsearch with @0.19.5@ due to verification error. This problem has been fixed in @0.19.6@.
 p. [Update 2]: The @deb@ package seems to be broken in @0.19.5@ and @0.19.6@, a fix will be issued later.
+p. [Update 3]: @0.19.7@ has been released fixing the debian packaging problem and a bug in the new compression support (on reads).
 
 p. The release also includes several features, including:
 

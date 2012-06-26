@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.19.7 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.7@ is out. You can download it "here":/download. The release includes mainly bug fixes, fixing the broken debian package, and a bug in the new store compression option (on reads).
