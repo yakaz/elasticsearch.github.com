@@ -13,3 +13,20 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. New features:
+ * Support wildcard and +/- notation for multi index APIs ("#2074":http://github.com/elasticsearch/elasticsearch/issues/issue/2074)
+ * Auto import dangling indices ("#2067":http://github.com/elasticsearch/elasticsearch/issues/issue/2067)
+
+
+h2. Enhancements:
+ * getSourceAsString() for doc inserted as SMILE fails, auto convert to JSON ("#2064":http://github.com/elasticsearch/elasticsearch/issues/issue/2064)
+
+
+h2. Bug fixes:
+ * (full) recovery memory based indices with local gateway, don't fail them ("#2077":http://github.com/elasticsearch/elasticsearch/issues/issue/2077)
+ * Exists API can send response body ("#2072":http://github.com/elasticsearch/elasticsearch/issues/issue/2072)
+ * dangling index handling might still remove the state files for the dangling index ("#2065":http://github.com/elasticsearch/elasticsearch/issues/issue/2065)
+ * Setting index to no ends up using by default the "keyword" analyzer on it, which means one can't highlight on it when searching on _all ("#2062":http://github.com/elasticsearch/elasticsearch/issues/issue/2062)
+ * ElasticSearchIllegalStateException: stream marked as compressed, but no compressor found on transport layer ("#2076":http://github.com/elasticsearch/elasticsearch/issues/issue/2076)
+ * Store Compression: integer overflow causes failed reads (index is safe) ("#2071":http://github.com/elasticsearch/elasticsearch/issues/issue/2071)

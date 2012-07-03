@@ -10,7 +10,7 @@ p. *elasticsearch* version @0.19.8@ is out. You can download it "here":/download
 
 h2. Dangling Indices
 
-p. It also includes better handlign of dangling indices. Dangling indices happen when a node that has several indices stored locally, joins a cluster and those local indices do not exists in the cluster metadata. This usually does not happen, especially not with proper gateway.recover_after_nodes flag, but still, users can by mistake get into this state.
+p. It also includes better handling of dangling indices. Dangling indices happen when a node that has several indices stored locally, joins a cluster and those local indices do not exists in the cluster metadata. This usually does not happen, especially not with proper gateway.recover_after_nodes flag, but still, users can by mistake get into this state.
 
 p. A new setting @gateway.local.auto_import_dangled@ setting, with possible values of @no@ (never import dangling indices, but also delay the delation of them), @yes@ (import dangling indices), and @closed@ (import dangling indices, but in closed state). The default value is @yes@.
 
