@@ -1,0 +1,9 @@
+---
+layout: video
+title: Scaling massive elasticsearch clusters
+cat: videos
+author: Rafał Kuć
+video_desc: Scaling massive elasticsearch clusters at Berlin Buzzwords 2012
+---
+<iframe src="http://player.vimeo.com/video/44718089?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>
+<div style="width:595px" id="__ss_13207724"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/kucrafal/scaling-massive-elastic-search-clusters-rafa-ku-sematext" title="Scaling massive elastic search clusters - Rafał Kuć - Sematext" target="_blank">Scaling massive elastic search clusters - Rafał Kuć - Sematext</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13207724" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/kucrafal" target="_blank">Rafał Kuć</a> </div> </div>

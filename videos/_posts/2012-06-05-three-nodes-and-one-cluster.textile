@@ -1,0 +1,9 @@
+---
+layout: video
+title: Three Nodes and One Cluster
+cat: videos
+author: Karel Minařík and Lukáš Vlček
+video_desc: Three Nodes and One Cluster at Berlin Buzzwords 2012
+---
+
+<iframe src="http://player.vimeo.com/video/44718093?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>

@@ -1,0 +1,10 @@
+---
+layout: video
+title: Querying 24 Billion Records in 900ms
+cat: videos
+author: Jodok Batlogg
+video_desc: Querying 24 Billion Records in 900ms at Berlin Buzzwords 2012
+---
+
+<iframe src="http://player.vimeo.com/video/44718088?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>
+<div style="width:595px" id="__ss_13240753"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/jodok1/you-know-for-search-querying-24-billion-documents-in-900ms" title="You know, for search. Querying 24 Billion Documents in 900ms" target="_blank">You know, for search. Querying 24 Billion Documents in 900ms</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13240753" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/jodok1" target="_blank">Jodok Batlogg</a> </div> </div>

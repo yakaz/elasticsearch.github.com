@@ -1,0 +1,12 @@
+---
+layout: video
+title: Big Data, Search and Analytics
+cat: videos
+author: Shay Banon
+nick: kimchy
+video_desc: Big Data, Search and Analytics at Berlin Buzzwords 2012
+---
+
+<iframe src="http://player.vimeo.com/video/44716955?title=0&amp;byline=0&amp;portrait=0" width="759" height="427" frameborder="0"></iframe>
+<script async class="speakerdeck-embed" data-id="4fcfa7a68a589b002101b490" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
