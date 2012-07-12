@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api_search
 ---
 
-p. The search API can be applied to multiple types within an index, and across multiple indices. For example, we can search on all documents across all types within the twitter index:
+p. The search API can be applied to multiple types within an index, and across multiple indices with support for the "multi index syntax":/guide/reference/api/multi-index.html.. For example, we can search on all documents across all types within the twitter index:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter/_search?q=user:kimchy'
@@ -34,3 +34,4 @@ p. Or even search across all indices and all types:
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/_search?q=tag:wow'
 </pre>
+
