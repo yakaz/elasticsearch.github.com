@@ -15,6 +15,7 @@ h2. Clients
 *  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
 * "elasticsearch":http://github.com/nervetattoo/elasticsearch PHP client.
+* "PlainElastic.Net":https://github.com/Yegoroff/PlainElastic.Net: .NET client.
 * "NEST":https://github.com/Mpdreamz/NEST: .NET client.
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
