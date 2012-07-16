@@ -8,7 +8,7 @@ h2. Clients
 
 * "ElasticSearch.pm":http://github.com/clintongormley/ElasticSearch.pm: Perl client.
 * "pyes":http://github.com/aparo/pyes: Python client.
-* "Tire":https://github.com/karmi/tire: Ruby API & DSL, with ActiveRecord/ActiveModel integration.
+* "Tire":http://github.com/karmi/tire: Ruby API & DSL, with ActiveRecord/ActiveModel integration.
 * "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
 * "em-elasticsearch":http://github.com/ichverstehe/em-elasticsearch: elasticsearch library for eventmachine.
