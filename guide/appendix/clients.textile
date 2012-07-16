@@ -44,7 +44,8 @@ h2. Integrations
 h2. Misc
 
 * "Puppet":https://github.com/visibiz/puppet-elasticsearch: elasticsearch puppet module.
-* "Chef":http://community.opscode.com/cookbooks/elasticsearch: elasticsearch chef recipe.
+* "Chef":http://community.opscode.com/cookbooks/elasticsearch: elasticsearch community Chef cookbook.
+* "Chef & EC2":http://github.com/karmi/cookbook-elasticsearch: elasticsearch cookbook with EC2 integration and Vagrant support.
 * "elasticsearch-rpms":https://github.com/tavisto/elasticsearch-rpms: RPMs for elasticsearch.
 * "daikon":http://www.github.com/neogenix/daikon: Daikon ElasticSearch CLI
 * "Scrutineer":https://github.com/Aconex/scrutineer: A high performance consistency checker to compare what you've indexed with your source of truth content (e.g. DB)
