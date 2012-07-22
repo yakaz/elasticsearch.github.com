@@ -114,7 +114,7 @@ h2. Facets with the _nested_ types
 
 p. "Nested":/guide/reference/mapping/nested-type.html mapping allows for better support for "inner" documents faceting, especially when it comes to multi valued key and value facets (like histograms, or term stats).
 
-p. Why is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and that's the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
+p. What is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and that's the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
 
 p. For example, lets use the following mapping:
 
