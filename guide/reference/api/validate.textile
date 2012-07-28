@@ -41,7 +41,7 @@ curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query' -d '{
 {"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}
 </pre>
 
-If the query is invalid, 'valid' will be false. Here the query is invalid because ElasticSearch knows the post_date field should be a date due to dynamic mapping, and 'foo' does not correctly parse into a date:
+If the query is invalid, @valid@ will be @false@. Here the query is invalid because ElasticSearch knows the post_date field should be a date due to dynamic mapping, and 'foo' does not correctly parse into a date:
 
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo'
