@@ -13,8 +13,8 @@ p. This filter handles position increments > 1 by inserting filler tokens (token
 p. The following are settings that can be set for a @shingle@ token filter type:
 
 |_. Setting |_. Description |
-|@max_shingle_size@|Defaults to @2@.|
-|@min_shingle_size@|Defaults to @2@.|
-|@output_unigrams@|Defaults to @true@.|
-|@token_separator@|Defaults to @ @.|
-
+|@max_shingle_size@|The maximum shingle size. Defaults to @2@.|
+|@min_shingle_sizes@|The minimum shingle size. Defaults to @2@.|
+|@output_unigrams@|If @true@ the output will contain the input tokens (unigrams) as well as the shingles. Defaults to @true@.|
+|@output_unigrams_if_no_shingles@|If @output_unigrams@ is @false@ the output will contain the input tokens (unigrams) if no shingles are available. Note if @output_unigrams@ is set to @true@ this setting has no effect. Defaults to @false@.|
+|@token_separator@|The string to use when joining adjacent tokens to form a shingle. Defaults to @" "@.|
