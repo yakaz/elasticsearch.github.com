@@ -320,7 +320,7 @@ ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch.yml"
 That's all well and good – we have automated the ElasticSearch installation process, downloading the package, extracting it,
 registering it as a service, and properly configuring it.
 
-But our goals are much more ambitious then that! We want monitoring, and the _Nginx_ proxy, and proper AWS setup with EC2
+But our goals are much more ambitious than that! We want monitoring, and the _Nginx_ proxy, and proper AWS setup with EC2
 discovery, and S3 persistence!
 
 Seems like the right time to edit the `node.js` file has come.
