@@ -63,7 +63,7 @@ p. ElasticSearch can be run as a service using the @elasticsearch@ script locate
 
 |_. Parameter |_. Description |
 |@console@|Run the elasticsearch in the foreground.|
-|@start@|Run elasticsearch int the background.|
+|@start@|Run elasticsearch in the background.|
 |@stop@|Stops elasticsearch if its running.|
 |@install@|Install elasticsearch to run on system startup (init.d / service).|
 |@remove@|Removes elasticsearch from system startup (init.d / service).|
