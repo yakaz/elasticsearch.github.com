@@ -11,7 +11,7 @@ h2. Clients
 * "Tire":http://github.com/karmi/tire: Ruby API & DSL, with ActiveRecord/ActiveModel integration.
 * "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
-* "em-elasticsearch":http://github.com/ichverstehe/em-elasticsearch: elasticsearch library for eventmachine.
+* "em-elasticsearch":http://github.com/vangberg/em-elasticsearch: elasticsearch library for eventmachine.
 *  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
 * "elasticsearch":http://github.com/nervetattoo/elasticsearch PHP client.
@@ -30,7 +30,7 @@ h2. Integrations
 * "escargot":https://github.com/angelf/escargot: ElasticSearch connector for Rails (WIP).
 * "Catalyst":https://metacpan.org/module/Catalyst::Model::Search::ElasticSearch: ElasticSearch and Catalyst integration.
 * "django-elasticsearch":http://github.com/aparo/django-elasticsearch: Django ElasticSearch Backend.
-* "elasticflume":http://github.com/tallpsmith/elasticflume: "Flume":http://github.com/cloudera/flume sink implementation.
+* "elasticflume":http://github.com/Aconex/elasticflume: "Flume":http://github.com/cloudera/flume sink implementation.
 * "Terrastore Search":http://code.google.com/p/terrastore/wiki/Search_Integration: "Terrastore":http://code.google.com/p/terrastore/ integration module with elasticsearch.
 * "Wonderdog":https://github.com/infochimps/wonderdog: Hadoop bulk loader into elasticsearch.
 * "Play! Framework":http://geeks.aretotally.in/play-framework-module-elastic-search-distributed-searching-with-json-http-rest-or-java: Integrate with Play! Framework Application.
