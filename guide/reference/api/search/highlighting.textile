@@ -147,7 +147,7 @@ p. Highlighting settings can be set on a global level and then overridden at the
 
 h1. Require Field Match
 
-p. @require_field_match@ can be set to @true@ which will cause a field to be highlighted only if a query matched that field. false means that terms are highlighted on all requested fields regardless if the query matches specifically on them.
+p. @require_field_match@ can be set to @true@ which will cause a field to be highlighted only if a query matched that field. @false@ means that terms are highlighted on all requested fields regardless if the query matches specifically on them.
 
 h1. Boundary Characters
 
