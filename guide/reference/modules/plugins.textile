@@ -88,6 +88,7 @@ h2. Site Plugins
 
 * "BigDesk Plugin":https://github.com/lukas-vlcek/bigdesk (by Lukáš Vlček)
 * "Elasticsearch Head Plugin":https://github.com/Aconex/elasticsearch-head (by Ben Birch)
+* "Paramedic Plugin":https://github.com/karmi/elasticsearch-paramedic (by Karel Minařík)
 
 h2. Misc Plugins
 
