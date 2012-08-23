@@ -1,31 +1,27 @@
 ---
 layout: guide
-title: Text Query
+title: Match Query
 cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. @text@ query has been deprecated (effectively renamed) to @match@ query since @0.19.9@, please use it. @text@ is still supported.
-
-p. A family of @text@ queries that accept text, analyzes it, and constructs a query out of it. For example:
+p. A family of @match@ queries that accept text/numerics/dates, analyzes it, and constructs a query out of it. For example:
 
 <pre class="prettyprint lang-js">
 {
-    "text" : {
+    "match" : {
         "message" : "this is a test"
     }
 }
 </pre>
 
-p. Note, even though the name is text, it also supports exact matching (@term@ like) on numeric values and dates.
-
 p. Note, @message@ is the name of a field, you can subsitute the name of any field (including @_all@) instead.
 
-h2. Types of Text Queries
+h2. Types of Match Queries
 
 h3. boolean
 
-p. The default @text@ query is of type @boolean@. It means that the text provided is analyzed and the analysis process constructs a boolean query from the provided text. The @operator@ flag can be set to @or@ or @and@ to control the boolean clauses (defaults to @or@).
+p. The default @match@ query is of type @boolean@. It means that the text provided is analyzed and the analysis process constructs a boolean query from the provided text. The @operator@ flag can be set to @or@ or @and@ to control the boolean clauses (defaults to @or@).
 
 p. The @analyzer@ can be set to control which analyzer will perform the analysis process on the text. It default to the field explicit mapping definition, or the default search analyzer.
 
@@ -35,7 +31,7 @@ p. Here is an example when providing additional parameters (note the slight chan
 
 <pre class="prettyprint lang-js">
 {
-    "text" : {
+    "match" : {
         "message" : {
             "query" : "this is a test",
             "operator" : "and"
@@ -47,21 +43,21 @@ p. Here is an example when providing additional parameters (note the slight chan
 
 h3. phrase
 
-p. The @text_phrase@ query analyzes the text and creates a @phrase@ query out of the analyzed text. For example:
+p. The @match_phrase@ query analyzes the text and creates a @phrase@ query out of the analyzed text. For example:
 
 <pre class="prettyprint lang-js">
 {
-    "text_phrase" : {
+    "match_phrase" : {
         "message" : "this is a test"
     }
 }
 </pre>
 
-p. Since @text_phrase@ is only a @type@ of a @text@ query, it can also be used in the following manner:
+p. Since @match_phrase@ is only a @type@ of a @match@ query, it can also be used in the following manner:
 
 <pre class="prettyprint lang-js">
 {
-    "text" : {
+    "match" : {
         "message" : {
             "query" : "this is a test",
             "type" : "phrase"
@@ -76,7 +72,7 @@ p. The @analyzer@ can be set to control which analyzer will perform the analysis
 
 <pre class="prettyprint lang-js">
 {
-    "text_phrase" : {
+    "match_phrase" : {
         "message" : {
             "query" : "this is a test",
             "analyzer" : "my_analyzer"
@@ -86,13 +82,13 @@ p. The @analyzer@ can be set to control which analyzer will perform the analysis
 </pre>
 
 
-h3. text_phrase_prefix
+h3. match_phrase_prefix
 
-p. The @text_phrase_prefix@ is the same as @text_phrase@, expect it allows for prefix matches on the last term in the text. For example:
+p. The @match_phrase_prefix@ is the same as @match_phrase@, expect it allows for prefix matches on the last term in the text. For example:
 
 <pre class="prettyprint lang-js">
 {
-    "text_phrase_prefix" : {
+    "match_phrase_prefix" : {
         "message" : "this is a test"
     }
 }
@@ -102,7 +98,7 @@ p. Or:
 
 <pre class="prettyprint lang-js">
 {
-    "text" : {
+    "match" : {
         "message" : {
             "query" : "this is a test",
             "type" : "phrase_prefix"
@@ -115,7 +111,7 @@ p. It accepts the same parameters as the phrase type. In addition, it also accep
 
 <pre class="prettyprint lang-js">
 {
-    "text_phrase_prefix" : {
+    "match_phrase_prefix" : {
         "message" : {
             "query" : "this is a test",
             "max_expansions" : 10
@@ -127,4 +123,4 @@ p. It accepts the same parameters as the phrase type. In addition, it also accep
 
 h2. Comparison to query_string / field
 
-p. The text family of queries does not go through a "query parsing" process. It does not support field name prefixes, wildcard characters, or other "advance" features. For this reason, chances of it failing are very small / non existent, and it provides an excellent behavior when it comes to just analyze and run that text as a query behavior (which is usually what a text search box does). Also, the @phrase_prefix@ can provide a great "as you type" behavior to automatically load search results.
+p. The match family of queries does not go through a "query parsing" process. It does not support field name prefixes, wildcard characters, or other "advance" features. For this reason, chances of it failing are very small / non existent, and it provides an excellent behavior when it comes to just analyze and run that text as a query behavior (which is usually what a text search box does). Also, the @phrase_prefix@ type can provide a great "as you type" behavior to automatically load search results.

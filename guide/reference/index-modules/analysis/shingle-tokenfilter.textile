@@ -14,4 +14,7 @@ p. The following are settings that can be set for a @shingle@ token filter type:
 
 |_. Setting |_. Description |
 |@max_shingle_size@|Defaults to @2@.|
+|@min_shingle_size@|Defaults to @2@.|
 |@output_unigrams@|Defaults to @true@.|
+|@token_separator@|Defaults to @ @.|
+

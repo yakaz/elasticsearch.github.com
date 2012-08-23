@@ -18,7 +18,7 @@ p. The following settings allow to control it. Note @c.r.a@ is an abbreviation f
 |@c.r.a.node_concurrent_recoveries@|How many concurrent recoveries are allowed to happen on a node. Defaults to @2@.|
 |@c.r.a.disable_allocation@|Allows to disable either primary or replica allocation. Note, a replica will still be promoted to primary if one does not exists. This setting really make sense when dynamically updating it using the cluster update settings API.|
 |@c.r.a.disable_replica_allocation@|Allows to disable only replica allocation. Similar to the previous setting, mainly make sense when using it dynamically using the cluster update settings API.|
-|@indices.recovery.concurrent_streams@|The number of streams to open (on a *node* level) to recover a shard from a peer shard. Defaults to @5@.|
+|@indices.recovery.concurrent_streams@|The number of streams to open (on a *node* level) to recover a shard from a peer shard. Defaults to @3@.|
 
 h2. Shard Allocation Awareness
 

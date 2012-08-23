@@ -74,6 +74,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@index_analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@ignore_above@|Set to a size where above the mentioned size the string will be ignored. Handly for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
 
 p. The @string@ type also support custom indexing parameters associated with the indexed value. For example:
 
@@ -116,6 +117,7 @@ p. The following table lists all the attributes that can be used with a numbered
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@ignore_malformed@|Ignored a malformed number. Defaults to @false@. (Since @0.19.9).|
 
 h1. Date
 
@@ -147,6 +149,7 @@ p. The following table lists all the attributes that can be used with a date typ
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@ignore_malformed@|Ignored a malformed number. Defaults to @false@. (Since @0.19.9).|
 
 h1. Boolean
 
