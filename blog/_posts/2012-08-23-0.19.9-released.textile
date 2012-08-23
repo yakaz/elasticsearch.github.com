@@ -1,0 +1,28 @@
+---
+layout: blogpost
+title: 0.19.9 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.9@ is out. You can download it "here":/download. It contains several bug fixes but also new features, including:
+
+h2. Snappy Compression
+
+p. New experimental support for @snappy@ compression on top of the current @lzf@. Changing to use it is as simple as setting @compress.default.type@ to @snappy@. Note, anything already compressed with @lzf@ will still work correctly.
+
+h2. @text@ renamed to @match@
+
+p. The @text@ query name gave it great injustice, as it nicely also handles dates and numeric types as well for example. It was renamed to @match@ in order to better reflect what it actually does, with backward support for the @text@ name as well.
+
+p. On top of that there is now support for "multi_match":https://github.com/elasticsearch/elasticsearch/issues/2153 query, allowing to more easily run @match@ queries on several fields without the verbosity of using @bool@ query to wrap it.
+
+h2. Explain API
+
+p. New API called "explain":https://github.com/elasticsearch/elasticsearch/issues/2184, allowing to easily check how and why a specific document matches a query, or even understand why a specific document does not match a specific query.
+
+h2. Networking Enhacements
+
+p. Several networking enhancements geared towards reducing further the amount of buffer copies while doing network operations, and better defaults for network buffer sizes.
+
