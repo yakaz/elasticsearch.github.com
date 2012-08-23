@@ -374,6 +374,6 @@ Lastly, we could also add, you know... a **search** feature to the application. 
 
 But, as you may have already realized, elasticsearch — and, by extension, Lucene — is capable of quite a lot more than just returning documents matching a search query. It can be used equally well as a search engine, an analytical engine, or — for certain use cases — as a document oriented “database”.
 
-The real lesson of this article is still different, though: the tricks we were able to play with the Ruby proxy for the “Notes” application are a testament of how flexible and powerfull are HTTP-based APIs.
+The real lesson of this article is still different, though: the tricks we were able to play with the Ruby proxy for the “Notes” application are a testament of how flexible and powerful HTTP-based APIs really are.
 
 <p><br><br><hr><br><br></p>
