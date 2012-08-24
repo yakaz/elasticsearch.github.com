@@ -13,3 +13,43 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Breaking changes:
+ * Introduce Text abstraction, allowing for improved representation of strings, apply to HighlightedField (breaks backward for Java API from String to Text) ("#2093":http://github.com/elasticsearch/elasticsearch/issues/issue/2093)
+ * Stored binary fields to change internal representation (break Java API if used) ("#2092":http://github.com/elasticsearch/elasticsearch/issues/issue/2092)
+
+
+h2. New features:
+ * Explain API ("#2184":http://github.com/elasticsearch/elasticsearch/issues/issue/2184)
+ * Multi match query ("#2153":http://github.com/elasticsearch/elasticsearch/issues/issue/2153)
+ * Cluster Nodes hot_threads API ("#2134":http://github.com/elasticsearch/elasticsearch/issues/issue/2134)
+ * Compression: Support snappy as a compression option ("#2081":http://github.com/elasticsearch/elasticsearch/issues/issue/2081)
+
+
+h2. Enhancements:
+ * Reduce index.shard.recovery.concurrent_streams from 5 to 3 to reduce the load when doing recovery ("#2198":http://github.com/elasticsearch/elasticsearch/issues/issue/2198)
+ * Upgrade to netty 3.5.5 ("#2196":http://github.com/elasticsearch/elasticsearch/issues/issue/2196)
+ * MinimumNumberShouldMatch inconcistency ("#2194":http://github.com/elasticsearch/elasticsearch/issues/issue/2194)
+ * Upgrade to Netty 3.5.4 ("#2180":http://github.com/elasticsearch/elasticsearch/issues/issue/2180)
+ * Rename text query to match query (text query still works, with variants) ("#2150":http://github.com/elasticsearch/elasticsearch/issues/issue/2150)
+ * word_delimiter token filter does not honor "type_table" option. ("#2145":http://github.com/elasticsearch/elasticsearch/issues/issue/2145)
+ * Improve recovery time when processing large mappings ("#2138":http://github.com/elasticsearch/elasticsearch/issues/issue/2138)
+ * Increase default recovery chunk size ("#2125":http://github.com/elasticsearch/elasticsearch/issues/issue/2125)
+ * Upgrade to Netty 3.5.3 ("#2119":http://github.com/elasticsearch/elasticsearch/issues/issue/2119)
+ * ShingleTokenFilterFactory doesn't expose all relevant settings ("#2116":http://github.com/elasticsearch/elasticsearch/issues/issue/2116)
+ * Upgrade to Lucene 3.6.1 ("#2110":http://github.com/elasticsearch/elasticsearch/issues/issue/2110)
+ * Upgrade to Netty 3.5.2 ("#2084":http://github.com/elasticsearch/elasticsearch/issues/issue/2084)
+ * All Field: Automatically detect when field level boosting is used, and optimize when its not ("#2189":http://github.com/elasticsearch/elasticsearch/issues/issue/2189)
+ * Mapping:
+ ** String type to allow for a "ignore_above" size parameter, above which it will ignore the content ("#2121":http://github.com/elasticsearch/elasticsearch/issues/issue/2121)
+ ** Numeric/Date types to have a flag to ignore wrongly formatted values ("#2120":http://github.com/elasticsearch/elasticsearch/issues/issue/2120)
+ * Node Stats: Add jvm buffer pools stats (when available, for java 7 and above) ("#2122":http://github.com/elasticsearch/elasticsearch/issues/issue/2122)
+ * Thread Pool: Allow to configure the queue_type for fixed thread pool (linked/array), defaults to array ("#2086":http://github.com/elasticsearch/elasticsearch/issues/issue/2086)
+ * Transport/Http: Remove explicit setting of send/receive buffer, and improve netty receive buffer predictor ("#2124":http://github.com/elasticsearch/elasticsearch/issues/issue/2124)
+
+
+h2. Bug fixes:
+ * Incorrect application of boost in SpanNotQueryBuilder ("#2192":http://github.com/elasticsearch/elasticsearch/issues/issue/2192)
+ * Date Histogram facet fails with "pre_zone" : "+02:00" ("#2141":http://github.com/elasticsearch/elasticsearch/issues/issue/2141)
+ * Local Gateway: old global state files are not properly deleted ("#2085":http://github.com/elasticsearch/elasticsearch/issues/issue/2085)
+ * Update API: Update through an alias with routing configured on it fail to use the routing ("#2155":http://github.com/elasticsearch/elasticsearch/issues/issue/2155)
