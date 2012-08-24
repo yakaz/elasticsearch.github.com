@@ -76,7 +76,6 @@ p. The update operation supports similar parameters as the index API, including:
 * @consistency@: The write consistency of the index/delete operation.
 * @percolate@: Enables percolation and filters out which percolator queries will be executed.
 * @refresh@: Refresh the index immediately after the operation occurs, so that the updated document appears in search results immediately.
-* @fields@: Specify the fields that will be returned in the response. By default, nothing is returned.
 
 p. And also support @retry_on_conflict@ which controls how many times to retry if there is a version conflict between getting the document and indexing / deleting it. Defaults to @0@.
 
