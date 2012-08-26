@@ -29,3 +29,5 @@ curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/?os=true&process=true'
 curl -XGET 'http://localhost:9200/_nodes/process'
 curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/process'
 </pre>
+
+p. The @all@ flag can be set to return all the information.
