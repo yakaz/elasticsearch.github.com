@@ -10,7 +10,7 @@ p. Removes matches which overlap with another span query. The span not query map
 <pre class="prettyprint lang-js">
 {
     "span_not" : {
-        ©"include" : {
+        "include" : {
             "span_term" : { "field1" : "value1" }
         },
         "exclude" : {
