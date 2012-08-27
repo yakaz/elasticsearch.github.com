@@ -41,7 +41,7 @@ h1. Default Field
 
 p. When not explicitly specifying the field to search on in the query string syntax, the @index.query.default_field@ will be used to derive which field to search on. It defaults to @_all@ field. 
 
-p. So, if @_all@ field is disabled, it might make sense to change it to set a different default field.a
+p. So, if @_all@ field is disabled, it might make sense to change it to set a different default field.
 
 h1. Multi Field
 
@@ -69,7 +69,7 @@ p. Simple wildcard can also be used to search "within" specific inner elements o
 }
 </pre>
 
-p. Another option is to provide the wildcard fields search in the query string itself (properly escapign the @*@ sign), for example: @city.\*:something@. (since 0.19.4).
+p. Another option is to provide the wildcard fields search in the query string itself (properly escaping the @*@ sign), for example: @city.\*:something@. (since 0.19.4).
 
 
 p. When running the @query_string@ query against multiple fields, the following additional parameters are allowed:
