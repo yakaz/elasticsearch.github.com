@@ -50,7 +50,7 @@ h1. Parameters
 | @timeout@ | A search timeout, bounding the search request to be executed within the specified time value and bail with the hits accumulated up to that point when expired. Defaults to no timeout. |
 | @from@ | The starting from index of the hits to return. Defaults to @0@. |
 | @size@ | The number of hits to return. Defaults to @10@. |
-| @search_type@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
+| @search_type@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. See "_Search Type_":/guide/reference/api/search/search-type.html for more details on the different types of search that can be performed. |
 
 p. Out of the above, the @search_type@ is the one that can not be passed within the search request body, and in order to set it, it must be passed as a request REST parameter.
 
