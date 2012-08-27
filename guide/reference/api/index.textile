@@ -38,7 +38,7 @@ p. Rest parameters (when using HTTP, map to HTTP URL parameters) follow the conv
 
 h2. Boolean Values
 
-p. All REST APIs parameters (both request parameters and JSON body) support providing boolean "false" as the values: @false@, @0@ and @off@. All other values are considered "true". Note, this is not related to fields within a document indexed treated as boolean fields.
+p. All REST APIs parameters (both request parameters and JSON body) support providing boolean "false" as the values: @false@, @0@, @no@ and @off@. All other values are considered "true". Note, this is not related to fields within a document indexed treated as boolean fields.
 
 h2. Number Values
 
