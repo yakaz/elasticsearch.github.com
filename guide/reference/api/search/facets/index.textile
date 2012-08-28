@@ -64,7 +64,7 @@ In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probabl
 
 Notice, that the counts are scoped to the current query: _foo_ is counted only twice (not three times), _bar_ is counted twice and _baz_ once.
 
-That's because the primary purpose of facets is to enable "_faceted navigation_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet, ie. restrict the search to a specific category, price or date range. See the example of faceted navigation at _LinkedIn_ below:
+That's because the primary purpose of facets is to enable "_faceted navigation_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet, i.e. restrict the search to a specific category, price or date range. See the example of faceted navigation at _LinkedIn_ below:
 
 !/guide/images/linkedin-faceted-search.png(Faceted Search at LinkedIn)!
 
@@ -72,7 +72,7 @@ Facets can be used, however, for other purposes: computing histograms, statistic
 
 h2. Scope
 
-As we have already mentioned, facet computation is restricted to the scope of the current query, called @main@, by default. Facets can be computed within the @global@ scope as well, in which case it will return values computed acrosss all documents in the index:
+As we have already mentioned, facet computation is restricted to the scope of the current query, called @main@, by default. Facets can be computed within the @global@ scope as well, in which case it will return values computed across all documents in the index:
 
 <pre class="prettyprint lang-js">
 {
@@ -116,7 +116,7 @@ p. "Nested":/guide/reference/mapping/nested-type.html mapping allows for better 
 
 p. What is it good for? First of all, this is the only way to use facets on nested documents once they are used (possibly for other reasons). But, there is also facet specific reason why nested documents can be used, and that's the fact that facets working on different key and value field (like term_stats, or histogram) can now support cases where both are multi valued properly.
 
-p. For example, lets use the following mapping:
+p. For example, let's use the following mapping:
 
 <pre class="prettyprint lang-js">
 {
