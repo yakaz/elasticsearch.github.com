@@ -35,7 +35,7 @@ p. Script fields can also be automatically detected and used as fields, so thing
 
 h2. Partial
 
-p. When loading data from @_source@, partial fields can be used to use wildcards to control what part of the @_source@ will be loaded based on @include@ and @explude@ patterns. For example:
+p. When loading data from @_source@, partial fields can be used to use wildcards to control what part of the @_source@ will be loaded based on @include@ and @exclude@ patterns. For example:
 
 <pre class="prettyprint lang-js">
 {
