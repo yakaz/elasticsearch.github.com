@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api_search
 ---
 
-p. Allow to highlight search results on one or more fields. The implementation uses the either lucene @fast-vector-highlighter@ or @highlighter@. The search request body:
+p. Allows to highlight search results on one or more fields. The implementation uses either the lucene @fast-vector-highlighter@ or @highlighter@. The search request body:
 
 <pre class="prettyprint lang-js">
 {
@@ -122,7 +122,7 @@ p. If the @number_of_fragments@ value is set to 0 then no fragments are produced
 }
 </pre>
 
-p. When using @fast-vector-highlighter@ one can use @fragment_offset@ parameter to conrol the margin to start highlighting from. 
+p. When using @fast-vector-highlighter@ one can use @fragment_offset@ parameter to control the margin to start highlighting from. 
 
 h1. Global Settings
 
@@ -151,6 +151,6 @@ p. @require_field_match@ can be set to @true@ which will cause a field to be hig
 
 h1. Boundary Characters
 
-p. When highlighting a field that is mapped with term vectors, @boundary_chars@ can be configured to define what constitutes a boundary for highlighting. Its a single string with each boundary character defined in it. It defaults to @.,!? \t\n@.
+p. When highlighting a field that is mapped with term vectors, @boundary_chars@ can be configured to define what constitutes a boundary for highlighting. It's a single string with each boundary character defined in it. It defaults to @.,!? \t\n@.
 
 p. The @boundary_max_size@ allows to control how far to look for boundary characters, and defaults to @20@.
