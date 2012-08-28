@@ -22,6 +22,7 @@ h2. Clients
 * "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
 * "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch
 * "scalastic":https://github.com/bsadeh/scalastic: Scala client
+* "rawes":https://github.com/humangeo/rawes: Python low level client
 
 
 h2. Integrations
