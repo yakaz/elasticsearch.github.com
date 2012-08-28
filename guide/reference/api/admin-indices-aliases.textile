@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. APIs in elasticsearch accept an index name when working against a specific index, and several indices when applicable. The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name. An alias can also be mapped to more than one index, and when specifying it, the alias will automatically expand to the aliases indices. An alias can also be associated with a filter that will automatically be applied when searching, and a routing values. 
+p. APIs in elasticsearch accept an index name when working against a specific index, and several indices when applicable. The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name. An alias can also be mapped to more than one index, and when specifying it, the alias will automatically expand to the aliases indices. An alias can also be associated with a filter that will automatically be applied when searching, and routing values. 
 
 p. Here is a sample of associating the alias @alias1@ with index @test1@:
 
@@ -29,7 +29,7 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 }'
 </pre>
 
-p. Renaming an index is a simple @remove@ then @add@ operation within the same API:
+p. Renaming an alias is a simple @remove@ then @add@ operation within the same API:
 
 <pre class="prettyprint">
 curl -XPOST 'http://localhost:9200/_aliases' -d '
@@ -41,7 +41,7 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 }'
 </pre>
 
-p. Associating an alias with more then one index are simply several @add@ actions:
+p. Associating an alias with more than one index are simply several @add@ actions:
 
 <pre class="prettyprint">
 curl -XPOST 'http://localhost:9200/_aliases' -d '
@@ -76,7 +76,7 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 
 h2. Routing
 
-p. Allow to associate routing values with aliases. This feature can be used together with filtering aliases in order to avoid unnecessary shard operations.
+p. Allows to associate routing values with aliases. This feature can be used together with filtering aliases in order to avoid unnecessary shard operations.
 
 p. The following command creates a new alias @alias1@ that points to index @test@. After @alias1@ is created, all operations with this alias are automatically modified to use value @1@ for routing:
 
