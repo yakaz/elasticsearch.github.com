@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. Filters documents that only have the provided ids. Note, this filter does not require the @_id@ field to be indexed since it works using the @_uid@ field.
+p. Filters documents that only have the provided ids. Note, this filter does not require the "_id":guide/reference/mapping/id-field.html field to be indexed since it works using the "_uid":guide/reference/mapping/uid-field.html field.
 
 <pre class="prettyprint lang-js">
 {
