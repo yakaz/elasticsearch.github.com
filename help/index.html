@@ -24,8 +24,10 @@ If something is not working, there are two possibilities:
 users to help you.</p>
 
 <p>The best thing to do is to <b>gist a simple, complete curl
-recreation </b>of the issue. That way, any user can recreate your
+recreation </b>of the issue. That way, any user can <b>recreate</b> your
 problem locally.</p>
+
+<p>The most complete your gist is, the quickest you will receive help from users!</p>
 
 <h3>What is a curl recreation?</h3>
 
@@ -35,7 +37,7 @@ server over http.  All of the code examples in the ElasticSearch
 guide are provided as curl statements.
 </p>
 
-<p>For example:</p>
+<p>First example: display the cluster Health</p>
 
 <pre class="prettyprint lang-js">
     curl -XGET 'http://127.0.0.1:9200/_cluster/health?pretty=true'
@@ -53,6 +55,12 @@ guide are provided as curl statements.
     }
 </pre>
 
+<p>Second example: create an index with settings, create mapping, index docs and search</p>
+
+<script src="https://gist.github.com/2965777.js"> </script>
+
+As you can see, this script allows to recreate the issue with just running the script on a fresh new Elasticsearch cluster.
+<br/>Moreother, users can edit your gist and correct it with a more practical way than in an email.
 
 <h3>How do I create a curl example?</h3>
 
