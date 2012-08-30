@@ -69,6 +69,9 @@ h2. River Plugins
 * "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B) 
 * "JDBC River Plugin":https://github.com/jprante/elasticsearch-river-jdbc (by Jörg Prante) 
 * "FileSystem River Plugin":http://www.pilato.fr/fsriver/ (by David Pilato)
+* "LDAP River Plugin":https://github.com/tlrx/elasticsearch-river-ldap (by Tanguy Leroux)
+* "Dropbox River Plugin":http://www.pilato.fr/dropbox/ (by David Pilato)
+* "ActiveMQ River Plugin":https://github.com/domdorn/elasticsearch-river-activemq/ (by Dominik Dorn)
 
 h2. Transport Plugins
 
@@ -99,4 +102,5 @@ h2. Misc Plugins
 * "Suggester Plugin":https://github.com/spinscale/elasticsearch-suggest-plugin (by Alexander Reelsen)
 * "ElasticSearch PartialUpdate Plugin":https://github.com/medcl/elasticsearch-partialupdate (by Medcl)
 * "ZooKeeper Discovery Plugin":https://github.com/sonian/elasticsearch-zookeeper (by Sonian Inc.)
+* "ElasticSearch Changes Plugin":https://github.com/derryx/elasticsearch-changes-plugin (by Thomas Peuss)
 
