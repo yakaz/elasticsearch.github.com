@@ -175,7 +175,7 @@ glossary:
 
 
         Elasticsearch distributes shards amongst all "nodes":#node in
-        the "cluster":#cluster, and can be move shards automatically from
+        the "cluster":#cluster, and can move shards automatically from
         one node to another in the case of node failure, or the addition
         of new nodes.
 
@@ -196,7 +196,7 @@ glossary:
     id: term
     text: >
         A term is an exact value that is indexed in elasticsearch. The terms
-        @foo@, @Foo@, @FOO are NOT equivalent. Terms (ie exact values) can
+        @foo@, @Foo@, @FOO@ are NOT equivalent. Terms (ie exact values) can
         be searched for using 'term' queries.
 
         See also "text":#text and "analysis":#analysis.
