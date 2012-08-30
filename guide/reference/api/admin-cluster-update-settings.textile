@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. Allow to update cluster wide specific settings. Settings updated can either be persistent (applied cross restarts) or transient (will not survive a full cluster restart). Here is an example:
+p. Allows to update cluster wide specific settings. Settings updated can either be persistent (applied cross restarts) or transient (will not survive a full cluster restart). Here is an example:
 
 
 <pre class="prettyprint">
@@ -45,4 +45,9 @@ There is a specific list of settings that can be updated, those include:
 
 p. Logger values can also be updated by setting @logger.@ prefix. More settings will be allowed to be updated.
 
-p. Cluster wide settings can be returned using @curl -XGET localhost:9200/_cluster/settings@.
+p. Cluster wide settings can be returned using:
+
+<pre class="prettyprint">
+curl -XGET localhost:9200/_cluster/settings
+</pre>
+
