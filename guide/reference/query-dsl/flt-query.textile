@@ -33,6 +33,6 @@ p. The @fuzzy_like_this@ top level parameters include:
 
 h1. How it Works
 
-p. Fuzzifies ALL terms provided as strings and then picks the best n differentiating terms. In effect this mixes the behaviour of FuzzyQuery and MoreLikeThis but with special consideration of fuzzy scoring factors. This generally produces good results for queries where users may provide details in a number offields and have no knowledge of boolean query syntax and also want a degree of fuzzy matching and a fast query.
+p. Fuzzifies ALL terms provided as strings and then picks the best n differentiating terms. In effect this mixes the behaviour of FuzzyQuery and MoreLikeThis but with special consideration of fuzzy scoring factors. This generally produces good results for queries where users may provide details in a number of fields and have no knowledge of boolean query syntax and also want a degree of fuzzy matching and a fast query.
 
 p. For each source term the fuzzy variants are held in a BooleanQuery with no coord factor (because we are not looking for matches on multiple variants in any one doc). Additionally, a specialized TermQuery is used for variants and does not use that variant term's IDF because this would favour rarer terms eg misspellings. Instead, all variants use the same IDF ranking (the one for the source query term) and this is factored into the variant's boost. If the source query term does not exist in the index the average IDF of the variants is used.
