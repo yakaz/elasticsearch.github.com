@@ -50,7 +50,7 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.gateway.snapshot_interval@|The gateway snapshot interval (only applies to shared gateways).|
 |"merge policy":/guide/reference/index-modules/merge.html|All the settings for the merge policy currently configured. A different merge policy can't be set.|
 |@index.routing.allocation.include.*@|Controls which nodes the index will be allowed to be allocated on.|
-|@index.routing.allocation.exclude.*@|Controls which nodes the index will not be allowed ot be allocated on.|
+|@index.routing.allocation.exclude.*@|Controls which nodes the index will not be allowed to be allocated on.|
 |@index.routing.allocation.total_shards_per_node@|Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded.|
 |@index.recovery.initial_shards@|When using local gateway a particular shard is recovered only if there can be allocated quorum shards in the cluster. It can be set to @quorum@ (default), @quorum-1@ (or @half@), @full@ and @full-1@. Number values are also supported, e.g. @1@.|
 |@index.gc_deletes@||
