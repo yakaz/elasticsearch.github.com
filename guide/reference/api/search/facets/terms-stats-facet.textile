@@ -29,4 +29,4 @@ p. Ordering is done by setting @order@, with possible values of @term@, @reverse
 
 p. The value computed can also be a script, using the @value_script@ instead of @value_field@, in which case the @lang@ can control its language, and @params@ allow to provide custom parameters (as in other scripted components).
 
-p. Note, the terms stats can work with mutli valued key fields, or multi valued value fields, but not when both are multi valued (as ordering is not maintained).
+p. Note, the terms stats can work with multi valued key fields, or multi valued value fields, but not when both are multi valued (as ordering is not maintained).
