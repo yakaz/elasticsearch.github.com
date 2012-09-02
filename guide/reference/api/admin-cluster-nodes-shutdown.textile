@@ -35,7 +35,7 @@ $ curl -XPOST 'http://localhost:9200/_cluster/nodes/_all/_shutdown'
 
 h1. Delay
 
-p. By default, the shutdown will be executed after a 1 seconds delay (@1s@). The delay can be customized by setting the @delay@ parameter in a time value format. For example:
+p. By default, the shutdown will be executed after a 1 second delay (@1s@). The delay can be customized by setting the @delay@ parameter in a time value format. For example:
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown?delay=10s'
