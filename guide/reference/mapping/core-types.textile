@@ -63,7 +63,7 @@ p. The following table lists all the attributes that can be used with the @strin
 
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
-|@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all (as an individual field; it may still be included in @_all@). Defaults to @analyzed@.|
 |@term_vector@|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
 |@boost@|The boost value. Defaults to @1.0@.|
@@ -91,7 +91,7 @@ p. The mapping is required to disambiguate the meaning of the document. Otherwis
 
 h1. Number
 
-p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene is order to support numeric values. An example mapping can be:
+p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene in order to support numeric values. An example mapping can be:
 
 <pre class="prettyprint lang-js">
 {
@@ -111,8 +111,8 @@ p. The following table lists all the attributes that can be used with a numbered
 |_. Attribute |_. Description |
 |@type@|The type of the number. Can be @float@, @double@, @integer@, @long@, @short@, @byte@. Required.|
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
-|@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
 |@precision_step@|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
@@ -121,7 +121,7 @@ p. The following table lists all the attributes that can be used with a numbered
 
 h1. Date
 
-p. The date type is a special type which maps to JSON string type. It follows a specific format that can be explicitly set. All dates are @UTC@. as. Internally, a date maps to a number type @long@, with the added parsing stage from string to long and from long to string. An example mapping:
+p. The date type is a special type which maps to JSON string type. It follows a specific format that can be explicitly set. All dates are @UTC@. Internally, a date maps to a number type @long@, with the added parsing stage from string to long and from long to string. An example mapping:
 
 <pre class="prettyprint lang-js">
 {
@@ -143,8 +143,8 @@ p. The following table lists all the attributes that can be used with a date typ
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@format@|The "date format":date-format.html. Defaults to @dateOptionalTime@.|
-|@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
 |@precision_step@|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
@@ -173,8 +173,8 @@ p. The following table lists all the attributes that can be used with the boolea
 
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
-|@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
