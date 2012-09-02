@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. Filters documents with fields that have terms within a certain range. Similar to range query, except that it acts as a filter. Can be placed within queries that accept a filter.
+p. Filters documents with fields that have terms within a certain range. Similar to "range query":/guide/reference/query-dsl/range-query.html, except that it acts as a filter. Can be placed within queries that accept a filter.
 
 <pre class="prettyprint lang-js">
 {
