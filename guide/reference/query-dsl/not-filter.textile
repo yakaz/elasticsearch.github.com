@@ -54,7 +54,7 @@ p. Or, in a longer form with a @filter@ element:
 
 h1. Caching
 
-p. The result of the filter is not cached by default. The @_cache@ can be set to @true@ in order to cache it (tough usually not needed). Here is an example:
+p. The result of the filter is not cached by default. The @_cache@ can be set to @true@ in order to cache it (though usually not needed). Here is an example:
 
 <pre class="prettyprint lang-js">
 {
