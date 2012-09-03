@@ -27,4 +27,4 @@ p. Filters documents that exists within a range from a specific point:
 }
 </pre>
 
-p. Supports the same point location parameter as the @geo_distance@ filter. And also support the common parameters for range (lt, lte, gt, gte, from, to, include_upper and include_lower).
+p. Supports the same point location parameter as the "geo_distance":/guide/reference/query-dsl/geo-distance-filter.html filter. And also support the common parameters for range (lt, lte, gt, gte, from, to, include_upper and include_lower).
