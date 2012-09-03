@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. Filters documents matching the provided document / mapping type. Note, this filter can work even when the @_type@ field is not indexed (using the @_uid@ field).
+p. Filters documents matching the provided document / mapping type. Note, this filter can work even when the @_type@ field is not indexed (using the "_uid":/guide/reference/mapping/uid-field.html field).
 
 
 <pre class="prettyprint lang-js">
