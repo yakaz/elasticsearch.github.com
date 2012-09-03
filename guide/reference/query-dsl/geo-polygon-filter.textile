@@ -105,7 +105,7 @@ h2. Geohash
 
 h1. geo_point Type
 
-p. The filter *requires* the @geo_point@ type to be set on the relevant field.
+p. The filter *requires* the "geo_point":/guide/reference/mapping/geo-point-type.html type to be set on the relevant field.
 
 h1. Caching
 
