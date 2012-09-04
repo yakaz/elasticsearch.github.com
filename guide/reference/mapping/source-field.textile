@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. The @_source@ field is an automatically generated field that stores the actual JSON that was used as the indexed document. It is not indexed (searchable), just stored. When executed "fetch" requests, like get or search, the @_source@ field is returned by default.
+p. The @_source@ field is an automatically generated field that stores the actual JSON that was used as the indexed document. It is not indexed (searchable), just stored. When executing "fetch" requests, like "get":/guide/reference/api/get.html or "search":/guide/reference/api/search/, the @_source@ field is returned by default.
 
 p. Though very handy to have around, the source field does incur storage overhead within the index. For this reason, it can be disabled. For example:
 
@@ -27,7 +27,7 @@ p. Moreover, a @compress_threshold@ can be set to control when the source will b
 
 h1. Includes / Excludes
 
-p. Allow to specify paths in the source that would be included / excluded when its stored, supporting @*@ as wildcard annotation. For example:
+p. Allow to specify paths in the source that would be included / excluded when it's stored, supporting @*@ as wildcard annotation. For example:
 
 <pre class="prettyprint lang-js">
 {
