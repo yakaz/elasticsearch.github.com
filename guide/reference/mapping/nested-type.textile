@@ -42,7 +42,7 @@ p. Nested mapping allow to map certain inner objects (usually multi instance one
 }
 </pre>
 
-p. The above will cause all @obj1@ to be indexed as a nested doc. The mapping is similar in nature to setting @type@ to @object@, except that its @nested@.
+p. The above will cause all @obj1@ to be indexed as a nested doc. The mapping is similar in nature to setting @type@ to @object@, except that it's @nested@.
 
 p. The @nested@ object fields can also be automatically added to the immediate parent by setting @include_in_parent@ to true, and also included in the root object by setting @include_in_root@ to true.
 
