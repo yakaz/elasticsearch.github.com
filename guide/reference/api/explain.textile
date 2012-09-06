@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. The explain api computes a score explanation for a query and a specific document. This can give useful feedback whether a document matches or didn't match a specific query.
+p. The explain api computes a score explanation for a query and a specific document. This can give useful feedback whether a document matches or didn't match a specific query. This feature is available from version @0.19.9@ and up.
 
 h1. Usage
 
