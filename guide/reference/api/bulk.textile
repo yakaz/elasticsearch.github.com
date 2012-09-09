@@ -19,7 +19,7 @@ optional_source\n
 
 p. *NOTE*: the final line of data must end with a newline character @\n@.
 
-p. If you're providing text file input to @curl@, you *must* @--data-binary@ instead of plain @-d@.  The latter doesn't preserve newlines.  Example:
+p. If you're providing text file input to @curl@, you *must* use the @--data-binary@ flag instead of plain @-d@.  The latter doesn't preserve newlines.  Example:
 
 <pre class="prettyprint">
 $ cat requests
