@@ -44,7 +44,7 @@ p. The routing parameter can be multi valued represented as a comma separated st
 
 h1. Stats Groups
 
-p. A search can be associated with stats groups, which maintains a statistics aggregation per group. It can later be retrieved using the indices stats API specifically. For example, here is a search body request that associate the request with two different groups:
+p. A search can be associated with stats groups, which maintains a statistics aggregation per group. It can later be retrieved using the "indices stats":/guide/reference/api/admin-indices-stats.html API specifically. For example, here is a search body request that associate the request with two different groups:
 
 <pre class="prettyprint">
 {
