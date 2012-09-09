@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. Multi GET API allows to get multiple documents based on an index, type (optional) and id (and possibly routing). The response includes a @doc@ array with all the documents each element similar in structure to the get API. Here is an example:
+p. Multi GET API allows to get multiple documents based on an index, type (optional) and id (and possibly routing). The response includes a @docs@ array with all the fetched documents, each element similar in structure to a document provided by the "get":/guide/reference/api/get.html API. Here is an example:
 
 <pre class="prettyprint">
 curl 'localhost:9200/_mget' -d '{
