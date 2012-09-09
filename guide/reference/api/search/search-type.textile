@@ -49,7 +49,7 @@ h1. Scan
 
 p. Parameter value: *scan*.
 
-The @scan@ search type allows to efficiently scroll a large result set. Its used first by executing a search request with scrolling and a query:
+The @scan@ search type allows to efficiently scroll a large result set. It's used first by executing a search request with scrolling and a query:
 
 <pre class="prettyprint">
 curl -XGET 'localhost:9200/_search?search_type=scan&scroll=10m&size=50' -d '
