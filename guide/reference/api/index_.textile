@@ -22,7 +22,8 @@ p. The result of the above index operation is:
     "ok" : true,
     "_index" : "twitter",
     "_type" : "tweet",
-    "_id" : "1"
+    "_id" : "1",
+    "_version" : 1
 }
 </pre>
 
@@ -32,7 +33,7 @@ p. The index operation automatically creates an index if it has not been created
 
 p. The mapping itself is very flexible and is schema-free. New fields and objects will automatically be added to the mapping definition of the type specified. Check out the "mapping":/guide/reference/mapping section for more information on mapping definitions.
 
-p. Though explained on the "mapping":/guide/reference/mapping section, its important to note that the format of the JSON document can also include the type (very handy when using JSON mappers), for example:
+p. Though explained on the "mapping":/guide/reference/mapping section, it's important to note that the format of the JSON document can also include the type (very handy when using JSON mappers), for example:
 
 <pre class="prettyprint">
 $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
@@ -60,7 +61,7 @@ p. *NOTE:* versioning is completely real time, and is not affected by the near r
 
 p. By default, internal versioning is used that starts at 1 and increments with each update. Optionally, the version number can be supplemented with an external value (for example, if maintained in a database). To enable this functionality, @version_type@ should be set to @external@. The value provided must be a numeric, long value greater than 0, and less than around 9.2e+18. When using the external version type, instead of checking for a matching version number, the system checks to see if the version number passed to the index request is greater than  the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail.
 
-p. A nice side effect is that there is no need to maintain strict ordering of async indexing operations executed a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations are out of order for whatever reason.
+p. A nice side effect is that there is no need to maintain strict ordering of async indexing operations executed as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations are out of order for whatever reason.
 
 h1. Operation Type
 
@@ -106,7 +107,8 @@ p. The result of the above index operation is:
     "ok" : true,
     "_index" : "twitter",
     "_type" : "tweet",
-    "_id" : "6a8ca01c-7896-48e9-81cc-9f70661fcb32"
+    "_id" : "6a8ca01c-7896-48e9-81cc-9f70661fcb32",
+    "_version" : 1
 }
 </pre>
 
