@@ -259,7 +259,7 @@ table td {
 
 /* Content */
 #header_spacer {
-    height: 80px;
+    height: 100px;
 }
 
 /* Home page */
@@ -267,6 +267,7 @@ table td {
 #home {
     width: 760px;
     margin: auto;
+    position: relative;
 }
 
 #home .img_left {
@@ -312,16 +313,16 @@ table td {
 
 #home #news {
   margin: 1em 0 1em 0;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(183, 214, 120, 0.95);
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   height: 1.5em;
-  width: 815px;
+  width: 805px;
   line-height: 1em;
-  top: -50px;
-  left: 20px;
-  position: relative;
+  top: -80px;
+  left: 0px;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -378,11 +379,31 @@ table td {
   top: 0; left: 0;
 }
 
+#home #news li a {
+  color: #000;
+  text-decoration: underline;
+}
+
 #home #news li .date {
   color: rgba(0,0,0,0.7);
   font-size: 80%;
   bottom: 0.05em;
   position: relative;
+}
+
+#home #news.expanded {
+  overflow: visible;
+  height: auto;
+}
+
+#home #news.expanded li {
+  position: relative;
+  display: block !important;
+  opacity: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+#home #news.expanded li:last-child {
+  border-bottom: none;
 }
 
 /* Post lists */
