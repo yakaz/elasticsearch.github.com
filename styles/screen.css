@@ -289,9 +289,25 @@ table td {
     margin-right: -150px;
 }
 
+#home #who_using {
+  margin: 1em 0 1em 150px;
+}
+
+#home #who_using a {
+  height: 100%;
+  padding: 1em 1em 0.5em 1em;
+  display: inline-block;
+}
+
+#home #who_using h3 {
+  display: inline-block;
+  margin-right: 1em;
+  bottom: 0.5em;
+  position: relative;
+}
+
 #home #who_using img {
-    margin-left: 5px;
-    margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 
 /* Post lists */
