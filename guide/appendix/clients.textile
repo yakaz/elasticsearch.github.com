@@ -23,6 +23,7 @@ h2. Clients
 * "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch
 * "scalastic":https://github.com/bsadeh/scalastic: Scala client
 * "rawes":https://github.com/humangeo/rawes: Python low level client
+* "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
 
 
 h2. Integrations
