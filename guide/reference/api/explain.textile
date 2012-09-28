@@ -45,7 +45,7 @@ p. This will yield the following result:
 p. There is also a simpler way of specifying the query via the @q@ parameter. The specified @q@ parameter value is then parsed as if the @query_string@ query was used. Example usage of the @q@ parameter in the explain api:
 
 <pre class="prettyprint">
-    curl -XGET http://localhost:9200/twitter/tweet/1/_explain?q=message:search
+    curl -XGET 'localhost:9200/twitter/tweet/1/_explain?q=message:search'
 </pre>
 
 p. This will yield the same result as the previous request.
