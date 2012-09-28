@@ -12,8 +12,10 @@ h1. Usage
 p. Full query example:
 
 <pre class="prettyprint">
-curl -XGET http://localhost:9200/twitter/tweet/1/_explain -d '{
+curl -XGET 'localhost:9200/twitter/tweet/1/_explain' -d '{
+      "query" : {
         "term" : { "message" : "search" }
+      }
 }'
 </pre>
 
