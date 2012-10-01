@@ -1,0 +1,15 @@
+---
+layout: download
+cat: download
+version: 0.19.10
+title: 0.19.10
+download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.10.zip
+download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.10.tar.gz
+download_deb_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.10.deb
+download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.19.10
+release_notes: true
+---
+
+h2. Upgrade Notes:
+ * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
+ * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
