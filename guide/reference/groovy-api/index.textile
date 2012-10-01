@@ -11,4 +11,4 @@ p. The Groovy API is a wrapper on top of the "Java API":/guide/reference/java-ap
 
 h2. Maven Repository
 
-p. elasticsearch is hosted on "Sonatype":http://www.sonatype.org/, with both a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":http://oss.sonatype.org/content/repositories/snapshots.
+p. elasticsearch is hosted on "Maven Central":http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22elasticsearch%22.
