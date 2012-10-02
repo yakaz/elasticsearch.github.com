@@ -22,5 +22,5 @@ p. The "cluster reroute API":https://github.com/elasticsearch/elasticsearch/issu
 
 h2. Bulk UDP
 
-p. The "Bulk UDP":https://github.com/elasticsearch/elasticsearch/issues/2201 interface allows to have elasticsearch listen using UDP for bulk fomratted requests. While UDP comes with its own downsides, it can come in handy, specially when indexing non critical data (ala statsd). This interface is also experimental.
+p. The "Bulk UDP":https://github.com/elasticsearch/elasticsearch/issues/2201 interface allows to have elasticsearch listen using UDP for bulk formatted requests. While UDP comes with its own downsides, it can come in handy, specially when indexing non critical data (ala statsd). This interface is also experimental.
 
