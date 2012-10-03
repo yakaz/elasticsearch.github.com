@@ -13,3 +13,35 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. New features:
+ * Add has_parent query ("#2254":http://github.com/elasticsearch/elasticsearch/issues/issue/2254)
+ * Add @has_parent@ filter ("#2243":http://github.com/elasticsearch/elasticsearch/issues/issue/2243)
+ * Bulk UDP ("#2201":http://github.com/elasticsearch/elasticsearch/issues/issue/2201)
+ * Cluster Reroute API: Allow to specify allocation commands ("#2256":http://github.com/elasticsearch/elasticsearch/issues/issue/2256)
+
+
+h2. Enhancements:
+ * Upgrade to netty 3.5.8 ("#2299":http://github.com/elasticsearch/elasticsearch/issues/issue/2299)
+ * Add better error handling for has_child, has_parent and top_children.  ("#2261":http://github.com/elasticsearch/elasticsearch/issues/issue/2261)
+ * Improve @has_child@ filter / query performance  ("#2251":http://github.com/elasticsearch/elasticsearch/issues/issue/2251)
+ * Upgrade to netty 3.5.7 ("#2240":http://github.com/elasticsearch/elasticsearch/issues/issue/2240)
+ * Upgrade to mvel 2.1.1 ("#2228":http://github.com/elasticsearch/elasticsearch/issues/issue/2228)
+ * Disable allocation: New indices allocation not to be disabled by default ("#2258":http://github.com/elasticsearch/elasticsearch/issues/issue/2258)
+ * Nodes level API: Allow to specify @data:true@ to only execute the APIs on data nodes ("#2232":http://github.com/elasticsearch/elasticsearch/issues/issue/2232)
+ * Shard Allocation: @index.routing.allocation....@ settings do not "remove" the setting on empty string ("#2229":http://github.com/elasticsearch/elasticsearch/issues/issue/2229)
+ * Update Settings API: Allow body request to be wrapped with @settings@ element to conform with other APIs ("#2227":http://github.com/elasticsearch/elasticsearch/issues/issue/2227)
+
+
+h2. Bug fixes:
+ * has_child / has_parent filters can throw NPE when either child or parent documents aren't indexed yet ("#2297":http://github.com/elasticsearch/elasticsearch/issues/issue/2297)
+ * query_string on multiple fields with "*" fails in 0.19.9 ("#2296":http://github.com/elasticsearch/elasticsearch/issues/issue/2296)
+ * Bulk Delete item when broadcast to all shard (lack of routing) might not be applied correctly ("#2285":http://github.com/elasticsearch/elasticsearch/issues/issue/2285)
+ * custom_filters_score with score_mode first doesn't return explanation correctly ("#2283":http://github.com/elasticsearch/elasticsearch/issues/issue/2283)
+ * When configuring mmapfs it is not used since 0.19.7 ("#2253":http://github.com/elasticsearch/elasticsearch/issues/issue/2253)
+ * failed shard while its being the source of relocation can cause inconsistent cluster state ("#2242":http://github.com/elasticsearch/elasticsearch/issues/issue/2242)
+ * Field boosts not used in multi_match query ("#2241":http://github.com/elasticsearch/elasticsearch/issues/issue/2241)
+ * Explain api opens 2 engine searchers, but closes only 1 engine searcher, causing resource leak ("#2206":http://github.com/elasticsearch/elasticsearch/issues/issue/2206)
+ * 0.19.9 no longer supports /_all/_status ("#2205":http://github.com/elasticsearch/elasticsearch/issues/issue/2205)
+ * IndexMissingException when calling _mlt on client node ("#2197":http://github.com/elasticsearch/elasticsearch/issues/issue/2197)
+
