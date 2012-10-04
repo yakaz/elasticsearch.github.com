@@ -41,7 +41,7 @@ h2. Integrations
 * "couch_es":https://github.com/refuge/couch_es: elasticsearch helper for couchdb based products (apache couchdb, bigcouch & refuge)
 * "Jetty":https://github.com/sonian/elasticsearch-jetty: Jetty HTTP Transport
 * "Spring Elasticsearch":https://github.com/dadoonet/spring-elasticsearch: Spring Factory for Elasticsearch
-* "elasticsearch-test":https://github.com/tlrx/elasticsearch-test: Elasticsearch Java annotations for unit testing with JUnit":http://www.junit.org/
+* "elasticsearch-test":https://github.com/tlrx/elasticsearch-test: Elasticsearch Java annotations for unit testing with "JUnit":http://www.junit.org/
 
 h2. Misc
 
