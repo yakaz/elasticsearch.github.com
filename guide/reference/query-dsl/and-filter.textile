@@ -44,7 +44,7 @@ p. The result of the filter is not cached by default. The @_cache@ can be set to
             "term" : { "name.first" : "shay" }
         },
         "filter" : {
-            "and" : 
+            "and" : { 
                 "filters": [
                     {
                         "range" : { 
