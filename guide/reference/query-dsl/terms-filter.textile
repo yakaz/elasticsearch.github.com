@@ -28,8 +28,9 @@ p. The @execution@ option now has the following options :
 * @plain@: The default. Works as today. Iterates over all the terms, building a bit set matching it, and filtering. The total filter is cached.
 * @bool@: Generates a term filter (which is cached) for each term, and wraps those in a bool filter. The bool filter itself is not cached as it can operate very quickly on the cached term filters.
 * @and@: Generates a term filter (which is cached) for each term, and wraps those in an and filter. The and filter itself is not cached.
+* @or@: Generates a term filter (which is cached) for each term, and wraps those in an or filter. The or filter itself is not cached. Generally, the @bool@ execution mode should be preferred.
 
-p. If you don't want the generated individual term queries to be cached, you can use: @bool_nocache@ or @and_nocache@ instead, but be aware that this will affect performance.
+p. If you don't want the generated individual term queries to be cached, you can use: @bool_nocache@, @and_nocache@ or @or_nocache@ instead, but be aware that this will affect performance.
 
 p. The "total" terms filter caching can still be explicitly controlled using the @_cache@ option. Note the default value for it depends on the execution value.
 
