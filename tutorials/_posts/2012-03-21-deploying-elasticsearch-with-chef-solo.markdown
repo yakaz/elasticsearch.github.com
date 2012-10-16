@@ -552,12 +552,12 @@ ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch-env.sh
 </pre>
 
 Where does the value `Xmx4982m`, or nearly 5 GB, come from? How does _Chef_ know this value? Well,
-[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/f5d7025/attributes/default.rb#L18-25)
+[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/dd89c4a/attributes/default.rb#L33-34)
 did the computation, based on the total available memory on the EC2 large instance type (7.5 GB):
 
 <pre class="prettyprint lang-ruby">
-max_mem = "#{(node.memory.total.to_i - (node.memory.total.to_i/3) ) / 1024}m"
-default.elasticsearch[:max_mem] = max_mem
+allocated_memory = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
+default.elasticsearch[:allocated_memory] = allocated_memory
 </pre>
 
 Thanks to the _Ohai_ tool, _Chef_ knows many of these [“automatic attributes”](http://wiki.opscode.com/display/chef/Automatic+Attributes)
