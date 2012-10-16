@@ -539,7 +539,9 @@ operation in one place, and to eradicate manual intervention.
 
 Notice how we added lots of configuration details in the “The Full Installation” chapter, uploaded the updated `node.json` file
 to the system, and then just _ran the same command_ as previously. _Chef_ discovered it needs to update the `elasticsearch.yml`
-file, did so, and restarted the ElasticSearch process to pick up the new configuration.
+file, did so, and restarted the ElasticSearch process to pick up the new configuration. This pattern of “update, sync,
+run, repeat” is very powerful, because it takes manual fiddling and “hacking” out of the process;
+once you got it right, it will be right for every future system provisioned from the same code.
 
 The same applies for changes in the cookbook: when the ElasticSearch cookbook is updated at _GitHub_, the `bootstrap` script
 will fetch the changes, and the next `chef-solo` run will reflect them on the system.
