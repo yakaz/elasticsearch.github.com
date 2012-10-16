@@ -22,7 +22,7 @@ nick: karmiq
   #content.tutorials .infobox code
     { background-color: transparent !important; }
   #content.tutorials .infobox pre
-    { background-color: transparent !important; margin: 0; padding: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; } 
+    { background-color: transparent !important; margin: 0; padding: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 </style>
 
 <p>ElasticSearch is trivially easy to install and run: you just a download and extract an archive and run a simple script.</p>
@@ -47,13 +47,13 @@ maintained and supported by [_Opscode_](http://www.opscode.com).
 This article can't be a full introduction into _Chef_. You'll find many learning materials on the
 [_Chef_ wiki](http://wiki.opscode.com/display/chef/Home), but for our purposes, we'll manage with some absolute minimum.
 
-The first important thing to understand is that there are actually two different “chefs”: 
+The first important thing to understand is that there are actually two different “chefs”:
 
 1. [_Chef Server_](http://wiki.opscode.com/display/chef/Architecture+Introduction), a central repository for all your infrastructure
    information and configuration data, which is used with the [`chef-client`](http://wiki.opscode.com/display/chef/Chef+Client) tool, and
 2. [_Chef Solo_](http://wiki.opscode.com/display/chef/Chef+Solo), which uses a standalone `chef-solo` tool, which does not need a _Chef_ server.
 
-In the context of this article, we'll be using _Chef Solo_, which means we can't use certain advanced features, 
+In the context of this article, we'll be using _Chef Solo_, which means we can't use certain advanced features,
 such as full text search of our server attributes, executing the same command over SSH on multiple servers at once,
 or using a web-based GUI, but we'll still be able to automate without breaking a sweat.
 
