@@ -255,7 +255,8 @@ echo '
 {
   "run_list": [ "recipe[elasticsearch]" ],
   "elasticsearch" : {
-    "cluster_name" : "elasticsearch_test_with_chef"
+    "cluster_name" : "elasticsearch_test_with_chef",
+    "mlockall"     : false
   }
 }
 ' > ./node.json
