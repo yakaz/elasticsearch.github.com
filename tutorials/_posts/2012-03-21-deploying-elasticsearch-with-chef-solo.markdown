@@ -394,6 +394,8 @@ Perfect. We can also check that ElasticSearch is running smoothly via _Monit_:
 ssh -t $SSH_OPTIONS $HOST "sudo monit reload &amp;&amp; sudo monit status -v"
 </pre>
 
+<small>(If the Monit daemon is not running, start it with `sudo service monit start` first. Notice the daemon has a startup delay of 2 minutes by default.)</small>
+
 You can see that the ElasticSearch process is `running` and that the connection to port 9200 is
 `online with all services`. But what about the <em>elasticsearch_cluster_health</em> check?
 It says `Connection failed`. In fact, that's expected:
