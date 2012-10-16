@@ -267,7 +267,7 @@ we want the ElasticSearch cookbook installed and that our cluster will be named 
 Let's copy all these files to the machine via secure copy:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 </pre>
 
 We can now begin to bootstrap the machine: install neccessary packages such as _make_, install _Rubygems_ and the `chef` gem,
@@ -347,7 +347,7 @@ accessible from the drop-down menu under your name in the top right corner.
 All right, let's upload the updated file to the machine:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 </pre>
 
 And let's run the provisioning script again:
@@ -425,7 +425,7 @@ HOST=&lt;REPLACE WITH THE PUBLIC DNS FOR THE NEW SERVER&gt;
 Now, let's run all the provisioning steps on the machine, making it the `elasticsearch-test-2` node:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-2 -j /tmp/node.json"
@@ -493,7 +493,7 @@ which should be now quite transparent to you:
 
 <pre class="prettyprint lang-bash">
 HOST=&lt;REPLACE WITH THE PUBLIC DNS VALUE&gt;
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
