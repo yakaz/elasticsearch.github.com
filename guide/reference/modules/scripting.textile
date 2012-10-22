@@ -57,8 +57,10 @@ p. The following data can be extracted from a field:
 |@doc['field_name'].lon@|The longitude of a geo point type.|
 |@doc['field_name'].lats@|The latitudes of a geo point type.|
 |@doc['field_name'].lons@|The longitudes of a geo point type.|
-|@doc['field_name'].distance(lat, lon)@|The distance (in miles) of this geo point field from the provided lat/lon.|
-|@doc['field_name'].distanceInKm(lat, lon)@|The distance (in km) of this geo point field from the provided lat/lon.|
+|@doc['field_name'].distance(lat, lon)@|The @plane@ distance (in miles) of this geo point field from the provided lat/lon.|
+|@doc['field_name'].arcDistance(lat, lon)@|The @arc@ distance (in miles) of this geo point field from the provided lat/lon.|
+|@doc['field_name'].distanceInKm(lat, lon)@|The @plane@ distance (in km) of this geo point field from the provided lat/lon.|
+|@doc['field_name'].arcDistanceInKm(lat, lon)@|The @arc@ distance (in km) of this geo point field from the provided lat/lon.|
 |@doc['field_name'].geohashDistance(geohash)@|The distance (in miles) of this geo point field from the provided geohash.|
 |@doc['field_name'].geohashDistanceInKm(geohash)@|The distance (in km) of this geo point field from the provided geohash.|
 
