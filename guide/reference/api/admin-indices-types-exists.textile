@@ -1,0 +1,14 @@
+---
+layout: guide
+title: Types Exists API
+cat: guide
+sidebar: reference_api
+---
+
+p. Used to check if a type/types exists in an index/indices (available since 0.20).
+
+<pre class="prettyprint">
+curl -XHEAD 'http://localhost:9200/twitter/tweet'
+</pre>
+
+p. The HTTP status code indicates if it exists or not. A @404@ means its not found, and @200@ means its there.

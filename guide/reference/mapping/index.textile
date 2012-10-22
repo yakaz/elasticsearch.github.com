@@ -21,4 +21,8 @@ h2. Mapping API
 
 p. To create a mapping, you will need the "Put Mapping API":/guide/reference/api/admin-indices-put-mapping.html, or you can add multiple mappings when you "create an index":/guide/reference/api/admin-indices-create-index.html.
 
+h2. Global Settings
+
+p. The @index.mapping.ignore_malformed@ global setting can be set on the index level to allow to ignore malformed content globally across all mapping types (malformed content example is trying to index a string value as a numeric type).
+
 

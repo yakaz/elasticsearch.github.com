@@ -51,6 +51,7 @@ p. There is also a simpler way of specifying the query via the @q@ parameter. Th
 p. This will yield the same result as the previous request.
 
 h1. All parameters
+* @fields@: Allows to control which fields to return as part of the document explained (support @_source@ for the full document). Note, this feature is available since 0.20.
 * @routing@: Controls the routing in the case the routing was used during indexing.
 * @parent@: Same effect as setting the routing parameter.
 * @preference@: Controls on which shard the explain is executed.
