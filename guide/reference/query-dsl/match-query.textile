@@ -25,7 +25,7 @@ p. The default @match@ query is of type @boolean@. It means that the text provid
 
 p. The @analyzer@ can be set to control which analyzer will perform the analysis process on the text. It default to the field explicit mapping definition, or the default search analyzer.
 
-p. @fuzziness@ can be set to a value (depending on the relevant type, for string types it should be a value between @0.0@ and @1.0@) to constructs fuzzy queries for each term analyzed. The @prefix_length@ and @max_expansions@ can be set in this case to control the fuzzy process.
+p. @fuzziness@ can be set to a value (depending on the relevant type, for string types it should be a value between @0.0@ and @1.0@) to constructs fuzzy queries for each term analyzed. The @prefix_length@ and @max_expansions@ can be set in this case to control the fuzzy process. If the fuzzy option is set the query will use @constant_score_rewrite@ as its "rewrite method":multi-term-rewrite.html the @rewrite@ parameter allows to control how the query will get rewritten.
 
 p. Here is an example when providing additional parameters (note the slight change in structure, @message@ is the field name):
 
