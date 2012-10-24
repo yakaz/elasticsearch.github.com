@@ -1,0 +1,29 @@
+---
+layout: blogpost
+title: 0.19.11 & 0.20.0.RC1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.11@ and @0.20.0.RC1@ are out. You can download it "here":/download. @0.19.11@ contains important bug fixes and is a recommended upgrade, @0.20.0.RC1@ is the first release candidate for 0.20 release, major features include:
+
+h2. Update API
+
+p. Improved update API, including the ability to provide a partial document to merge into the existing one, and the ability to "upsert" a document if the document doesn't exists.
+
+h2. geo_shape
+
+p. Support for a @geo_shape@ type allowing to index complex geo shape (using geo json as the format), and for a @geo_shape@ query/filter allowing to provide a geo shape and check if it intersects, contains, or disjoint with the indexed shape. It also allows to fetch the "query" shape from the index itself (without needing to provide it as part of the query, just the name of the index/type/id to use).
+
+h2. Warmers
+
+p. Provides the ability to register search requests that will be executed before new data becomes available for search, allowing to preload for example data that is needed for sorting, faceting, or parent/child support. This removes the load time from the "user" execution path, allowing to provide consistent search performance.
+
+p. Warmers have full API control for registering them, as well as deleting and getting them. They can also be provided as part of the index creation API, or as part of index templates.
+
+h2. Other
+
+p. A lot of work has going into building the basis for cross major version cluster compatibility, we are not there yet, but we are on our way. Bugs have been fixed (though most major ones have been backported to 0.19), and many other smaller features and enhancements have been implemented.
+
+p. Moving forward, the plan is to have the next version be 0.20.0 final. 0.21 will focus on upgrading to Lucene 4.0 (and exposing its new features), as well as internal refactoring to support future features such as grouping (specifically, optimized for distributed execution).
