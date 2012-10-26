@@ -13,3 +13,12 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Bug fixes:
+ * MapperParsingException on percolation with _size enabled ("#2352":http://github.com/elasticsearch/elasticsearch/issues/issue/2352)
+ * Aliases API times out when actions end up with no actual change to aliases ("#2345":http://github.com/elasticsearch/elasticsearch/issues/issue/2345)
+ * Highlighting fails for ConstantScoreQuery ("#2332":http://github.com/elasticsearch/elasticsearch/issues/issue/2332)
+ * Setting index_analyzer incorrectly sets analyzer ("#2329":http://github.com/elasticsearch/elasticsearch/issues/issue/2329)
+ * Mapping: Using _default_ mapping type with _source excludes (or array based config) can cause the array to grow indefinitely  ("#2317":http://github.com/elasticsearch/elasticsearch/issues/issue/2317)
+ * With cache turned off I'm getting the following error: nested: ClassCastException[org.apache.lucene.util.FixedBitSet cannot be cast to org.elasticsearch.common.lucene.docset.FixedBitDocSet] ("#2340":http://github.com/elasticsearch/elasticsearch/issues/issue/2340)
+
