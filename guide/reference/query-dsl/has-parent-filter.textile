@@ -14,7 +14,7 @@ h1. Filter example
 <pre class="prettyprint lang-js">
 {
     "has_parent" : {
-        "parent_type" : "blog"
+        "parent_type" : "blog",
         "query" : {
             "term" : {
                 "tag" : "something"
@@ -35,7 +35,7 @@ p. A @_scope@ can be defined on the filter allowing to run facets on the same sc
 {
     "has_parent" : {
         "_scope" : "my_scope",
-        "parent_type" : "blog"
+        "parent_type" : "blog",
         "query" : {
             "term" : {
                 "tag" : "something"

@@ -5,13 +5,12 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. The @has_parent@ query works the same as the "has_parent":has-parent-filter.html filter, by automatically wrapping the filter with a constant_score. It has the same syntax as the "has_parent":has-parent-filter.html filter. This query
-is experimental and is available from version @0.19.10@.
+p. The @has_parent@ query works the same as the "has_parent":has-parent-filter.html filter, by automatically wrapping the filter with a constant_score. It has the same syntax as the "has_parent":has-parent-filter.html filter. This query is experimental and is available from version @0.19.10@.
 
 <pre class="prettyprint lang-js">
 {
     "has_parent" : {
-        "parent_type" : "blog"
+        "parent_type" : "blog",
         "query" : {
             "term" : {
                 "tag" : "something"
@@ -28,8 +27,8 @@ p. A @_scope@ can be defined on the filter allowing to run facets on the same sc
 <pre class="prettyprint lang-js">
 {
     "has_parent" : {
-        "_scope" : "my_scope"
-        "parent_type" : "blog"
+        "_scope" : "my_scope",
+        "parent_type" : "blog",
         "query" : {
             "term" : {
                 "tag" : "something"

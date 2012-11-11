@@ -23,7 +23,7 @@ p. The required parameters are the @query@ and @type@ (the child type to execute
             "term" : {
                 "tag" : "something"
             }
-        }
+        },
         "score" : "max",
         "factor" : 5,
         "incremental_factor" : 2
