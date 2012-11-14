@@ -11,7 +11,7 @@ These instructions work on linux, but can be easily adapated for other operating
 
 h2. Install the latest version of ElasticSearch
 
-Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.com/download/ for the latest version of ElasticSearch. (Currently version 0.17.2)
+Check "http://www.elasticsearch.org/download/":http://www.elasticsearch.org/download/ for the latest version of ElasticSearch. (Currently version 0.17.2)
 
 Install it as follows:
 
