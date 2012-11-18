@@ -83,7 +83,7 @@ p. The above will disable storing the @_source@ on all @type1@ types, but for in
 
 h1. Config
 
-p. Index templates can also be placed within the config location (@path.config@) under the @templates@ directory (note, make sure to place them on all master eligible nodes). For example, a file called @template_1.json@ can be placed under @config/templates@ and it will be added if it matches an index. Here is a sample of a the mentioned file:
+p. Index templates can also be placed within the config location (@path.conf@) under the @templates@ directory (note, make sure to place them on all master eligible nodes). For example, a file called @template_1.json@ can be placed under @config/templates@ and it will be added if it matches an index. Here is a sample of a the mentioned file:
 
 <pre class="prettyprint">
 {

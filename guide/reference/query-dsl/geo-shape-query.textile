@@ -1,0 +1,36 @@
+---
+layout: guide
+title: GeoShape Query
+cat: guide
+sidebar: reference_query_dsl
+---
+
+p. Query version of the "geo_shape Filter":/guide/reference/query-dsl/geo-shape-filter.html.  
+
+p. The following is an example of the @geo_shape@ Query:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "geo_shape" : {
+            "location" : {
+                "shape" : {
+                    "type" : "envelope",
+                    "coordinates" : [[-45.0, 45.0], [45.0, -45.0]]
+                }
+                "relation" : "contains"
+            }
+        }
+    }
+}
+</pre>
+
+p. See the Filter's documentation for more information.
+
+h1. Relevancy and Score
+
+p. Currently ElasticSearch does not have any notion of geo shape relevancy, consequently the Query internally uses a @constant_score@ Query.
+
+h1. Query vs. Filter
+
+The @geo_shape@ Query and Filter use slightly different search algorithms internally.  The Query makes use of a @bool@ Query internally while the Filter uses a @terms@ Filter.  As such, due to internal logic of the @bool@ Query, there *may* be a slight performance improvement using the @geo_shape@ Query when querying areas with a high density of shapes.  However it is recommended that you experiment with your dataset to identify which approach performs better. 

@@ -25,4 +25,3 @@ index :
             protwods:
                 type: keyword_marker
                 keywords_path : analysis/protwords.txt
-</pre>

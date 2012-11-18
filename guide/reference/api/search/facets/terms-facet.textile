@@ -99,7 +99,7 @@ p. The terms API allows to define regex expression that will control which terms
         "tag" : {
             "terms" : {
                 "field" : "tag",
-                "regex" : "_regex expression here_"
+                "regex" : "_regex expression here_",
                 "regex_flags" : "DOTALL"
             }
         }
@@ -191,7 +191,7 @@ p. As an example, a search request (that is quite "heavy") can be executed and u
             "terms" : {
                 "script_field" : "_source.my_field",
                 "size" : 10
-            },
+            }
         }
     }
 }
@@ -209,7 +209,7 @@ p. Or:
             "terms" : {
                 "script_field" : "_fields['my_field']",
                 "size" : 10
-            },
+            }
         }
     }
 }

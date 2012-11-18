@@ -1,0 +1,10 @@
+---
+layout: video
+title: To infinity and beyond!
+cat: videos
+author: Clinton Gormley
+video_desc: Using elasticsearch as your only datastore, from YAPC::EU 2012
+---
+
+<iframe width="853" height="480" src="http://www.youtube.com/embed/Lrrp4ZmZB44?list=PLgICPKNKWlgeC7p0PM6VHJhsYWbvOXOny&amp;hl=en_GB" frameborder="0" allowfullscreen></iframe>
+<script async class="speakerdeck-embed" data-id="503370a6abb2600002036bb7" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script>

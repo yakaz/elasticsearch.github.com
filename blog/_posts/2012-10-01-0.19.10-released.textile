@@ -1,0 +1,26 @@
+---
+layout: blogpost
+title: 0.19.10 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.10@ is out. You can download it "here":/download. It contains several bug fixes but also new features, including:
+
+h2. has_parent filter/query
+
+p. @has_parent@ filter allows to execute a query on parent documents and result in matching children documents (the inverse of @has_child@). More info "here":https://github.com/elasticsearch/elasticsearch/issues/2254. Also, the performance of @has_child@ filter/query has been greatly improved.
+
+h2. Less overhead of filter cache
+
+p. The filter cache cleanup process is now more optimized, specially when large number of shards exists on a node.
+
+h2. Cluster Reroute API
+
+p. The "cluster reroute API":https://github.com/elasticsearch/elasticsearch/issues/2256 allows to explicitly send commands that would move, cancel, and allocate shards. Note, this is an experimental API and feedback is welcomed.
+
+h2. Bulk UDP
+
+p. The "Bulk UDP":https://github.com/elasticsearch/elasticsearch/issues/2201 interface allows to have elasticsearch listen using UDP for bulk formatted requests. While UDP comes with its own downsides, it can come in handy, specially when indexing non critical data (ala statsd). This interface is also experimental.
+

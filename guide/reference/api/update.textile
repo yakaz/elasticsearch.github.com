@@ -67,6 +67,30 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 }'
 </pre>
 
+p. The update API also support passing a partial document (since 0.20), which will me merged into the existing document (simple recursive merge, inner merging of objects, replacing core "keys/values" and arrays). For example:
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
+    "doc" : {
+        "name" : "new_name"
+    }
+}'
+</pre>
+
+p. Last, it also support @upsert@ (since 0.20), when if the document does not already exists, the content of the @upsert@ element will be used to index the fresh doc:
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
+    "script" : "ctx._source.counter += count",
+    "params" : {
+        "count" : 4
+    },
+    "upsert" : {
+        "count" : 1
+    }
+}'
+</pre>
+
 p. The update operation supports similar parameters as the index API, including:
 
 * @routing@: Sets the routing that will be used to route the document to the relevant shard.
@@ -76,6 +100,7 @@ p. The update operation supports similar parameters as the index API, including:
 * @consistency@: The write consistency of the index/delete operation.
 * @percolate@: Enables percolation and filters out which percolator queries will be executed.
 * @refresh@: Refresh the index immediately after the operation occurs, so that the updated document appears in search results immediately.
+* @fields@: return the relevant fields from the document updated (since 0.20). Support @_source@ to return the full updated source.
 
 p. And also support @retry_on_conflict@ which controls how many times to retry if there is a version conflict between getting the document and indexing / deleting it. Defaults to @0@.
 

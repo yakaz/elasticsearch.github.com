@@ -12,8 +12,10 @@ h1. Usage
 p. Full query example:
 
 <pre class="prettyprint">
-curl -XGET http://localhost:9200/twitter/tweet/1/_explain -d '{
+curl -XGET 'localhost:9200/twitter/tweet/1/_explain' -d '{
+      "query" : {
         "term" : { "message" : "search" }
+      }
 }'
 </pre>
 
@@ -43,12 +45,13 @@ p. This will yield the following result:
 p. There is also a simpler way of specifying the query via the @q@ parameter. The specified @q@ parameter value is then parsed as if the @query_string@ query was used. Example usage of the @q@ parameter in the explain api:
 
 <pre class="prettyprint">
-    curl -XGET http://localhost:9200/twitter/tweet/1/_explain?q=message:search
+    curl -XGET 'localhost:9200/twitter/tweet/1/_explain?q=message:search'
 </pre>
 
 p. This will yield the same result as the previous request.
 
 h1. All parameters
+* @fields@: Allows to control which fields to return as part of the document explained (support @_source@ for the full document). Note, this feature is available since 0.20.
 * @routing@: Controls the routing in the case the routing was used during indexing.
 * @parent@: Same effect as setting the routing parameter.
 * @preference@: Controls on which shard the explain is executed.

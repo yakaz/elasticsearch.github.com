@@ -72,6 +72,7 @@ h2. River Plugins
 * "LDAP River Plugin":https://github.com/tlrx/elasticsearch-river-ldap (by Tanguy Leroux)
 * "Dropbox River Plugin":http://www.pilato.fr/dropbox/ (by David Pilato)
 * "ActiveMQ River Plugin":https://github.com/domdorn/elasticsearch-river-activemq/ (by Dominik Dorn)
+* "Solr River Plugin":https://github.com/javanna/elasticsearch-river-solr/ (by Luca Cavanna)
 
 h2. Transport Plugins
 

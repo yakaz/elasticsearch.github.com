@@ -26,11 +26,17 @@ curl localhost:9200/_cluster/nodes/ra*:2
 curl localhost:9200/_cluster/nodes/ra*:2*
 </pre>
 
+h1. Multiple Indices
+
+p. Many APIs support execution across multiple indices, using simple @test1,test2,test3@ notation (or @_all@ for all indices). It also support wildcards, for example: @test*@, and the ability to "add" (@+@) and "remove" (@-@), for example: @+test*,-test3@.
+
+p. All multi indices API support the @ignore_indices@ option. Setting it to @missing@ will cause indices that do not exists to be ignored from the execution. By default, when its not set, the request will fail. Note, this feature is available since 0.20 vesrion.
+
 h1. Options
 
 h2. Pretty Results
 
-p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!).
+p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!. Another option is to set @format=yaml@ which will cause the result to be returned in the (sometimes) more readable yaml format.
 
 h2. Parameters
 

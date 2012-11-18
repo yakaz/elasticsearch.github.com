@@ -10,7 +10,7 @@ p. The @has_child@ query works the same as the "has_child":has-child-filter.html
 <pre class="prettyprint lang-js">
 {
     "has_child" : {
-        "type" : "blog_tag"
+        "type" : "blog_tag",
         "query" : {
             "term" : {
                 "tag" : "something"
@@ -28,7 +28,7 @@ p. A @_scope@ can be defined on the filter allowing to run facets on the same sc
 {
     "has_child" : {
         "_scope" : "my_scope",
-        "type" : "blog_tag"
+        "type" : "blog_tag",
         "query" : {
             "term" : {
                 "tag" : "something"

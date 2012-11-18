@@ -22,7 +22,7 @@ nick: karmiq
   #content.tutorials .infobox code
     { background-color: transparent !important; }
   #content.tutorials .infobox pre
-    { background-color: transparent !important; margin: 0; padding: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; } 
+    { background-color: transparent !important; margin: 0; padding: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 </style>
 
 <p>ElasticSearch is trivially easy to install and run: you just a download and extract an archive and run a simple script.</p>
@@ -47,13 +47,13 @@ maintained and supported by [_Opscode_](http://www.opscode.com).
 This article can't be a full introduction into _Chef_. You'll find many learning materials on the
 [_Chef_ wiki](http://wiki.opscode.com/display/chef/Home), but for our purposes, we'll manage with some absolute minimum.
 
-The first important thing to understand is that there are actually two different “chefs”: 
+The first important thing to understand is that there are actually two different “chefs”:
 
 1. [_Chef Server_](http://wiki.opscode.com/display/chef/Architecture+Introduction), a central repository for all your infrastructure
    information and configuration data, which is used with the [`chef-client`](http://wiki.opscode.com/display/chef/Chef+Client) tool, and
 2. [_Chef Solo_](http://wiki.opscode.com/display/chef/Chef+Solo), which uses a standalone `chef-solo` tool, which does not need a _Chef_ server.
 
-In the context of this article, we'll be using _Chef Solo_, which means we can't use certain advanced features, 
+In the context of this article, we'll be using _Chef Solo_, which means we can't use certain advanced features,
 such as full text search of our server attributes, executing the same command over SSH on multiple servers at once,
 or using a web-based GUI, but we'll still be able to automate without breaking a sweat.
 
@@ -255,7 +255,8 @@ echo '
 {
   "run_list": [ "recipe[elasticsearch]" ],
   "elasticsearch" : {
-    "cluster_name" : "elasticsearch_test_with_chef"
+    "cluster_name" : "elasticsearch_test_with_chef",
+    "mlockall"     : false
   }
 }
 ' > ./node.json
@@ -267,7 +268,7 @@ we want the ElasticSearch cookbook installed and that our cluster will be named 
 Let's copy all these files to the machine via secure copy:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 </pre>
 
 We can now begin to bootstrap the machine: install neccessary packages such as _make_, install _Rubygems_ and the `chef` gem,
@@ -347,7 +348,7 @@ accessible from the drop-down menu under your name in the top right corner.
 All right, let's upload the updated file to the machine:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 </pre>
 
 And let's run the provisioning script again:
@@ -393,6 +394,8 @@ Perfect. We can also check that ElasticSearch is running smoothly via _Monit_:
 ssh -t $SSH_OPTIONS $HOST "sudo monit reload &amp;&amp; sudo monit status -v"
 </pre>
 
+<small>(If the Monit daemon is not running, start it with `sudo service monit start` first. Notice the daemon has a startup delay of 2 minutes by default.)</small>
+
 You can see that the ElasticSearch process is `running` and that the connection to port 9200 is
 `online with all services`. But what about the <em>elasticsearch_cluster_health</em> check?
 It says `Connection failed`. In fact, that's expected:
@@ -425,7 +428,7 @@ HOST=&lt;REPLACE WITH THE PUBLIC DNS FOR THE NEW SERVER&gt;
 Now, let's run all the provisioning steps on the machine, making it the `elasticsearch-test-2` node:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-2 -j /tmp/node.json"
@@ -493,7 +496,7 @@ which should be now quite transparent to you:
 
 <pre class="prettyprint lang-bash">
 HOST=&lt;REPLACE WITH THE PUBLIC DNS VALUE&gt;
-scp $SSH_OPTIONS ./bootstrap.sh ./patches.sh ./node.json ./solo.rb $HOST:/tmp
+scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
@@ -536,7 +539,9 @@ operation in one place, and to eradicate manual intervention.
 
 Notice how we added lots of configuration details in the “The Full Installation” chapter, uploaded the updated `node.json` file
 to the system, and then just _ran the same command_ as previously. _Chef_ discovered it needs to update the `elasticsearch.yml`
-file, did so, and restarted the ElasticSearch process to pick up the new configuration.
+file, did so, and restarted the ElasticSearch process to pick up the new configuration. This pattern of “update, sync,
+run, repeat” is very powerful, because it takes manual fiddling and “hacking” out of the process;
+once you got it right, it will be right for every future system provisioned from the same code.
 
 The same applies for changes in the cookbook: when the ElasticSearch cookbook is updated at _GitHub_, the `bootstrap` script
 will fetch the changes, and the next `chef-solo` run will reflect them on the system.
@@ -549,12 +554,12 @@ ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch-env.sh
 </pre>
 
 Where does the value `Xmx4982m`, or nearly 5 GB, come from? How does _Chef_ know this value? Well,
-[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/f5d7025/attributes/default.rb#L18-25)
+[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/dd89c4a/attributes/default.rb#L33-34)
 did the computation, based on the total available memory on the EC2 large instance type (7.5 GB):
 
 <pre class="prettyprint lang-ruby">
-max_mem = "#{(node.memory.total.to_i - (node.memory.total.to_i/3) ) / 1024}m"
-default.elasticsearch[:max_mem] = max_mem
+allocated_memory = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
+default.elasticsearch[:allocated_memory] = allocated_memory
 </pre>
 
 Thanks to the _Ohai_ tool, _Chef_ knows many of these [“automatic attributes”](http://wiki.opscode.com/display/chef/Automatic+Attributes)

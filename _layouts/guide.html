@@ -17,6 +17,7 @@ layout: default
             <li><a href="/guide/reference/api/multi-search.html">Multi Search</a></li>
             <li><a href="/guide/reference/api/percolate.html">Percolate</a></li>
             <li><a href="/guide/reference/api/bulk.html">Bulk</a></li>
+            <li><a href="/guide/reference/api/bulk-udp.html">Bulk UDP</a></li>
             <li><a href="/guide/reference/api/count.html">Count</a></li>
             <li><a href="/guide/reference/api/delete-by-query.html">Delete By Query</a></li>
             <li><a href="/guide/reference/api/more-like-this.html">More Like This</a></li>
@@ -41,11 +42,13 @@ layout: default
             <li><a href="/guide/reference/api/admin-indices-gateway-snapshot.html">Snapshot</a></li>
             <li><a href="/guide/reference/api/admin-indices-update-settings.html">Update Settings</a></li>
             <li><a href="/guide/reference/api/admin-indices-templates.html">Templates</a></li>
+            <li><a href="/guide/reference/api/admin-indices-warmers.html">Warmers</a></li>
             <li><a href="/guide/reference/api/admin-indices-stats.html">Stats</a></li>
             <li><a href="/guide/reference/api/admin-indices-status.html">Status</a></li>
             <li><a href="/guide/reference/api/admin-indices-segments.html">Segments</a></li>
             <li><a href="/guide/reference/api/admin-indices-clearcache.html">Clear Cache</a></li>
             <li><a href="/guide/reference/api/admin-indices-indices-exists.html">Indices Exists</a></li>
+            <li><a href="/guide/reference/api/admin-indices-types-exists.html">Types Exists</a></li>
         </ul>
 
         <h3>Cluster</h3>
@@ -57,6 +60,7 @@ layout: default
             <li><a href="/guide/reference/api/admin-cluster-nodes-stats.html">Nodes Stats</a></li>
             <li><a href="/guide/reference/api/admin-cluster-nodes-shutdown.html">Nodes Shutdown</a></li>
             <li><a href="/guide/reference/api/admin-cluster-nodes-hot-threads.html">Nodes Hot Threads</a></li>
+            <li><a href="/guide/reference/api/admin-cluster-reroute.html">Cluster reroute</a></li>
         </ul>
     {% endif %}
 
@@ -253,6 +257,7 @@ layout: default
         <li><a href="/guide/reference/mapping/multi-field-type.html">multi_field</a></li>
         <li><a href="/guide/reference/mapping/ip-type.html">ip</a></li>
         <li><a href="/guide/reference/mapping/geo-point-type.html">geo_point</a></li>
+	<li><a href="/guide/reference/mapping/geo-shape-type.html">geo_shape</a></li>
         <li><a href="/guide/reference/mapping/attachment-type.html">attachment</a></li>
     </ul>
 
@@ -327,6 +332,7 @@ layout: default
         <li><a href="/guide/reference/query-dsl/flt-field-query.html">flt_field</a></li>
         <li><a href="/guide/reference/query-dsl/fuzzy-query.html">fuzzy</a></li>
         <li><a href="/guide/reference/query-dsl/has-child-query.html">has_child</a></li>
+        <li><a href="/guide/reference/query-dsl/has-parent-query.html">has_parent</a></li>
         <li><a href="/guide/reference/query-dsl/match-all-query.html">match_all</a></li>
         <li><a href="/guide/reference/query-dsl/mlt-query.html">mlt</a></li>
         <li><a href="/guide/reference/query-dsl/mlt-field-query.html">mlt_field</a></li>
@@ -346,6 +352,7 @@ layout: default
         <li><a href="/guide/reference/query-dsl/custom-filters-score-query.html">custom_filters_score</a></li>
         <li><a href="/guide/reference/query-dsl/indices-query.html">indices</a></li>
         <li><a href="/guide/reference/query-dsl/text-query.html">text</a></li>
+	<li><a href="/guide/reference/query-dsl/geo-shape-query.html">geo_shape</a></li>
     </ul>
 
     <h3>Filters</h3>
@@ -360,7 +367,9 @@ layout: default
         <li><a href="/guide/reference/query-dsl/geo-distance-filter.html">geo_distance</a></li>
         <li><a href="/guide/reference/query-dsl/geo-distance-range-filter.html">geo_distance_range</a></li>
         <li><a href="/guide/reference/query-dsl/geo-polygon-filter.html">geo_polygon</a></li>
+	<li><a href="/guide/reference/query-dsl/geo-shape-filter.html">geo_shape</a></li>
         <li><a href="/guide/reference/query-dsl/has-child-filter.html">has_child</a></li>
+        <li><a href="/guide/reference/query-dsl/has-parent-filter.html">has_parent</a></li>
         <li><a href="/guide/reference/query-dsl/match-all-filter.html">match_all</a></li>
         <li><a href="/guide/reference/query-dsl/missing-filter.html">missing</a></li>
         <li><a href="/guide/reference/query-dsl/not-filter.html">not</a></li>
