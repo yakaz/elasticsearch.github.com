@@ -1,0 +1,14 @@
+---
+layout: video
+title: Elasticsearch - Le moteur de recherche élastique pour tous
+cat: videos
+author: David Pilato
+video_desc: Elasticsearch (french content), from OSDCFR 2012
+---
+
+
+<iframe frameborder="0" width="560" height="315" src="http://www.dailymotion.com/embed/video/xui3nz?theme=spring&foreground=%23C2E165&highlight=%23809443&background=%23232912&logo=0&animatedTitle=Elasticsearch+from+OSDCFR+2012%7CElasticsearch+France%7CElasticsearch+-+le+moteur+de+recherche+%C3%A9lastique"></iframe><br /><a href="http://www.dailymotion.com/video/xui3nz_osdc-fr-2012-elasticsearch-le-moteur-de-recherche-elastique-pour-tous_tech" target="_blank">[OSDC.fr 2012] Elasticsearch : le moteur de...</a> <i>par <a href="http://www.dailymotion.com/osdcfr" target="_blank">osdcfr</a></i>
+
+
+
+<iframe src="http://fr.slideshare.net/slideshow/embed_code/14738541" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://fr.slideshare.net/dadoonet/elasticsearch-osdc-france-2012" title="Elasticsearch - OSDC France 2012" target="_blank">Elasticsearch - OSDC France 2012</a> </strong> from <strong><a href="http://fr.slideshare.net/dadoonet" target="_blank">David Pilato</a></strong> </div>
