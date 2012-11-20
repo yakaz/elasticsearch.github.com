@@ -17,7 +17,7 @@ title_in_header: false
                 You know, for Search
             </h2>
             <p>
-                So, we build a web site or an application and want to
+                So we build a web site or an application and want to
                 add search to it, and then it hits us: <b>getting
                 search working is hard</b>. We want our search
                 solution to be <b>fast</b>, we want a <b>painless
@@ -65,19 +65,19 @@ title_in_header: false
             </h2>
 
             <p>
-                Search Engines data model roots lies with schema free
-                and document oriented databases, and as shown by the
+                Search Engines' data model roots lie with schema-free
+                and document-oriented databases, and as shown by the
                 <strong>#nosql</strong> movement, this model proves
-                to be very effective for building applications.
+                very effective for building applications.
             </p>
             <p>
-                elasticsearch model is <a href=
+                elasticsearch's model is <a href=
                 "http://json.org">JSON</a>, which is
                 the de-facto standard for representing data these
-                days. More over, with JSON, it is simple to provide
+                days. Moreover, with JSON it is simple to provide
                 semi-structured data with complex entities as well as
-                being programming language natural with first level
-                parsers support.
+                being programming language natural with first-level
+                parser support.
             </p>
             <pre class="prettyprint lang-bsh">
 
@@ -108,7 +108,7 @@ $ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '{
             </h2>
 
             <p>
-                elasticsearch is schema less, just toss it a typed
+                elasticsearch is schema-less. Just toss it a typed
                 JSON document and it will automatically index it.
                 Types such as numbers and dates are automatically
                 detected and treated accordingly.
@@ -175,21 +175,21 @@ $ curl -XGET http://localhost:9200/twitter/tweet/2
                 Search
             </h2>
             <p>
-                It's what it all boils down to at the end, being
+                It's what it all boils down to at the end: being
                 able to search. And search could never be
                 simpler. Issuing queries is a simple call hiding
-                away the sophisticated distributed based search
+                away the sophisticated distributed-based search
                 support elasticsearch provides. Search can be
                 executed either using a simple, <a href=
                 "http://lucene.apache.org/java/3_0_0/queryparsersyntax.html">
-                Lucene</a> based query string or using an
-                extensive <b>JSON based search query DSL</b>.
+                Lucene</a>-based query string or using an
+                extensive <b>JSON-based search query DSL</b>.
             </p>
             <p>
 
-                Search though does not end with just queries,
-                <b>facets</b>, <b>highlighting</b>, <b>custom
-                scripts</b>, and more are all there to be used
+                Search, though, does not end with just queries.
+                <b>Facets</b>, <b>highlighting</b>, <b>custom
+                scripts</b> and more are all there to be used
                 when needed.
             </p>
             <pre class="prettyprint lang-bsh">
@@ -232,15 +232,15 @@ $ curl -XGET http://localhost:9200/twitter/_search?pretty=true -d '{
                 A single index is already a major step forward,
                 but what happens when we need to have more than
                 one index. There are many cases for using
-                multiple indices, an example can be storing an
-                index per week of log files indexing, or even
+                multiple indices. An example is storing an
+                index per week of log files, or even
                 having different indices with different settings
                 (one with memory storage, and one with file
                 system storage).
             </p>
             <p>
 
-                When we do that though, we would like to be able
+                When we do that, though, we would like to be able
                 to <b>search across multiple indices</b> (among
                 other operations).
             </p>
@@ -276,7 +276,7 @@ $ curl -XGET http://localhost:9200/_all/tweet/_search?q=tag:warcraft
                 Settings
             </h2>
             <p>
-                The ability to configure is a double edged
+                The ability to configure is a double-edged
                 sword. We want the ability to start working
                 with the system as fast as possible, with no
                 configuration, and still be able to control
@@ -286,9 +286,8 @@ $ curl -XGET http://localhost:9200/_all/tweet/_search?q=tag:warcraft
             <p>
                 <strong>elasticsearch</strong> is built with
                 this notion in mind. Almost everything is
-                configurable and pluggable. More over,
+                configurable and pluggable. Moreover,
                 <b>each index can have its own settings</b>
-
                 which can override the master settings. For
                 example, one index can be configured with
                 memory storage and have 10 shards with 1
@@ -321,7 +320,7 @@ $ curl -XPUT http://localhost:9200/elasticsearch/ -d '{
                 its distributed nature. Indices are broken
                 down into shards, each shard with 0 or more
                 replicas. Each data node within the cluster
-                hosts one or more shards, and acts as a
+                hosts one or more shards and acts as a
                 coordinator to delegate operations to the
                 correct shard(s). Rebalancing and routing are
                 done <b>automatically and behind the
