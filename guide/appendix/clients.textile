@@ -42,6 +42,7 @@ h2. Integrations
 * "Jetty":https://github.com/sonian/elasticsearch-jetty: Jetty HTTP Transport
 * "Spring Elasticsearch":https://github.com/dadoonet/spring-elasticsearch: Spring Factory for Elasticsearch
 * "elasticsearch-test":https://github.com/tlrx/elasticsearch-test: Elasticsearch Java annotations for unit testing with "JUnit":http://www.junit.org/
+* "Wp-ElasticSearch":http://searchbox-io.github.com/wp-elasticsearch/: ElasticSearch WordPress Plugin   
 
 h2. Misc
 
