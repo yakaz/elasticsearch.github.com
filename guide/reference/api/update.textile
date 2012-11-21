@@ -86,7 +86,7 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
         "count" : 4
     },
     "upsert" : {
-        "count" : 1
+        "counter" : 1
     }
 }'
 </pre>
