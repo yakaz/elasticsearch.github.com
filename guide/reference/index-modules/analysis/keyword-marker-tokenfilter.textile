@@ -24,8 +24,4 @@ index :
                 filter : [lowercase, protwods, porterStem]    
             protwods:
                 type: keyword_marker
-                rules_path : analysis/protwords.txt
-</pre>
-
-
-
+                keywords_path : analysis/protwords.txt
