@@ -53,3 +53,5 @@ p. The following is an example of getting the cluster health at the @shards@ lev
 <pre class='prettyprint'>
 $ curl -XGET 'http://localhost:9200/_cluster/health/twitter?level=shards'
 </pre>
+
+p. *071e4c7c*
