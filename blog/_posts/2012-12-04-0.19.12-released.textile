@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.19.12 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.19.12@ is out. You can download it "here":/download. It contains several bug fixes (upgrade when possible...) and a new feature for indexing slow log (similar to search slow log feature).
+
+p. This version also deprecates the snappy compression option (see more "here":https://github.com/elasticsearch/elasticsearch/issues/2459), and the Shared Gateway (more info "here":https://github.com/elasticsearch/elasticsearch/issues/2458).
