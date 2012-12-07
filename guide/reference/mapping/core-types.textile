@@ -76,6 +76,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
 |@ignore_above@|Set to a size where above the mentioned size the string will be ignored. Handly for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
+|@position_offset_gap@|Position increment gap between field instances with the same field name. Defaults to 0.|
 
 p. The @string@ type also support custom indexing parameters associated with the indexed value. For example:
 
