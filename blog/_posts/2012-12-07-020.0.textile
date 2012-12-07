@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.20.0 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.20.0@ is out. This is the GA release of the 0.20.x branch. You can download it "here":/download. The release mainly include bug fixes over the previous @0.20.0.RC1@ release.
+
+p. This version also deprecates the snappy compression option (see more "here":https://github.com/elasticsearch/elasticsearch/issues/2459), and the Shared Gateway (more info "here":https://github.com/elasticsearch/elasticsearch/issues/2458).
