@@ -20,7 +20,7 @@ h1. Download some data
 Let's download some PDF document:
 
 <pre class="prettyprint">
-curl -C - -O http://www.intersil.com/data/fn/fn6742.pdf
+curl -L -O http://www.intersil.com/data/fn/fn6742.pdf
 </pre>
 
 Attachments plugin can parse and index documents in many formats. Check Tika web page for list of supported formats.
