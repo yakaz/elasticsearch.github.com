@@ -408,6 +408,9 @@ table td {
   border-bottom: none;
 }
 
+#news.news-ticker ul {
+  margin-left: 5em;
+}
 #training-ticker.news-ticker {
   width: 925px;
 }
