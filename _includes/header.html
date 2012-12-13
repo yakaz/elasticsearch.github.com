@@ -9,3 +9,10 @@
     {% endif %}
 </h1>
 {% include top_left_menu.html %}
+{% if page.cat == 'guide' or page.cat == 'download' %}
+<div style="position:relative; top: -1em; left:0; margin-bottom: 3em">
+  <div id="training-ticker" class="news-ticker" style="position: absolute; top: 0; left: 0">
+    <h3><a href="#" title="Show all...">Training</a></h3>
+  </div>
+</div>
+{% endif %}
