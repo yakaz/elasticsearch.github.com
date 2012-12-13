@@ -313,7 +313,7 @@ table td {
   margin: 0 15px 0 5px;
 }
 
-#home #news {
+.news-ticker {
   margin: 1em 0 1em 0;
   background-color: rgba(183, 214, 120, 0.95);
   -moz-border-radius: 3px;
@@ -328,20 +328,20 @@ table td {
   overflow: hidden;
 }
 
-#home #news:after {
+.news-ticker:after {
   display: table;
   content: "";
   clear: both;
 }
 
-#home #news h3 {
+.news-ticker h3 {
   font-family: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 0.95em;
   float: left;
   padding: 0; margin: 0; margin-right: 0.5em;
 }
 
-#home #news h3 a {
+.news-ticker h3 a {
   color: rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.1em 0.5em 0.1em 0.5em;
@@ -349,21 +349,21 @@ table td {
   display: inline-block;
 }
 
-#home #news h3 a:hover {
+.news-ticker h3 a:hover {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-#home #news .loading {
+.news-ticker .loading {
   color: rgba(0,0,0,0.7);
   font-size: 80%;
   padding-top: 0.35em;
 }
 
-#home #news a:hover {
+.news-ticker a:hover {
   pointer: cursor !important;
 }
 
-#home #news ul {
+.news-ticker ul {
   font-size: 0.95em;
   list-style-type: none;
   padding: 0; margin: 0;
@@ -373,7 +373,7 @@ table td {
   position: relative;
 }
 
-#home #news li {
+.news-ticker li {
   padding: 0; margin: 0.15em 0 0 0;
   height: 100%;
   display: inline-block;
@@ -381,30 +381,30 @@ table td {
   top: 0; left: 0;
 }
 
-#home #news li a {
+.news-ticker li a {
   color: #000;
   text-decoration: underline;
 }
 
-#home #news li .date {
+.news-ticker li .date {
   color: rgba(0,0,0,0.7);
   font-size: 80%;
   bottom: 0.05em;
   position: relative;
 }
 
-#home #news.expanded {
+.news-ticker.expanded {
   overflow: visible;
   height: auto;
 }
 
-#home #news.expanded li {
+.news-ticker.expanded li {
   position: relative;
   display: block !important;
   opacity: 1;
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-#home #news.expanded li:last-child {
+.news-ticker.expanded li:last-child {
   border-bottom: none;
 }
 

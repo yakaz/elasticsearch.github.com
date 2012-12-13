@@ -65,10 +65,7 @@ jQuery.fn.ticker.cycle = function(data) {
   this.container.__initialize()
 };
 
-
 jQuery.fn.ticker.defaults = {
   interval: 3000,
   speed:    500
 };
-
-jQuery(document).ready( function() { $("#news").ticker( { url: 'http://elasticsearch.com/news.json', interval: 5000 } ) } );

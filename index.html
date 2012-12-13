@@ -4,10 +4,9 @@ layout: default
 title_in_header: false
 ---
 <div id="home">
-    <div id="news">
+    <div id="news" class="news-ticker">
       <h3><a href="#" title="Show all...">News</a></h3>
     </div>
-    <script src="/scripts/ticker.js"></script>
 
     <div class="img_left">
         <img src="/images/set3/bonsai2.png" height="120px" alt="" />
@@ -368,5 +367,10 @@ $ curl -XPUT http://localhost:9200/elasticsearch/ -d '{
     </div>
 
     <div style="font-size: 12px;">Apache Lucene and the logo is a trademark of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+
+
+    <script>
+        jQuery(document).ready( function() { $("#news").ticker( { url: 'http://elasticsearch.com/news.json', interval: 5000 } ) } );
+    </script>
 
 </div>
