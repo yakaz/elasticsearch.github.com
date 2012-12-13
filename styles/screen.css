@@ -408,6 +408,10 @@ table td {
   border-bottom: none;
 }
 
+.news-ticker a {
+  text-decoration: none !important;
+}
+
 #news.news-ticker ul {
   margin-left: 5em;
 }
