@@ -3,9 +3,9 @@ layout: download
 cat: download
 version: 0.20.0
 title: 0.20.0
-download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.20.0.zip
-download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.20.0.tar.gz
-download_deb_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.20.0.deb
+download_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.0.zip
+download_nix_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.0.tar.gz
+download_deb_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.0.deb
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.20.0
 release_notes: true
 ---

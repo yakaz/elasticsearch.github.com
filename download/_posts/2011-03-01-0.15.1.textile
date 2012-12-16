@@ -3,8 +3,8 @@ layout: download
 cat: download
 version: 0.15.1
 title: 0.15.1
-download_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.1.zip
-download_nix_url: https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.15.1.tar.gz
+download_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.15.1.zip
+download_nix_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.15.1.tar.gz
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.15.1
 release_notes: true
 ---
