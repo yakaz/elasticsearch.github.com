@@ -10,5 +10,5 @@ p. Elasticsearch has been using Github's static downloads feature as a means of 
 
 p. All of the links to elasticsearch core have been updated to the new site through @download.elasticsearch.org@.  We're still migrating our plugins, so you'll see those change in the next day or two.  We are still working on a solution for third-party plugins.
 
-p.  By the end of the week the old assets will be removed, so if you're using any @github.com/downloads/elasticsearch/*@ links in your provisioning system please update them to the commensurate @download.elasticsearch.org/elasticsearch/*@.
+p.  The old assets will be removed tomorrow, so if you're using any @github.com/downloads/elasticsearch/*@ links in your provisioning system please update them to the commensurate @download.elasticsearch.org/elasticsearch/*@.
 
