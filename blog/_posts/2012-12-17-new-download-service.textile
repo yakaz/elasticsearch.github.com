@@ -6,20 +6,9 @@ author: Drew Raines
 nick: drewr
 ---
 
-p. Elasticsearch has been using Github's static downloads feature as a
-means of distributing releases for both the core and its plugins for a
-few years now.  Unfortunately, last week, Github stopped supporting
-downloads ("story":https://github.com/blog/1302-goodbye-uploads).
-We've been working the past few days to replace this functionality
-internally.
+p. Elasticsearch has been using Github's static downloads feature as a means of distributing releases for both the core and its plugins for a few years now.  Unfortunately, last week, Github stopped supporting downloads ("story":https://github.com/blog/1302-goodbye-uploads).  We've been working the past few days to replace this functionality internally.
 
-p. All of the links to elasticsearch core have been updated to the new
-site through @download.elasticsearch.org@.  We're still working on
-migrating our plugins, so you'll see those change in the next day or
-two.  We are still working on a solution for third-party plugins.
+p. All of the links to elasticsearch core have been updated to the new site through @download.elasticsearch.org@.  We're still migrating our plugins, so you'll see those change in the next day or two.  We are still working on a solution for third-party plugins.
 
-p.  By the end of the week the old assets will be removed, so if
-you're using any @github.com/downloads/elasticsearch/*@ link in your
-provisioning system please update it to the commensurate
-@download.elasticsearch.org/elasticsearch/*@.
+p.  By the end of the week the old assets will be removed, so if you're using any @github.com/downloads/elasticsearch/*@ links in your provisioning system please update them to the commensurate @download.elasticsearch.org/elasticsearch/*@.
 
