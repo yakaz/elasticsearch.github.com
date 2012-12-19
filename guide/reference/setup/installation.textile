@@ -17,7 +17,7 @@ Under *nix system, the command will start the process in the background. To run 
 $ bin/elasticsearch -f
 </pre>
 
-ElasticSearch is built using Java, and requires "Java 6":http://java.sun.com/javase/downloads/index.jsp in order to run. The version of Java that will be used can be set by setting the @JAVA_HOME@ environment variable.
+ElasticSearch is built using Java, and requires "Java 7":http://java.sun.com/javase/downloads/index.jsp in order to run. The version of Java that will be used can be set by setting the @JAVA_HOME@ environment variable.
 
 h1. Environment Variables
 
@@ -49,7 +49,7 @@ p. In order to test how many open files the process can open, start it with @-De
 
 h2. Memory Settings
 
-p.  There is an option to use "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html to try and lock the process address space so it won't be swapped. For this to work, the @bootstrap.mlockall@ should be set to @true@ and it is recommended to set both the min and max memory allocation to be the same. 
+p.  There is an option to use "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html to try and lock the process address space so it won't be swapped. For this to work, the @bootstrap.mlockall@ should be set to @true@ and it is recommended to set both the min and max memory allocation to be the same.
 
 p. In order to see if this works or not, set the @common.jna@ logging to DEBUG level. A solution to "Unknown mlockall error 0" can be to set @ulimit -l unlimited@.
 
@@ -70,6 +70,6 @@ p. ElasticSearch can be run as a service using the @elasticsearch@ script locate
 
 p. The service uses Java Service Wrapper which is a small native wrapper around the Java virtual machine which also monitors it.
 
-p. Note, passing JVM level configuration (such as -X parameters) should be set within the @elasticsearch.conf@ file. 
+p. Note, passing JVM level configuration (such as -X parameters) should be set within the @elasticsearch.conf@ file.
 
 p. The @ES_MIN_MEM@ and @ES_MAX_MEM@ environment variables to set the minimum and maximum memory allocation for the JVM (set in mega bytes). It defaults to @256@ and @1024@ respectively.
