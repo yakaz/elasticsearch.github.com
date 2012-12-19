@@ -17,7 +17,7 @@ Under *nix system, the command will start the process in the background. To run 
 $ bin/elasticsearch -f
 </pre>
 
-ElasticSearch is built using Java, and requires "Java 7":http://java.sun.com/javase/downloads/index.jsp in order to run. The version of Java that will be used can be set by setting the @JAVA_HOME@ environment variable.
+ElasticSearch is built using Java, and requires at least "Java 6":http://java.sun.com/javase/downloads/index.jsp in order to run. The version of Java that will be used can be set by setting the @JAVA_HOME@ environment variable.
 
 h1. Environment Variables
 

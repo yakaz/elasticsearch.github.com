@@ -12,12 +12,17 @@ These are alternative instructions for Debian Lenny, using system-directories.
 Note: Elasticsearch will run as "root"
 
 
-h1. Install Java 7
+h1. Install Java 6 or 7
+
+<pre class="prettyprint">
+apt-get install openjdk-6-jre-headless
+</pre>
+
+or
 
 <pre class="prettyprint">
 apt-get install openjdk-7-jre-headless
 </pre>
-
 
 h1. Install the latest version of ElasticSearch
 
