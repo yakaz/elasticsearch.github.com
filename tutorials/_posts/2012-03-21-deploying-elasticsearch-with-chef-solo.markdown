@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Deploying ElasticSearch with Chef Solo
+title: Deploying Elasticsearch with Chef Solo
 cat: tutorials
 author: Karel Minarik
 nick: karmiq
@@ -23,12 +23,22 @@ nick: karmiq
     { background-color: transparent !important; }
   #content.tutorials .infobox pre
     { background-color: transparent !important; margin: 0; padding: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+  #content.tutorials hr
+    { border-width: 0;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2); }
+  #content.tutorials small pre
+    { background-color: #c0c8af; }
 </style>
 
-<p>ElasticSearch is trivially easy to install and run: you just a download and extract an archive and run a simple script.</p>
+<p>Elasticsearch is trivially easy to install and run: you just a download and extract an archive and run a simple script.</p>
+
+<div class="infobox" style="background-color: #454647; color: #e3e3e3 !important;">
+  <p style="margin-bottom: 0px">This tutorial has been revised and thoroughly updated in December 2012.</p>
+</div>
 
 It's a long way from there to production, though. You have to customize the configuration. You want to install
-some plugins. You'd like to ensure ElasticSearch starts on system boot. You want to monitor that the Java process
+some plugins. You'd like to ensure Elasticsearch starts on system boot. You want to monitor that the Java process
 is running and does not eat too much resources... and many other things.
 
 And then you have to repeat all the steps for each and every node in your cluster.
@@ -60,7 +70,7 @@ or using a web-based GUI, but we'll still be able to automate without breaking a
 The essential concepts of _Chef_ are the same between the “server” and “solo” variants.
 
 The first of these is a **node**. A [_node_](http://wiki.opscode.com/display/chef/Nodes) is simply an abstract configuration for a _server_,
-reachable by SSH. You can picture _node_ as a document containing some _attributes_, such as a name, the port number for an Apache server
+reachable by SSH. You can picture _node_ as a document containing some _attributes_, such as a name, the port number for an Apache web server
 or the list of software we want to have installed. A “physical representation” of the node is the virtual or physical server itself.
 (In _Chef Server_, things are a bit more complicated, but that doesn't concern us right now.)
 
@@ -75,7 +85,7 @@ default node properties, creating directories, creating configuration files with
 downloading files from the internet, or executing arbitrary scripts and commands. Cookbooks hold together recipes, template files,
 _Chef_ extensions, etc.
 
-Have a look at the [**ElasticSearch cookbook**](https://github.com/karmi/cookbook-elasticsearch) we'll be using in this tutorial,
+Have a look at the [**Elasticsearch cookbook**](https://github.com/karmi/cookbook-elasticsearch) we'll be using in this tutorial,
 to get a sense of how cookbooks are organized and how do they work. The
 [recipe](https://github.com/karmi/cookbook-elasticsearch/blob/master/recipes/default.rb) is written in a simple Ruby-based domain
 specific language, and should be pretty understandable. Check out also the
@@ -83,44 +93,46 @@ specific language, and should be pretty understandable. Check out also the
 
 A recipe can also load additional data from **data bags**. [_Data bags_](http://wiki.opscode.com/display/chef/Data+Bags) are simple
 JSON documents, and can contain arbitrary information, such as user credentials, API tokens and other things not specific to a certain recipe.
-We won't be using data bags in this tutorial, because we will store all information directly within the node configuration.
+We won't be using data bags in this tutorial, because we will store all information directly in the node configuration, as a JSON document.
 
 
 ## Our goals ###
 
-OK, now we're familiar with the essential parts of _Chef_. What are our goals, then? How would we like to have our ElasticSearch server to be set up?
+OK, we're familiar with the essential parts of _Chef_. What are our goals, then? How would we like to have our Elasticsearch server to be set up?
+
 In fact, we would like a number of things:
 
-* First of all, install a specific version of ElasticSearch on the node
+* First of all, install a specific version of Elasticsearch on the node
 * Create a `elasticsearch.yml` file with custom configuration
-* Create a separate user to run ElasticSearch
-* Register a service to start ElasticSearch automatically on server boot
+* Create a separate user to run Elasticsearch
+* Register a service to start Elasticsearch automatically on server boot
 * Increase the open files limit for the _elasticsearch_ user
 * Configure the memory limits and other settings for the JVM
-* Monitor the ElasticSearch process and cluster health with [_Monit_](http://mmonit.com/monit/)
-* Install the [_Nginx_](http://nginx.org/) web server and use it as a proxy for ElasticSearch
+* Install an Elasticsearch plugin
+* Monitor the Elasticsearch process and cluster health with [_Monit_](http://mmonit.com/monit/)
+* Install the [_Nginx_](http://nginx.org/) web server and use it as a proxy for Elasticsearch
 * Store user credentials for HTTP authentication with _Nginx_
 
 And optionally:
 
 * Install the [_AWS Cloud_](http://github.com/elasticsearch/elasticsearch-cloud-aws) plugin
 * Configure the _AWS Cloud_ plugin with proper credentials to use the
-  [EC2 discovery](http://www.elasticsearch.org/guide/reference/modules/discovery/ec2.html) and the
-  [S3 gateway](http://www.elasticsearch.org/guide/reference/modules/gateway/s3.html)
+  [EC2 discovery](http://www.elasticsearch.org/guide/reference/modules/discovery/ec2.html)
+* Create, format and mount an EBS volume to store our data
 
 As you can see, not a short list of tasks. If we would be doing them manually, we could easily spend whole afternoon with that.
 By using _Chef_, we should be done in under five minutes, once we get hold of it.
 
 One important thing to emphasize is that we will use the [_Amazon EC2_](http://aws.amazon.com/ec2/) service to create virtual
-servers to deploy ElasticSearch nodes at, and we will use some features in ElasticSearch specific to _Amazon Web Services_ (AWS).
+servers to deploy Elasticsearch nodes at, and we will use some features in Elasticsearch specific to _Amazon Web Services_ (AWS).
 
 You're not limited to the EC2 platform in any way, though: any virtual or physical server accessible by SSH will be
 absolutely perfect for the purposes of this tutorial — you'll just need to configure the node a little bit differently.
 
 <p><small>
-Note: for making yourself familiar with running ElasticSearch on EC2, you should read the excellent tutorial by James Cook,
-<a href="/tutorials/2011/08/22/elasticsearch-on-ec2.html">“ElasticSearch on EC2”</a>, which explains many important topics
-related to sucessfully running ElasticSearch in the AWS ecosystem. You don't have to read it for the purposes of this
+Note: for making yourself familiar with running Elasticsearch on EC2, you should read the excellent tutorial by James Cook,
+<a href="/tutorials/2011/08/22/elasticsearch-on-ec2.html">“Elasticsearch on EC2”</a>, which explains many important topics
+related to sucessfully running Elasticsearch in the AWS ecosystem. You don't have to read it for the purposes of this
 tutorial, though.</small></p>
 
 
@@ -137,18 +149,19 @@ We'll begin by downloading the files need for this tutorial from the following g
 We might as well do it with one command:
 
 <pre class="prettyprint lang-bash">
-curl -# -L -k https://gist.github.com/gists/2050769/download | tar xz --strip 1 -C .
+mkdir deploy-elasticsearch-with-chef &amp;&amp; cd deploy-elasticsearch-with-chef
+curl -# -L -k https://gist.github.com/2050769/download | tar xz --strip 1 -C .
 </pre>
 
-Your current directory should now contain 4 files (and a readme). Let's review them briefly:
+Your current directory should now contain couple of files: let's review them briefly:
 
-The `bootstrap.sh` file is a generic Bash script, which we'll use for basic setup of the machine (installing _make_, _Rubygems_, etc.).
-The `patches.sh` script is used to fix some problems in community cookbooks (and will hopefully be removed from this tutorial soon).
-You don't have to edit these files.
+The `bootstrap.sh` file is a generic Bash script, which we'll use for basic setup of the machine
+(installing packages and Chef, downloading cookbooks, etc). The `patches.sh` script is used to fix some problems in community cookbooks
+(and will hopefully be removed from this tutorial soon). You don't have to edit these files.
 
-The `node-example.js` file contains an example configuration for the whole “node”: list of _cookbooks_ we want to install,
-AWS credentials, username and password for the _Nginx_ HTTP authentication, your e-mail address for _Monit_ notifications.
-We'll start with a much smaller configuration, though.
+The `node-example.js` file contains an example configuration for the whole node: list of _cookbooks_ we want to install,
+Elasticsearch configuration, AWS credentials, username and password for the _Nginx_ HTTP authentication,
+your e-mail address for _Monit_ notifications, etc. We'll start with a much smaller configuration, though.
 
 The `solo.rb` file contains configuration for _Chef Solo_. Again, you don't have to touch it.
 
@@ -168,14 +181,14 @@ The `solo.rb` file contains configuration for _Chef Solo_. Again, you don't have
     Second, in the tutorial, we assume the server already has a working Ruby and Java installation.
     When it's not the case, they must be installed as part of the bootstrap process.
   </p>
-  <p>
+  <p style="font-weight: bolder">
     A bootstrap script and instructions for the <em>Ubuntu</em> operating system are available
     in this <a href="https://gist.github.com/2060496">gist</a>.
   </p>
 </div>
 
 On Amazon EC2, we'll start by creating a dedicated [security group](https://console.aws.amazon.com/ec2/home?region=us-east-1#s=SecurityGroups)
-for our ElasticSearch cluster in the AWS console. We will name the group `elasticsearch-test`.
+for our Elasticsearch cluster in the AWS console. We will name the group `elasticsearch-test`.
 
 Make sure the security group allows connections on following ports:
 
@@ -198,7 +211,7 @@ Now, we'll launch a new [server instance](https://console.aws.amazon.com/ec2/hom
 * Use the _Amazon Linux AMI_ ([`ami-1b814f72`](https://aws.amazon.com/amis/amazon-linux-ami-ebs-backed-64-bit)).
   Amazon Linux comes with Ruby and Java pre-installed.
 * Use the `m1.large` instance type. You may use the _small_ or even the _micro_ instance type,
-  but the process would take much longer).
+  but the process would take a bit longer).
 * Use the security group created in the first step (`elasticsearch-test`).
 
 The _quicklaunch_ screen for creating the instance is pictured below:
@@ -263,23 +276,22 @@ echo '
 </pre>
 
 As you can see, we're starting with a really simplified configuration: in the `run_list` property, we're saying
-we want the ElasticSearch cookbook installed and that our cluster will be named `elasticsearch_test_with_chef`.
+we want the Elasticsearch cookbook installed and that our cluster will be named `elasticsearch_test_with_chef`.
 
-Let's copy all these files to the machine via secure copy:
+Let's copy all the required files to the machine via secure copy:
 
 <pre class="prettyprint lang-bash">
 scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 </pre>
 
-We can now begin to bootstrap the machine: install neccessary packages such as _make_, install _Rubygems_ and the `chef` gem,
-download cookbooks from the internet, etc.:
+We can now begin to bootstrap the machine: install neccessary packages and Chef, download cookbooks from the internet, etc.:
 
 <pre class="prettyprint lang-bash">
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 </pre>
 
 You'll see lots of lines flying by in your terminal. We're running the [bootstrap script](https://gist.github.com/2050769#file_bootstrap.sh)
-remotely over SSH; it should take about 2 minutes.
+remotely over SSH; it should take about a minute.
 
 We're left with running the `patches.sh` script, which will fix some problems from the community cookbooks (create neccessary directories or users, etc.):
 
@@ -288,7 +300,7 @@ time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 </pre>
 
 
-## Installing and Configuring ElasticSearch ##
+## Installing and Configuring Elasticsearch ##
 
 OK – our server is now ready to be provisioned by _Chef Solo_. We will launch the following command:
 
@@ -296,10 +308,10 @@ OK – our server is now ready to be provisioned by _Chef Solo_. We will launch 
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
 </pre>
 
-This command will perform all the steps neccessary for a bare bones ElasticSearch installation; it will create the directories at
-`/usr/local/var/data/elasticsearch`, create the _elasticsearch_ user, download the ElasticSearch package from _GitHub_ and run it.
+This command will perform all the steps neccessary for a bare bones Elasticsearch installation; it will create the directories at
+`/usr/local/var/data/elasticsearch`, create the _elasticsearch_ user, download the Elasticsearch package from _GitHub_ and run it.
 
-Let's have a look around on the server. Is ElasticSearch, in fact, running?
+Let's have a look around on the server. Is Elasticsearch, in fact, running?
 
 <pre class="prettyprint lang-bash">
 ssh -t $SSH_OPTIONS $HOST "curl localhost:9200"
@@ -318,11 +330,11 @@ and that the number of open files is _64000_. In fact, let's have a look at the 
 ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch.yml"
 </pre>
 
-That's all well and good – we have automated the ElasticSearch installation process, downloading the package, extracting it,
-registering it as a service, and properly configuring it.
+That's all well and good – we have automated the Elasticsearch installation process, downloading the package, extracting it,
+registering it as a service, and properly configuring it. Not bad for a couple of commands and minutes of work.
 
 But our goals are much more ambitious than that! We want monitoring, and the _Nginx_ proxy, and proper AWS setup with EC2
-discovery, and S3 persistence!
+discovery, and EBS-based persistence!
 
 Seems like the right time to edit the `node.js` file has come.
 
@@ -337,7 +349,6 @@ cp node-example.json node.json
 
 We have to edit the file and replace the following properties:
 
-* `elasticsearch.gateway.s3.bucket` with a unique name for your bucket
 * `elasticsearch.cloud.aws.access_key` with your AWS Access Key
 * `elasticsearch.cloud.aws.secret_key` with your AWS Secret Key
 * `monit.notify_email` with your e-mail address
@@ -348,7 +359,7 @@ accessible from the drop-down menu under your name in the top right corner.
 All right, let's upload the updated file to the machine:
 
 <pre class="prettyprint lang-bash">
-scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
+scp $SSH_OPTIONS node.json $HOST:/tmp
 </pre>
 
 And let's run the provisioning script again:
@@ -358,8 +369,8 @@ time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 
 </pre>
 
 You should see, once again, many lines in your terminal flying by, installing _Monit_ and _Nginx_, downloading the
-[“AWS Cloud plugin”](https://github.com/elasticsearch/elasticsearch-cloud-aws) for ElasticSearch, configuring the
-_Nginx_ proxy, and finally, restarting ElasticSearch itself.
+[“AWS Cloud plugin”](https://github.com/elasticsearch/elasticsearch-cloud-aws) for Elasticsearch, configuring the
+_Nginx_ proxy, and finally, restarting Elasticsearch itself.
 
 Let's try the new configuration by accessing the _Nginx_ proxy running on port 8080:
 
@@ -367,7 +378,7 @@ Let's try the new configuration by accessing the _Nginx_ proxy running on port 8
 curl http://USERNAME:PASSWORD@$HOST:8080
 </pre>
 
-Pretty nice, right? Notice how trying to access the “Cluster API” is `403 Forbidden`:
+Pretty nice, right? Notice how trying to shutting the cluster via the proxy is `403 Forbidden`:
 
 <pre class="prettyprint lang-bash">
 curl http://USERNAME:PASSWORD@$HOST:8080/_cluster/health
@@ -385,10 +396,10 @@ curl -X POST "http://USERNAME:PASSWORD@$HOST:8080/test_chef_cookbook/_refresh"
 Let's try to perform a search:
 
 <pre class="prettyprint lang-bash">
-curl "http://USERNAME:PASSWORD@$HOST:8080/_search?pretty&amp;q=*"
+curl "http://USERNAME:PASSWORD@$HOST:8080/_search?pretty"
 </pre>
 
-Perfect. We can also check that ElasticSearch is running smoothly via _Monit_:
+Perfect. We can also check that Elasticsearch is running smoothly via _Monit_:
 
 <pre class="prettyprint lang-bash">
 ssh -t $SSH_OPTIONS $HOST "sudo monit reload &amp;&amp; sudo monit status -v"
@@ -396,7 +407,7 @@ ssh -t $SSH_OPTIONS $HOST "sudo monit reload &amp;&amp; sudo monit status -v"
 
 <small>(If the Monit daemon is not running, start it with `sudo service monit start` first. Notice the daemon has a startup delay of 2 minutes by default.)</small>
 
-You can see that the ElasticSearch process is `running` and that the connection to port 9200 is
+You can see that the Elasticsearch process is `running` and that the connection to port 9200 is
 `online with all services`. But what about the <em>elasticsearch_cluster_health</em> check?
 It says `Connection failed`. In fact, that's expected:
 
@@ -404,7 +415,7 @@ It says `Connection failed`. In fact, that's expected:
 ssh -t $SSH_OPTIONS $HOST "curl localhost:9200/_cluster/health?pretty"
 </pre>
 
-Since we're running with the default setting of one replica with only one ElasticSearch node,
+Since we're running with the default setting of one replica with only one Elasticsearch node,
 the cluster health is _yellow_: there's no other server where the cluster can place the replica on.
 
 Time to create another node in our cluster!
@@ -423,9 +434,10 @@ Once the new instance is running, copy its “Public DNS” value. We will again
 
 <pre class="prettyprint lang-bash">
 HOST=&lt;REPLACE WITH THE PUBLIC DNS FOR THE NEW SERVER&gt;
+SSH_OPTIONS="-o User=ec2-user -o IdentityFile=./tmp/elasticsearch-test.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 </pre>
 
-Now, let's run all the provisioning steps on the machine, making it the `elasticsearch-test-2` node:
+Now, let's run all the provisioning steps on the new machine, making it the `elasticsearch-test-2` node:
 
 <pre class="prettyprint lang-bash">
 scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
@@ -434,9 +446,7 @@ time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-2 -j /tmp/node.json"
 </pre>
 
-The whole process should be finished under five minutes, no less. Not bad, not at all.
-
-Allow ElasticSearch couple of seconds to boot and check the cluster health again:
+The whole process should be finished under two minutes. Allow Elasticsearch couple of seconds to boot and check the cluster health again:
 
 <pre class="prettyprint lang-bash">
 ssh -t $SSH_OPTIONS $HOST "curl localhost:9200/_cluster/health?pretty"
@@ -445,13 +455,20 @@ ssh -t $SSH_OPTIONS $HOST "curl localhost:9200/_cluster/health?pretty"
 You may see the number of `relocating_shards` briefly increase, and then the cluster health should be **green**,
 and the `number_of_nodes` should be **2**.
 
-Not bad! We now have a fully operational, two-node ElasticSearch cluster, with convenient `service` scripts,
-an _Nginx_ proxy for external access, and _Monit_-based supervision.
+Because _Chef_ also installed the [_Paramedic_](https://github.com/karmi/elasticsearch-paramedic) plugin, we can
+inspect the state of the cluster and our text index visually. Just open the following URL in your browser:
+
+<pre class="prettyprint lang-bash">
+open "http://USERNAME:PASSWORD@$HOST:8080/_plugin/paramedic/"
+</pre>
+
+Not bad! We now have a fully operational, two-node Elasticsearch cluster, with convenient `service` scripts,
+an _Nginx_ proxy for external access, a specific plugin installed and a _Monit_-based supervision.
 
 
 ## Going Further ##
 
-Time to play some tricks with out setup. The first thing we're going to try is to kill the ElasticSearch process
+Time to play some tricks with out setup. The first thing we're going to try is to kill the Elasticsearch process
 on one of the nodes and see how it's being started again by _Monit_.
 
 First, let's kill the process:
@@ -460,7 +477,7 @@ First, let's kill the process:
 ssh -t $SSH_OPTIONS $HOST "cat '/usr/local/var/run/elasticsearch/elasticsearch_test_2.pid' | xargs -0 sudo kill -9"
 </pre>
 
-If we check the ElasticSearch service status, it should not be running:
+If we check the Elasticsearch service status, it should not be running:
 
 <pre class="prettyprint lang-bash">
 ssh -t $SSH_OPTIONS $HOST "sudo service elasticsearch status"
@@ -487,48 +504,67 @@ ssh -t $SSH_OPTIONS $HOST "sudo monit reload &amp;&amp; sudo monit status"
 
 So, our monitoring system seems to work quite well!
 
-On EC2, we can try another trick to check out whether the S3 persistence is working.
+On EC2, we can try another trick. Since we're using an EBS disk for persistence, we can create a snapshot
+and recover the data from it on a new, freshly built server.
 
-Terminate both instances in the AWS console and create a new, fresh instance again.
+So, let's create the snapshot first. In the AWS console, we need to load the
+[_Volumes_](https://console.aws.amazon.com/ec2/home?region=us-east-1#s=Volumes) screen, and find the
+EBS volume named `elasticsearch-test-1`. Open the _Actions_ drop-down menu, and choose “Create Snapshot”:
 
-Copy the “Public DNS” setting of the new server, and repeat the whole provisioning process,
-which should be now quite transparent to you:
+![Create EBS Snapshot](/tutorials/images/chef-solo/create-ebs-snapshot.png)
+
+Name the snapshot `elasticsearch-1` and switch to the _Snapshots_ screen via the left menu.
+
+Once the snapshot is completed, copy it's ID (something like `snap-12ab34567`).
+
+Now you can tterminate both instances in the AWS console and create a new, fresh instance again.
+<small>Don't forget to use the correct security group, SSH key, etc!</small>
+
+Locate the `elasticsearch.data.devices./dev/sda2.ebs` part of the `node.json` file,
+and add the snapshot ID into it. The configuration should look like this:
+
+<pre class="prettyprint lang-json">
+"ebs" : {
+  "size"                  : 25,
+  "delete_on_termination" : true,
+  "type"                  : "io1",
+  "iops"                  : 100,
+  "snapshot_id"           : "snap-12ab34567"
+}
+</pre>
+
+Once the fresh instance is running, copy the “Public DNS” setting of the new server,
+and repeat the whole provisioning process, which should be now quite transparent to you:
 
 <pre class="prettyprint lang-bash">
 HOST=&lt;REPLACE WITH THE PUBLIC DNS VALUE&gt;
 scp $SSH_OPTIONS bootstrap.sh patches.sh node.json solo.rb $HOST:/tmp
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/bootstrap.sh"
 time ssh -t $SSH_OPTIONS $HOST "sudo bash /tmp/patches.sh"
-time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
+time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-fresh -j /tmp/node.json"
 </pre>
 
-Allow couple of seconds for ElasticSearch to boot and load the data, and perform the search
+Allow couple of seconds for Elasticsearch to boot and load the data, and perform the search
 on the freshly provisioned server:
 
 <pre class="prettyprint lang-bash">
-curl "http://USERNAME:PASSWORD@$HOST:8080/_search?pretty&amp;q=*"
+curl "http://USERNAME:PASSWORD@$HOST:8080/_search?pretty"
 </pre>
 
 You should now see the three documents, which we inserted long ago, on the now destroyed servers,
-displayed in your terminal: since we have configured our node to persist data into a S3 bucket,
-ElasticSearch happily loaded all the data from there.
-
-<p><small>
-Note: Again, to fully understand the different ElasticSearch persistence and discovery strategies and options at AWS,
-please read the <a href="/tutorials/2011/08/22/elasticsearch-on-ec2.html">“ElasticSearch on EC2”</a> tutorial.
-</small></p>
-
+displayed in your terminal; the new EBS, mounted at `/usr/local/var/data/elasticsearch/disk1`,
+contains all the data from previous servers and Elasticsearch happily loaded it all.
 
 ## Conclusions ##
 
 Congratulations! By following this tutorial, you were able to:
 
-* Establish a repeatable and reliable process for setting up an ElasticSearch server
-* Bootstrap, install and configure production-ready ElasticSearch cluster without manual intervention
+* Establish a repeatable and reliable process for setting up an Elasticsearch server
+* Bootstrap, install and configure production-ready Elasticsearch cluster without manual intervention
 * Summarize the whole server configuration in the `node.json` file
 
 The first thing to take from this exercise is, of course, that **automation beats manual labor every single time**, and by a long shot.
-When you're provisioning a ElasticSearch server for the third time, it's so painless you don't even notice it.
+When you're provisioning a Elasticsearch server for the third time, it's so painless you don't even notice it.
 
 When working with a provisioning tool such as _Chef_, resist the urge to tinker with the system manually, editing configuration
 files in `vim` and installing software manually — except in clearly determined cases when you're trying something out.
@@ -537,13 +573,13 @@ It is of course _faster_ to make a small change directly on the system itself, i
 steps. But the whole point of _Chef_ is to make your system predictable, to summarize everything what's needed for its
 operation in one place, and to eradicate manual intervention.
 
-Notice how we added lots of configuration details in the “The Full Installation” chapter, uploaded the updated `node.json` file
+Notice how we added lots of configuration details in “The Full Installation” chapter, uploaded the updated `node.json` file
 to the system, and then just _ran the same command_ as previously. _Chef_ discovered it needs to update the `elasticsearch.yml`
-file, did so, and restarted the ElasticSearch process to pick up the new configuration. This pattern of “update, sync,
+file, did so, and restarted the Elasticsearch process to pick up the new configuration. This pattern of “update, sync,
 run, repeat” is very powerful, because it takes manual fiddling and “hacking” out of the process;
 once you got it right, it will be right for every future system provisioned from the same code.
 
-The same applies for changes in the cookbook: when the ElasticSearch cookbook is updated at _GitHub_, the `bootstrap` script
+The same applies for changes in the cookbook: when the Elasticsearch cookbook is updated at _GitHub_, the `bootstrap` script
 will fetch the changes, and the next `chef-solo` run will reflect them on the system.
 
 The second thing to notice is **how powerful is a tool like _Chef_**. We didn't paid too much attention to _Chef_ specifics, but let's
@@ -554,8 +590,8 @@ ssh -t $SSH_OPTIONS $HOST "cat /usr/local/etc/elasticsearch/elasticsearch-env.sh
 </pre>
 
 Where does the value `Xmx4982m`, or nearly 5 GB, come from? How does _Chef_ know this value? Well,
-[this Ruby code in the ElasticSearch cookbook](https://github.com/karmi/cookbook-elasticsearch/blob/dd89c4a/attributes/default.rb#L33-34)
-did the computation, based on the total available memory on the EC2 large instance type (7.5 GB):
+the Ruby code in the Elasticsearch cookbook did the computation, based on the total available memory
+on the EC2 large instance type (7.5 GB):
 
 <pre class="prettyprint lang-ruby">
 allocated_memory = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
@@ -563,10 +599,10 @@ default.elasticsearch[:allocated_memory] = allocated_memory
 </pre>
 
 Thanks to the _Ohai_ tool, _Chef_ knows many of these [“automatic attributes”](http://wiki.opscode.com/display/chef/Automatic+Attributes)
-of the node, and can take them into consideration when provisioning the server. The ElasticSearch cookbook we have worked with makes use
+of the node, and can take them into consideration when provisioning the server. The Elasticsearch cookbook we have worked with makes use
 of these attribues in other places, for example when setting the `node.name`.
 
-The final conclusion of this experiment is **how open the whole _Chef_ ecosystem is**.
+The final conclusion of this experiment is how open the whole _Chef_ ecosystem is.
 
 We didn't have to use the hosted _Chef Server_ product to use the other parts of its architecture. The concepts and principles are the same
 between _Chef Solo_ and _Chef Server_, and allow you to reuse the most important part: the cookbooks.
@@ -575,7 +611,7 @@ Most of the cookbooks are available on the [_Opscode_ community page](http://com
 For a complex infrastructure, you're most likely to adapt cookbooks to your needs, adjusting their recipes or templates.
 As we have seen, it's trivial to mix “vendor” cookbooks with our own cookbooks:
 we have downloaded the “stock” _Monit_ and _Nginx_ cookbooks from the internet to the `/var/chef-solo/site-cookbooks/` directory,
-while cloning a custom ElasticSearch cookbook to the `/var/chef-solo/cookbooks` directory.
+while cloning a custom Elasticsearch cookbook to the `/var/chef-solo/cookbooks` directory.
 
 The _Chef_ domain specific language uses Ruby, a popular and expressive programming language, which makes adjusting and customizing
 cookbooks very easy.
@@ -583,3 +619,32 @@ We can [fork most cookbooks](https://github.com/opscode-cookbooks/) at _Github_ 
 growing common knowledge of efficient infrastructure provisioning.
 
 Enjoy your cooking!
+
+<hr>
+
+<small style="padding: 0.5em 0 0.5em 0; display: block">
+
+Oh, and one more thing. In the downloaded gist, there's a [_Rakefile_](https://gist.github.com/2050769#file-rakefile) which allows you
+to create the server and provision it automatically by running a single command.
+
+If you have a working Ruby and Rubygems installation on your machine, you can try it out. First, install _Bundler_ and the required gems:
+
+<pre class="prettyprint lang-bash">
+gem install bundler
+bundle install
+</pre>
+
+Then run this command:
+
+<pre class="prettyprint lang-bash">
+time bundle exec rake create NAME=elasticsearch-from-cli FLAVOR=m1.large
+</pre>
+
+It will load the AWS credentials from your `node.json` file, create the instance in EC2, bootstrap and configure,
+and perform the Elasticsearch installation we just did manually. Open the URL printed at the end!
+
+</small>
+
+<hr>
+
+<p>&nbsp;</p>
