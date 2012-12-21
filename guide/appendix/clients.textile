@@ -44,6 +44,7 @@ h2. Integrations
 * "elasticsearch-test":https://github.com/tlrx/elasticsearch-test: Elasticsearch Java annotations for unit testing with "JUnit":http://www.junit.org/
 * "Wp-ElasticSearch":http://searchbox-io.github.com/wp-elasticsearch/: ElasticSearch WordPress Plugin   
 * "eslogd":https://github.com/OlegKunitsyn/eslogd: Linux daemon that replicates events to a central ElasticSearch server in real-time
+* "Embedded Clojure nREPL":https://github.com/drewr/elasticsearch-clojure-repl
 
 h2. Misc
 
