@@ -554,7 +554,58 @@ curl "http://USERNAME:PASSWORD@$HOST:8080/_search?pretty"
 
 You should now see the three documents, which we inserted long ago, on the now destroyed servers,
 displayed in your terminal; the new EBS, mounted at `/usr/local/var/data/elasticsearch/disk1`,
-contains all the data from previous servers and Elasticsearch happily loaded it all.
+contains all the data from previous servers and Elasticsearch happily loaded it all. With the recently
+announced [EBS copy snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html)
+API, this makes disaster recovery or migration during Amazon outages just a bit easier.
+
+On a similar note, we can try another, potentially live-saving trick: adding disk space to the node. Usually,
+running out of disk space is hard to combat without noticeable service disruption. In Amazon, you can snapshot the volume, create a bigger EBS from the snapshot, mount it, etc -- but it takes time.
+
+Because Elasticsearch can work with _multiple_ data locations, the `elasticsearch.data.devices` and
+`elasticsearch.data_path` configurations can contain multiple values, and allows us to add a disk
+to the recently created node. Here's what we need to do:
+
+First, we need to update the the `elasticsearch.data_path` configuration in the `node.json` file like this:
+
+<pre class="prettyprint">
+"data_path" : ["/usr/local/var/data/elasticsearch/disk1","/usr/local/var/data/elasticsearch/disk2"]
+</pre>
+
+Then, we can add a new device to the `elasticsearch.data.devices` configuration -- let's simply copy over the
+configuration for `/dev/sda2` (without the `snapshot_id` key):
+
+<pre class="prettyprint lang-json">
+"data" : {
+  "devices" : {
+    "/dev/sda2" : {
+      // ...
+    },
+    "/dev/sda3" : {
+      // ...
+    }
+  }
+}
+</pre>
+
+And, finally, let's upload the updated configuration and re-run the provisioning code:
+
+<pre class="prettyprint lang-bash">
+scp $SSH_OPTIONS node.json $HOST:/tmp
+time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
+</pre>
+
+Allow some time for Elasticsearch to restart, and check the data locations
+and some statistics with the _Nodes Stats API_:
+
+<pre class="prettyprint lang-bash">
+curl "http://USERNAME:PASSWORD@$HOST:8080/_cluster/nodes/stats?pretty&amp;clear&amp;fs"
+</pre>
+
+We can also check the disks stats directly on the system:
+
+<pre class="prettyprint lang-bash">
+time ssh -t $SSH_OPTIONS $HOST "df -h"
+</pre>
 
 ## Conclusions ##
 
