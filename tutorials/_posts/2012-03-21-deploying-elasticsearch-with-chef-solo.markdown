@@ -571,7 +571,7 @@ First, we need to update the the `elasticsearch.data_path` configuration in the 
 "data_path" : ["/usr/local/var/data/elasticsearch/disk1","/usr/local/var/data/elasticsearch/disk2"]
 </pre>
 
-Then, we can add a new device to the `elasticsearch.data.devices` configuration -- let's simply copy over the
+Then, we will add a new device to the `elasticsearch.data.devices` configuration -- let's simply copy over the
 configuration for `/dev/sda2` (without the `snapshot_id` key):
 
 <pre class="prettyprint lang-json">
@@ -591,7 +591,7 @@ And, finally, let's upload the updated configuration and re-run the provisioning
 
 <pre class="prettyprint lang-bash">
 scp $SSH_OPTIONS node.json $HOST:/tmp
-time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-1 -j /tmp/node.json"
+time ssh -t $SSH_OPTIONS $HOST "sudo chef-solo --node-name elasticsearch-test-fresh -j /tmp/node.json"
 </pre>
 
 Allow some time for Elasticsearch to restart, and check the data locations
@@ -634,7 +634,7 @@ once you got it right, it will be right for every future system provisioned from
 The same applies for changes in the cookbook: when the Elasticsearch cookbook is updated at _GitHub_, the `bootstrap` script
 will fetch the changes, and the next `chef-solo` run will reflect them on the system.
 
-The second thing to notice is **how powerful is a tool like _Chef_**. We didn't paid too much attention to _Chef_ specifics, but let's
+The second thing to notice is how powerful a tool like _Chef_ really is. We didn't paid too much attention to _Chef_ specifics, but let's
 have a look at a small illustration. You should notice the memory settings for the JVM in the `elasticsearch-env.sh` file:
 
 <pre class="prettyprint lang-bash">
