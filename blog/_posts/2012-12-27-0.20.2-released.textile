@@ -1,0 +1,13 @@
+---
+layout: blogpost
+title: 0.20.2 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.20.2@ is out. This release includes both important bug fixes as well as upgradges to Lucene (from 3.6.1 to 3.6.2), and other interal libraries.
+
+p. Another change includes how plugins are downloaded. Now, "elasticsearch" plugins are downloaded automatically from our new @download.elasticsearch.org@ service, but it can also download plugins from maven directly. Site plugins can stil be downloaded from github as "repositories". In the future, we will also allow users to upload their own plugins to @download.elasticsearch.org@ if they wish to.
+
+p. Enjoy!
