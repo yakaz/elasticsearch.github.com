@@ -20,6 +20,24 @@ p. The @has_parent@ query works the same as the "has_parent":has-parent-filter.h
 }    
 </pre>
 
+h2. Scoring capabilities
+
+The @has_parent@ also has scoring support from version @0.20.2@. The supported score types are @score@ or @none@. The default is @none@ and yields the same behaviour as in previous versions. If the score type is set to another value than @none@, the scores of all the matching parent documents are aggregated into the associated child documents. The score type can be specified with the @score_type@ field inside the @has_parent@ query:
+
+<pre class="prettyprint lang-js">
+{
+    "has_parent" : {
+        "parent_type" : "blog",
+        "score_type" : "score",
+        "query" : {
+            "term" : {
+                "tag" : "something"
+            }
+        }
+    }
+}    
+</pre>
+
 h2. Scope
 
 p. A @_scope@ can be defined on the filter allowing to run facets on the same scope name that will work against the parent documents. For example:

@@ -5,12 +5,32 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. The @has_child@ query works the same as the "has_child":has-child-filter.html filter, by automatically wrapping the filter with a "constant_score":constant-score-query.html. It has the same syntax as the "has_child":has-child-filter.html filter:
+p. The @has_child@ query works the same as the "has_child":has-child-filter.html filter, by automatically wrapping the filter with a "constant_score":constant-score-query.html (when using the default score type). It has the same syntax as the "has_child":has-child-filter.html filter:
 
 <pre class="prettyprint lang-js">
 {
     "has_child" : {
         "type" : "blog_tag",
+        "query" : {
+            "term" : {
+                "tag" : "something"
+            }
+        }
+    }
+}    
+</pre>
+
+p. An important difference with the @top_children@ query is that this query is always executed in two interations whereas the @top_children@ query can be executed in one or more iteration. When using the @has_child@ query the @total_hits@ is always correct.
+
+h2. Scoring capabilities
+
+The @has_child@ also has scoring support from version @0.20.2@. The supported score types are @max@, @sum@, @avg@ or @none@. The default is @none@ and yields the same behaviour as in previous versions. If the score type is set to another value than @none@, the scores of all the matching child documents are aggregated into the associated parent documents. The score type can be specified with the @score_type@ field inside the @has_child@ query:
+
+<pre class="prettyprint lang-js">
+{
+    "has_child" : {
+        "type" : "blog_tag",
+        "score_type" : "sum",
         "query" : {
             "term" : {
                 "tag" : "something"
