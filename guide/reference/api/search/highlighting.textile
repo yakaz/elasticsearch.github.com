@@ -34,6 +34,8 @@ p. Here is an example of setting the @content@ field to allow for highlighting u
 }
 </pre>
 
+p. Since @0.20.2@ the field name support wildcard notation, for example, using @comment_*@ which will cause all fields that match the expression to be highlighted.
+
 
 h1. Highlighting Tags
 
