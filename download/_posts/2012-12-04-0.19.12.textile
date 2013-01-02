@@ -10,11 +10,32 @@ download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.1
 release_notes: true
 ---
 
-h2. Breaking Changes:
-
-* Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
-* Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
-
 h2. Upgrade Notes:
  * Upgrading from 0.18 requires issuing a full flush of all the indices in the cluster (@curl host:9200/_flush@) before shutting down the cluster, with no indexing operations happening after the flush.
  * The local gateway state structure has changed from 0.18, a backup of the state files is created when upgrading, they can then be used to downgrade back to 0.18. Don't downgrade without using them.
+
+h2. Breaking changes:
+ * Deprecate Experimental Snappy Support ("#2459":http://github.com/elasticsearch/elasticsearch/issues/issue/2459)
+ * Deprecate Shared Gateway ("#2458":http://github.com/elasticsearch/elasticsearch/issues/issue/2458)
+ * Shard Allocation: add index.routing.allocation.require.... and cluster.routing.allocation.require.... setting ("#2404":http://github.com/elasticsearch/elasticsearch/issues/issue/2404)
+
+
+h2. New features:
+ * Indexing Slow Log ("#2457":http://github.com/elasticsearch/elasticsearch/issues/issue/2457)
+
+
+h2. Enhancements:
+ * Upgrade to Netty 3.5.11 ("#2456":http://github.com/elasticsearch/elasticsearch/issues/issue/2456)
+ * Add types and stats to search slow log ("#2455":http://github.com/elasticsearch/elasticsearch/issues/issue/2455)
+ * Upgrade to netty 3.5.10 ("#2399":http://github.com/elasticsearch/elasticsearch/issues/issue/2399)
+ * Node Stats: Add largest thread pool count per thread pool stats ("#2382":http://github.com/elasticsearch/elasticsearch/issues/issue/2382)
+
+
+h2. Bug fixes:
+ * Setting logger levels using cluster update settings does not work ("#2428":http://github.com/elasticsearch/elasticsearch/issues/issue/2428)
+ * NullPointerException with prefix query ("#2408":http://github.com/elasticsearch/elasticsearch/issues/issue/2408)
+ * Deriving the REST status code from a failure can, very rarely, cause an infinite loop ("#2402":http://github.com/elasticsearch/elasticsearch/issues/issue/2402)
+ * Adding a type with _source or _all enabled fails, when these are disabled in index ("#2394":http://github.com/elasticsearch/elasticsearch/issues/issue/2394)
+ * Multi Match: tie_breaker should allow for floating point value ("#2397":http://github.com/elasticsearch/elasticsearch/issues/issue/2397)
+
+

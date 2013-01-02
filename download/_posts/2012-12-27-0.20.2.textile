@@ -17,3 +17,26 @@ h2. Breaking Changes:
 
 * Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
 * Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
+* Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
+
+
+h2. New features:
+ * Allow highlighting on wildcard fields.. ie, comment_* ("#2396":http://github.com/elasticsearch/elasticsearch/issues/issue/2396)
+
+
+h2. Enhancements:
+ * Nested query should support explain. ("#2503":http://github.com/elasticsearch/elasticsearch/issues/issue/2503)
+ * Add scoring support to @has_child@ and @has_parent@ queries ("#2502":http://github.com/elasticsearch/elasticsearch/issues/issue/2502)
+ * match_all filter with empty array (instead of obj) fires exception when used with facets  ("#2493":http://github.com/elasticsearch/elasticsearch/issues/issue/2493)
+ * Update settings: Allow to dynamically update thread pool settings ("#2509":http://github.com/elasticsearch/elasticsearch/issues/issue/2509)
+
+
+h2. Bug fixes:
+ * top_children query fails with dfs_query_* searchtype and some queries ("#2501":http://github.com/elasticsearch/elasticsearch/issues/issue/2501)
+ * ArrayOutOfBoundException when using top_children in a must not clause. ("#2500":http://github.com/elasticsearch/elasticsearch/issues/issue/2500)
+ * Search failures are not serialized correctly in MultiSearchResponse ("#2498":http://github.com/elasticsearch/elasticsearch/issues/issue/2498)
+ * ShardSearchFailure handling of exception does not take actual into account for status ("#2495":http://github.com/elasticsearch/elasticsearch/issues/issue/2495)
+ * Mlt api fails to work when routing isn't id based. ("#2489":http://github.com/elasticsearch/elasticsearch/issues/issue/2489)
+ * First indexing of a dynamic boolean field can cause it not to be indexed correctly ("#2487":http://github.com/elasticsearch/elasticsearch/issues/issue/2487)
+ * *:* query not working ("#2486":http://github.com/elasticsearch/elasticsearch/issues/issue/2486)
+

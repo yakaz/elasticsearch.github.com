@@ -13,8 +13,43 @@ release_notes: true
 h2. Upgrade Notes:
  * Upgrading from 0.19 requires a full cluster restart.
 
-h2. Breaking Changes:
+h2. Breaking changes:
+ * Deprecate Experimental Snappy Support ("#2459":http://github.com/elasticsearch/elasticsearch/issues/issue/2459)
+ * Deprecate Shared Gateway ("#2458":http://github.com/elasticsearch/elasticsearch/issues/issue/2458)
+ * Mapping: string mapping to automatically set omit_norms to true and index_options to docs when setting index to not_analyzed ("#2349":http://github.com/elasticsearch/elasticsearch/issues/issue/2349)
+ * Shard Allocation: add index.routing.allocation.require.... and cluster.routing.allocation.require.... setting ("#2404":http://github.com/elasticsearch/elasticsearch/issues/issue/2404)
 
-* Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
-* Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
+
+h2. New features:
+ * Indexing Slow Log ("#2457":http://github.com/elasticsearch/elasticsearch/issues/issue/2457)
+
+
+h2. Enhancements:
+ * Expose ES version in node info api ("#2466":http://github.com/elasticsearch/elasticsearch/issues/issue/2466)
+ * Expose fragmenter option for plain highlighter ("#2465":http://github.com/elasticsearch/elasticsearch/issues/issue/2465)
+ * Upgrade to Netty 3.5.11 ("#2456":http://github.com/elasticsearch/elasticsearch/issues/issue/2456)
+ * Add types and stats to search slow log ("#2455":http://github.com/elasticsearch/elasticsearch/issues/issue/2455)
+ * Cannot change MatchQuery behaviour with 0 terms ("#2429":http://github.com/elasticsearch/elasticsearch/issues/issue/2429)
+ * Upgrade to netty 3.5.10 ("#2399":http://github.com/elasticsearch/elasticsearch/issues/issue/2399)
+ * Upgrade to Netty 3.5.9 ("#2377":http://github.com/elasticsearch/elasticsearch/issues/issue/2377)
+ * Upsert doesn't return fields ("#2362":http://github.com/elasticsearch/elasticsearch/issues/issue/2362)
+ * Node Stats: Add largest thread pool count per thread pool stats ("#2382":http://github.com/elasticsearch/elasticsearch/issues/issue/2382)
+
+
+h2. Bug fixes:
+ * Wildcard query on non existent field matches all documents. ("#2461":http://github.com/elasticsearch/elasticsearch/issues/issue/2461)
+Wide character in print at /home/clinton/bin/es_release_notes.pl line 71.
+ * The relevancy score in explanation of custom_filters_query doesn’t match the actual score ("#2441":http://github.com/elasticsearch/elasticsearch/issues/issue/2441)
+ * Match query should fail when trying to provide several fields in its simplified form ("#2432":http://github.com/elasticsearch/elasticsearch/issues/issue/2432)
+ * Setting logger levels using cluster update settings does not work ("#2428":http://github.com/elasticsearch/elasticsearch/issues/issue/2428)
+ * NullPointerException with prefix query ("#2408":http://github.com/elasticsearch/elasticsearch/issues/issue/2408)
+ * Deriving the REST status code from a failure can, very rarely, cause an infinite loop ("#2402":http://github.com/elasticsearch/elasticsearch/issues/issue/2402)
+ * Adding a type with _source or _all enabled fails, when these are disabled in index ("#2394":http://github.com/elasticsearch/elasticsearch/issues/issue/2394)
+ * Ignore indices not set when using multi search api. ("#2380":http://github.com/elasticsearch/elasticsearch/issues/issue/2380)
+ * path_match support in dynamic templates is incorrect ("#2371":http://github.com/elasticsearch/elasticsearch/issues/issue/2371)
+ * Deleting a non-existent warmer causes ES to hang ("#2363":http://github.com/elasticsearch/elasticsearch/issues/issue/2363)
+ * MapperParsingException on percolation with _size enabled ("#2352":http://github.com/elasticsearch/elasticsearch/issues/issue/2352)
+ * Multi Match: tie_breaker should allow for floating point value ("#2397":http://github.com/elasticsearch/elasticsearch/issues/issue/2397)
+ * With cache turned off I'm getting the following error: nested: ClassCastException[org.apache.lucene.util.FixedBitSet cannot be cast to org.elasticsearch.common.lucene.docset.FixedBitDocSet] ("#2340":http://github.com/elasticsearch/elasticsearch/issues/issue/2340)
+
 
