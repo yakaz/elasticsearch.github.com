@@ -26,6 +26,7 @@ By default, @docs@, @store@, and @indexing@, @get@, and @search@ stats are retur
 * @indexing@: Indexing statistics, can be combined with a comma separated list of @types@ to provide document type level stats.
 * @get@: Get statistics, including missing stats.
 * @search@: Search statistics, including custom grouping using the @groups@ parameter (search operations can be associated with one or more groups).
+* @warmer@: Warmer statistics.
 * @merge@: merge stats.
 * @flush@: flush stats.
 * @refresh@: refresh stats.
