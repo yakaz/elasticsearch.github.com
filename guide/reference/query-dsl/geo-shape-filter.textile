@@ -25,18 +25,18 @@ Again, like the @geo_shape@ type, the @geo_shape@ Filter uses "GeoJSON":http://w
 
 <pre class="prettyprint lang-js">
 {
-    "filtered" : {
-        "query" : {
-            "match_all" : {}
+    "filtered": {
+        "query": {
+            "match_all": {}
         },
-        "filter" : {
-            "geo_shape" : {
-                "location" : {
-		    "shape" : {
-		        "type" : "envelope",
-			"coordinates" : [[-45.0, 45.0], [45.0, -45.0]]
-		    }
-		    "relation" : "contains"
+        "filter": {
+            "geo_shape": {
+                "location": {
+                    "shape": {
+                        "type": "envelope",
+						"coordinates":[[-45,45],[45,-45]]
+                    },
+                    "relation": "within"
                 }
             }
         }
