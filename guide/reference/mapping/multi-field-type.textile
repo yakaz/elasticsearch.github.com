@@ -29,7 +29,32 @@ h1. Accessing Fields
 
 p. With @multi_field@ mapping, the field that has the same name as the property is treated as if it was mapped without a multi field. That's the "default" field. It can be accessed regularly, for example using @name@ or using typed navigation @tweet.name@. 
 
-p. Other fields with different names can be easily accessed using the navigation notation, for example, using: @name.untouched@, or using the typed navigation notation @tweet.name.untouched@.
+p. The @path@ attribute allows to control how non-default fields can be accessed. If the @path@ attribute is set to @full@, which is the default setting, all non-default fields are prefixed with the name of the property and can be accessed by their full path using the navigation notation: @name.untouched@, or using the typed navigation notation @tweet.name.untouched@. If the @path@ attribute is set to @just_name@ the actual field name without a prefix is used. The @just_name@ setting, among other things, allows indexing content of multiple fields under the same name. In the example below the content of both fields @first_name@ and @last_name@ can be accessed by using @any_name@ or @tweet.any_name@
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "properties": {
+            "first_name": {
+                "type": "multi_field",
+                "path": "just_name",
+                "fields": {
+                    "first_name": {"type": "string", "index": "analyzed"},
+                    "any_name": {"type": "string","index": "analyzed"}
+                }
+            },
+            "last_name": {
+                "type": "multi_field",
+                "path": "just_name",
+                "fields": {
+                    "last_name": {"type": "string", "index": "analyzed"},
+                    "any_name": {"type": "string","index": "analyzed"}
+                }
+            }
+        }
+    }
+}
+</pre>
 
 h1. Include in All
 
