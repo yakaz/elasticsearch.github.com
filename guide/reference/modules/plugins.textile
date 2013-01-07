@@ -13,7 +13,9 @@ h2. Installing plugins
 
 p. Installing plugins can either be done manually by placing them under the @plugins@ directory, or using the @plugin@ script. Several plugins can be found under the "elasticsearch":https://github.com/elasticsearch organization in GitHub, starting with @elasticsearch-@.
 
-p. Plugins can also be automatically downloaded and installed from gitub using: @user_name/repo_name@ structure, or, for explicit versions, using @user_name/repo_name/version_number@. When no version number is specified, first a version based on the elasticsearch version is tried, and if it does not work, then master is used.
+p. Installing plugins typically take the form of @pluing -install <org>/<user/component>/<version>@. The plugins will be automatically downloaded in this case from @download.elasticsearch.org@, and in case they don't exist there, from maven (central and sonatype).
+
+p. A plugin can also be installed directly by specifying the URL for it, for example: @bin/plugin -url file://path/to/plugin -install plugin-name@.
 
 h2. Site Plugins
 
@@ -21,7 +23,7 @@ p. Plugins can have "sites" in them, any plugin that exists under the @plugins@ 
 
 p. Installed plugins that do not contain any java related content, will automatically be detected as site plugins, and their content will be moved under @_site@.
 
-p. The ability to install plugins from github allows to easily install site plugins hosted there, for example, running:
+p. The ability to install plugins from github allows to easily install site plugins hosted there by downloading the actual repo, for example, running:
 
 <pre class="prettyprint">
 bin/plugin -install Aconex/elasticsearch-head
