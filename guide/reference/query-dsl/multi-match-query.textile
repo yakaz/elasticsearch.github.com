@@ -29,3 +29,18 @@ p. All options that apply on the @match@ query also apply on the @multi_match@ q
 * @tie_breaker@ - Multiplier value to balance the scores between lower and higher scoring fields. Only applicable when @use_dis_max@ is set to true. Defaults to @0.0@.
 
 p. The query accepts all the options that a regular @match@ query accepts.
+
+h2. Boosting
+
+p. The @multi_match@ query supports field boosting via @^@ notation in the fields json field.
+
+<pre class="prettyprint lang-js">
+{
+  "multi_match" : {
+    "query" : "this is a test",
+    "fields" : [ "subject^2", "message" ]
+  }
+}
+</pre>
+
+In the above example hits in the @subject@ field are 2 times more important than in the @message@ field.
