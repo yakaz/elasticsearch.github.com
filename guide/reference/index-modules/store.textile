@@ -19,9 +19,9 @@ p. (0.19.5 and above).
 
 p. In the mapping, one can configure the @_source@ field to be compressed. The problem with it is the fact that small documents don't end up compressing well, as several documents compressed in a single compression "block" will provide a considerable better compression ratio. This version introduces the ability to compress stored fieds using the @index.store.compress.stored@ setting, as well as term vector using the @index.store.compress.tv@ setting.
 
-p. The settings can be set on the index level, and are dynamic, allowing to change them using the index update settings API. elasticsearch can handle mixed stored / non stored cases. This allows, for example, to enable compression at a later stage in the index lifecycle, and optimize the index to make use of it (generating new segmetns that use compression).
+p. The settings can be set on the index level, and are dynamic, allowing to change them using the index update settings API. elasticsearch can handle mixed stored / non stored cases. This allows, for example, to enable compression at a later stage in the index lifecycle, and optimize the index to make use of it (generating new segments that use compression).
 
-p. Best compression, comprared to _source level compression, will mainly happen when indexing smaller documents (less than 64k). The price on the other hand is the fact that for each doc returned, a block will need to be decompressed (its fast though) in order to extract the document data.
+p. Best compression, compared to _source level compression, will mainly happen when indexing smaller documents (less than 64k). The price on the other hand is the fact that for each doc returned, a block will need to be decompressed (its fast though) in order to extract the document data.
 
 h1. Store Level Throttling
 
