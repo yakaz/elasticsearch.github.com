@@ -13,7 +13,7 @@ h2. Installing plugins
 
 p. Installing plugins can either be done manually by placing them under the @plugins@ directory, or using the @plugin@ script. Several plugins can be found under the "elasticsearch":https://github.com/elasticsearch organization in GitHub, starting with @elasticsearch-@.
 
-p. Installing plugins typically take the form of @pluing -install <org>/<user/component>/<version>@. The plugins will be automatically downloaded in this case from @download.elasticsearch.org@, and in case they don't exist there, from maven (central and sonatype).
+p. Installing plugins typically take the form of @plugin -install <org>/<user/component>/<version>@. The plugins will be automatically downloaded in this case from @download.elasticsearch.org@, and in case they don't exist there, from maven (central and sonatype).
 
 p. A plugin can also be installed directly by specifying the URL for it, for example: @bin/plugin -url file://path/to/plugin -install plugin-name@.
 
