@@ -46,6 +46,7 @@ h1. Known Plugins
 
 h2. Analysis Plugins
 
+* "Combo Analysis Plugin":https://github.com/yakaz/elasticsearch-analysis-combo/ (by Olivier Favre, Yakaz)
 * "Smart Chinese Analysis Plugin":https://github.com/elasticsearch/elasticsearch-analysis-smartcn (by elasticsearch team)
 * "ICU Analysis plugin":https://github.com/elasticsearch/elasticsearch-analysis-icu (by elasticsearch team)
 * "Stempel (Polish) Analysis plugin":https://github.com/elasticsearch/elasticsearch-analysis-stempel (by elasticsearch team)
