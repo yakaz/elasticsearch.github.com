@@ -24,6 +24,7 @@ h2. Clients
 * "scalastic":https://github.com/bsadeh/scalastic: Scala client
 * "rawes":https://github.com/humangeo/rawes: Python low level client
 * "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
+* "elastigo":https://github.com/mattbaird/elastigo: Go client
 
 
 h2. Integrations
