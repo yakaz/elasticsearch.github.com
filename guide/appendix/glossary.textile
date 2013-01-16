@@ -204,7 +204,7 @@ glossary:
     id: text
     text: >
         Text (or full text) is ordinary unstructured text, such as this
-        paragraph. By default, text will by "analyzed":analysis into
+        paragraph. By default, text will be "analyzed":analysis into
         "terms":#term, which is what is actually stored in the index.
 
 
