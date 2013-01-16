@@ -25,6 +25,7 @@ h2. Clients
 * "rawes":https://github.com/humangeo/rawes: Python low level client
 * "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
 * "elastigo":https://github.com/mattbaird/elastigo: Go client
+* "Elastic.js":https://github.com/fullscale/elastic.js: A JavaScript implementation of the ElasticSearch Query DSL and Core API.
 
 
 h2. Integrations
