@@ -155,4 +155,4 @@ h1. Boundary Characters
 
 p. When highlighting a field that is mapped with term vectors, @boundary_chars@ can be configured to define what constitutes a boundary for highlighting. It's a single string with each boundary character defined in it. It defaults to @.,!? \t\n@.
 
-p. The @boundary_max_size@ allows to control how far to look for boundary characters, and defaults to @20@.
+p. The @boundary_max_scan@ allows to control how far to look for boundary characters, and defaults to @20@.
