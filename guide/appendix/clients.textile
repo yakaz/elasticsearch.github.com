@@ -11,6 +11,7 @@ h2. Clients
 * "Tire":http://github.com/karmi/tire: Ruby API & DSL, with ActiveRecord/ActiveModel integration.
 * "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
+* "stretcher":https://github.com/PoseBiz/stretcher: Ruby client.
 * "em-elasticsearch":http://github.com/vangberg/em-elasticsearch: elasticsearch library for eventmachine.
 *  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
 * "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
