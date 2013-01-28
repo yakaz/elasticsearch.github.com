@@ -15,6 +15,19 @@ h2. Upgrade Notes:
 
 h2. Breaking Changes:
 
-* Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
-* Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
-* Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
+ * Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
+ * Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
+ * Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
+ * Sometimes MapperParsingException and sometimes not ("#2354":http://github.com/elasticsearch/elasticsearch/issues/issue/2354)
+
+
+h2. Enhancements:
+ * Support filter inside has_parent and has_child filter ("#2588":http://github.com/elasticsearch/elasticsearch/issues/issue/2588)
+ * Make script cache configurable and bounded ("#2539":http://github.com/elasticsearch/elasticsearch/issues/issue/2539)
+
+
+h2. Bug fixes:
+ * Primary shard failure with initializing replica shards can cause the replica shard to cause allocation failures ("#2592":http://github.com/elasticsearch/elasticsearch/issues/issue/2592)
+ * Parent & child queries can fail if a segment doesn't have documents with the targeted type or associated parent type ("#2537":http://github.com/elasticsearch/elasticsearch/issues/issue/2537)
+ * NullPointerException during parent/child query (ES 0.20.2) ("#2536":http://github.com/elasticsearch/elasticsearch/issues/issue/2536)
+ * Update request with upsert may fail. ("#2530":http://github.com/elasticsearch/elasticsearch/issues/issue/2530)
