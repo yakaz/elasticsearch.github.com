@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.20.4 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.20.4@ is out. This release includes important bug fixes over the previous release and an upgrade is highly recommended. (@0.20.3@ was also released a couple of days ago, but had a problematic deb package).
