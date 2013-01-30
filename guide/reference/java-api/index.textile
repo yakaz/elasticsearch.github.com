@@ -13,4 +13,14 @@ p. Note, all the "APIs":/guide/reference/api are exposed through the Java API (a
 
 h2. Maven Repository
 
-p. elasticsearch is hosted on "Maven Central":http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22elasticsearch%22.
+p. Elasticsearch is hosted on "Maven Central":http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22elasticsearch%22.
+
+p. For example, you can define the latest version in your @pom.xml@ file:
+
+<pre class="prettyprint lang-xml">
+    <dependency>
+        <groupId>org.elasticsearch</groupId>
+        <artifactId>elasticsearch</artifactId>
+        <version>{{site.categories.download[0].version}}</version>
+    </dependency>
+</pre>
