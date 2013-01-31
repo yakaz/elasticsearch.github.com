@@ -6,15 +6,31 @@ cat: community
 
 p. There are many places where the *elasticsearch* community (you!) would love for people to contribute, one of them is enhancing the knowledge base around *elasticsearch*. The site itself is hosted on "github":https://github.com/elasticsearch/elasticsearch.github.com and adding content to it is just a fork away.
 
-p. Interesting places to start is to write a "tutorial":/tutorials about your usage of *elasticsearch*, or maybe record a short "video":/videos showing how you use it. Another is to fix and enhance the *elasticsearch* "guide":/guide.
+p. Interesting places to start include writing a "tutorial":/tutorials about your usage of *elasticsearch*, or maybe record a short "video":/videos showing how you use it. Another is to fix and enhance the *elasticsearch* "guide":/guide.
 
-p. Once the repo is forked / cloned, writing content is pretty simple with many examples already there. For example, if you are writing a tutorial, just start from an existing one. Don't worry about getting everything right, the content is what matters, we are here to help with the rest.
+p. Once the repo is "forked and cloned":https://help.github.com/articles/fork-a-repo to your local machine, writing content is pretty simple.  Just use all the existing pages for examples. The source for this page is @elasticsearch.github.com/community/contribute-site.textile@ and contains many types of markup. Don't worry about getting everything right, the content is what matters; we are here to help with the rest.  
 
-p. If you want to "build" the site, "jekyll":https://github.com/mojombo/jekyll is used to generate it. Once you "installed":https://github.com/mojombo/jekyll/wiki/Install it, just run @jekyll --server@ to get the site running and head over to @localhost:4000@.
+p. You can use "jekyll":https://github.com/mojombo/jekyll and "RedCloth":http://redcloth.org/ to generate the site to view your results. Once you've installed these Ruby based tools, head over to your local clone working directory to re-build and serve the pages.
 
 <pre class="prettyprint">
   gem install jekyll
   gem install RedCloth
-
+  cd /myStuff/my-git-rep/elasticsearch.github.com
   jekyll --server
 </pre>
+
+p. Navigate to "http://localhost:4000":http://localhost:4000 to see your local version of the site
+or try "http://localhost:4000/community/contributing-site.html":http://localhost:4000/community/contributing-site.html to see this page loaded from your local copy.
+  
+p. To save keystrokes while making the round trip from edit to view, you can run *jekyll* so that it automaticaly watches for changes.
+<pre class="prettyprint">jekyll --server --auto
+</pre>
+
+p. Don't forget the last step which is to make a "pull request":https://help.github.com/articles/using-pull-requests to the owners of *elasticsearch.github.com* otherwise others will never see your helpful prose. Thanks in advance for your contributions.
+
+h2. IDE Notes
+   
+p. If you are a regular IDE user, don't worry about cluttering the git project with IDE project files. The @.gitignore@ file already knows to skip the Eclipse @.project@ and IntelliJ @.idea@ files, as well as the *jekyll* generated @_site@ directory tree. 
+
+p. Also worth noting is that *all* IDEs have integrated git functionality. *Eclipse* has "EGit":http://www.eclipse.org/egit/ plugin and *IntelliJ* has a "Git Plugin":http://wiki.jetbrains.net/intellij/Using_Git_Locally, *NetBeans* includes "git support":http://netbeans.org/kb/docs/ide/git.html, and even *Microsoft's Visual Studio* (as of early 2013) has a "Git extension":http://visualstudiogallery.msdn.microsoft.com/abafc7d6-dcaa-40f4-8a5e-d6724bdb980c.
+
