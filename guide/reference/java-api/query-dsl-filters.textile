@@ -1,0 +1,25 @@
+---
+layout: guide
+title: Java Query DSL - Filters
+cat: guide
+sidebar: reference_java_api
+---
+
+p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for filter builders is @FilterBuilders@.
+
+Once your query is ready, you can use the "Search API":search.html.
+
+p. See also how to build "Queries":query-dsl-queries.html
+
+p. To use @FilterBuilders@ just import them in your class:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.index.query.FilterBuilders.*;
+</pre>
+
+Note that you can easily print (aka debug) JSON generated queries using @toString()@ method on @FilterBuilder@ object.
+
+h1. TODO : Add Filters Java Documentation
+
+
+

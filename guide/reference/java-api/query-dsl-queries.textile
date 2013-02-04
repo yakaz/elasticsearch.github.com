@@ -1,0 +1,412 @@
+---
+layout: guide
+title: Java Query DSL - Queries
+cat: guide
+sidebar: reference_java_api
+---
+
+p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for query builders is @QueryBuilders@. Once your query is ready, you can use the "Search API":search.html.
+
+p. See also how to build "Filters":query-dsl-filters.html
+
+p. To use @QueryBuilders@ just import them in your class:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.index.query.QueryBuilders.*;
+</pre>
+
+p. Note that you can easily print (aka debug) JSON generated queries using @toString()@ method on @QueryBuilder@ object.
+
+p. The @QueryBuilder@ can then be used with any API that accepts a query, such as @count@ and @search@.
+
+h1. Match Query
+
+p. See "Match Query":/guide/reference/query-dsl/match-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.matchQuery("name", "kimchy elasticsearch");
+</pre>
+
+h1. MultiMatch Query
+
+p. See "MultiMatch Query":/guide/reference/query-dsl/multi-match-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.multiMatchQuery(
+    "kimchy elasticsearch",     // Text you are looking for
+    "user", "message"           // Fields you query on
+    );
+</pre>
+
+h1. Boolean Query
+
+p. See "Boolean Query":/guide/reference/query-dsl/bool-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders
+                    .boolQuery()
+                    .must(termQuery("content", "test1"))
+                    .must(termQuery("content", "test4"))
+                    .mustNot(termQuery("content", "test2"))
+                    .should(termQuery("content", "test3"));
+</pre>
+
+h1. Boosting Query
+
+p. See "Boosting Query":/guide/reference/query-dsl/boosting-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.boostingQuery()
+            .positive(QueryBuilders.termQuery("name","kimchy"))
+            .negative(QueryBuilders.termQuery("name","dadoonet"))
+            .negativeBoost(0.2f);
+</pre>
+
+h1. IDs Query
+
+p. See "IDs Query":/guide/reference/query-dsl/ids-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.idsQuery().ids("1", "2");
+</pre>
+
+h1. Custom Score Query
+
+p. See "Custom Score Query":/guide/reference/query-dsl/custom-score-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())   // Your query here
+                .script("_score * doc['price'].value");         // Your script here
+
+// If the script have parameters, use the same script and provide parameters to it.
+QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())
+                .script("_score * doc['price'].value / pow(param1, param2)")
+                .param("param1", 2)
+                .param("param2", 3.1);
+</pre>
+
+h1. Custom Boost Factor Query
+
+p. See "Custom Boost Factor Query":/guide/reference/query-dsl/custom_boost_factor-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.customBoostFactorQuery(QueryBuilders.matchAllQuery()) // Your query
+                .boostFactor(3.1f);
+</pre>
+
+h1. Constant Score Query
+
+p. See "Constant Score Query":/guide/reference/query-dsl/constant-score-query.html documentation
+
+<pre class="prettyprint lang-java">
+// Using with Filters
+QueryBuilders.constantScoreQuery(FilterBuilders.termFilter("name","kimchy"))
+                .boost(2.0f);
+
+// With Queries
+QueryBuilders.constantScoreQuery(QueryBuilders.termQuery("name","kimchy"))
+                .boost(2.0f);
+</pre>
+
+h1. Disjunction Max Query
+
+p. See "Disjunction Max Query":/guide/reference/query-dsl/dis-max-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.disMaxQuery()
+                .add(QueryBuilders.termQuery("name","kimchy"))          // Your queries
+                .add(QueryBuilders.termQuery("name","elasticsearch"))   // Your queries
+                .boost(1.2f)
+                .tieBreaker(0.7f);
+</pre>
+
+h1. Field Query
+
+p. See "Field Query":/guide/reference/query-dsl/field-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.fieldQuery("name", "+kimchy -dadoonet");
+
+// Note that you can write the same query using queryString query.
+QueryBuilders.queryString("+kimchy -dadoonet").field("name");
+</pre>
+
+h1. Fuzzy Like This (Field) Query (flt and flt_field)
+
+p. See:
+* "Fuzzy Like This Query":/guide/reference/query-dsl/flt-query.html documentation
+* "Fuzzy Like This Field Query":/guide/reference/query-dsl/flt-field-query.html documentation
+
+<pre class="prettyprint lang-java">
+// flt Query 
+QueryBuilders.fuzzyLikeThisQuery("name.first", "name.last")     // Fields
+                .likeText("text like this one")                 // Text
+                .maxQueryTerms(12);                             // Max num of Terms 
+                                                                // in generated queries
+
+// flt_field Query 
+QueryBuilders.fuzzyLikeThisFieldQuery("name.first")             // Only on single field
+                .likeText("text like this one")
+                .maxQueryTerms(12);
+</pre>
+
+h1. FuzzyQuery
+
+p. See "Fuzzy Query":/guide/reference/query-dsl/fuzzy-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.fuzzyQuery("name", "kimzhy");
+</pre>
+
+h1. Has Child / Has Parent
+
+p. See:
+* "Has Child Query":/guide/reference/query-dsl/has-child-query.html documentation and
+* "Has Parent Query":/guide/reference/query-dsl/has-parent-query.html documentation
+
+<pre class="prettyprint lang-java">
+// Has Child
+QueryBuilders.hasChildQuery("blog_tag",
+                QueryBuilders.termQuery("tag","something"))
+
+// Has Parent
+QueryBuilders.hasParentQuery("blog",
+                QueryBuilders.termQuery("tag","something"));
+</pre>
+
+h1. MatchAll Query
+
+p. See "Match All Query":/guide/reference/query-dsl/match-all-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.matchAllQuery();
+</pre>
+
+h1. Fuzzy Like This (Field) Query (flt and flt_field)
+
+p. See:
+* "More Like This Query":/guide/reference/query-dsl/mlt-query.html documentation
+* "More Like This Field Query":/guide/reference/query-dsl/mlt-field-query.html documentation
+
+<pre class="prettyprint lang-java">
+// mlt Query 
+QueryBuilders.moreLikeThisQuery("name.first", "name.last")      // Fields
+                .likeText("text like this one")                 // Text
+                .minTermFreq(1)                                 // Ignore Threshold
+                .maxQueryTerms(12);                             // Max num of Terms 
+                                                                // in generated queries
+
+// mlt_field Query 
+QueryBuilders.fmoreLikeThisFieldQuery("name.first")             // Only on single field
+                .likeText("text like this one")
+                .minTermFreq(1)
+                .maxQueryTerms(12);
+</pre>
+
+h1. Prefix Query
+
+p. See "Prefix Query":/guide/reference/query-dsl/prefix-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.prefixQuery("brand", "heine");
+</pre>
+
+h1. QueryString Query
+
+p. See "QueryString Query":/guide/reference/query-dsl/query-string-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.queryString("+kimchy -elasticsearch");
+</pre>
+
+h1. Range Query
+
+p. See "Range Query":/guide/reference/query-dsl/range-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders
+                    .rangeQuery("price")
+                    .from(5)
+                    .to(10)
+                    .includeLower(true)
+                    .includeUpper(false);
+</pre>
+
+h1. Span Queries (first, near, not, or, term)
+
+p. See: 
+* "Span First Query":/guide/reference/query-dsl/span-first-query.html documentation
+* "Span Near Query":/guide/reference/query-dsl/span-near-query.html documentation
+* "Span Not Query":/guide/reference/query-dsl/span-not-query.html documentation
+* "Span Or Query":/guide/reference/query-dsl/span-or-query.html documentation
+* "Span Term Query":/guide/reference/query-dsl/span-term-query.html documentation
+
+<pre class="prettyprint lang-java">
+// Span First
+QueryBuilders.spanFirstQuery(
+                QueryBuilders.spanTermQuery("user", "kimchy"),  // Query
+                3                                               // Max End position
+        );
+
+// Span Near
+QueryBuilders.spanNearQuery()
+    .clause(QueryBuilders.spanTermQuery("field","value1"))  // Span Term Queries
+    .clause(QueryBuilders.spanTermQuery("field","value2"))
+    .clause(QueryBuilders.spanTermQuery("field","value3"))
+    .slop(12)                                               // Slop factor
+    .inOrder(false)
+    .collectPayloads(false);
+
+// Span Not
+QueryBuilders.spanNotQuery()
+    .include(QueryBuilders.spanTermQuery("field","value1"))
+    .exclude(QueryBuilders.spanTermQuery("field","value2"));
+
+// Span Or
+QueryBuilders.spanOrQuery()
+    .clause(QueryBuilders.spanTermQuery("field","value1"))
+    .clause(QueryBuilders.spanTermQuery("field","value2"))
+    .clause(QueryBuilders.spanTermQuery("field","value3"));
+
+// Span Term
+QueryBuilders.spanTermQuery("user","kimchy");
+</pre>
+
+h1. Term Query
+
+p. See "Term Query":/guide/reference/query-dsl/term-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilder qb = QueryBuilders.termQuery("name", "kimchy");
+</pre>
+
+h1. Terms Query
+
+p. See "Terms Query":/guide/reference/query-dsl/terms-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.termsQuery("tags",    // field
+    "blue", "pill")                 // values
+    .minimumMatch(1);               // How many terms must match
+</pre>
+
+h1. Top Children Query
+
+p. See "Top Children Query":/guide/reference/query-dsl/top-children-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.topChildrenQuery(
+        "blog_tag",                                 // field
+        QueryBuilders.termQuery("tag", "something") // Query
+    )
+    .score("max")                                   // max, sum or avg
+    .factor(5)
+    .incrementalFactor(2);
+</pre>
+
+h1. Wildcard Query
+
+p. See "Wildcard Query":/guide/reference/query-dsl/wildcard-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.wildcardQuery("user", "k?mc*");
+</pre>
+
+h1. Nested Query
+
+p. See "Nested Query":/guide/reference/query-dsl/nested-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.nestedQuery("obj1",               // Path
+                QueryBuilders.boolQuery()       // Your query
+                        .must(QueryBuilders.matchQuery("obj1.name", "blue"))
+                        .must(QueryBuilders.rangeQuery("obj1.count").gt(5))
+            )
+            .scoreMode("avg");                  // max, total, avg or none
+</pre>
+
+h1. Custom Filters Score Query
+
+p. See "Custom Filters Score Query":/guide/reference/query-dsl/custom-filters-score-query.html documentation
+
+<pre class="prettyprint lang-java">
+QueryBuilders.customFiltersScoreQuery(
+                QueryBuilders.matchAllQuery())  // Query
+            // Filters with their boost factors
+            .add(FilterBuilders.rangeFilter("age").from(0).to(10), 3)
+            .add(FilterBuilders.rangeFilter("age").from(10).to(20), 2)
+            .scoreMode("first");    // first, min, max, total, avg or multiply
+</pre>
+
+h1. Indices Query
+
+p. See "Indices Query":/guide/reference/query-dsl/indices-query.html documentation
+
+<pre class="prettyprint lang-java">
+// Using another query when no match for the main one
+QueryBuilders.indicesQuery(
+                QueryBuilders.termQuery("tag", "wow"),
+                "index1", "index2"
+            )
+            .noMatchQuery(QueryBuilders.termQuery("tag", "kow"));
+
+// Using all (match all) or none (match no documents)
+QueryBuilders.indicesQuery(
+                QueryBuilders.termQuery("tag", "wow"),
+                "index1", "index2"
+            )
+            .noMatchQuery("all");       // all or none
+</pre>
+
+h1. GeoShape Query
+
+p. See "GeoShape Query":/guide/reference/query-dsl/geo-shape-query.html documentation
+
+Note, the @geo_shape@ type uses @Spatial4J@ and @JTS@, both of which are optional dependencies. Consequently you must add @Spatial4J@ and @JTS@ to your classpath in order to use this type:
+
+<pre class="prettyprint lang-xml">
+<dependency>
+    <groupId>com.spatial4j</groupId>
+    <artifactId>spatial4j</artifactId>
+    <version>0.3</version>
+</dependency>
+
+<dependency>
+    <groupId>com.vividsolutions</groupId>
+    <artifactId>jts</artifactId>
+    <version>1.12</version>
+    <exclusions>
+        <exclusion>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+</pre>
+
+<pre class="prettyprint lang-java">
+// Import Spatial4J shapes
+import com.spatial4j.core.context.SpatialContext;
+import com.spatial4j.core.shape.Shape;
+import com.spatial4j.core.shape.impl.RectangleImpl;
+
+// Also import ShapeRelation
+import org.elasticsearch.common.geo.ShapeRelation;
+</pre>
+
+<pre class="prettyprint lang-java">
+// Shape within another
+QueryBuilders.geoShapeQuery("location", 
+                new RectangleImpl(0,10,0,10,SpatialContext.GEO))
+            .relation(ShapeRelation.WITHIN);
+
+// Intersect shapes
+QueryBuilders.geoShapeQuery("location",
+                new PointImpl(0, 0, SpatialContext.GEO))
+            .relation(ShapeRelation.INTERSECTS);
+
+// Using pre-indexed shapes
+QueryBuilders.geoShapeQuery("location", "New Zealand", "countries")
+            .relation(ShapeRelation.DISJOINT);
+</pre>
+

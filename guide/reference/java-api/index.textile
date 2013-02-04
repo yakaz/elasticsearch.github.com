@@ -18,9 +18,9 @@ p. Elasticsearch is hosted on "Maven Central":http://search.maven.org/#search%7C
 p. For example, you can define the latest version in your @pom.xml@ file:
 
 <pre class="prettyprint lang-xml">
-    <dependency>
-        <groupId>org.elasticsearch</groupId>
-        <artifactId>elasticsearch</artifactId>
-        <version>{{site.categories.download[0].version}}</version>
-    </dependency>
+<dependency>
+    <groupId>org.elasticsearch</groupId>
+    <artifactId>elasticsearch</artifactId>
+    <version>{{site.categories.download[0].version}}</version>
+</dependency>
 </pre>
