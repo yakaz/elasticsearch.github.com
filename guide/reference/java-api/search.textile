@@ -79,3 +79,22 @@ for (MultiSearchResponse.Item item : sr.responses()) {
     nbHits += response.hits().totalHits();
 }
 </pre>
+
+h1. Using Facets
+
+p. The following code shows how to add two facets within your search:
+
+<pre class="prettyprint lang-java">
+SearchResponse sr = node.client().prepareSearch()
+    .setQuery(QueryBuilders.matchAllQuery())
+    .addFacet(FacetBuilders.termsFacet("f1").field("field"))
+    .addFacet(FacetBuilders.dateHistogramFacet("f2").field("birth").interval("year"))
+    .execute().actionGet();
+
+// Get your facet results
+TermsFacet f1 = (TermsFacet) sr.facets().facetsAsMap().get("f1");
+DateHistogramFacet f2 = (DateHistogramFacet) sr.facets().facetsAsMap().get("f2");
+</pre>
+
+p. See "Facets Java API":facets.html documentation for details.
+
