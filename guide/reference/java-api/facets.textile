@@ -24,40 +24,6 @@ p. To build facet requests, use @FacetBuilders@ helpers. Just import them in you
 import static org.elasticsearch.search.facet.FacetBuilders.*;
 </pre>
 
-<a name="facet-filter"></a>
-
-h1. Facet filters (not Filter Facet)
-
-p. By default, facets are applied on the query resultset whatever filters exists or are.
-
-p. If you need to compute facets with the same filters or even with other filters, you can add the filter to any facet using @AbstractFacetBuilder#facetFilter(FilterBuilder)@ method:
-
-<pre class="prettyprint lang-java">
-FacetBuilders
-    .termsFacet("f").field("brand") // Your facet
-    .facetFilter( // Your filter here
-        FilterBuilders.termFilter("colour", "pale")
-    );
-</pre>
-
-p. For example, you can reuse the same filter you created for your query:
-
-<pre class="prettyprint lang-java">
-// A common filter
-FilterBuilder filter = FilterBuilders.termFilter("colour", "pale");
-
-TermsFacetBuilder facet = FacetBuilders.termsFacet("f")
-    .field("brand")
-    .facetFilter(filter);                           // We apply it to the facet
-
-SearchResponse sr = node.client().prepareSearch()
-    .setQuery(QueryBuilders.matchAllQuery())
-    .setFilter(filter)                              // We apply it to the query
-    .addFacet(facet)
-    .execute().actionGet();
-</pre>
-
-p. See documentation on how to build "Filters":query-dsl-filters.html.
 
 h1. Facets
 
@@ -408,4 +374,49 @@ for (GeoDistanceFacet.Entry entry : f) {
     entry.getTotal();           // Sum of values
     entry.getMean();            // Mean
 }
+</pre>
+
+<a name="facet-filter"></a>
+
+h1. Facet filters (not Filter Facet)
+
+p. By default, facets are applied on the query resultset whatever filters exists or are.
+
+p. If you need to compute facets with the same filters or even with other filters, you can add the filter to any facet using @AbstractFacetBuilder#facetFilter(FilterBuilder)@ method:
+
+<pre class="prettyprint lang-java">
+FacetBuilders
+    .termsFacet("f").field("brand") // Your facet
+    .facetFilter( // Your filter here
+        FilterBuilders.termFilter("colour", "pale")
+    );
+</pre>
+
+p. For example, you can reuse the same filter you created for your query:
+
+<pre class="prettyprint lang-java">
+// A common filter
+FilterBuilder filter = FilterBuilders.termFilter("colour", "pale");
+
+TermsFacetBuilder facet = FacetBuilders.termsFacet("f")
+    .field("brand")
+    .facetFilter(filter);                           // We apply it to the facet
+
+SearchResponse sr = node.client().prepareSearch()
+    .setQuery(QueryBuilders.matchAllQuery())
+    .setFilter(filter)                              // We apply it to the query
+    .addFacet(facet)
+    .execute().actionGet();
+</pre>
+
+p. See documentation on how to build "Filters":query-dsl-filters.html.
+
+h1. Scope
+
+p. By default, facets are computed within the query resultset. But, you can compute facets from all documents in the index whatever the query is, using @global@ parameter:
+
+<pre class="prettyprint lang-java">
+TermsFacetBuilder facet = FacetBuilders.termsFacet("f")
+    .field("brand")
+    .global(true); 
 </pre>
