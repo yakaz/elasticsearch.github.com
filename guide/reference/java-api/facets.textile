@@ -21,7 +21,7 @@ p. Note that you can add more than one facet. See "Search Java API":search.html 
 p. To build facet requests, use @FacetBuilders@ helpers. Just import them in your class:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.search.facet.FacetBuilders.*;
+import org.elasticsearch.search.facet.FacetBuilders.*;
 </pre>
 
 
