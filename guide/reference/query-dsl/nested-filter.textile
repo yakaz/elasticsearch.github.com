@@ -18,7 +18,7 @@ p. A @nested@ filter, works in a similar fashion to the "nested":nested-query.ht
                     "bool" : {
                         "must" : [
                             {
-                                "text" : {"obj1.name" : "blue"}
+                                "match" : {"obj1.name" : "blue"}
                             },
                             {
                                 "range" : {"obj1.count" : {"gt" : 5}}
