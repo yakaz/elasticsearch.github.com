@@ -85,11 +85,11 @@ default node properties, creating directories, creating configuration files with
 downloading files from the internet, or executing arbitrary scripts and commands. Cookbooks hold together recipes, template files,
 _Chef_ extensions, etc.
 
-Have a look at the [**Elasticsearch cookbook**](https://github.com/elasticsearch/cookbook-elasticsearchapp) we'll be using in this tutorial,
+Have a look at the [**Elasticsearch cookbook**](https://github.com/elasticsearch/cookbook-elasticsearch) we'll be using in this tutorial,
 to get a sense of how cookbooks are organized and how do they work. The
-[recipe](https://github.com/elasticsearch/cookbook-elasticsearchapp/blob/master/recipes/default.rb) is written in a simple Ruby-based domain
+[recipe](https://github.com/elasticsearch/cookbook-elasticsearch/blob/master/recipes/default.rb) is written in a simple Ruby-based domain
 specific language, and should be pretty understandable. Check out also the
-[cookbook templates](https://github.com/elasticsearch/cookbook-elasticsearchapp/tree/master/templates/default).
+[cookbook templates](https://github.com/elasticsearch/cookbook-elasticsearch/tree/master/templates/default).
 
 A recipe can also load additional data from **data bags**. [_Data bags_](http://wiki.opscode.com/display/chef/Data+Bags) are simple
 JSON documents, and can contain arbitrary information, such as user credentials, API tokens and other things not specific to a certain recipe.

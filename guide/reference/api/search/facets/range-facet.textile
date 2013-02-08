@@ -50,6 +50,8 @@ p. Another option which is a bit more DSL enabled is to provide the ranges on th
 }
 </pre>
 
+p. The @range@ facet always include the @from@ parameter and exclude the @to@ parameter for each range.
+
 h1. Key and Value
 
 p. The @range@ facet allows to use a different field to check if its value falls within a range, and another field to compute aggregated data per range (like total). For example:
