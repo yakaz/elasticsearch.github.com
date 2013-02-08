@@ -5,7 +5,26 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. Obtaining an elasticsearch @Client@ is simple. The most common way to get a client is by 1) creating an embedded @Node@ that acts as a node within a cluster and 2) requesting a @Client@ from your embedded @Node@. Another manner is by creating a @TransportClient@ that connects to a cluster.
+
+p. You can use the <b>java client</b> in multiple ways:
+
+* Perform standard "index":index_.html, "get":get.html, "delete":delete.html and "search":search.html operations on an existing cluster
+* Perform administrative tasks on a running cluster
+* Start full nodes when you want to run Elasticsearch embedded in your own application
+or when you want to launch unit or integration tests
+
+p. Obtaining an elasticsearch @Client@ is simple. The most common way to get a client is by: 
+
+# creating an embedded "@Node@":#nodeclient that acts as a node within a cluster
+# requesting a @Client@ from your embedded @Node@. 
+
+p. Another manner is by creating a "@TransportClient@":#transportclient that connects to a cluster.
+
+**Important:**
+
+bq. Please note that you are encouraged to use the same version on client and cluster sides. You may hit some incompatibilities issues when mixing major versions.
+
+<a name="nodeclient"></a>
 
 h1. Node Client
 
@@ -24,7 +43,23 @@ Client client = node.client();
 node.close();
 </pre>
 
-p. When you start a @Node@, it joins an elasticsearch cluster. You can have different clusters by simple setting the @cluster.name@ setting, or explicitly using the @clusterName@ method on the builder. The benefit of using the @Client@ is the fact that operations are automatically routed to the node(s) the operations need to be executed on, without performing a "double hop". For example, the index operation will automatically be executed on the shard that it will end up existing at.
+p. When you start a @Node@, it joins an elasticsearch cluster. You can have different clusters by simple setting the @cluster.name@ setting, or explicitly using the @clusterName@ method on the builder. 
+
+p. You can define @cluster.name@ in @/src/main/resources/elasticsearch.yml@ dir in your project. As long as @elasticsearch.yml@ is present in the classloader, it will be used when you start your node.
+
+<pre class="prettyprint">
+cluster.name=yourclustername
+</pre>
+
+p. Or in Java:
+
+<pre class="prettyprint lang-java">
+Node node = nodeBuilder().clusterName("yourclustername").node();
+Client client = node.client();
+</pre>
+
+
+p. The benefit of using the @Client@ is the fact that operations are automatically routed to the node(s) the operations need to be executed on, without performing a "double hop". For example, the index operation will automatically be executed on the shard that it will end up existing at.
 
 p. When you start a @Node@, the most important decision is whether it should hold data or not. In other words, should indices and shards be allocated to it. Many times we would like to have the clients just be clients, without shards being allocated to them. This is simple to configure by setting either @node.data@ setting to @false@ or @node.client@ to @true@ (the @NodeBuilder@ respective helper methods on it):
 
@@ -57,6 +92,8 @@ node.close();
 </pre>
 
 
+<a name="transportclient"></a>
+
 h1. Transport Client
 
 p. The @TransportClient@ connects remotely to an elasticsearch cluster using the transport module. It does not join the cluster, but simply gets one or more initial transport addresses and communicates with them in round robin fashion on each action (though most actions will probably be "two hop" operations).
@@ -81,6 +118,9 @@ Settings settings = ImmutableSettings.settingsBuilder()
 Client client =	new TransportClient(settings);
 //Add transport addresses and do something with the client...
 </pre>
+
+Or using @elasticsearch.yml@ file as shown in the "Node Client section":#nodeclient
+
 
 p. The client allows to sniff the rest of the cluster, and add those into its list of machines to use. In this case, note that the ip addresses used will be the ones that the other nodes were started with (the "publish" address). In order to enable it, set the @client.transport.sniff@ to @true@:
 
