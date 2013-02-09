@@ -21,11 +21,12 @@ h2. Clients
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
 * "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
-* "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch
-* "scalastic":https://github.com/bsadeh/scalastic: Scala client
-* "rawes":https://github.com/humangeo/rawes: Python low level client
+* "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch.
+* "scalastic":https://github.com/bsadeh/scalastic: Scala client.
+* "esclient":https://github.com/scalastuff/esclient: Thin Scala client.
+* "rawes":https://github.com/humangeo/rawes: Python low level client.
 * "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
-* "elastigo":https://github.com/mattbaird/elastigo: Go client
+* "elastigo":https://github.com/mattbaird/elastigo: Go client.
 * "Elastic.js":https://github.com/fullscale/elastic.js: A JavaScript implementation of the ElasticSearch Query DSL and Core API.
 
 
