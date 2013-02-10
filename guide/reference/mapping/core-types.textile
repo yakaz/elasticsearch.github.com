@@ -93,7 +93,7 @@ p. The mapping is required to disambiguate the meaning of the document. Otherwis
 
 h1. Number
 
-p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene in order to support numeric values. An example mapping can be:
+p. A number based type supporting @float@, @double@, @byte@, @short@, @integer@, and @long@. It uses specific constructs within Lucene in order to support numeric values. The number types have the same ranges as corresponding "Java types":http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html. An example mapping can be:
 
 <pre class="prettyprint lang-js">
 {
