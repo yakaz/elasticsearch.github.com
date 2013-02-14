@@ -1,0 +1,9 @@
+---
+layout: blogpost
+title: 0.20.5 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.20.5@ is out. You can download it "here":/download. This release includes several critical bug fixes, and it is a recommended upgrade for @0.20.x@ and @0.19.x@ users.
