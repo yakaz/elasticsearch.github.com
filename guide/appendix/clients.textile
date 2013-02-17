@@ -49,6 +49,7 @@ h2. Integrations
 * "Wp-ElasticSearch":http://searchbox-io.github.com/wp-elasticsearch/: ElasticSearch WordPress Plugin   
 * "eslogd":https://github.com/OlegKunitsyn/eslogd: Linux daemon that replicates events to a central ElasticSearch server in real-time
 * "elasticsearch-clojure-repl":https://github.com/drewr/elasticsearch-clojure-repl: Plugin that embeds nREPL for run-time introspective adventure! Also serves as an nREPL transport.
+* "Haystack":http://haystacksearch.org/: Modular search for Django
 
 h2. Misc
 
