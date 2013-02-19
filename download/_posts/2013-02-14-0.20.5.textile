@@ -15,6 +15,6 @@ h2. Upgrade Notes:
 
 h2. Breaking Changes:
 
- * Shared Gateway has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
- * Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
+ * Shared Gateway has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
+ * Snappy compression has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
  * Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
