@@ -12,4 +12,4 @@ p. The following are settings that can be set for a @edgeNGram@ token filter typ
 |_. Setting |_. Description |
 |@min_gram@|Defaults to @1@.|
 |@max_gram@|Defaults to @2@.|
-|@side@|Either @front@ or @back@.|
+|@side@|Either @front@ or @back@. Defaults to @front@.|
