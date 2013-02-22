@@ -18,3 +18,17 @@ h2. Breaking Changes:
  * Shared Gateway has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
  * Snappy compression has been deprecated ("2459":https://github.com/elasticsearch/elasticsearch/issues/2459)
  * Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
+
+h2. Enhancements:
+ * Id Cache: Allow to configure if ids should be reused (memory wise) or not, default to false ("#2605":http://github.com/elasticsearch/elasticsearch/issues/issue/2605)
+
+
+h2. Bug fixes:
+ * Cached script filter is not used in consecutive searches ("#2651":http://github.com/elasticsearch/elasticsearch/issues/issue/2651)
+ * Warmers do not load field data cache for sorting on new segments ("#2649":http://github.com/elasticsearch/elasticsearch/issues/issue/2649)
+ * possibly incorrect use of Lucene OneMerge.totalBytesSize ("#2643":http://github.com/elasticsearch/elasticsearch/issues/issue/2643)
+ * Bulk execution while a shard is replication might send erroneous version conflict failures for certain items ("#2642":http://github.com/elasticsearch/elasticsearch/issues/issue/2642)
+ * Index with no replicas might loose on going documents while relocating a shard ("#2641":http://github.com/elasticsearch/elasticsearch/issues/issue/2641)
+ * Filter cache stats may report incorrect values when index is recreated ("#2609":http://github.com/elasticsearch/elasticsearch/issues/issue/2609)
+ * NullPointerException ("#2608":http://github.com/elasticsearch/elasticsearch/issues/issue/2608)
+

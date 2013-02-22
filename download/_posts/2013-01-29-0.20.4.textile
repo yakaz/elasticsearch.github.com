@@ -19,3 +19,9 @@ h2. Breaking Changes:
  * Snappy compression has been deprecated ("2458":https://github.com/elasticsearch/elasticsearch/issues/2458)
  * Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
  * Sometimes MapperParsingException and sometimes not ("#2354":http://github.com/elasticsearch/elasticsearch/issues/issue/2354)
+
+h2. Bug fixes:
+ * Deb package wrongly includes additional lucene libraries ("#2599":http://github.com/elasticsearch/elasticsearch/issues/issue/2599)
+ * Support MultiPhrasePrefix (MatchQuery.Type.PHRASE_PREFIX) in Highlighters ("#2596":http://github.com/elasticsearch/elasticsearch/issues/issue/2596)
+ * Indexes created from index request might not replica initial doc to replica ("#2594":http://github.com/elasticsearch/elasticsearch/issues/issue/2594)
+
