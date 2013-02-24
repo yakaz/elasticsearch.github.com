@@ -50,6 +50,7 @@ h2. Integrations
 * "eslogd":https://github.com/OlegKunitsyn/eslogd: Linux daemon that replicates events to a central ElasticSearch server in real-time
 * "elasticsearch-clojure-repl":https://github.com/drewr/elasticsearch-clojure-repl: Plugin that embeds nREPL for run-time introspective adventure! Also serves as an nREPL transport.
 * "Haystack":http://haystacksearch.org/: Modular search for Django
+* "play2-elasticsearch":https://github.com/cleverage/play2-elasticsearch: ElasticSearch module for Play Framework 2.x
 
 h2. Misc
 
