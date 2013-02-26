@@ -183,7 +183,7 @@ p. The following table lists all the attributes that can be used with the boolea
 
 h1. Binary
 
-p. The binary type is a base64 representation of binary data that can be stored in the index. The field is always stored and not indexed at all.
+p. The binary type is a base64 representation of binary data that can be stored in the index. The field is stored by default and not indexed at all.
 
 <pre class="prettyprint lang-js">
 {
