@@ -41,6 +41,29 @@ h1. Sort Values
 
 p. The sort values for each document returned are also returned as part of the response.
 
+h1. Sort mode option
+From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields which is also known as multi-valued fields. The @sort_mode@ option
+controls what array value is picked for sorting the document it belongs to. The @sort_mode@ has the following option:
+* @min@ - Pick the lowest value.
+* @max@ - Pick the highest value.
+* @sum@ - Use the sum of all values as sort value. Only applicable for number based array fields.
+* @avg@ - Use the average of all values as sort value. Only applicable for number based array fields.
+
+h4. Example usage
+
+p. In the example bellow the field price has multiple prices per document. In this case the result hits will be sort by price ascending based on the average price per document.
+
+<pre class="prettyprint lang-js">
+curl -XPOST 'localhost:9200/_search' -d '{
+   "query" : {
+    ...
+   },
+   "sort" : [
+      {"price" : {"sort_order" : "asc", "sort_mode" : "avg"}}
+   ]
+}'
+</pre>
+
 h1. Missing Values
 
 p. Numeric fields support specific handling for missing fields in a doc. The @missing@ value can be @_last@, @_first@, or a custom value (that will be used for missing docs as the sort value). For example:
