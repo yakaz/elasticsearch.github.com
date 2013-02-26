@@ -30,7 +30,7 @@ p. The new algorithm is based on a weight function, and we will slowly add addit
 
 h3. Suggst ("2585":https://github.com/elasticsearch/elasticsearch/issues/2585)
 
-p. The suggest feature (part of a search request) allows Elasticsearch to provide suggestions for a given text based on the corpus that is part of the index. The current implemented suggest type uses the Levenshtein distance on a per term basis to potentially provide spelling suggestions.
+p. The suggest feature (part of a search request) allows Elasticsearch to provide suggestions for the given text based on the corpus that is part of the index. The current implemented suggest type uses the Levenshtein distance on a per term basis to potentially provide spelling suggestions.
 
 p. This feature is considered experimental, mainly in the request and response format. We are actively working on additional suggest implementation (such as phrase based suggestion), and this work will be finalized towards the 0.90.0 GA release.
 
