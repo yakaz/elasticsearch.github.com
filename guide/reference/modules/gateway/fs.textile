@@ -5,6 +5,8 @@ cat: guide
 sidebar: reference_modules_gateway
 ---
 
+**The shared FS gateway is deprecated and will be removed in a future version. Please use the "local gateway":/guide/reference/modules/gateway/local.html instead.**
+
 p. The file system based gateway stores the cluster meta data and indices in a *shared* file system. Note, since its a distributed system, the file system should be shared between all different nodes. Here is an example config to enable it:
 
 <pre class="prettyprint">
