@@ -1,0 +1,15 @@
+---
+layout: download
+cat: download
+version: 0.90.0.Beta1
+title: 0.90.0.Beta1
+download_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.0.Beta1.zip
+download_nix_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.0.Beta1.tar.gz
+download_deb_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.0.Beta1.deb
+download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.90.0.Beta1
+release_notes: true
+---
+
+h2. Upgrade Notes:
+ * This is a beta release. We recommend testing this version out in developement, and not running it in production yet.
+ * Upgrading from 0.20 requires a full cluster restart.
