@@ -26,6 +26,7 @@ h2. Breaking changes:
  * Mapping: string mapping to automatically set omit_norms to true and index_options to docs when setting index to not_analyzed ("#2349":http://github.com/elasticsearch/elasticsearch/issues/issue/2349)
  * Plugins Installer: Allow to download plugins from download.elasticsearch.org ("#2507":http://github.com/elasticsearch/elasticsearch/issues/issue/2507)
  * Shard Allocation: add index.routing.allocation.require.... and cluster.routing.allocation.require.... setting ("#2404":http://github.com/elasticsearch/elasticsearch/issues/issue/2404)
+ * Field Data in Node Stats now in its own element within indices ("#2697":https://github.com/elasticsearch/elasticsearch/issues/2697)
 
 
 h2. New features:
