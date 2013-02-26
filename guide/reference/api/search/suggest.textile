@@ -6,7 +6,7 @@ sidebar: reference_api_search
 ---
 
 h1. Suggest feature
-The suggest feature suggests similar looking terms based on a provided text by using a suggester. At the moment there the only supported suggester is `fuzzy`. The suggest feature is available from version `0.90.0 beta`. The suggest feature is still under development and will evolve  once we move the `0.90` GA release.
+p. The suggest feature suggests similar looking terms based on a provided text by using a suggester. At the moment there the only supported suggester is `fuzzy`. The suggest feature is available from version `0.90.0 beta`. The suggest feature is still under development and will evolve  once we move the `0.90` GA release.
 
 h1. Fuzzy suggester
 
