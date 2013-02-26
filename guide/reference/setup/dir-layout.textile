@@ -15,7 +15,13 @@ p. The directory layout of an installation is as follows:
 |*work*|Temporal files that are used by different nodes.|@{path.home}/work@|@path.work@|
 |*logs*|Log files location|@{path.home}/logs@|@path.logs@|
 
-p. The multiple data locations allows to stripe it. The striping is simple, placing whole files in one of the locations, and deciding where to place the file based on the location with greatest free space. Note, there is no multiple copies of the same data, in that, its similar to RAID 0. Though simple, it should provide a good solution for people that don't want to mess with raids and the like. Here is how it is configured:
+p. The multiple data locations allows to stripe it. The striping is simple, placing whole files in one of the locations, and deciding where to place the file based on the value of
+the @index.store.distributor@ setting:
+
+ * @least_used@ (default) always selects the directory with the most available space
+ * @random@ selects directories at random. The probability of selecting a particular directory is proportional to amount of available space in this directory.
+
+Note, there are no multiple copies of the same data, in that, its similar to RAID 0. Though simple, it should provide a good solution for people that don't want to mess with RAID. Here is how it is configured:
 
 <pre>
 path.data: /mnt/first,/mnt/second
