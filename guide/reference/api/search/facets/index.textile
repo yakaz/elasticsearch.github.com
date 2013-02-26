@@ -189,7 +189,7 @@ p. Facet filter allows you to filter your facet on the nested object level. It i
             },
             "nested": "obj1",
             "facet_filter" : {
-                "term" : {"name", "blue"}
+                "term" : {"name" : "blue"}
             }
         }
         }
