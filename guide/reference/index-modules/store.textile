@@ -15,7 +15,9 @@ p. Another important aspect of memory based storage is the fact that ElasticSear
 
 h1. Store Level Compression
 
-p. (0.19.5 and above).
+p. **From version 0.90 onwards, store compression is always enabled.**
+
+p. For versions 0.19.5 to 0.20:
 
 p. In the mapping, one can configure the @_source@ field to be compressed. The problem with it is the fact that small documents don't end up compressing well, as several documents compressed in a single compression "block" will provide a considerable better compression ratio. This version introduces the ability to compress stored fieds using the @index.store.compress.stored@ setting, as well as term vector using the @index.store.compress.tv@ setting.
 

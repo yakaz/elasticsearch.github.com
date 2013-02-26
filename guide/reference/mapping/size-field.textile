@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. The @_size@ field allows to automatically index the size of the original @_source@ indexed (not the compressed size, if compressed). By default, it's disabled. In order to enable it, set the mapping to:
+p. The @_size@ field allows to automatically index the size of the original @_source@ indexed. By default, it's disabled. In order to enable it, set the mapping to:
 
 <pre class="prettyprint lang-js">
 {
