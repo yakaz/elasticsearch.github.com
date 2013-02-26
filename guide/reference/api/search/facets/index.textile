@@ -174,7 +174,7 @@ p. Another option is to run the facet on all the nested documents matching the r
 
 p. The @nested@ element provides the path to the nested document (can be a multi level nested docs) that will be used.
 
-p. Facet filter allows you to filter your facet on the nested object level. It is important that these filters match on the nested object level and not on the root document level. In the following example the @terms_stat@ only applies on nested objects with the name 'blue'.
+p. Facet filter allows you to filter your facet on the nested object level. It is important that these filters match on the nested object level and not on the root document level. In the following example the @terms_stats@ only applies on nested objects with the name 'blue'.
 
 <pre class="prettyprint lang-js">
 {
@@ -191,7 +191,6 @@ p. Facet filter allows you to filter your facet on the nested object level. It i
             "facet_filter" : {
                 "term" : {"name" : "blue"}
             }
-        }
         }
     }
 }
