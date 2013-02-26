@@ -43,8 +43,7 @@ p. The sort values for each document returned are also returned as part of the r
 
 h1. Sort mode option
 
-p. From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields which is also known as multi-valued fields. The @sort_mode@ option
-controls what array value is picked for sorting the document it belongs to. The @sort_mode@ has the following option:
+p. From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields which is also known as multi-valued fields. The @sort_mode@ option controls what array value is picked for sorting the document it belongs to. The @sort_mode@ has the following option:
 * @min@ - Pick the lowest value.
 * @max@ - Pick the highest value.
 * @sum@ - Use the sum of all values as sort value. Only applicable for number based array fields.
