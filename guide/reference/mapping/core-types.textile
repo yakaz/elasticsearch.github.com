@@ -225,3 +225,52 @@ p. On all field types it possible to configure a @postings_format@ attribute:
   }
 }
 </pre>
+
+h3. Defining custom postings formats
+
+p. On top of using the built-in posting formats it is possible define custom postings format and reconfigure the default available postings formats. This can be specified via the index settings in the @codec@ settings part. This is considered an expert feature and most likely not needed for your indices.
+
+h1. Similarity 
+
+p. From version @0.90.Beta1@ Elasticsearch includes changes from Lucene 4 that allows you to configure a similarity (scoring algorithm) per field. Allowing users a simpler extension beyond the usual TF/IDF algorithm. As part of this, new algorithms have been added including BM25. Also as part of the changes, it is now possible to define a Similarity per field, giving even greater control over scoring.
+
+h3. Configuring Similarity per Field
+
+p. Defining the Similarity for a field is done via the @similarity@ mapping property, as this example shows:
+
+<pre class="prettyprint lang-js">
+{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "similarity" : "BM25" }
+    }
+} 
+</pre>
+
+p. The following Similarties are configured out-of-box:
+* @default@ - The Default TF/IDF algorithm used by Elasticsearch and Lucene in previous versions.
+* @BM25@ - The BM25 algorithm.  See http://en.wikipedia.org/wiki/Okapi_BM25 for more details
+
+p. Additionally, functionality for configuring the following Similarities is provided: @DFR@ and @IB@
+
+h3. Configuring Similarity Properties
+
+p. Most existing or custom Similarities have configuration options which can be configured.  This is done via index settings as shown below:
+
+<pre class="prettyprint lang-js">
+"similarity" : {
+  "my_similarity : {
+    "type" : "DFR",
+    "basic_model" : "g",
+    "after_effect" : "l",
+    "normalization" : "h2",
+    "normalization.h2.c" : "3.0"
+  }
+}
+</pre>
+
+p. Here we configure the DFRSimilarity so it can be referenced as `my_similarity` in mappings.
+
+h3. Default and Base Similarities
+
+p. By default, ElasticSearch will use whatever Similarity is configured as `default`.  However, the Similarity functions `queryNorm()` and `coord()` are not per-field.  Consequently, for expert users wanting to change the implementation used for these two methods, while not changing the `default`, it is possible to configure a Similarity with the name `base`.  This Similarity will then be used for the two methods.
