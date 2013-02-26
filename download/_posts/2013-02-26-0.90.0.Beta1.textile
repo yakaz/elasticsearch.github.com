@@ -97,7 +97,6 @@ h2. Bug fixes:
  * *:* query not working ("#2486":http://github.com/elasticsearch/elasticsearch/issues/issue/2486)
  * Failure to download plugins from github ("#2470":http://github.com/elasticsearch/elasticsearch/issues/issue/2470)
  * Wildcard query on non existent field matches all documents. ("#2461":http://github.com/elasticsearch/elasticsearch/issues/issue/2461)
-Wide character in print at ./elasticsearch.com/es_release_notes.pl line 68.
  * The relevancy score in explanation of custom_filters_query doesn’t match the actual score ("#2441":http://github.com/elasticsearch/elasticsearch/issues/issue/2441)
  * Match query should fail when trying to provide several fields in its simplified form ("#2432":http://github.com/elasticsearch/elasticsearch/issues/issue/2432)
  * Setting logger levels using cluster update settings does not work ("#2428":http://github.com/elasticsearch/elasticsearch/issues/issue/2428)
