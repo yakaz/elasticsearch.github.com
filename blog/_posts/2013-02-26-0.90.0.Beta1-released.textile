@@ -61,8 +61,6 @@ h3. Multi Value Sorting ("2634":https://github.com/elasticsearch/elasticsearch/i
 
 p. Sorting on fields with multiple numeric values now work as expected, properly choosing how to sort based on the sort direction. Sorting on nested documents is now supported as well (with an option filter). On top of it, sorting on multiple values now support the ability to sort based on the @min@, @max@, @sum@, and @avg@ values.
 
-p. Sorting in elasticsearch 
-
 h3. Lucene 4 Similarity ("2424":https://github.com/elasticsearch/elasticsearch/issues/2424)
 
 p. Similarity in Lucene allows us to control how relevancy or scoring is done. The new Lucene 4 adds exciting new similarity implementations, such as @bm25@ on top of the current TF/IDF based one. It also allows us to set similarities per field, which is exposed in elasticsearch through mappings.
