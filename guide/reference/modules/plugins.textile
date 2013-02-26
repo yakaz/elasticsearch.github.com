@@ -42,6 +42,15 @@ plugin.mandatory: mapper-attachments,lang-groovy
 
 p. For safety reasons, if a mandatory plugin is not installed, the node will not start.
 
+h2. Installed Plugins
+
+A list of the currently installed plugins can be retrieved from the @/_plugin/@
+end point:
+
+<pre class="prettyprint">
+curl -XGET 'http://localhost:9200/_plugin/?pretty'
+</pre>
+
 h1. Known Plugins
 
 h2. Analysis Plugins
@@ -68,10 +77,10 @@ h2. River Plugins
 * "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
 * "MongoDB River Plugin":https://github.com/richardwilly98/elasticsearch-river-mongodb/ (by Richard Louapre)
 * "Open Archives Initiative (OAI) River Plugin":https://github.com/jprante/elasticsearch-river-oai/ (by Jörg Prante)
-* "St9 River Plugin":https://github.com/sunnygleason/elasticsearch-river-st9 (by Sunny Gleason) 
-* "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts) 
-* "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B) 
-* "JDBC River Plugin":https://github.com/jprante/elasticsearch-river-jdbc (by Jörg Prante) 
+* "St9 River Plugin":https://github.com/sunnygleason/elasticsearch-river-st9 (by Sunny Gleason)
+* "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts)
+* "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B)
+* "JDBC River Plugin":https://github.com/jprante/elasticsearch-river-jdbc (by Jörg Prante)
 * "FileSystem River Plugin":http://www.pilato.fr/fsriver/ (by David Pilato)
 * "LDAP River Plugin":https://github.com/tlrx/elasticsearch-river-ldap (by Tanguy Leroux)
 * "Dropbox River Plugin":http://www.pilato.fr/dropbox/ (by David Pilato)
