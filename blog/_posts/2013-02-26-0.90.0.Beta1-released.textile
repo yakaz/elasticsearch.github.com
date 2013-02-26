@@ -69,7 +69,7 @@ h3. Compression
 
 p. In 0.19, elasticsearch added compression to stored fields (the @_source@), which had to be enabled by using a specific setting. Now, compression is turned on by default, and it uses the new compression support in Lucene 4.1. The old compression settings are no longer relevant.
 
-h3. Rescore ("2640":https://github.com/elasticsearch/elasticsearch/issues/26402)
+h3. Rescore ("2640":https://github.com/elasticsearch/elasticsearch/issues/2640)
 
 p. The rescore feature enables us to "rescore" a document returned by a query based on a secondary algorithm. Rescoring is commonly used if a scoring algorithm is too costly to be executed across the entire document set but efficient enough to be executed on the Top-K documents scored by a faster retrieval method.
 
