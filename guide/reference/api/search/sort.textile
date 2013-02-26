@@ -50,7 +50,7 @@ controls what array value is picked for sorting the document it belongs to. The 
 * @sum@ - Use the sum of all values as sort value. Only applicable for number based array fields.
 * @avg@ - Use the average of all values as sort value. Only applicable for number based array fields.
 
-h4. Example usage
+h3. Example usage
 
 p. In the example bellow the field price has multiple prices per document. In this case the result hits will be sort by price ascending based on the average price per document.
 
