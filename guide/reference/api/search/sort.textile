@@ -72,6 +72,21 @@ p. Also from version @0.90.0.Beta1@ Elasticsearch supports sorting by fields tha
 
 Either the highest (@max@) or lowest (@min@) inner object is picked for during sorting depending on the @sort_mode@ being used. The @sort_mode@ options @avg@ and @sum@ can still be used for number based fields inside nested objects. All the values for the sort field are taken into account for each nested object.
 
+h3. Nested sorting example
+
+p. In the below example @offer@ is a field of type @nested@. Because @offer@ is the closest inherited nested field, it is picked as @nested_path@. Only the inner objects that have color blue will participate in sorting.
+
+<pre class="prettyprint lang-js">
+curl -XPOST 'localhost:9200/_search' -d '{
+   "query" : {
+    ...
+   },
+   "sort" : [
+      {"offer.price" : {"sort_order" : "asc", "sort_mode" : "avg", "nested_filter" : "term" : {"offer.color" : "blue"}}
+   ]
+}'
+</pre>
+
 h1. Missing Values
 
 p. Numeric fields support specific handling for missing fields in a doc. The @missing@ value can be @_last@, @_first@, or a custom value (that will be used for missing docs as the sort value). For example:
