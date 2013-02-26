@@ -42,7 +42,8 @@ h1. Sort Values
 p. The sort values for each document returned are also returned as part of the response.
 
 h1. Sort mode option
-From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields which is also known as multi-valued fields. The @sort_mode@ option
+
+p. From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields which is also known as multi-valued fields. The @sort_mode@ option
 controls what array value is picked for sorting the document it belongs to. The @sort_mode@ has the following option:
 * @min@ - Pick the lowest value.
 * @max@ - Pick the highest value.
@@ -63,6 +64,8 @@ curl -XPOST 'localhost:9200/_search' -d '{
    ]
 }'
 </pre>
+
+h2. Sorting within nested objects.
 
 h1. Missing Values
 
