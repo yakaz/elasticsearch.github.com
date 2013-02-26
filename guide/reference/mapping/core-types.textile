@@ -73,7 +73,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@index_options@|Allows to set the indexing options, possible values are @docs@ (only doc numbers are indexed), @freqs@ (doc numbers and term frequencies), and @positions@ (doc numbers, term frequencies and positions). Defaults to @freqs@ for @analyzed@ fields, and to @docs@ for @not_analyzed@ fields. Since 0.20.|
 |@analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
 |@index_analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
-|@search_analyzer@|The analyzer used to analyze the field when part of a query string.|
+|@search_analyzer@|The analyzer used to analyze the field when part of a query string. Can be updated on an existing field.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
 |@ignore_above@|Set to a size where above the mentioned size the string will be ignored. Handly for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
 |@position_offset_gap@|Position increment gap between field instances with the same field name. Defaults to 0.|
@@ -230,7 +230,7 @@ h3. Defining custom postings formats
 
 p. On top of using the built-in posting formats it is possible define custom postings format and reconfigure the default available postings formats. This can be specified via the index settings in the @codec@ settings part. This is considered an expert feature and most likely not needed for your indices.
 
-h1. Similarity 
+h1. Similarity
 
 p. From version @0.90.Beta1@ Elasticsearch includes changes from Lucene 4 that allows you to configure a similarity (scoring algorithm) per field. Allowing users a simpler extension beyond the usual TF/IDF algorithm. As part of this, new algorithms have been added including BM25. Also as part of the changes, it is now possible to define a Similarity per field, giving even greater control over scoring.
 
@@ -244,7 +244,7 @@ p. Defining the Similarity for a field is done via the @similarity@ mapping prop
     "properties" : {
       "title" : { "type" : "string", "similarity" : "BM25" }
     }
-} 
+}
 </pre>
 
 p. The following Similarties are configured out-of-box:
