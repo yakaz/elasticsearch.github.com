@@ -39,6 +39,7 @@ There is a specific list of settings that can be updated, those include:
 * @cluster.routing.allocation.disable_replica_allocation@
 * @cluster.routing.allocation.include.*@
 * @cluster.routing.allocation.exclude.*@
+* @cluster.routing.allocation.require.*@ (from 0.90)
 * @indices.cache.filter.size@
 * @indices.ttl.interval@
 * @indices.recovery.file_chunk_size@, @indices.recovery.translog_ops@, @indices.recovery.translog_size@, @indices.recovery.compress@, @indices.recovery.concurrent_streams@, @indices.recovery.max_size_per_sec@.

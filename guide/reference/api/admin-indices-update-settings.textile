@@ -49,8 +49,9 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.cache.filter.expire@|The expire after access time for filter cache. Set to @-1@ to disable.|
 |@index.gateway.snapshot_interval@|The gateway snapshot interval (only applies to shared gateways).|
 |"merge policy":/guide/reference/index-modules/merge.html|All the settings for the merge policy currently configured. A different merge policy can't be set.|
-|@index.routing.allocation.include.*@|Controls which nodes the index will be allowed to be allocated on.|
-|@index.routing.allocation.exclude.*@|Controls which nodes the index will not be allowed to be allocated on.|
+|@index.routing.allocation.include.*@|A node matching any rule will be allowed to host shards from the index.|
+|@index.routing.allocation.exclude.*@|A node matching any rule will NOT be allowed to host shards from the index.|
+|@index.routing.allocation.require.*@|Only nodes matching all rules will be allowed to host shards from the index.|
 |@index.routing.allocation.total_shards_per_node@|Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded.|
 |@index.recovery.initial_shards@|When using local gateway a particular shard is recovered only if there can be allocated quorum shards in the cluster. It can be set to @quorum@ (default), @quorum-1@ (or @half@), @full@ and @full-1@. Number values are also supported, e.g. @1@.|
 |@index.gc_deletes@||

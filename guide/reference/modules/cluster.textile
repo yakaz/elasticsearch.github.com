@@ -30,13 +30,13 @@ p. Assume we have several racks. When we start a node, we can configure an attri
 <pre>
 node.rack_id: rack_one
 </pre>
-    
+
 p. The above sets an attribute called @rack_id@ for the relevant node with a value of @rack_one@. Now, we need to configure the @rack_id@ attribute as one of the awareness allocation attributes (set it on *all* (master eligible) nodes config):
 
 <pre>
 cluster.routing.allocation.awareness.attributes: rack_id
 </pre>
-    
+
 p. The above will mean that the @rack_id@ attribute will be used to do awareness based allocation of shard and its replicas. For example, lets say we start 2 nodes with @node.rack_id@ set to @rack_one@, and deploy a single index with 5 shards and 1 replica. The index will be fully deployed on the current nodes (5 shards and 1 replica each, total of 10 shards).
 
 p. Now, if we start two more nodes, with @node.rack_id@ set to @rack_two@, shards will relocate to even the number of shards across the nodes, but, a shard and its replica will not be allocated in the same @rack_id@ value.
@@ -46,9 +46,9 @@ The awareness attributes can hold several values, for example:
 <pre>
 cluster.routing.allocation.awareness.attributes: rack_id,zone
 </pre>
-    
+
 p. *NOTE*: When using awareness attributes, shards will not be allocated to nodes that don't have values set for those attributes.
-    
+
 h3. Forced Awareness
 
 p. Sometimes, we know in advance the number of values an awareness attribute can have, and more over, we would like never to have more replicas then needed allocated on a specific group of nodes with the same awareness attribute value. For that, we can force awareness on specific attributes.
@@ -94,7 +94,12 @@ curl -XPUT localhost:9200/test/_settings -d '{
 }'
 </pre>
 
-p. The @include@ and @exclude@ values can have generic simple matching wildcards, for example, @value1*@. A special attribute name called @_ip@ can be used to match on node ip values. In addition @_host@ attribute can be used to match on either the node's hostname or its ip address.
+p. From version 0.90, @index.routing.allocation.require.*@ can be used to
+specify a number of rules, all of which MUST match in order for a shard to be
+allocated to a node. This is in contrast to @include@ which will include a
+node if ANY rule matches.
+
+p. The @include@, @exclude@ and @require@ values can have generic simple matching wildcards, for example, @value1*@. A special attribute name called @_ip@ can be used to match on node ip values. In addition @_host@ attribute can be used to match on either the node's hostname or its ip address.
 
 p. Obviously a node can have several attributes associated with it, and both the attribute name and value are controlled in the setting. For example, here is a sample of several node configurations:
 
@@ -103,13 +108,15 @@ node.group1: group1_value1
 node.group2: group2_value4
 </pre>
 
-In the same manner, @include@ and @exclude@ can work against several attributes, for example:
+
+In the same manner, @include@, @exclude@ and @require@ can work against several attributes, for example:
 
 <pre class="prettyprint">
 curl -XPUT localhost:9200/test/_settings -d '{
     "index.routing.allocation.include.group1" : "xxx"
     "index.routing.allocation.include.group2" : "yyy",
     "index.routing.allocation.exclude.group3" : "zzz",
+    "index.routing.allocation.require.group4" : "aaa",
 }'
 </pre>
 
