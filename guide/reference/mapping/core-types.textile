@@ -104,7 +104,8 @@ p. Posting formats define how fields are stored and represented into memory. Pos
 h3. Postings format example
 
 p. On all field types it possible to configure a @postings_format@ attribute:
-```
+
+<pre class="prettyprint lang-js">
 {
   "person" : {
      "properties" : {
@@ -112,7 +113,7 @@ p. On all field types it possible to configure a @postings_format@ attribute:
      }
   }
 }
-```
+</pre>
 
 h1. Number
 
