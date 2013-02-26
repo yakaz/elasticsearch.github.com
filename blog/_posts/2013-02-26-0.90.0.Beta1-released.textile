@@ -1,0 +1,111 @@
+---
+layout: blogpost
+title: 0.90.0.Beta1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.90.0.Beta1@ is out. You can download it "here":/download.
+
+h2. Why 0.90?
+
+p. More than anything else, it shows where we are heading. The next stable release after 0.90 will be the 1.0 release of elasticsearch. Elasticsearch is being used in production, in mission critical applications, daily, and we feel its time for us to move to that blessed 1.0 release. It is also an indication of the breadth of changes that accompany this release.
+
+h2. Down the Road
+
+p. Our aim now is to get 0.90.0 GA out the door. We are working hard on finalizing the last bits to get it done, and hope for a quick cycle to get to the GA. Once its out, we will blog about what we hope to get to in our 1.0 release.
+
+h2. Features
+
+p. This release includes many new features, an evidence of the speed of development we have achieved with a team of extremely talented people working daily on the codebase. We are also actively working on documenting all the new features in the guide.
+
+p. Here are some of the highlighted features in this release:
+
+h3. New Routing Algorithm ("2555":https://github.com/elasticsearch/elasticsearch/issues/2555)
+
+p. Up to 0.90.0, elasticsearch used a relatively naive algorithm of balancing shards across the cluster, by trying to maintaining an even number of shards across (data) nodes. This created problems with clusters holding many indices, specifically with varied sizes. The new algorithm takes the fact that shards belong to an index into account, trying to balance an index out across all nodes.
+
+p. The new algorithm is based on a weight function, and we will slowly add additional weight options (such as shard size) down the road.
+
+h3. Suggst ("2585":https://github.com/elasticsearch/elasticsearch/issues/2585)
+
+p. The suggest feature (part of a search request) allows to provide suggestions for a giving text based on the corpus that is part of the index. The current suggest type implemented allows to use levenshtein distance on a per term basis to potentially be used to provide spell suggestions.
+
+p. This feature is considered experimental, mainly in the request and response format. We are actively working on additioanl suggest implementation (such as phrase based suggestion), and this work will be finalized towards the 0.90.0 GA release.
+
+h3. Lucene 4 Codecs ("2411":https://github.com/elasticsearch/elasticsearch/issues/2411)
+
+p. Elasticsearch exposes the new codecs infrastructure added by Lucene 4. Codecs allow complete control over how the index is actually stored and read. Though implementing a custom Codec can be considered adventurous (but quite doable as a plugin), elasticsearch exposes several options to control codecs using the mappings.
+
+p. For example, here is an example of mappings that will load the index for the field @tag@ into memory, and use a bloom filter for the relatively unique @external_id@ field:
+
+<pre class="prettyprint">
+{
+  "my_type" : {
+     "properties" : {
+         "tag" : {"type" : "string", "postings_format" : "memory"},
+         "external_id" : {"type" : "string", "postings_format" : "bloom_default"}
+     }
+  }
+}
+</pre>
+
+p. A nice feature is the ability to change @posting_format@ on the fly for existing mapping, which will start to be used for new data as it is indexed, or applied to old data as merging / optimization happens.
+
+h3. Field Data Refactoring
+
+p. Field Data in elasticsearch is the data structure used to load field values into memory for sorting and faceting. The data structure has been completely reimplemented, requiring considerably less memory than before, and has been abstracted away to allow for additional future implementations.
+
+h3. Multi Value Sorting ("2634":https://github.com/elasticsearch/elasticsearch/issues/2634, "2662":https://github.com/elasticsearch/elasticsearch/issues/2662)
+
+p. Sorting on fields with multiple numeric values now work as expected, properly choosing how to sort based on the sort direction. Sorting on nested documents is now supported as well (with an option filter). On top of it, sorting on multiple values now support the ability to sort based on the @min@, @max@, @sum@, and @avg@ values.
+
+p. Sorting in elasticsearch 
+
+h3. Lucene 4 Similarity ("2424":https://github.com/elasticsearch/elasticsearch/issues/2424)
+
+p. Similarity in Lucene allows us to control how relevancy or scoring is done. The new Lucene 4 adds exciting new similarity implementations, such as @bm25@ on top of the current TF/IDF based one. It also allows us to set similarities per field, which is exposed in elasticsearch through mappings.
+
+h3. Compression
+
+p. In 0.19, elasticsearch added compression to stored fields (the @_source@), which had to be enabled by using a specific setting. Now, compression is turned on by default, and it uses the new compression support in Lucene 4.1. The old compression settings are no longer relevant.
+
+h3. Rescore ("2640":https://github.com/elasticsearch/elasticsearch/issues/26402)
+
+p. The rescore feature enables us to "rescore" a document returned by a query based on a secondary algorithm. Rescoring is commonly used if a scoring algorithm is too costly to be executed across the entire document set but efficient enough to be executed on the Top-K documents scored by a faster retrieval method.
+
+h3. Lookup Terms Filter ("2674":https://github.com/elasticsearch/elasticsearch/issues/2674)
+
+p. This allows the @terms@ filter to lookup the list of terms to filter by using another document in the cluster. It includes a highly optimized caching mechanism that works well with the existing filter caching. Here is an example:
+
+<pre class="prettyprint">
+# index the information for user with id 2, specifically, its friends
+curl -XPUT localhost:9200/users/user/2 -d '{
+   "friends" : ["1", "3"]
+}'
+
+# index a tweet, from user with id 2
+curl -XPUT localhost:9200/tweets/tweet/1 -d '{
+   "user" : "2"
+}'
+
+# search on all the tweets that match the friends of user 2
+curl -XGET localhost:9200/tweets/_search -d '{
+  "query" : {
+    "filtered" : {
+        "filter" : {
+            "terms" : {
+                "user" : {
+                    "index" : "users",
+                    "type" : "user",
+                    "id" : "2",
+                    "path" : "friends"
+                },
+                "_cache_key" : "user_2_friends"
+            }
+        }
+    }
+  }
+}'
+</pre>
