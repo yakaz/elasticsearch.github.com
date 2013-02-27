@@ -72,7 +72,17 @@ p. The values for the @terms@ filter will be fetched from a field in a document 
 
 p. Also, consider using an index with a single shard and fully replicated across all nodes if the "reference" terms data is not large. The lookup terms filter will prefer to execute the get request on a local node if possible, reducing the need for networking.
 
-p. There is an additional cache involved, which caches the lookup of the lookup document to the actual terms. It is by default set to @10mb@ LRU size, but can be explicitly set using @indices.cache.filter.terms.size@. On top of this the lookup of the actual terms can also optionally be expired after the last write or last read in a time based manner. To expire after the last read use the @indices.cache.filter.terms.expire_after_access@ option or the expire after the last write use the @indices.cache.filter.terms.expire_after_write@ option. Both are disabled by default. All options for the lookup of the documents cache can only be configured via the @elasticsearch.yml@ file
+h1. Terms lookup caching
+
+p. There is an additional cache involved, which caches the lookup of the lookup document to the actual terms. This lookup cache is a LRU cache. This cache has the following options:
+
+* @indices.cache.filter.terms.size@: The size of the lookup cache. The default is @10mb.
+* @indices.cache.filter.terms.expire_after_access@: The time after the last read an entry should expire. Disabled by default.
+* @indices.cache.filter.terms.expire_after_write@: The time after the last write an entry should expire. Disabled by default. 
+
+p. All options for the lookup of the documents cache can only be configured via the @elasticsearch.yml@ file.
+
+p. When use terms lookup the @execution@ option isn't taken into account and behaves as if the execution mode is set to @plain@.
 
 h2. Terms lookup twitter example 
 
