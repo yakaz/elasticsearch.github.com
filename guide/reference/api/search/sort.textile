@@ -67,7 +67,7 @@ curl -XPOST 'localhost:9200/_search' -d '{
 h1. Sorting within nested objects.
 
 p. Also from version @0.90.0.Beta1@ Elasticsearch supports sorting by fields that are inside one or more nested objects. The sorting by nested field support has the following parameters on top of the already existing sort options:
-* @nested_path@- Defines the on what nested object to sort. The actual sort field must be a direct field inside this nested object. The default is to use the most immediate inherited nested object from the sort field. 
+* @nested_path@- Defines the on what nested object to sort. The actual sort field must be a direct field inside this nested object. The default is to use the most immediate inherited nested object from the sort field.
 * @nested_filter@ - A filter the inner objects inside the nested path should match with in order for its field values to be taken into account by sorting. Common case is to repeat the query / filter inside the nested filter or query. By default no @nested_filter@ is active.
 
 Either the highest (@max@) or lowest (@min@) inner object is picked for during sorting depending on the @sort_mode@ being used. The @sort_mode@ options @avg@ and @sum@ can still be used for number based fields inside nested objects. All the values for the sort field are taken into account for each nested object.
@@ -82,8 +82,16 @@ curl -XPOST 'localhost:9200/_search' -d '{
     ...
    },
    "sort" : [
-      {"offer.price" : {"sort_order" : "asc", "sort_mode" : "avg", "nested_filter" : "term" : {"offer.color" : "blue"}}
-   ]
+       {
+          "offer.price" : {
+             "sort_mode" :  "avg",
+             "sort_order" : "asc",
+             "nested_filter" : {
+                "term" : { "offer.color" : "blue" }
+             }
+          }
+       }
+    ]
 }'
 </pre>
 
@@ -235,7 +243,7 @@ p. Allow to sort based on custom scripts, here is an example:
         ....
     },
     "sort" : {
-        "_script" : { 
+        "_script" : {
             "script" : "doc['field_name'].value * factor",
             "type" : "number",
             "params" : {
