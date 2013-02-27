@@ -40,3 +40,27 @@ index_search_slow_log_file:
     type: pattern
     conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
 </pre>
+
+h1. Index Slow log
+
+p.The indexing slow log, similar in functionality to the search slow log. The log file is ends with @_index_indexing_slowlog.log@. Log and the thresholds are configured in the elasticsearch.yml file in the same way as the search slowlog. Index slowlog sample:
+
+<pre class="prettyprint">
+#index.indexing.slowlog.threshold.index.warn: 10s
+#index.indexing.slowlog.threshold.index.info: 5s
+#index.indexing.slowlog.threshold.index.debug: 2s
+#index.indexing.slowlog.threshold.index.trace: 500ms
+</pre>
+
+p. The index slow log file is configured by default in the @logging.yml@ file:
+
+<pre class="prettyprint">
+index_indexing_slow_log_file:
+	type: dailyRollingFile
+	file: ${path.logs}/${cluster.name}_index_indexing_slowlog.log
+	datePattern: "'.'yyyy-MM-dd"
+	layout:
+	  type: pattern
+	  conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+</pre>
+
