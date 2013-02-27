@@ -249,4 +249,4 @@ p. The following Similarties are configured out-of-box:
 * @default@ - The Default TF/IDF algorithm used by Elasticsearch and Lucene in previous versions.
 * @BM25@ - The BM25 algorithm. "See Okapi_BM25":http://en.wikipedia.org/wiki/Okapi_BM25 for more details.
 
-p. Additionally one can configure other similarities via the "similarity module":/guide/reference/index-modules/codec.html
+p. Additionally one can configure other similarities via the "similarity module":/guide/reference/index-modules/similarity.html
