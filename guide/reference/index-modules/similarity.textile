@@ -17,7 +17,7 @@ p. Most existing or custom Similarities have configuration options which can be 
 
 <pre class="prettyprint lang-js">
 "similarity" : {
-  "my_similarity : {
+  "my_similarity" : {
     "type" : "DFR",
     "basic_model" : "g",
     "after_effect" : "l",
