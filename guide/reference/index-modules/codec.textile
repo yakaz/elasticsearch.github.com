@@ -7,7 +7,7 @@ sidebar: reference_index_modules
 
 p. Codecs define how documents are written to disk and read from disk. The postingsformat is the part of the codec that responsible for reading and writting the term dictonary, postings lists and positions, payloads and offsets stored in the postings list.
 
-p. Configuring custom postingsformats is an expert feature and most likely using the builtin postingsformats will suite your needs as is described in the "mapping section":guide/reference/mapping/core-types.html
+p. Configuring custom postingsformats is an expert feature and most likely using the builtin postingsformats will suite your needs as is described in the "mapping section":/guide/reference/mapping/core-types.html
 
 p. Codecs are available in Elasticsearch from version @0.90.0.beta1@.
 
