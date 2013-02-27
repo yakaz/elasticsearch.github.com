@@ -58,7 +58,7 @@ h2. Memory postings format
 
 p. A postings format thet stores terms & postings (docs, positions, payloads) in RAM, using an FST. This postings format does write to disk, but loads everything into memory. The memory postings format has the following options:
 * @pack_fst@ - A boolean option that defines if the in memory structure should be packed once its build. Packed will reduce the size for the data-structure in memory but requires more memory during building. Default is <b>false</b>.
-* @acceptable_overhead_ratio@ - The compression ratio specified as a float, that is used to compress internal structures. Example ratios <b>0</b> (Compact, no memory overhead at all, but the returned implementation may be slow), <b>0.5<b> (Fast, at most 50% memory overhead, always select a reasonably fast implementation), <b>7</b> (Fastest, at most 700% memory overhead, no compression). Default is <b>0.2</b>.
+* @acceptable_overhead_ratio@ - The compression ratio specified as a float, that is used to compress internal structures. Example ratios @0@ (Compact, no memory overhead at all, but the returned implementation may be slow), @0.5@ (Fast, at most 50% memory overhead, always select a reasonably fast implementation), @7@ (Fastest, at most 700% memory overhead, no compression). Default is @0.2@.
 
 p. Type name: @memory@
 
