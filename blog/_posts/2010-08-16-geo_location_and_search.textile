@@ -63,7 +63,7 @@ p. The first thing after indexing location aware documents, is being able to que
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "12km",
                 "pin.location" : {
                     "lat" : 40,
                     "lon" : -70
