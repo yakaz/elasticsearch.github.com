@@ -3,9 +3,9 @@ layout: download
 cat: download
 version: 0.19.10
 title: 0.19.10
-download_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.zip
-download_nix_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.tar.gz
-download_deb_url: http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.deb
+download_url: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.zip
+download_nix_url: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.tar.gz
+download_deb_url: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.19.10.deb
 download_source_url: https://github.com/elasticsearch/elasticsearch/zipball/v0.19.10
 release_notes: true
 ---
