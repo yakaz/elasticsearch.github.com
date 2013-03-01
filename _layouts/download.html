@@ -5,20 +5,25 @@ title_in_header: false
 
 <h2 class="download_link">
 {{ page.title }}:
+</h2>
 
-<a href="{{page.download_url}}">zip</a>
-<a href="{{page.download_url}}.sha1.txt">sha1</a>
+<a href="{{page.download_url}}">{{page.download_url}}</a>
+(<a href="{{page.download_url}}.sha1.txt">sha1</a>)
+<br/>
 
 {% if page.download_nix_url != null  %}
-/ <a href="{{page.download_nix_url}}">tar.gz</a>
+<a href="{{page.download_nix_url}}">{{page.download_nix_url}}</a>
 (<a href="{{page.download_nix_url}}.sha1.txt">sha1</a>)
+<br/>
 {% endif  %}
+
 {% if page.download_deb_url != null  %}
-/ <a href="{{page.download_deb_url}}">deb</a>
+<a href="{{page.download_deb_url}}">deb</a>
 (<a href="{{page.download_deb_url}}.sha1.txt">sha1</a>)
+<br/>
 {% endif  %}
-/ <a href="https://github.com/elasticsearch/elasticsearch/issues?labels=v{{page.version}}&amp;sort=created&amp;direction=desc&amp;state=closed&amp;page=1">issues</a>
-</h2>
+
+<a href="https://github.com/elasticsearch/elasticsearch/issues?labels=v{{page.version}}&amp;sort=created&amp;direction=desc&amp;state=closed&amp;page=1">issues</a>
 
 {% if page.release_notes %}
     <h1>Release Notes:</h1>
