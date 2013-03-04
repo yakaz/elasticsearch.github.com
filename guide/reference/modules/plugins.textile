@@ -86,6 +86,7 @@ h2. River Plugins
 * "Dropbox River Plugin":http://www.pilato.fr/dropbox/ (by David Pilato)
 * "ActiveMQ River Plugin":https://github.com/domdorn/elasticsearch-river-activemq/ (by Dominik Dorn)
 * "Solr River Plugin":https://github.com/javanna/elasticsearch-river-solr/ (by Luca Cavanna)
+* "CSV River Plugin":https://github.com/xxBedy/elasticsearch-river-csv (by Martin Bednar)
 
 h2. Transport Plugins
 
@@ -106,6 +107,8 @@ h2. Site Plugins
 * "BigDesk Plugin":https://github.com/lukas-vlcek/bigdesk (by Lukáš Vlček)
 * "Elasticsearch Head Plugin":https://github.com/Aconex/elasticsearch-head (by Ben Birch)
 * "Paramedic Plugin":https://github.com/karmi/elasticsearch-paramedic (by Karel Minařík)
+* "SegmentSpy Plugin":https://github.com/polyfractal/elasticsearch-segmentspy (by Zachary Tong)
+* "Inquisitor Plugin":https://github.com/polyfractal/elasticsearch-inquisitor (by Zachary Tong)
 
 h2. Misc Plugins
 
