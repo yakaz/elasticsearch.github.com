@@ -6,29 +6,69 @@ cat: guide
 
 h2. Clients
 
+h3. Perl
+
 * "ElasticSearch.pm":http://github.com/clintongormley/ElasticSearch.pm: Perl client.
+
+h3. Python
+
 * "pyes":http://github.com/aparo/pyes: Python client.
+* "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
+* "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch.
+* "rawes":https://github.com/humangeo/rawes: Python low level client.
+
+h3. Ruby
+
 * "Tire":http://github.com/karmi/tire: Ruby API & DSL, with ActiveRecord/ActiveModel integration.
-* "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "rubberband":http://github.com/grantr/rubberband: Ruby client.
 * "stretcher":https://github.com/PoseBiz/stretcher: Ruby client.
-* "em-elasticsearch":http://github.com/vangberg/em-elasticsearch: elasticsearch library for eventmachine.
 *  "elastic_searchable":https://github.com/wireframe/elastic_searchable/: Ruby client + Rails integration.
-* "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
+
+h3. PHP
+
+* "Elastica":http://github.com/ruflin/Elastica: PHP client.
 * "elasticsearch":http://github.com/nervetattoo/elasticsearch PHP client.
+* "Sherlock":http://github.com/polyfractal/Sherlock: PHP client, one-to-one mapping with query DSL, fluid interface.
+
+h3. Java
+
+* "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
+
+
+h3. Javascript
+
+* "Elastic.js":https://github.com/fullscale/elastic.js: A JavaScript implementation of the ElasticSearch Query DSL and Core API.
+
+h3. .Net
+
 * "PlainElastic.Net":https://github.com/Yegoroff/PlainElastic.Net: .NET client.
 * "NEST":https://github.com/Mpdreamz/NEST: .NET client.
 * "ElasticSearch.NET":https://github.com/medcl/ElasticSearch.Net: .NET client.
-* "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
-* "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
-* "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch.
+
+h3. Scala
+
 * "scalastic":https://github.com/bsadeh/scalastic: Scala client.
 * "esclient":https://github.com/scalastuff/esclient: Thin Scala client.
-* "rawes":https://github.com/humangeo/rawes: Python low level client.
-* "Jest":https://github.com/searchbox-io/Jest: Java Rest client.
-* "elastigo":https://github.com/mattbaird/elastigo: Go client.
-* "Elastic.js":https://github.com/fullscale/elastic.js: A JavaScript implementation of the ElasticSearch Query DSL and Core API.
 
+h3. Clojure
+
+* "Elastisch":http://github.com/clojurewerkz/elastisch: Clojure client.
+
+h3. Go
+
+* "elastigo":https://github.com/mattbaird/elastigo: Go client.
+
+h3. Erlang
+
+* "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
+
+h3. EventMachine
+
+* "em-elasticsearch":http://github.com/vangberg/em-elasticsearch: elasticsearch library for eventmachine.
+
+h3. Linux Command Line
+
+* "es2unix":https://github.com/elasticsearch/es2unix: Elasticsearch API consumable by the command line.
 
 h2. Integrations
 
@@ -51,6 +91,7 @@ h2. Integrations
 * "elasticsearch-clojure-repl":https://github.com/drewr/elasticsearch-clojure-repl: Plugin that embeds nREPL for run-time introspective adventure! Also serves as an nREPL transport.
 * "Haystack":http://haystacksearch.org/: Modular search for Django
 * "play2-elasticsearch":https://github.com/cleverage/play2-elasticsearch: ElasticSearch module for Play Framework 2.x
+* "dangle":https://github.com/fullscale/dangle: A set of AngularJS directives that provide common visualizations for elasticsearch based on D3.
 
 h2. Misc
 
@@ -60,15 +101,22 @@ h2. Misc
 * "elasticsearch-rpms":https://github.com/tavisto/elasticsearch-rpms: RPMs for elasticsearch.
 * "daikon":http://www.github.com/neogenix/daikon: Daikon ElasticSearch CLI
 * "Scrutineer":https://github.com/Aconex/scrutineer: A high performance consistency checker to compare what you've indexed with your source of truth content (e.g. DB)
+
+h2. Health and Performance Monitoring
+
+* "bigdesk":https://github.com/lukas-vlcek/bigdesk: Live charts and statistics for elasticsearch cluster.
+* "paramedic":https://github.com/karmi/elasticsearch-paramedic: Live charts with cluster stats and indices/shards information.
+* "SPM for ElasticSearch":http://sematext.com/spm/index.html: Performance monitoring with live charts showing cluster and node stats, integrated alerts, email reports, etc.
 * "check-es":https://github.com/radu-gheorghe/check-es: Nagios/Shinken plugins for checking on elasticsearch
+* "check_elasticsearch":https://github.com/anchor/nagios-plugin-elasticsearch: An ElasticSearch availability and performance monitoring plugin for Nagios.
+* "opsview-elasticsearch":https://github.com/rbramley/Opsview-elasticsearch: Opsview plugin written in Perl for monitoring ElasticSearch
+* "SegmentSpy":https://github.com/polyfractal/elasticsearch-segmentspy: Plugin to watch Lucene segment merges across your cluster
 
 h2. Front Ends
 
 * "elasticsearch-head":https://github.com/mobz/elasticsearch-head: A web front end for an elastic search cluster.
 * "browser":https://github.com/OlegKunitsyn/elasticsearch-browser: Web front-end over elasticsearch data.
-* "bigdesk":https://github.com/lukas-vlcek/bigdesk: Live charts and statistics for elasticsearch cluster.
-* "paramedic":https://github.com/karmi/elasticsearch-paramedic: Live charts with cluster stats and indices/shards information.
-* "SPM for ElasticSearch":http://sematext.com/spm/index.html: Performance monitoring with live charts showing cluster and node stats, integrated alerts, email reports, etc.
+* "Inquisitor":https://github.com/polyfractal/elasticsearch-inquisitor: Front-end to help debug/diagnose queries and analyzers
 
 h2. GitHub
 
