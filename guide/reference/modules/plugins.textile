@@ -26,7 +26,7 @@ p. Installed plugins that do not contain any java related content, will automati
 p. The ability to install plugins from github allows to easily install site plugins hosted there by downloading the actual repo, for example, running:
 
 <pre class="prettyprint">
-bin/plugin -install Aconex/elasticsearch-head
+bin/plugin -install mobz/elasticsearch-head
 bin/plugin -install lukas-vlcek/bigdesk
 </pre>
 
@@ -105,7 +105,7 @@ h2. Scripting Plugins
 h2. Site Plugins
 
 * "BigDesk Plugin":https://github.com/lukas-vlcek/bigdesk (by Lukáš Vlček)
-* "Elasticsearch Head Plugin":https://github.com/Aconex/elasticsearch-head (by Ben Birch)
+* "Elasticsearch Head Plugin":https://github.com/mobz/elasticsearch-head (by Ben Birch)
 * "Paramedic Plugin":https://github.com/karmi/elasticsearch-paramedic (by Karel Minařík)
 * "SegmentSpy Plugin":https://github.com/polyfractal/elasticsearch-segmentspy (by Zachary Tong)
 * "Inquisitor Plugin":https://github.com/polyfractal/elasticsearch-inquisitor (by Zachary Tong)
