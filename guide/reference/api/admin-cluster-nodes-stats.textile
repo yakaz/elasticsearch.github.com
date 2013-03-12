@@ -20,6 +20,17 @@ p. The first command retrieves stats of all the nodes in the cluster. The second
 
 p. By default, @indices@ stats are returned. With options for @indices@, @os@, @process@, @jvm@, @network@, @transport@, @http@, @fs@, and @thread_pool@. For example:
 
+* @indices@: Indices stats about size, document count, indexing and deletion times, search times, field cache size , merges and flushes
+* @fs@: File system information, data path, free disk space, read/write stats
+* @http@: HTTP connection information
+* @jvm@: JVM stats, memory pool information, garbage collection, buffer pools
+* @network@: TCP information
+* @os@: Operating system stats, load average, cpu, mem, swap
+* @process@: Process statistics, memory consumption, cpu usage, open file descriptors
+* @thread_pool@: Statistics about each thread pool, including current size, queue and rejected tasks
+* @transport@: Transport statistics about sent and received bytes in cluster communication
+* @clear@: Clears all the flags (first). Useful, if you only want to retrieve specific stats.
+
 <pre class="prettyprint">
 # return indices and os    
 curl -XGET 'http://localhost:9200/_nodes/stats?os=true'
@@ -30,7 +41,7 @@ curl -XGET 'http://localhost:9200/_nodes/process/stats'
 curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/process/stats'
 # or, if you like the other way
 curl -XGET 'http://localhost:9200/_nodes/stats/process'
-curl -XGET 'http://localhost:9200/_nodes/10.0.01/stats/process'
+curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/stats/process'
 </pre>
 
 p. The @all@ flag can be set to return all the stats.
