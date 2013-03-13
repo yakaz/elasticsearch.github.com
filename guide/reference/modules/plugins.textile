@@ -120,4 +120,5 @@ h2. Misc Plugins
 * "ElasticSearch PartialUpdate Plugin":https://github.com/medcl/elasticsearch-partialupdate (by Medcl)
 * "ZooKeeper Discovery Plugin":https://github.com/sonian/elasticsearch-zookeeper (by Sonian Inc.)
 * "ElasticSearch Changes Plugin":https://github.com/derryx/elasticsearch-changes-plugin (by Thomas Peuss)
+* "ElasticSearch View Plugin":http://tlrx.github.com/elasticsearch-view-plugin (by Tanguy Leroux)
 
