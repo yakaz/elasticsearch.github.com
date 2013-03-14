@@ -83,4 +83,4 @@ p. The statistical facet can be executed against more than one field, returning 
 
 h1. Memory Considerations
 
-p. In order to implement the statitical facet, the relevant field values are loaded into memory from the index. This means that per shard, there should be enough memory to contain them. Since by default, dynamic introduced types are @long@ and @double@, one option to reduce the memory footprint is to explicitly set the types for the relevant fields to either @short@, @integer@, or @float@ when possible.
+p. In order to implement the statistical facet, the relevant field values are loaded into memory from the index. This means that per shard, there should be enough memory to contain them. Since by default, dynamic introduced types are @long@ and @double@, one option to reduce the memory footprint is to explicitly set the types for the relevant fields to either @short@, @integer@, or @float@ when possible.
