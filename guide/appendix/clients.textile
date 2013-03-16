@@ -16,6 +16,7 @@ h3. Python
 * "pyelasticsearch":http://github.com/rhec/pyelasticsearch: Python client.
 * "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch.
 * "rawes":https://github.com/humangeo/rawes: Python low level client.
+* "elasticutils":https://github.com/mozilla/elasticutils/: A friendly chainable ElasticSearch interface for Python.
 
 h3. Ruby
 
