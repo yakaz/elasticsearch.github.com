@@ -101,6 +101,7 @@ h2. Scripting Plugins
 * "Python language Plugin":https://github.com/elasticsearch/elasticsearch-lang-python (by elasticsearch team)
 * "JavaScript language Plugin":https://github.com/elasticsearch/elasticsearch-lang-javascript (by elasticsearch team)
 * "Groovy lang Plugin":https://github.com/elasticsearch/elasticsearch-lang-groovy (by elasticsearch team)
+* "Clojure Language Plugin":https://github.com/hiredman/elasticsearch-lang-clojure (by Kevin Downey)
 
 h2. Site Plugins
 
