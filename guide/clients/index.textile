@@ -10,7 +10,7 @@ h2. Clients
 
 h3. Groovy
 
-* "Groovy API":/guide/reference/clients/groovy-api
+* "Groovy API":/guide/clients/groovy-api
 
 h1. Community supported
 
