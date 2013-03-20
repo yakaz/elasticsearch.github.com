@@ -87,3 +87,26 @@ p. And, an optimize should be called:
 curl -XPOST 'http://localhost:9200/test/_optimize?max_num_segments=5'
 </pre>
 
+h1. Updating Index Analysis 
+
+p. It is also possible to define a new "analysis":../index-modules/analysis/index.html for the index. But it is required to "close":admin-indices-open-close.html the index first and "open":admin-indices-open-close.html it after the changes are made.
+
+For example if @content@ analyzer hasn't been defined on @myindex@ yet you can use the following commands to add it:
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/myindex/_close'
+
+curl -XPUT 'localhost:9200/myindex/_settings' -d '{
+  "analysis" : {
+    "analyzer":{
+      "content":{
+        "type":"custom",
+        "tokenizer":"whitespace"
+      }
+    }
+  }
+}'
+
+curl -XPOST 'localhost:9200/myindex/_open'
+</pre>
+
