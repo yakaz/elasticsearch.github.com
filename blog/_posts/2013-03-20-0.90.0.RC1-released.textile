@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.90.0.RC1 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.90.0.RC1@ is out, the first release candiate for the 0.90 release. You can download it "here":/download.
+
+p. This release includes an upgrade to Lucene 4.2, many improvements to the suggestr feature (including its own dedicated API), another round of memory improvement to field data (long type will now automatically "narraow" to the smallest type when loaded to memory) and several bug fixes. Upgrade to it from previous beta releases is highly recommended.
