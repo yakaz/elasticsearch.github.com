@@ -7,15 +7,11 @@ sidebar: reference_api_search
 
 h1. Suggest feature
 
-p. The suggest feature suggests similar looking terms based on a provided text by using a suggester. At the moment there the only supported suggester is `term`. The suggest feature is available from version @0.90.0.Beta1@. The suggest feature is still under development and will evolve  once we move the @0.90.0@ GA release.
-
-h1. Term suggester
-
-p. The @term@ suggester suggests terms based on edit distance. The provided suggest text is analyzed before terms are suggested. The suggested terms are provided per analyzed suggest text token. The @term@ suggester doesn't take the query into account that is part of request. 
+p. The suggest feature suggests similar looking terms based on a provided text by using a suggester. The suggest feature is available from version @0.90.0.Beta1@. The suggest feature is still under development and will evolve  once we move the @0.90.0@ GA release.
 
 h1. Suggest API
 
-p. The suggest request part is defined along side the query part as top field in the json request.
+p. The suggest request part is either defined along side the query part in a `_search` request or via the the REST `_suggest` endpoint.
 
 <pre class="prettyprint lang-js">
 curl -s -XPOST 'localhost:9200/_search' -d '{
@@ -26,6 +22,19 @@ curl -s -XPOST 'localhost:9200/_search' -d '{
     ...
   }
 }' 
+</pre>
+
+p. Suggest request executed against the `_suggest` endpoint should omit the surrounding `suggest` element which is only used if the suggest request is part of a search.
+
+<pre class="prettyprint lang-js">
+curl -XPOST 'localhost:9200/_suggest' -d '{
+  "my-suggestion" : {
+    "text" : "the amsterdma meetpu",
+    "term" : {
+      "field" : "body"
+    }
+  }
+}'
 </pre>
 
 p. Several suggestions can be specified per request. Each suggestion is identified with an arbitary name. In the example below two suggestions are requested. Both 'my-suggest-1' and 'my-suggest-2' suggestions use the @term@ suggester, but have a different @text@. 
@@ -225,6 +234,10 @@ p. The above request could yield the response as stated in the code example belo
   ...
 }
 </pre>
+
+h1. Term suggester
+
+p. The @term@ suggester suggests terms based on edit distance. The provided suggest text is analyzed before terms are suggested. The suggested terms are provided per analyzed suggest text token. The @term@ suggester doesn't take the query into account that is part of request. 
 
 h1. Common suggest options:
 * @text@ - The suggest text. The suggest text is a required option that needs to be set globally or per suggestion.
