@@ -7,11 +7,11 @@ sidebar: reference_api_search
 
 h1. Suggest feature
 
-p. The suggest feature suggests similar looking terms based on a provided text by using a suggester. At the moment there the only supported suggester is `fuzzy`. The suggest feature is available from version @0.90.0.Beta1@. The suggest feature is still under development and will evolve  once we move the @0.90.0@ GA release.
+p. The suggest feature suggests similar looking terms based on a provided text by using a suggester. At the moment there the only supported suggester is `term`. The suggest feature is available from version @0.90.0.Beta1@. The suggest feature is still under development and will evolve  once we move the @0.90.0@ GA release.
 
-h1. Fuzzy suggester
+h1. Term suggester
 
-p. The @fuzzy@ suggester suggests terms based on edit distance. The provided suggest text is analyzed before terms are suggested. The suggested terms are provided per analyzed suggest text token. The @fuzzy@ suggester doesn't take the query into account that is part of request. 
+p. The @term@ suggester suggests terms based on edit distance. The provided suggest text is analyzed before terms are suggested. The suggested terms are provided per analyzed suggest text token. The @term@ suggester doesn't take the query into account that is part of request. 
 
 h1. Suggest API
 
@@ -28,19 +28,19 @@ curl -s -XPOST 'localhost:9200/_search' -d '{
 }' 
 </pre>
 
-p. Several suggestions can be specified per request. Each suggestion is identified with an arbitary name. In the example below two suggestions are requested. Both 'my-suggest-1' and 'my-suggest-2' suggestions use the @fuzzy@ suggester, but have a different @text@. 
+p. Several suggestions can be specified per request. Each suggestion is identified with an arbitary name. In the example below two suggestions are requested. Both 'my-suggest-1' and 'my-suggest-2' suggestions use the @term@ suggester, but have a different @text@. 
 
 <pre class="prettyprint lang-js">
 "suggest" : {
   "my-suggest-1" : {
     "text" : "the amsterdma meetpu",
-    "fuzzy" : {
+    "term" : {
       "field" : "body"
     }
   },
   "my-suggest-2" : {
     "text" : "the rottredam meetpu",
-    "fuzzy" : {
+    "term" : {
       "field" : "title",
     }
   }
@@ -72,7 +72,7 @@ p. The below suggest response example includes the suggestion response for 'my-s
 }
 </pre>    
  
-p. Each options array contains a option object that includes the suggested text, its document frequency and score compared to the suggest entry text. The meaning of the score depends on the used suggester. The fuzzy suggester's score is based on the edit distance.
+p. Each options array contains a option object that includes the suggested text, its document frequency and score compared to the suggest entry text. The meaning of the score depends on the used suggester. The term suggester's score is based on the edit distance.
 
 <pre class="prettyprint lang-js">
 "options": [
@@ -93,12 +93,12 @@ p. To avoid repitition of the suggest text, it is possible to define a global te
 "suggest" : {
   "text" : "the amsterdma meetpu"
   "my-suggest-1" : {
-    "fuzzy" : {
+    "term" : {
       "field" : "title"
     }
   },
   "my-suggest-2" : {
-    "fuzzy" : {
+    "term" : {
       "field" : "body"
     }
   }
@@ -116,7 +116,7 @@ curl -s -XPOST 'localhost:9200/_search?search_type=count' -d '{
   "suggest" : {
     "my-title-suggestions-1" : {
       "text" : "devloping distibutd saerch engies",
-      "fuzzy" : {
+      "term" : {
         "size" : 3,
         "field" : "title"  
       }
@@ -229,7 +229,7 @@ p. The above request could yield the response as stated in the code example belo
 h1. Common suggest options:
 * @text@ - The suggest text. The suggest text is a required option that needs to be set globally or per suggestion.
 
-h1. Common fuzzy suggest options
+h1. Common term suggest options
 * @field@ - The field to fetch the candidate suggestions from. This is an required option that either needs to be set globally or per suggestion.
 * @analyzer@ - The analyzer to analyse the suggest text with. Defaults to the search analyzer of the suggest field.
 * @size@ - The maximum corrections to be returned per suggest text token.
@@ -241,7 +241,7 @@ h1. Common fuzzy suggest options
 ** @popular@ - Only suggest suggestions that occur in more docs then the original suggest text term.
 ** @always@ - Suggest any matching suggestions based on terms in the suggest text.
 
-h1. Other fuzzy suggest options:
+h1. Other term suggest options:
 * @lowercase_terms@ - Lower cases the suggest text terms after text analyzation.
 * @max_edits@ - The maximum edit distance candidate suggestions can have in order to be considered as a suggestion. Can only be a value between 1 and 2. Any other value result in an bad request error being thrown. Defaults to 2.
 * @min_prefix@ - The number of minimal prefix characters that must match in order be a candidate suggestions. Defaults to 1. Increasing this number improves spellcheck performance. Usually misspellings don't occur in the beginning of terms.
