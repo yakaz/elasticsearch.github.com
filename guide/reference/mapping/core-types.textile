@@ -70,7 +70,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@omit_norms@|Boolean value if norms should be omitted or not. Defaults to @false@ for @analyzed@ fields, and to @true@ for @not_analyzed@ fields.|
 |@omit_term_freq_and_positions@|Boolean value if term freq and positions should be omitted. Defaults to @false@. Deprecated since 0.20, see @index_options@.|
-|@index_options@|Allows to set the indexing options, possible values are @docs@ (only doc numbers are indexed), @freqs@ (doc numbers and term frequencies), and @positions@ (doc numbers, term frequencies and positions). Defaults to @freqs@ for @analyzed@ fields, and to @docs@ for @not_analyzed@ fields. Since 0.20.|
+|@index_options@|Allows to set the indexing options, possible values are @docs@ (only doc numbers are indexed), @freqs@ (doc numbers and term frequencies), and @positions@ (doc numbers, term frequencies and positions). Defaults to @positions@ for @analyzed@ fields, and to @docs@ for @not_analyzed@ fields. Since 0.20.|
 |@analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
 |@index_analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string. Can be updated on an existing field.|
