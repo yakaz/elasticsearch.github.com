@@ -5,25 +5,59 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. The @geo_shape@ mapping type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles and polygons.  It should be used when either the data being indexed or the queries being executed contain shapes other than just points.
+p. The @geo_shape@ mapping type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles and polygons. It should be used when either the data being indexed or the queries being executed contain shapes other than just points.
+
+p. You can query documents using this type using "geo_shape Filter":/guide/reference/query-dsl/geo-shape-filter.html or "geo_shape Query":/guide/reference/query-dsl/geo-shape-query.html.  
+
 
 p. Note, the @geo_shape@ type uses "Spatial4J":https://github.com/spatial4j/spatial4j and "JTS":http://www.vividsolutions.com/jts/jtshome.htm, both of which are optional dependencies.  Consequently you must add Spatial4J v0.3 and JTS v1.12 to your classpath in order to use this type.
 
-h1. Shape Representation
-
-p. To efficiently represent shapes in the index, Shapes are converted into a series of hashes representing grid squares using implementations of a PrefixTree.  The tree notion comes from the fact that the PrefixTree uses multiple grid layers, each with a different level of precision, to represent the Earth.  For example, the QuadPrefixTree implementation uses four grid squares, labelled A, B, C and D, to represent its first layer.  Move one level of precision further and there are now 16 grid squares, AA, AB, AC, AD, BA... and so on.  By having the multiple layers of precision, shapes can be indexed in an efficient representation which balances the number of terms vs. the precision of searches.
-
-p. Multiple PrefixTree implementations are provided:
-
-* GeohashPrefixTree - Uses "geohashes":http://en.wikipedia.org/wiki/Geohash for grid squares which means more squares per layer
-* QuadPrefixTree - Represents Earth using a "quadtree":http://en.wikipedia.org/wiki/Quadtree
+p. Note, the implementation of geo_shape was modified in an API breaking way in 0.90. Implementations prior to this version had significant issues and users are recommended to update to the latest version of Elasticsearch if they wish to use the geo_shape functionality.
 
 h1. Mapping Options
 
+The geo_shape mapping maps geo_json geometry objects to the geo_shape type. To enable it, users must explicitly map fields to the geo_shape type.
+
 |._ Option|._ Description|
 |@tree@|Name of the PrefixTree implementation to be used.  @geohash@ for GeohashPrefixTree and @quadtree@ for QuadPrefixTree.  Defaults to @geohash@.|
-|@tree_levels@|Maximum number of layers to be used by the PrefixTree.  This can be used to control the precision of shape representations and therefore how many terms are indexed.  Defaults the the default value of the chosen PrefixTree implementation|
-|@distance_error_pct@|Used as a hint to the PrefixTree about how precise it should be.  Defaults to 0.025 (2.5%) with 0.5 as the maximum supported value.|
+|@precision@| This parameter may be used instead of @tree_levels@ to set an appropriate value for the @tree_levels@ parameter. The value specifies the desired precision and Elasticsearch will calculate the best tree_levels value to honor this precision. The value should be a number followed by an optional distance unit. Valid distance units include: @in@, @inch@, @yd@, @yard@, @mi@, @miles@, @km@, @kilometers@, @m@,@meters@ (default), @cm@,@centimeters@, @mm@, @millimeters@.|
+|@tree_levels@| Maximum number of layers to be used by the PrefixTree.  This can be used to control the precision of shape representations and therefore how many terms are indexed.  Defaults the the default value of the chosen PrefixTree implementation. Since this parameter requires a certain level of understanding of the underlying implementation, users may use the @precision@ parameter instead. However, Elasticsearch only uses the tree_levels parameter internally and this is what is returned via the mapping API even if you use the precision parameter. |
+|@distance_error_pct@| Used as a hint to the PrefixTree about how precise it should be. Defaults to 0.025 (2.5%) with 0.5 as the maximum supported value.|
+
+h1. Prefix trees
+
+p. To efficiently represent shapes in the index, Shapes are converted into a series of hashes representing grid squares using implementations of a PrefixTree.  The tree notion comes from the fact that the PrefixTree uses multiple grid layers, each with an increasing level of precision to represent the Earth.
+
+p. Multiple PrefixTree implementations are provided:
+
+* GeohashPrefixTree - Uses "geohashes":http://en.wikipedia.org/wiki/Geohash for grid squares. Geohashes are base32 encoded strings of the bits of the latitude and longitude interleaved. So the longer the hash, the more precise it is. Each character added to the geohash represents another tree level and adds 5 bits of precision to the geohash. A geohash represents a rectangular area and has 32 sub rectangles. The maximum amount of levels in Elasticsearch is 24.
+* QuadPrefixTree - Uses a "quadtree":http://en.wikipedia.org/wiki/Quadtree for grid squares. Similar to geohash, quad trees interleave the bits of the latitude and longitude the resulting hash is a bit set. A tree level in a quad tree represents 2 bits in this bit set, one for each coordinate. The maximum amount of levels for the quad trees in elastic search is 50.
+
+h2. Accuracy
+
+Geo_shape does not provide 100% accuracy and depending on how it is configured it may return some false positives or false negatives for certain queries. To mitigate this, it is important to select an appropriate value for the tree_levels parameter and to adjust expectations accordingly. For example, a point may be near the border of a particular grid cell. And may not match a query that only matches the cell right next to it even though the shape is very close to the point.
+
+h2. Example
+
+<pre class="prettyprint lang-js">
+{
+    "properties": {
+        "location": {
+            "type": "geo_shape",
+			"tree": "quadtree",
+            "precision": "1m"
+        }
+    }
+}
+</pre>
+
+This mapping maps the location field to the geo_shape type using the quad_tree implementation and a precision of 1m. Elasticsearch translates this into a tree_levels setting of 26.
+
+h2. Performance considerations
+
+Elasticsearch uses the paths in the prefix tree as terms in the index and in queries. The higher the levels is (and thus the precision), the more terms are generated. Both calculating the terms, keeping them in memory, and storing them has a price of course. Especially with higher tree levels, indices can become extremely large even with a modest amount of data. Additionally, the size of the feaures also matters. Big, complex polygons can take up a lot of space at higher tree levels. Which setting is right depends on the use case. Generally one trades off accuracy against index size and query performance. 
+
+The defaults in elastic search for both implementations are a compromise between index size and a reasonable level of precision of 50m at the equator. This allows for indexing tens of millions of shapes without overly bloating the resulting index too much relative to the input size.
 
 h1. Input Structure
 
@@ -42,9 +76,11 @@ p. Note, both the @type@ and @coordinates@ fields are required.
 
 p. The supported @types@ are @point@, @linestring@, @polygon@, @multipoint@ and @multipolygon@.
 
+p. Note, in geojson the correct order is longitude, latitude coordinate arrays. This differs from some APIs such as e.g. Google Maps that generally use latitude, longitude.
+
 h3. Envelope
 
-ElasticSearch supports an @envelope@ type which consists of coordinates for upper left and lower right points of the shape:
+Elasticsearch supports an @envelope@ type which consists of coordinates for upper left and lower right points of the shape:
 
 <pre class="prettyprint lang-js">
 {
@@ -57,7 +93,7 @@ ElasticSearch supports an @envelope@ type which consists of coordinates for uppe
 
 h3. "Polygon":http://www.geojson.org/geojson-spec.html#id4
 
-A closed shape defined by a set of points (where first and last points must be the same)
+A polygon is defined by a list of a list of points. The first and last points in each list must be the same (the polygon must be closed).
 
 <pre class="prettyprint lang-js">
 {
@@ -70,7 +106,7 @@ A closed shape defined by a set of points (where first and last points must be t
 }
 </pre>
 
-The first array represents the "shell" of the polygon, consequent arrays represnt the interior shapes ("holes"):
+The first array represents the outer boundary of the polygon, the other arrays represent the interior shapes ("holes"):
 
 <pre class="prettyprint lang-js">
 {
@@ -86,7 +122,7 @@ The first array represents the "shell" of the polygon, consequent arrays represn
 
 h3. "MultiPolygon":http://www.geojson.org/geojson-spec.html#id7
 
-A set of polygon defined by their shell points and interior "holes"
+A list of geojson polygons.
 
 <pre class="prettyprint lang-js">
 {
@@ -103,4 +139,4 @@ A set of polygon defined by their shell points and interior "holes"
 
 h1. Sorting and Retrieving index Shapes
 
-p. Due to the complex input structure and index representation of shapes, it is not currently possible to sort shapes or retrieve their field specifically.  They are only retrieveable through the @_source@ field.  
+p. Due to the complex input structure and index representation of shapes, it is not currently possible to sort shapes or retrieve their fields directly. The geo_shape value is only retrieveable through the @_source@ field.  

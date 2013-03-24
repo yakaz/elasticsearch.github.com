@@ -7,18 +7,31 @@ sidebar: reference_query_dsl
 
 p. Query version of the "geo_shape Filter":/guide/reference/query-dsl/geo-shape-filter.html.  
 
-p. The following is an example of the @geo_shape@ Query:
+p. Requires the "geo_shape Mapping":/guide/reference/mapping/geo-shape-type.html.
+
+p. Given a document that looks like this:
 
 <pre class="prettyprint lang-js">
 {
-    "query" : {
-        "geo_shape" : {
-            "location" : {
-                "shape" : {
-                    "type" : "envelope",
-                    "coordinates" : [[-45.0, 45.0], [45.0, -45.0]]
+    "name": "Wind & Wetter, Berlin, Germany",
+    "location": {
+        "type": "Point",
+        "coordinates": [13.400544, 52.530286]
+    }
+}
+</pre>
+
+p. The following query will find the point:
+
+<pre class="prettyprint lang-js">
+{
+    "query": {
+        "geo_shape": {
+            "location": {
+                "shape": {
+                    "type": "envelope",
+                    "coordinates": [[13, 53],[14, 52]]
                 }
-                "relation" : "contains"
             }
         }
     }
@@ -29,8 +42,12 @@ p. See the Filter's documentation for more information.
 
 h1. Relevancy and Score
 
-p. Currently ElasticSearch does not have any notion of geo shape relevancy, consequently the Query internally uses a @constant_score@ Query.
+p. Currently Elasticsearch does not have any notion of geo shape relevancy, consequently the Query internally uses a @constant_score@ Query.
 
 h1. Query vs. Filter
 
 The @geo_shape@ Query and Filter use slightly different search algorithms internally.  The Query makes use of a @bool@ Query internally while the Filter uses a @terms@ Filter.  As such, due to internal logic of the @bool@ Query, there *may* be a slight performance improvement using the @geo_shape@ Query when querying areas with a high density of shapes.  However it is recommended that you experiment with your dataset to identify which approach performs better. 
+
+h1. Compatibility with older versions
+
+Elasticsearch 0.90 changed the geo_shape  implementation in a way that is not compatible. Prior to this version, there was a required @relation@ field on queries and filter queries that indicated the relation of the query shape to the indexed shapes. Support for this was implemented in Elasticsearch and was poorly aligned with the underlying Lucene implementation, which has no notion of a relation. From 0.90, this field defaults to its only supported value: @intersects@. The other values of @contains@, @within@, @disjoint@ are no longer supported. By using e.g. a bool filter, one can easily emulate @disjoint@. Given the imprecise accuracy (see "geo_shape Mapping":/guide/reference/mapping/geo-shape-type.html), @within@ and @contains@ were always somewhat problematic and @intersects@ is generally good enough.
