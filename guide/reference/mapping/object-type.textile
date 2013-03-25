@@ -21,8 +21,8 @@ p. JSON documents are hierarchal in nature, allowing to define inner "object"s w
     }
 }
 </pre>
- 
-p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, though a special "root object type":root-object-type.html which allows for additional mapping definitions.
+
+p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, though a special "root object type":/guide/reference/mapping/root-object-type.html which allows for additional mapping definitions.
 
 p. The following is an example of explicit mapping for the above JSON:
 
@@ -52,7 +52,7 @@ p. In order to mark a mapping of type @object@, set the @type@ to object. This i
 
 h1. properties
 
-p. An object mapping can optionally define one or more properties using the @properties@ tag. Properties list the properties this field will have. Each property can be either another @object@, or one of the "core_types":core-types.html.
+p. An object mapping can optionally define one or more properties using the @properties@ tag. Properties list the properties this field will have. Each property can be either another @object@, or one of the "core_types":/guide/reference/mapping/core-types.html.
 
 h1. dynamic
 
@@ -89,7 +89,7 @@ p. There is no performance overhead of an @object@ being dynamic, the ability to
 
 p. The dynamic nature also works with inner objects, meaning that if a new @object@ is provided within a mapped dynamic object, it will be automatically added to the index and mapped as well.
 
-p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
+p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":/guide/reference/mapping/core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
 
 p. Date fields are special since they are represented as a @string@. Date fields are detected if they can be parsed as a date when they are first introduced into the system. The set of date formats that are tested against can be configured using the @date_formats@ and explained later.
 
@@ -125,7 +125,7 @@ p. In the above, @name@ and its content will not be indexed at all.
 
 h1. path
 
-p. In the "core_types":core-types.html section, a field can have a @index_name@ associated with it in order to control the name of the field that will be stored within the index. When that field exists within an object(s) that are not the root object, the name of the field of the index can either include the full "path" to the field with its @index_name@, or just the @index_name@. For example (under mapping of _type_ @person@, removed the tweet type for clarity):
+p. In the "core_types":/guide/reference/mapping/core-types.html section, a field can have a @index_name@ associated with it in order to control the name of the field that will be stored within the index. When that field exists within an object(s) that are not the root object, the name of the field of the index can either include the full "path" to the field with its @index_name@, or just the @index_name@. For example (under mapping of _type_ @person@, removed the tweet type for clarity):
 
 <pre class="prettyprint lang-js">
 {

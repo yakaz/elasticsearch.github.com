@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_modules
 ---
 
-p. The memcached module allows to expose *elasticsearch* "API":/guide/reference/api over the memcached protocol (as closely as possible). 
+p. The memcached module allows to expose *elasticsearch* "API":/guide/reference/api over the memcached protocol (as closely as possible).
 
 p. It is provided as a plugin called @transport-memcached@ and installing is explained "here":https://github.com/elasticsearch/elasticsearch-transport-memcached . Another option is to download the memcached plugin and placing it under the @plugins@ directory.
 
@@ -38,7 +38,7 @@ p. The following are the settings the can be configured for memcached:
 |_. Setting |_. Description |
 |@memcached.port@|A bind port range. Defaults to @11211-11311@.|
 
-p. It also shares the uses the common "network settings":network.html.
+p. It also shares the uses the common "network settings":/guide/reference/modules/network.html.
 
 h1. Disable memcached
 

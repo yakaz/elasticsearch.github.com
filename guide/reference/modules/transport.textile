@@ -18,7 +18,7 @@ p. The TCP transport is an implementation of the transport module using TCP. It 
 |@transport.tcp.connect_timeout@|The socket connect timeout setting (in time setting format). Defaults to @2s@.|
 |@transport.tcp.compress@|Set to @true@ to enable compression (LZF) between all nodes. Defaults to @false@.|
 
-p. It also shares the uses the common "network settings":network.html.
+p. It also shares the uses the common "network settings":/guide/reference/modules/network.html.
 
 h1. Local Transport
 

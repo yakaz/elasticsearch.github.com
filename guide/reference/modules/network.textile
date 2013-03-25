@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_modules
 ---
 
-p. There are several modules within a Node that use network based configuration, for example, the "transport":transport.html and "http":http.html modules. Node level network settings allows to set common settings that will be shared among all network based modules (unless explicitly overridden in each module).
+p. There are several modules within a Node that use network based configuration, for example, the "transport":/guide/reference/modules/transport.html and "http":/guide/reference/modules/http.html modules. Node level network settings allows to set common settings that will be shared among all network based modules (unless explicitly overridden in each module).
 
 p. The @network.bind_host@ setting allows to control the host different network components will bind on. By default, the bind host will be @anyLocalAddress@ (typically @0.0.0.0@ or @::0@).
 

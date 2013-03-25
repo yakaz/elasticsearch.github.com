@@ -5,9 +5,9 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for query builders is @QueryBuilders@. Once your query is ready, you can use the "Search API":search.html.
+p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for query builders is @QueryBuilders@. Once your query is ready, you can use the "Search API":/guide/reference/java-api/search.html.
 
-p. See also how to build "Filters":query-dsl-filters.html
+p. See also how to build "Filters":/guide/reference/java-api/query-dsl-filters.html
 
 p. To use @QueryBuilders@ just import them in your class:
 
@@ -138,13 +138,13 @@ p. See:
 * "Fuzzy Like This Field Query":/guide/reference/query-dsl/flt-field-query.html documentation
 
 <pre class="prettyprint lang-java">
-// flt Query 
+// flt Query
 QueryBuilders.fuzzyLikeThisQuery("name.first", "name.last")     // Fields
                 .likeText("text like this one")                 // Text
-                .maxQueryTerms(12);                             // Max num of Terms 
+                .maxQueryTerms(12);                             // Max num of Terms
                                                                 // in generated queries
 
-// flt_field Query 
+// flt_field Query
 QueryBuilders.fuzzyLikeThisFieldQuery("name.first")             // Only on single field
                 .likeText("text like this one")
                 .maxQueryTerms(12);
@@ -189,14 +189,14 @@ p. See:
 * "More Like This Field Query":/guide/reference/query-dsl/mlt-field-query.html documentation
 
 <pre class="prettyprint lang-java">
-// mlt Query 
+// mlt Query
 QueryBuilders.moreLikeThisQuery("name.first", "name.last")      // Fields
                 .likeText("text like this one")                 // Text
                 .minTermFreq(1)                                 // Ignore Threshold
-                .maxQueryTerms(12);                             // Max num of Terms 
+                .maxQueryTerms(12);                             // Max num of Terms
                                                                 // in generated queries
 
-// mlt_field Query 
+// mlt_field Query
 QueryBuilders.fmoreLikeThisFieldQuery("name.first")             // Only on single field
                 .likeText("text like this one")
                 .minTermFreq(1)
@@ -234,7 +234,7 @@ QueryBuilder qb = QueryBuilders
 
 h1. Span Queries (first, near, not, or, term)
 
-p. See: 
+p. See:
 * "Span First Query":/guide/reference/query-dsl/span-first-query.html documentation
 * "Span Near Query":/guide/reference/query-dsl/span-near-query.html documentation
 * "Span Not Query":/guide/reference/query-dsl/span-not-query.html documentation
@@ -396,7 +396,7 @@ import org.elasticsearch.common.geo.ShapeRelation;
 
 <pre class="prettyprint lang-java">
 // Shape within another
-QueryBuilders.geoShapeQuery("location", 
+QueryBuilders.geoShapeQuery("location",
                 new RectangleImpl(0,10,0,10,SpatialContext.GEO))
             .relation(ShapeRelation.WITHIN);
 

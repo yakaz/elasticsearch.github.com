@@ -7,9 +7,9 @@ sidebar: reference_java_api
 
 p. elasticsearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/guide/reference/query-dsl/. The factory for filter builders is @FilterBuilders@.
 
-Once your query is ready, you can use the "Search API":search.html.
+Once your query is ready, you can use the "Search API":/guide/reference/java-api/search.html.
 
-p. See also how to build "Queries":query-dsl-queries.html
+p. See also how to build "Queries":/guide/reference/java-api/query-dsl-queries.html
 
 p. To use @FilterBuilders@ just import them in your class:
 
@@ -25,9 +25,9 @@ p. See "And Filter":/guide/reference/query-dsl/and-filter.html documentation
 
 <pre class="prettyprint lang-java">
 FilterBuilders.andFilter(
-	FilterBuilders.rangeFilter("postDate").from("2010-03-01").to("2010-04-01"),
-	FilterBuilders.prefixFilter("name.second", "ba")
-	);
+    FilterBuilders.rangeFilter("postDate").from("2010-03-01").to("2010-04-01"),
+    FilterBuilders.prefixFilter("name.second", "ba")
+    );
 </pre>
 
 p. Note that you can cache the result using @AndFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -87,8 +87,8 @@ p. See "Geo Bounding Box Filter":/guide/reference/query-dsl/geo-bounding-box-fil
 
 <pre class="prettyprint lang-java">
 FilterBuilders.geoBoundingBoxFilter("pin.location")
-	.topLeft(40.73, -74.1)
-	.bottomRight(40.717, -73.99);
+    .topLeft(40.73, -74.1)
+    .bottomRight(40.717, -73.99);
 </pre>
 
 p. Note that you can cache the result using @GeoBoundingBoxFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -99,10 +99,10 @@ p. See "Geo Distance Filter":/guide/reference/query-dsl/geo-distance-filter.html
 
 <pre class="prettyprint lang-java">
 FilterBuilders.geoDistanceFilter("pin.location")
-	.point(40, -70)
-	.distance(200, DistanceUnit.KILOMETERS)
-	.optimizeBbox("memory")					// Can be also "indexed" or "none"
-	.geoDistance(GeoDistance.ARC);			// Or GeoDistance.PLANE
+    .point(40, -70)
+    .distance(200, DistanceUnit.KILOMETERS)
+    .optimizeBbox("memory")                    // Can be also "indexed" or "none"
+    .geoDistance(GeoDistance.ARC);            // Or GeoDistance.PLANE
 </pre>
 
 p. Note that you can cache the result using @GeoDistanceFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -113,13 +113,13 @@ p. See "Geo Distance Range Filter":/guide/reference/query-dsl/geo-distance-range
 
 <pre class="prettyprint lang-java">
 FilterBuilders.geoDistanceRangeFilter("pin.location")
-	.point(40, -70)
-	.from("200km")
-	.to("400km")
-	.includeLower(true)
-	.includeUpper(false)
-	.optimizeBbox("memory")					// Can be also "indexed" or "none"
-	.geoDistance(GeoDistance.ARC);			// Or GeoDistance.PLANE
+    .point(40, -70)
+    .from("200km")
+    .to("400km")
+    .includeLower(true)
+    .includeUpper(false)
+    .optimizeBbox("memory")                    // Can be also "indexed" or "none"
+    .geoDistance(GeoDistance.ARC);            // Or GeoDistance.PLANE
 </pre>
 
 p. Note that you can cache the result using @GeoDistanceRangeFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -130,9 +130,9 @@ p. See "Geo Polygon Filter":/guide/reference/query-dsl/geo-polygon-filter.html d
 
 <pre class="prettyprint lang-java">
 FilterBuilders.geoPolygonFilter("pin.location")
-	.addPoint(40, -70)
-	.addPoint(30, -80)
-	.addPoint(20, -90);
+    .addPoint(40, -70)
+    .addPoint(30, -80)
+    .addPoint(20, -90);
 </pre>
 
 p. Note that you can cache the result using @GeoPolygonFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -230,7 +230,7 @@ p. See "Not Filter":/guide/reference/query-dsl/not-filter.html documentation
 
 <pre class="prettyprint lang-java">
 FilterBuilders.notFilter(
-	FilterBuilders.rangeFilter("price").from("1").to("2"));
+    FilterBuilders.rangeFilter("price").from("1").to("2"));
 </pre>
 
 h1. Numeric Range Filter
@@ -253,9 +253,9 @@ p. See "Or Filter":/guide/reference/query-dsl/or-filter.html documentation
 
 <pre class="prettyprint lang-java">
 FilterBuilders.orFilter(
-		FilterBuilders.termFilter("name.second", "banon"),
-		FilterBuilders.termFilter("name.nick", "kimchy")
-	);
+        FilterBuilders.termFilter("name.second", "banon"),
+        FilterBuilders.termFilter("name.nick", "kimchy")
+    );
 </pre>
 
 p. Note that you can cache the result using @OrFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -276,8 +276,8 @@ p. See "Query Filter":/guide/reference/query-dsl/query-filter.html documentation
 
 <pre class="prettyprint lang-java">
 FilterBuilders.queryFilter(
-	    QueryBuilders.queryString("this AND that OR thus")
-	);
+        QueryBuilders.queryString("this AND that OR thus")
+    );
 </pre>
 
 p. Note that you can cache the result using @QueryFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -307,8 +307,8 @@ p. See "Script Filter":/guide/reference/query-dsl/script-filter.html documentati
 
 <pre class="prettyprint lang-java">
 FilterBuilder filter = FilterBuilders.scriptFilter(
-	    "doc['age'].value > param1"
-	).addParam("param1", 10);
+        "doc['age'].value > param1"
+    ).addParam("param1", 10);
 </pre>
 
 p. Note that you can cache the result using @ScriptFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -329,8 +329,8 @@ p. See "Terms Filter":/guide/reference/query-dsl/terms-filter.html documentation
 
 <pre class="prettyprint lang-java">
 FilterBuilders.termsFilter("user", "kimchy", "elasticsearch")
-    .execution("plain"); 	// Optional, can be also "bool", "and" or "or"
-    						// or "bool_nocache", "and_nocache" or "or_nocache"
+    .execution("plain");     // Optional, can be also "bool", "and" or "or"
+                            // or "bool_nocache", "and_nocache" or "or_nocache"
 </pre>
 
 p. Note that you can ask not to cache the result using @TermsFilterBuilder#cache(boolean)@ method. See "Caching section":#caching.
@@ -357,13 +357,13 @@ p. Note that you can ask not to cache the result using @NestedFilterBuilder#cach
 h1. Caching
 
 p. By default, some filters are cached or not cached. You can have a fine tuning control using @cache(boolean)@ method when exists.
-For example: 
+For example:
 
 <pre class="prettyprint lang-java">
 FilterBuilder filter = FilterBuilders.andFilter(
-	    FilterBuilders.rangeFilter("postDate").from("2010-03-01").to("2010-04-01"),
-	    FilterBuilders.prefixFilter("name.second", "ba")
-	    )
-	.cache(true);
+        FilterBuilders.rangeFilter("postDate").from("2010-03-01").to("2010-04-01"),
+        FilterBuilders.prefixFilter("name.second", "ba")
+        )
+    .cache(true);
 </pre>
 

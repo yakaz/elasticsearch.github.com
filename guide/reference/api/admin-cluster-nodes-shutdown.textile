@@ -11,7 +11,7 @@ p. The nodes shutdown API allows to shutdown one or more (or all) nodes in the c
 $ curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_shutdown'
 </pre>
 
-p. Specific node(s) can be shutdown as well using their respective node ids (or other selective options as explained "here":index.html.):
+p. Specific node(s) can be shutdown as well using their respective node ids (or other selective options as explained "here":/guide/reference/api/index.html.):
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/_cluster/nodes/nodeId1,nodeId2/_shutdown'

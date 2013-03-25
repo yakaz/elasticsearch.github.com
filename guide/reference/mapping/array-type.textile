@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. JSON documents allow to define an array (list) of fields or objects. Mapping array types could not be simpler since arrays gets automatically detected and mapping them can be done either with "Core Types":core-types.html or "Object Type":object-type.html mappings. For example, the following JSON defines several arrays:
+p. JSON documents allow to define an array (list) of fields or objects. Mapping array types could not be simpler since arrays gets automatically detected and mapping them can be done either with "Core Types":/guide/reference/mapping/core-types.html or "Object Type":/guide/reference/mapping/object-type.html mappings. For example, the following JSON defines several arrays:
 
 <pre class="prettyprint lang-js">
 {
@@ -36,7 +36,7 @@ p. The above JSON has the @tags@ property defining a list of a simple @string@ t
             "tags" : {"type" : "string", "index_name" : "tag"},
             "lists" : {
                 "properties" : {
-                    "name" : {"type" : "string"}, 
+                    "name" : {"type" : "string"},
                     "description" : {"type" : "string"}
                 }
             }

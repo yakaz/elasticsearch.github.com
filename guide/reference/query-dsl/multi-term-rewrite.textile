@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. Multi term queries, like "wildcard":wildcard-query.html and "prefix":prefix-query.html are called multi term queries and end up going through a process of rewrite. This also happens on the "query_string":query-string-query.html. All of those queries allow to control how they will get rewritten using the @rewrite@ parameter:
+p. Multi term queries, like "wildcard":/guide/reference/query-dsl/wildcard-query.html and "prefix":/guide/reference/query-dsl/prefix-query.html are called multi term queries and end up going through a process of rewrite. This also happens on the "query_string":/guide/reference/query-dsl/query-string-query.html. All of those queries allow to control how they will get rewritten using the @rewrite@ parameter:
 
 * When not set, or set to @constant_score_auto@, defaults to automatically choosing either @constant_score_boolean@ or @constant_score_filter@ based on query characteristics.
 * @scoring_boolean@: A rewrite method that first translates each term into a should clause in a boolean query, and keeps the scores as computed by the query. Note that typically such scores are meaningless to the user, and require non-trivial CPU to compute, so it's almost always better to use @constant_score_auto@. This rewrite method will hit too many clauses failure if it exceeds the boolean query limit (defaults to @1024@).

@@ -43,11 +43,11 @@ h1. Parent
 
 p. The @parent@ parameter can be set, which will basically be the same as setting the routing parameter.
 
-p. Note that deleting a parent document does not automatically delete its children. One way of deleting all child documents given a parent's id is to perform a "delete by query":delete-by-query.html on the child index with the automatically generated (and indexed) field ==_parent==, which is in the format ==parent_type#parent_id==.
+p. Note that deleting a parent document does not automatically delete its children. One way of deleting all child documents given a parent's id is to perform a "delete by query":/guide/reference/api/delete-by-query.html on the child index with the automatically generated (and indexed) field ==_parent==, which is in the format ==parent_type#parent_id==.
 
 h1. Automatic for the Index
 
-p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":admin-indices-create-index.html for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":admin-indices-put-mapping.html API for manually creating type mapping). 
+p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":/guide/reference/api/admin-indices-create-index.html for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":/guide/reference/api/admin-indices-put-mapping.html API for manually creating type mapping).
 
 h1. Distributed
 

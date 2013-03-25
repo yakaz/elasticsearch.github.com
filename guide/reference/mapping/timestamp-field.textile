@@ -52,7 +52,7 @@ p. Note, using @path@ without explicit timestamp value provided require an addit
 
 h1. format
 
-p. You can define the "date format":date-format.html used to parse the provided timestamp value. For example:
+p. You can define the "date format":/guide/reference/mapping/date-format.html used to parse the provided timestamp value. For example:
 
 <pre class="prettyprint lang-js">
 {

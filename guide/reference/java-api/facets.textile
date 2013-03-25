@@ -16,7 +16,7 @@ SearchResponse sr = node.client().prepareSearch()
         .execute().actionGet();
 </pre>
 
-p. Note that you can add more than one facet. See "Search Java API":search.html for details.
+p. Note that you can add more than one facet. See "Search Java API":/guide/reference/api/search.html for details.
 
 p. To build facet requests, use @FacetBuilders@ helpers. Just import them in your class:
 
@@ -158,8 +158,8 @@ p. Here is an example on how to create the facet request:
 <pre class="prettyprint lang-java">
 FacetBuilders.dateHistogramFacet("f")
     .field("date")      // Your date field
-    .interval("year");  // You can also use "quarter", "month", "week", "day", 
-                        // "hour" and "minute" or notation like "1.5h" or "2w" 
+    .interval("year");  // You can also use "quarter", "month", "week", "day",
+                        // "hour" and "minute" or notation like "1.5h" or "2w"
 </pre>
 
 h3. Use facet response
@@ -195,11 +195,11 @@ h3. Prepare facet request
 p. Here is an example on how to create the facet request:
 
 <pre class="prettyprint lang-java">
-FacetBuilders.filterFacet("f", 
+FacetBuilders.filterFacet("f",
     FilterBuilders.termFilter("brand", "heineken"));    // Your Filter here
 </pre>
 
-p. See "Filters":query-dsl-filters.html to learn how to build filters using Java.
+p. See "Filters":/guide/reference/java-api/query-dsl-filters.html to learn how to build filters using Java.
 
 h3. Use facet response
 
@@ -246,7 +246,7 @@ QueryFacet f = (QueryFacet) sr.facets().facetsAsMap().get("f");
 f.getCount();   // Number of docs that matched
 </pre>
 
-p. See "Queries":query-dsl-queries.html to learn how to build queries using Java.
+p. See "Queries":/guide/reference/java-api/query-dsl-queries.html to learn how to build queries using Java.
 
 
 
@@ -409,7 +409,7 @@ SearchResponse sr = node.client().prepareSearch()
     .execute().actionGet();
 </pre>
 
-p. See documentation on how to build "Filters":query-dsl-filters.html.
+p. See documentation on how to build "Filters":/guide/reference/java-api/query-dsl-filters.html.
 
 h1. Scope
 
@@ -418,5 +418,5 @@ p. By default, facets are computed within the query resultset. But, you can comp
 <pre class="prettyprint lang-java">
 TermsFacetBuilder facet = FacetBuilders.termsFacet("f")
     .field("brand")
-    .global(true); 
+    .global(true);
 </pre>

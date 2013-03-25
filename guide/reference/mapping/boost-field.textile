@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. Boosting is the process of enhancing the relevancy of a document or field. Field level mapping allows to define explicit boost level on a specific field. The boost field mapping (applied on the "root object":root-object-type.html) allows to define a boost field mapping where *its content will control the boost level of the document*. For example, consider the following mapping:
+p. Boosting is the process of enhancing the relevancy of a document or field. Field level mapping allows to define explicit boost level on a specific field. The boost field mapping (applied on the "root object":/guide/reference/mapping/root-object-type.html) allows to define a boost field mapping where *its content will control the boost level of the document*. For example, consider the following mapping:
 
 <pre class="prettyprint lang-js">
 {

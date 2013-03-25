@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. The @multi_field@ type allows to map several "core_types":core-types.html of the same value. This can come very handy, for example, when wanting to map a @string@ type, once when it's @analyzed@ and once when it's @not_analyzed@. For example:
+p. The @multi_field@ type allows to map several "core_types":/guide/reference/mapping/core-types.html of the same value. This can come very handy, for example, when wanting to map a @string@ type, once when it's @analyzed@ and once when it's @not_analyzed@. For example:
 
 <pre class="prettyprint lang-js">
 {
@@ -27,7 +27,7 @@ p. The above example shows how the @name@ field, which is of simple @string@ typ
 
 h1. Accessing Fields
 
-p. With @multi_field@ mapping, the field that has the same name as the property is treated as if it was mapped without a multi field. That's the "default" field. It can be accessed regularly, for example using @name@ or using typed navigation @tweet.name@. 
+p. With @multi_field@ mapping, the field that has the same name as the property is treated as if it was mapped without a multi field. That's the "default" field. It can be accessed regularly, for example using @name@ or using typed navigation @tweet.name@.
 
 p. The @path@ attribute allows to control how non-default fields can be accessed. If the @path@ attribute is set to @full@, which is the default setting, all non-default fields are prefixed with the name of the property and can be accessed by their full path using the navigation notation: @name.untouched@, or using the typed navigation notation @tweet.name.untouched@. If the @path@ attribute is set to @just_name@ the actual field name without a prefix is used. The @just_name@ setting, among other things, allows indexing content of multiple fields under the same name. In the example below the content of both fields @first_name@ and @last_name@ can be accessed by using @any_name@ or @tweet.any_name@
 
@@ -58,7 +58,7 @@ p. The @path@ attribute allows to control how non-default fields can be accessed
 
 h1. Include in All
 
-p. The @include_in_all@ setting on the "default" field allows to control if the value of the field should be included in the @_all@ field. Note, the value of the field is copied to @_all@, not the tokens. So, it only makes sense to copy the field value once. Because of this, the @include_in_all@ setting on all non-default fields is automatically set to @false@ and can't be changed. 
+p. The @include_in_all@ setting on the "default" field allows to control if the value of the field should be included in the @_all@ field. Note, the value of the field is copied to @_all@, not the tokens. So, it only makes sense to copy the field value once. Because of this, the @include_in_all@ setting on all non-default fields is automatically set to @false@ and can't be changed.
 
 h1. Merging
 

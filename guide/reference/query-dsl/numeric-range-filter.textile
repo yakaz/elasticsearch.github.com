@@ -12,10 +12,10 @@ p. Filters documents with fields that have values within a certain numeric range
     "constant_score" : {
         "filter" : {
             "numeric_range" : {
-                "age" : { 
-                    "from" : "10", 
-                    "to" : "20", 
-                    "include_lower" : true, 
+                "age" : {
+                    "from" : "10",
+                    "to" : "20",
+                    "include_lower" : true,
                     "include_upper" : false
                 }
             }
@@ -42,5 +42,5 @@ h1. Caching
 
 p. The result of the filter is not cached by default. The @_cache@ can be set to @true@ to cache the *result* of the filter. This is handy when the same points parameters are used on several (many) other queries. Note, the process of caching the first execution is higher when caching (since it needs to satisfy different queries).
 
-p. If caching the *result* of the filter is desired (for example, using the same "teen" filter with ages between 10 and 20), then it is advisable to simply use the "range":range-filter.html filter.
+p. If caching the *result* of the filter is desired (for example, using the same "teen" filter with ages between 10 and 20), then it is advisable to simply use the "range":/guide/reference/query-dsl/range-filter.html filter.
 

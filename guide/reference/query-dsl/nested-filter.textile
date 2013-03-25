@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. A @nested@ filter, works in a similar fashion to the "nested":nested-query.html query, except used as a filter. It follows exactly the same structure, but also allows to cache the results (set @_cache@ to @true@), and have it named (set the @_name@ value). For example:
+p. A @nested@ filter, works in a similar fashion to the "nested":/guide/reference/query-dsl/nested-query.html query, except used as a filter. It follows exactly the same structure, but also allows to cache the results (set @_cache@ to @true@), and have it named (set the @_name@ value). For example:
 
 <pre class="prettyprint lang-js">
 {

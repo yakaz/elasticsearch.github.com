@@ -41,7 +41,7 @@ p. Index templates are identified by a name (in the above case @template_1@) and
 curl -XGET localhost:9200/_template/template_1
 </pre>
 
-p. To get list of all index templates you can use "Cluster State":admin-cluster-state.html API and check for the metadata/templates section of the response.
+p. To get list of all index templates you can use "Cluster State":/guide/reference/api/admin-cluster-state.html API and check for the metadata/templates section of the response.
 
 h1. Multiple Template Matching
 

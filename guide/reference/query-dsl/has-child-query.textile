@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. The @has_child@ query works the same as the "has_child":has-child-filter.html filter, by automatically wrapping the filter with a "constant_score":constant-score-query.html (when using the default score type). It has the same syntax as the "has_child":has-child-filter.html filter:
+p. The @has_child@ query works the same as the "has_child":/guide/reference/query-dsl/has-child-filter.html filter, by automatically wrapping the filter with a "constant_score":/guide/reference/query-dsl/constant-score-query.html (when using the default score type). It has the same syntax as the "has_child":/guide/reference/query-dsl/has-child-filter.html filter:
 
 <pre class="prettyprint lang-js">
 {
@@ -17,7 +17,7 @@ p. The @has_child@ query works the same as the "has_child":has-child-filter.html
             }
         }
     }
-}    
+}
 </pre>
 
 p. An important difference with the @top_children@ query is that this query is always executed in two interations whereas the @top_children@ query can be executed in one or more iteration. When using the @has_child@ query the @total_hits@ is always correct.
@@ -37,7 +37,7 @@ The @has_child@ also has scoring support from version @0.20.2@. The supported sc
             }
         }
     }
-}    
+}
 </pre>
 
 h2. Scope
@@ -55,7 +55,7 @@ p. A @_scope@ can be defined on the filter allowing to run facets on the same sc
             }
         }
     }
-}    
+}
 </pre>
 
 h1. Memory Considerations

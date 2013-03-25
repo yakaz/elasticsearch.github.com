@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api_search_facets
 ---
 
-p. The @terms_stats@ facet combines both the "terms":terms-facet.html and "statistical":statistical-facet.html allowing to compute stats computed on a field, per term value driven by another field. For example:
+p. The @terms_stats@ facet combines both the "terms":/guide/reference/api/search/facets/terms-facet.html and "statistical":/guide/reference/api/search/facets/statistical-facet.html allowing to compute stats computed on a field, per term value driven by another field. For example:
 
 <pre class="prettyprint lang-js">
 {

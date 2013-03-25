@@ -16,12 +16,12 @@ curl -XGET 'http://localhost:9200/_nodes/stats'
 curl -XGET 'http://localhost:9200/_nodes/nodeId1,nodeId2/stats'
 </pre>
 
-p. The first command retrieves stats of all the nodes in the cluster. The second command selectively retrieves nodes stats of only @nodeId1@ and @nodeId2@. All the nodes selective options are explained "here":index.html.
+p. The first command retrieves stats of all the nodes in the cluster. The second command selectively retrieves nodes stats of only @nodeId1@ and @nodeId2@. All the nodes selective options are explained "here":/guide/reference/api/index.html.
 
 p. By default, @indices@ stats are returned. With options for @indices@, @os@, @process@, @jvm@, @network@, @transport@, @http@, @fs@, and @thread_pool@. For example:
 
 <pre class="prettyprint">
-# return indices and os    
+# return indices and os
 curl -XGET 'http://localhost:9200/_nodes/stats?os=true'
 # return just os and process
 curl -XGET 'http://localhost:9200/_nodes/stats?clear=true&os=true&process=true'

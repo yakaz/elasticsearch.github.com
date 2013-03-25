@@ -16,7 +16,7 @@ curl -XGET 'http://localhost:9200/_nodes'
 curl -XGET 'http://localhost:9200/_nodes/nodeId1,nodeId2'
 </pre>
 
-p. The first command retrieves information of all the nodes in the cluster. The second command selectively retrieves nodes information of only @nodeId1@ and @nodeId2@. All the nodes selective options are explained "here":index.html.
+p. The first command retrieves information of all the nodes in the cluster. The second command selectively retrieves nodes information of only @nodeId1@ and @nodeId2@. All the nodes selective options are explained "here":/guide/reference/api/.
 
 p. By default, it just returns the attributes and core settings for a node. It also allows to get information on @settings@, @os@, @process@, @jvm@, @thread_pool@, @network@, @transport@ and @http@:
 

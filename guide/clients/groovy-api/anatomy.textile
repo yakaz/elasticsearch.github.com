@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_groovy_api
 ---
 
-p. Once a "GClient":client.html has been obtained, all of ElasticSearch APIs can be executed on it. Each Groovy API is exposed using three different mechanisms.
+p. Once a "GClient":/guide/clients/groovy-api/client.html has been obtained, all of ElasticSearch APIs can be executed on it. Each Groovy API is exposed using three different mechanisms.
 
 h1. Closure Request
 
@@ -32,7 +32,7 @@ p. In the above example, calling @indexR.response@ will simply block for the res
 
 <pre class="prettyprint">
 IndexResponse response = indexR.response "5s" // block for 5 seconds, same as:
-response = indexR.response 5, TimeValue.SECONDS //    
+response = indexR.response 5, TimeValue.SECONDS //
 </pre>
 
 p. We can also register closures that will be called on success and on failure:

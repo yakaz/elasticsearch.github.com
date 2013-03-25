@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api_search_facets
 ---
 
-p. A specific histogram facet that can work with @date@ field types enhancing it over the regular "histogram facet":histogram-facet.html. Here is a quick example:
+p. A specific histogram facet that can work with @date@ field types enhancing it over the regular "histogram facet":/guide/reference/api/search/facets/histogram-facet.html. Here is a quick example:
 
 <pre class="prettyprint lang-js">
 {

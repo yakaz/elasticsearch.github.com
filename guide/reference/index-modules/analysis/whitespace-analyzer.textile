@@ -5,4 +5,4 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. An analyzer of type @whitespace@ that is built using a "Whitespace Tokenizer":whitespace-tokenizer.html.
+p. An analyzer of type @whitespace@ that is built using a "Whitespace Tokenizer":/guide/reference/index-modules/analysis/whitespace-tokenizer.html.

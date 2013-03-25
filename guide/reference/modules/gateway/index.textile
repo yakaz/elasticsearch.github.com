@@ -11,7 +11,7 @@ p. Each time the cluster meta data changes (for example, when an index is added 
 
 p. The gateway set on the node level will automatically control the index gateway that will be used. For example, if the @fs@ gateway is used, then automatically, each index created on the node will also use its own respective index level @fs@ gateway. In this case, if an index should not persist its state, it should be explicitly set to @none@ (which is the only other value it can be set to).
 
-p. The default gateway used is the "local":local.html gateway.
+p. The default gateway used is the "local":/guide/reference/modules/gateway/local.html gateway.
 
 h2. Recovery After Nodes / Time
 

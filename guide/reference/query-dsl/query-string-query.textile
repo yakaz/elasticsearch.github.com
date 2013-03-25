@@ -36,11 +36,11 @@ p. The @query_string@ top level parameters include:
 | @minimum_should_match@ | A percent value (for example @20%@) controlling how many "should" clauses in the resulting boolean query should match.|
 |@lenient@|If set to @true@ will cause format based failures (like providing text to a numeric field) to be ignored. (since 0.19.4).|
 
-p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":multi-term-rewrite.html parameter.
+p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":/guide/reference/query-dsl/multi-term-rewrite.html parameter.
 
 h1. Default Field
 
-p. When not explicitly specifying the field to search on in the query string syntax, the @index.query.default_field@ will be used to derive which field to search on. It defaults to @_all@ field. 
+p. When not explicitly specifying the field to search on in the query string syntax, the @index.query.default_field@ will be used to derive which field to search on. It defaults to @_all@ field.
 
 p. So, if @_all@ field is disabled, it might make sense to change it to set a different default field.
 
