@@ -70,8 +70,6 @@ p. Also from version @0.90.0.Beta1@ Elasticsearch supports sorting by fields tha
 * @nested_path@- Defines the on what nested object to sort. The actual sort field must be a direct field inside this nested object. The default is to use the most immediate inherited nested object from the sort field.
 * @nested_filter@ - A filter the inner objects inside the nested path should match with in order for its field values to be taken into account by sorting. Common case is to repeat the query / filter inside the nested filter or query. By default no @nested_filter@ is active.
 
-Either the highest (@max@) or lowest (@min@) inner object is picked for during sorting depending on the @sort_mode@ being used. The @sort_mode@ options @avg@ and @sum@ can still be used for number based fields inside nested objects. All the values for the sort field are taken into account for each nested object.
-
 h3. Nested sorting example
 
 p. In the below example @offer@ is a field of type @nested@. Because @offer@ is the closest inherited nested field, it is picked as @nested_path@. Only the inner objects that have color blue will participate in sorting.
