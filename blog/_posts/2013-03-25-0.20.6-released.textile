@@ -1,0 +1,11 @@
+---
+layout: blogpost
+title: 0.20.6 Released
+cat: blog
+author: Shay Banon
+nick: kimchy
+---
+
+p. *elasticsearch* version @0.20.6@ is out. You can download it "here":/download. This release includes several critical bug fixes, and it is a recommended upgrade for @0.20.x@ and @0.19.x@ users.
+
+p. The main critical bug fixed ("2812":https://github.com/elasticsearch/elasticsearch/issues/2812) relates to a problem that has been haunting us for some time now, which can cause full shard deletion when running out of OS system resources. We finally managed to nail it down (you can track the "Lucene issue":https://issues.apache.org/jira/browse/LUCENE-4870), and backported a fix to 0.20.
