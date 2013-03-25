@@ -22,7 +22,7 @@ p. The @has_parent@ query works the same as the "has_parent":has-parent-filter.h
 
 h2. Scoring capabilities
 
-The @has_parent@ also has scoring support from version @0.20.2@. The supported score types are @score@ or @none@. The default is @none@ and yields the same behaviour as in previous versions. If the score type is set to another value than @none@, the scores of all the matching parent documents are aggregated into the associated child documents. The score type can be specified with the @score_type@ field inside the @has_parent@ query:
+The @has_parent@ also has scoring support from version @0.20.2@. The supported score types are @score@ or @none@. The default is @none@ and this ignores the score from the parent document. The score is in this case equal to the boost on the @has_parent@ query (Defaults to 1). If the score type is set to @score@, then the score of the matching parent document is aggregated into the child documents belonging to the matching parent document. The score type can be specified with the @score_type@ field inside the @has_parent@ query:
 
 <pre class="prettyprint lang-js">
 {
