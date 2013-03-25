@@ -82,7 +82,7 @@ curl -XPOST 'localhost:9200/_search' -d '{
    "sort" : [
        {
           "offer.price" : {
-             "sort_mode" :  "avg",
+             "mode" :  "avg",
              "order" : "asc",
              "nested_filter" : {
                 "term" : { "offer.color" : "blue" }
