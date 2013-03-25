@@ -12,3 +12,25 @@ release_notes: true
 
 h2. Upgrade Notes:
  * Upgrading from 0.19 requires a full cluster restart.
+
+h2. Enhancements:
+ * Simplified range syntax when using a query string ("#2655":http://github.com/elasticsearch/elasticsearch/issues/issue/2655)
+ * Clear cache: allow to invalidate specific filter cache keys ("#2653":http://github.com/elasticsearch/elasticsearch/issues/issue/2653)
+ * Network: A closed channel might not always fire up a close event ("#2733":http://github.com/elasticsearch/elasticsearch/issues/issue/2733)
+
+
+h2. Bug fixes:
+ * TooManyOpenFiles might cause data-loss in ElasticSearch (Lucene) ("#2812":http://github.com/elasticsearch/elasticsearch/issues/issue/2812)
+ * Repeated ConnectExceptions in logs until node is restarted ("#2766":http://github.com/elasticsearch/elasticsearch/issues/issue/2766)
+ * has_child query AVG score mode does not always work correctly ("#2750":http://github.com/elasticsearch/elasticsearch/issues/issue/2750)
+ * has_child returns parent and child ("#2744":http://github.com/elasticsearch/elasticsearch/issues/issue/2744)
+ * Problems with range searches for time with lte ("#2731":http://github.com/elasticsearch/elasticsearch/issues/issue/2731)
+ * NullPointerException when applying a sort and using ignoreMapped(true) and the field does not exist (0.20.5) ("#2711":http://github.com/elasticsearch/elasticsearch/issues/issue/2711)
+ * malformed elasticsearch.yml causes unresponsive hang ("#2693":http://github.com/elasticsearch/elasticsearch/issues/issue/2693)
+ * Using Java node client and deleting all indexes cause system hungs ("#2692":http://github.com/elasticsearch/elasticsearch/issues/issue/2692)
+ * Bug when searching concrete and routing aliased indices ("#2682":http://github.com/elasticsearch/elasticsearch/issues/issue/2682)
+ * Index dynamic settings might not be allowed to be applied on master with no data node ("#2675":http://github.com/elasticsearch/elasticsearch/issues/issue/2675)
+ * Master node operations might be executed twice ("#2658":http://github.com/elasticsearch/elasticsearch/issues/issue/2658)
+ * null pointer exception in 19.8. same code path exists in master branch ("#2546":http://github.com/elasticsearch/elasticsearch/issues/issue/2546)
+
+
