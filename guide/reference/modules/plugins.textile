@@ -122,4 +122,4 @@ h2. Misc Plugins
 * "ZooKeeper Discovery Plugin":https://github.com/sonian/elasticsearch-zookeeper (by Sonian Inc.)
 * "ElasticSearch Changes Plugin":https://github.com/derryx/elasticsearch-changes-plugin (by Thomas Peuss)
 * "ElasticSearch View Plugin":http://tlrx.github.com/elasticsearch-view-plugin (by Tanguy Leroux)
-
+* "ElasticSearch New Relic Plugin":https://github.com/viniciusccarvalho/elasticsearch-newrelic (by Vinicius Carvalho)
