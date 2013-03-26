@@ -5,9 +5,9 @@ cat: guide
 sidebar: reference_modules_discovery
 ---
 
-p. The zen discovery is the built in discovery module for elasticsearch and the default. It provides both multicast and unicast discovery as well being easily extended to support cloud environments. 
+p. The zen discovery is the built in discovery module for elasticsearch and the default. It provides both multicast and unicast discovery as well being easily extended to support cloud environments.
 
-p. The zen discovery is integrated with other modules, for example, all communication between nodes is done using the "transport":../transport.html module.
+p. The zen discovery is integrated with other modules, for example, all communication between nodes is done using the "transport":/guide/reference/modules/transport.html module.
 
 
 p. It is separated into several sub modules, which are explained below:
@@ -35,7 +35,7 @@ p. The unicast discovery allows to perform the discovery when multicast is not e
 |_. Setting |_. Description |
 |@hosts@|Either an array setting or a comma delimited setting. Each value is either in the form of @host:port@, or in the form of @host[port1-port2]@.|
 
-p. The unicast discovery uses the "transport":../transport.html module to perform the discovery.
+p. The unicast discovery uses the "transport":/guide/reference/modules/transport.html module to perform the discovery.
 
 h1. Master Election
 
@@ -47,7 +47,7 @@ p. The @discovery.zen.minimum_master_nodes@ allows to control the minimum number
 
 h1. Fault Detection
 
-p. There are two fault detection processes running. The first is by the master, to ping all the other nodes in the cluster and verify that they are alive. And on the other end, each node pings to master to verify if its still alive or an election process needs to be initiated. 
+p. There are two fault detection processes running. The first is by the master, to ping all the other nodes in the cluster and verify that they are alive. And on the other end, each node pings to master to verify if its still alive or an election process needs to be initiated.
 
 p. The following settings control the fault detection process using the @discovery.zen.fd@ prefix:
 

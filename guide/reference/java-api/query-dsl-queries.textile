@@ -87,7 +87,7 @@ QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())
 
 h1. Custom Boost Factor Query
 
-p. See "Custom Boost Factor Query":/guide/reference/query-dsl/custom_boost_factor-query.html documentation
+p. See "Custom Boost Factor Query":/guide/reference/query-dsl/custom-boost-factor-query.html documentation
 
 <pre class="prettyprint lang-java">
 QueryBuilders.customBoostFactorQuery(QueryBuilders.matchAllQuery()) // Your query

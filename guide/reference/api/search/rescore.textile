@@ -19,7 +19,7 @@ be made available, eg a pair-wise rescorer.
 
 h1. Query rescorer
 
-The query rescorer executes a second query only on the Top-K results returned by the "@query@":/guide/reference/api/search/query.html and "@filter@":/guide/reference/api/search/filter.html phases. The number of docs which will be examined on each shard can be controlled by the @window_size@ parameter, which defaults to "@from@":/guide/reference/api/search/from.html + "@size@":/guide/reference/api/search/size.html.
+The query rescorer executes a second query only on the Top-K results returned by the "@query@":/guide/reference/api/search/query.html and "@filter@":/guide/reference/api/search/filter.html phases. The number of docs which will be examined on each shard can be controlled by the @window_size@ parameter, which defaults to "@from@ + @size@":/guide/reference/api/search/from-size.html.
 
 The scores from the original query and the rescore query are combined linearly to produce the final @_score@ for each document. The relative importance of the original query and of the rescore query can be controlled with the @query_weight@ and @rescore_query_weight@ respectively.  Both default to @1@.
 

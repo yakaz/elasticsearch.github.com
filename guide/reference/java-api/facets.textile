@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. Elasticsearch provides a full Java API to play with facets. See the "Facets guide":/guide/reference/api/search/facets/index.html.
+p. Elasticsearch provides a full Java API to play with facets. See the "Facets guide":/guide/reference/api/search/facets/.
 
 p. Use the factory for facet builders (@FacetBuilders@) and add each facet you want to compute when querying and add it to your search request:
 

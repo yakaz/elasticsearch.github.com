@@ -9,7 +9,7 @@ The usual purpose of a full-text search engine is to return a small number of do
 
 _Facets_ provide aggregated data based on a search query. In the simplest case, a "terms facet":/guide/reference/api/search/facets/terms-facet.html can return _facet counts_ for various _facet values_ for a specific _field_. ElasticSearch supports more facet implementations, such as "statistical":/guide/reference/api/search/facets/statistical-facet.html or "date histogram":/guide/reference/api/search/facets/date-histogram-facet.html facets.
 
-The field used for facet calculations _must_ be of type numeric, date/time or be analyzed as a single token &mdash; see the "_Mapping_":/guide/reference/mapping/index.html guide for details on the analysis process.
+The field used for facet calculations _must_ be of type numeric, date/time or be analyzed as a single token &mdash; see the "_Mapping_":/guide/reference/mapping/ guide for details on the analysis process.
 
 You can give the facet a custom _name_ and return multiple facets in one request.
 
@@ -82,7 +82,7 @@ As we have already mentioned, facet computation is restricted to the scope of th
             "global" : true
         }
     }
-}    
+}
 </pre>
 
 There's one **important distinction** to keep in mind. While search _queries_ restrict both the returned documents and facet counts, search _filters_ restrict only returned documents &mdash; but _not_ facet counts.
@@ -105,7 +105,7 @@ All facets can be configured with an additional filter (explained in the "Query 
             }
         }
     }
-}    
+}
 </pre>
 
 Note that this is different from a facet of the "filter":/guide/reference/api/search/facets/filter-facet.html type.

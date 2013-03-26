@@ -5,15 +5,15 @@ cat: guide
 sidebar: reference_java_api
 ---
 
-p. The index API allows one to index a typed JSON document into a specific index and make it searchable. 
+p. The index API allows one to index a typed JSON document into a specific index and make it searchable.
 
 h1. Generate JSON document
 
 p. There are different way of generating JSON document:
 
-* Manually (aka do it yourself) using native @byte[]@ or as a @String@ 
+* Manually (aka do it yourself) using native @byte[]@ or as a @String@
 
-* Using @Map@ that will be automatically converted to its JSON equivalent 
+* Using @Map@ that will be automatically converted to its JSON equivalent
 
 * Using a third party library to serialize your beans such as "Jackson":http://wiki.fasterxml.com/JacksonHome
 
@@ -23,7 +23,7 @@ p. Internally, each type is converted to @byte[]@ (so a String is converted to a
 
 h2. Do It Yourself
 
-Nothing really difficult here but note that you will have to encode dates regarding to the ["Date Format":../mapping/date-format.html].
+Nothing really difficult here but note that you will have to encode dates regarding to the ["Date Format":/guide/reference/mapping/date-format.html].
 
 <pre class="prettyprint lang-java">
 String json = "{" +
@@ -49,13 +49,13 @@ h2. Serialize you beans
 Elasticsearch already use Jackson but shade it under @org.elasticsearch.common.jackson@ package.
 So, you can add your own Jackson version in your @pom.xml@ file or in your classpath. See ["Jackson Download Page":http://wiki.fasterxml.com/JacksonDownload].
 
-For example: 
+For example:
 
 <pre class="prettyprint lang-xml">
 <dependency>
-	<groupId>com.fasterxml.jackson.core</groupId>
-	<artifactId>jackson-databind</artifactId>
-	<version>2.1.3</version>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.1.3</version>
 </dependency>
 </pre>
 
