@@ -42,15 +42,6 @@ plugin.mandatory: mapper-attachments,lang-groovy
 
 p. For safety reasons, if a mandatory plugin is not installed, the node will not start.
 
-h2. Installed Plugins
-
-A list of the currently installed plugins can be retrieved from the @/_plugin/@
-end point:
-
-<pre class="prettyprint">
-curl -XGET 'http://localhost:9200/_plugin/?pretty'
-</pre>
-
 h1. Known Plugins
 
 h2. Analysis Plugins
