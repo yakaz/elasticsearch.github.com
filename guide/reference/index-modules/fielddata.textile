@@ -17,6 +17,7 @@ perform poorly.
 
 |_. Setting |_. Description |
 |@index.fielddata.cache.size@|The max size of the field data cache, eg @30%@ of node heap space, or an absolute value, eg @12GB@. Defaults to unbounded.|
+|@index.fielddata.cache.expire@|A time based setting that expires field data after a certain time of inactivity. Defaults to @-1@. For example, can be set to @5m@ for a 5 minute expiry.|
 
 h2. Settings before v0.90
 
