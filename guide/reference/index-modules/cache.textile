@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_index_modules
 ---
 
-p. There are different caching inner modules associated with an index. They include @filter@, @field@ and others.
+p. There are different caching inner modules associated with an index. They include @filter@ and others.
 
 h1. Filter Cache
 
@@ -28,13 +28,3 @@ p. All types support the following settings:
 |_. Setting |_. Description |
 |@index.cache.filter.max_size@|The max size (count, not byte size) of the cache (per search segment in a shard). Defaults to not set (@-1@), which is usually fine with @soft@ cache and proper cacheable filters.|
 |@index.cache.filter.expire@|A time based setting that expires filters after a certain time of inactivity. Defaults to @-1@. For example, can be set to @5m@ for a 5 minute expiry.|
-
-h2. Field Data Cache
-
-p. The field data cache is used mainly when sorting on or faceting on a field. It loads all the field values to memory in order to provide fast document based access to those values. The field data cache can be expensive to build for a field, so its recommended to have enough memory to allocate it, and keep it loaded.
-
-p. The default type for the field data cache is @resident@ (because of the cost of rebuilding it). Other types include @soft@.
-
-|_. Setting |_. Description |
-|@index.cache.field.max_size@|The max size (count, not byte size) of the cache (per search segment in a shard). Defaults to not set (@-1@).|
-|@index.cache.field.expire@|A time based setting that expires filters after a certain time of inactivity. Defaults to @-1@. For example, can be set to @5m@ for a 5 minute expiry.|

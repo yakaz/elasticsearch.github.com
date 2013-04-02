@@ -1,0 +1,26 @@
+---
+layout: guide
+title: Field data
+cat: guide
+sidebar: reference_index_modules
+---
+
+p. The field data cache is used mainly when sorting on or faceting on a field. It loads all the field values to memory in order to provide fast document based access to those values. The field data cache can be expensive to build for a field, so its recommended to have enough memory to allocate it, and to keep it loaded.
+
+
+h2. Settings since v0.90
+
+From version 0.90 onwards, the amount of memory used for the field data
+cache can be controlled using @index.fielddata.cache.size@. Note: reloading
+the field data which does not fit into your cache will be expensive and
+perform poorly.
+
+|_. Setting |_. Description |
+|@index.fielddata.cache.size@|The max size of the field data cache, eg @30%@ of node heap space, or an absolute value, eg @12GB@. Defaults to unbounded.|
+
+h2. Settings before v0.90
+
+|_. Setting |_. Description |
+|@index.cache.field.type@|The default type for the field data cache is @resident@ (because of the cost of rebuilding it). Other types include @soft@|
+|@index.cache.field.max_size@|The max size (count, not byte size) of the cache (per search segment in a shard). Defaults to not set (@-1@).|
+|@index.cache.field.expire@|A time based setting that expires filters after a certain time of inactivity. Defaults to @-1@. For example, can be set to @5m@ for a 5 minute expiry.|
