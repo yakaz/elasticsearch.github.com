@@ -50,6 +50,7 @@ h2. Analysis Plugins
 * "Smart Chinese Analysis Plugin":https://github.com/elasticsearch/elasticsearch-analysis-smartcn (by elasticsearch team)
 * "ICU Analysis plugin":https://github.com/elasticsearch/elasticsearch-analysis-icu (by elasticsearch team)
 * "Stempel (Polish) Analysis plugin":https://github.com/elasticsearch/elasticsearch-analysis-stempel (by elasticsearch team)
+* "Morfologik (Polish) Analysis plugin":https://github.com/chytreg/elasticsearch-analysis-morfologik (by chytreg)
 * "IK Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-ik (by Medcl)
 * "Mmseg Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-mmseg (by Medcl)
 * "Hunspell Analysis Plugin":https://github.com/jprante/elasticsearch-analysis-hunspell (by Jörg Prante)
