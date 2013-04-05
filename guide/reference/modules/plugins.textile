@@ -42,6 +42,10 @@ plugin.mandatory: mapper-attachments,lang-groovy
 
 p. For safety reasons, if a mandatory plugin is not installed, the node will not start.
 
+h2. Installed Plugins
+
+A list of the currently loaded plugins can be retrieved using the "Node Info API":/guide/reference/api/admin-cluster-nodes-info.html.
+
 h1. Known Plugins
 
 h2. Analysis Plugins
