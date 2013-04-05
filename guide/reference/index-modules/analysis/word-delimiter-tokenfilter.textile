@@ -38,10 +38,10 @@ Advance settings include:
     $ => DIGIT
     % => DIGIT
     . => DIGIT
-    \u002C => DIGIT
+    \\u002C => DIGIT
 
     # in some cases you might not want to split on ZWJ
     # this also tests the case where we need a bigger byte[]
     # see http://en.wikipedia.org/wiki/Zero-width_joiner
-    \u200D => ALPHANUM
+    \\u200D => ALPHANUM
 </pre>
