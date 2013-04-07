@@ -49,7 +49,7 @@ p. In order to test how many open files the process can open, start it with @-De
 
 h2. Memory Settings
 
-p.  There is an option to use "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html to try and lock the process address space so it won't be swapped. For this to work, the @bootstrap.mlockall@ should be set to @true@ and it is recommended to set both the min and max memory allocation to be the same.
+p.  There is an option to use "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html to try and lock the process address space so it won't be swapped. For this to work, the @bootstrap.mlockall@ should be set to @true@ and it is recommended to set both the min and max memory allocation to be the same. Note: This option is only available on Linux/Unix operating systems.
 
 p. In order to see if this works or not, set the @common.jna@ logging to DEBUG level. A solution to "Unknown mlockall error 0" can be to set @ulimit -l unlimited@.
 
