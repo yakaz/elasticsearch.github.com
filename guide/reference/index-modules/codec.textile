@@ -5,15 +5,15 @@ cat: guide
 sidebar: reference_index_modules
 ---
 
-p. Codecs define how documents are written to disk and read from disk. The postingsformat is the part of the codec that responsible for reading and writting the term dictonary, postings lists and positions, payloads and offsets stored in the postings list.
+p. Codecs define how documents are written to disk and read from disk. The postings format is the part of the codec that responsible for reading and writting the term dictonary, postings lists and positions, payloads and offsets stored in the postings list.
 
-p. Configuring custom postingsformats is an expert feature and most likely using the builtin postingsformats will suite your needs as is described in the "mapping section":/guide/reference/mapping/core-types.html
+p. Configuring custom postings formats is an expert feature and most likely using the builtin postingsformats will suite your needs as is described in the "mapping section":/guide/reference/mapping/core-types.html
 
 p. Codecs are available in Elasticsearch from version @0.90.0.beta1@.
 
-h1. Configuring a custom postingsformat
+h1. Configuring a custom postings format
 
-p. Custom postingsformat can be defined in the index settings in the @codec@ part. The @codec@ part can be configured when creating an index or updating index settings. An example on how to define your custom postings format:
+p. Custom postings format can be defined in the index settings in the @codec@ part. The @codec@ part can be configured when creating an index or updating index settings. An example on how to define your custom postings format:
 
 <pre class="prettyprint lang-js">
 curl -XPUT 'http://localhost:9200/twitter/' -d '{
@@ -48,7 +48,7 @@ h1. Available postings formats
 
 h2. Direct postings format
 
-p. Wraps the default postingsformat for on-disk storage, but then at read time loads and stores all terms & postings directly in RAM. This postings format makes no effort to compress the terms and posting list and therefore is memory intensive, but because of this it gives a substantial increase in search performance. Because this holds all term bytes as a single byte[], you cannot have more than 2.1GB worth of terms in a single segment.  
+p. Wraps the default postings format for on-disk storage, but then at read time loads and stores all terms & postings directly in RAM. This postings format makes no effort to compress the terms and posting list and therefore is memory intensive, but because of this it gives a substantial increase in search performance. Because this holds all term bytes as a single byte[], you cannot have more than 2.1GB worth of terms in a single segment.  
 
 This postings format offers the following parameters:
 * @min_skip_count@ - The minimum number terms with a shared prefix to allow a skip pointer to be written. The default is <b>8</b>.
