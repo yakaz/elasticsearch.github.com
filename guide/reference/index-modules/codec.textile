@@ -48,7 +48,9 @@ h1. Available postings formats
 
 h2. Direct postings format
 
-p. Wraps the default postingsformat for on-disk storage, but then at read time loads and stores all terms & postings directly in RAM. This postings format makes no effort to compress the terms and posting list and therefore is memory intensive, but because of this it gives a  This postings format offers the following parameters:
+p. Wraps the default postingsformat for on-disk storage, but then at read time loads and stores all terms & postings directly in RAM. This postings format makes no effort to compress the terms and posting list and therefore is memory intensive, but because of this it gives a substantial increase in search performance. Because this holds all term bytes as a single byte[], you cannot have more than 2.1GB worth of terms in a single segment.  
+
+This postings format offers the following parameters:
 * @min_skip_count@ - The minimum number terms with a shared prefix to allow a skip pointer to be written. The default is <b>8</b>.
 * @low_freq_cutoff@ - Terms with a lower document frequency use a single array object representation for postings and positions. The default is <b>32</b>.
 
