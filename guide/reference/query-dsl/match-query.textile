@@ -41,6 +41,29 @@ p. Here is an example when providing additional parameters (note the slight chan
 </pre>
 
 
+h4. cutoff_frequency
+
+p. Since @0.90.0@ match query supports a @cutoff_frequency@ that allows specifying an absolute or relative document frequency where high frequent terms are moved into
+an optional subquery and are only scored if one of the low frequent (below the cutoff) terms in the case of an @or@ operator or all of the low frequent terms in the case of an @and@ 
+operator match.
+
+p. This query allows handling `stopwords` dynamically at runtime, is domain independent and doesn't require on a stopword file. It prevent scoring / iterating high frequent terms and only takes the terms into account if a more significant / lower frequent terms match a document. Yet, if all of the query terms are above the given @cutoff_frequency@ the query is automatically transformed into a pure conjunction (@and@) query to ensure fast execution.
+
+p. The @cutoff_frequency@ can either be relative to the number of documents in the index if in the range @[0..1)@ or absolute if greater or equal to @1.0@.
+
+p. Here is an example showing a query composed of stopwords exclusivly:
+
+<pre class="prettyprint lang-js">
+{
+    "match" : {
+        "message" : {
+            "query" : "to be or not to be",
+            "cutoff_frequency" : 0.001
+        }
+    }
+}
+</pre>
+
 h3. phrase
 
 p. The @match_phrase@ query analyzes the text and creates a @phrase@ query out of the analyzed text. For example:
@@ -119,7 +142,6 @@ p. It accepts the same parameters as the phrase type. In addition, it also accep
     }
 }
 </pre>
-
 
 h2. Comparison to query_string / field
 
