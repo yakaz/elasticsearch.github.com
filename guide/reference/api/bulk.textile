@@ -19,6 +19,8 @@ optional_source\n
 
 p. *NOTE*: the final line of data must end with a newline character @\n@.
 
+The possible actions are @index@, @create@ and @delete@.  @index@ and @create@ expect a source on the next line, and have the same semantics as the @op_type@ parameter to the standard index API (ie, create will fail if a document with the same index and type exists already).  @delete@ does not expect a source on the following line, and has the same semantics as the standard delete API.
+
 p. If you're providing text file input to @curl@, you *must* use the @--data-binary@ flag instead of plain @-d@.  The latter doesn't preserve newlines.  Example:
 
 <pre class="prettyprint">
