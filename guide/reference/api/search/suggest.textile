@@ -363,9 +363,9 @@ p. The direct generators support the following parameters:
 * @field@ - The field to fetch the candidate suggestions from. This is an required option that either needs to be set globally or per suggestion.
 * @size@ - The maximum corrections to be returned per suggest text token.
 * @suggest_mode@ - The suggest mode controls what suggestions are included or controls for what suggest text terms, suggestions should be suggested. Three possible values can be specified:
- * @missing@ - Only suggest terms in the suggest text that aren't in the index. This is the default.
- * @popular@ - Only suggest suggestions that occur in more docs then the original suggest text term.
- * @always@ - Suggest any matching suggestions based on terms in the suggest text.
+** @missing@ - Only suggest terms in the suggest text that aren't in the index. This is the default.
+** @popular@ - Only suggest suggestions that occur in more docs then the original suggest text term.
+** @always@ - Suggest any matching suggestions based on terms in the suggest text.
 * @max_edits@ - The maximum edit distance candidate suggestions can have in order to be considered as a suggestion. Can only be a value between 1 and 2. Any other value result in an bad request error being thrown. Defaults to 2.
 * @prefix_length@ - The number of minimal prefix characters that must match in order be a candidate suggestions. Defaults to 1. Increasing this number improves spellcheck performance. Usually misspellings don't occur in the beginning of terms.
 * @min_word_len@ -  The minimum length a suggest text term must have in order to be included. Defaults to 4.
