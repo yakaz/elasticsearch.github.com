@@ -344,6 +344,7 @@ h1. Basic Phrase suggest API  parameters
 * @text@ - Sets the text / query to provide suggestions for.
 
 h2. Smoothing Models
+
 The @phrase@ suggester supports multiple smoothing models to balance weight between infrequent grams (grams (shingles) are not existing in the index) and frequent grams (appear at least once in the index).
 * @stupid_backoff@ - a simple backoff model that backs off to lower order n-gram models if the higher order count is @0@ and discounts the lower order n-gram model by a constant factor. The default @discount@ is @0.4@. Stupid Backoff is the default model.
 * @laplace@ - a smoothing model that uses an additive smoothing where a constant (typically @1.0@ or smaller) is added to all counts to balance weights, The default @alpha@ is @0.5@.
