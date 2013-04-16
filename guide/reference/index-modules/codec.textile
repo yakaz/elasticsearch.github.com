@@ -22,7 +22,7 @@ curl -XPUT 'http://localhost:9200/twitter/' -d '{
             "codec" : {
 	      "postings_format" : {
 	         "my_format" : {
-	            "type" : "pulsing"
+	            "type" : "pulsing",
 	            "freq_cut_off" : "5"
 	         } 
 	      }
