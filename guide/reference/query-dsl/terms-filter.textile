@@ -57,7 +57,7 @@ p. The result of the filter is automatically cached by default. The @_cache@ can
 
 h1. Terms lookup mechanism 
 
-p. In the case when specifying a @terms@ filter with a lot of terms it can beneficial to fetch those term values from a document in an index. A concrete example would be to filter tweets tweeted by your followers. Potenially the amount of user ids specified in the terms filter can be a lot. In this scenerio it makes sense to use the terms filter's terms lookup mechanism.
+p. When it's needed to specify a @terms@ filter with a lot of terms it can be beneficial to fetch those term values from a document in an index. A concrete example would be to filter tweets tweeted by your followers. Potentially the amount of user ids specified in the terms filter can be a lot. In this scenario it makes sense to use the terms filter's terms lookup mechanism.
 
 p. The terms lookup mechanism is supported from version @0.90.0.Beta1@. 
 
@@ -82,7 +82,7 @@ p. There is an additional cache involved, which caches the lookup of the lookup 
 
 p. All options for the lookup of the documents cache can only be configured via the @elasticsearch.yml@ file.
 
-p. When use terms lookup the @execution@ option isn't taken into account and behaves as if the execution mode is set to @plain@.
+p. When using the terms lookup the @execution@ option isn't taken into account and behaves as if the execution mode was set to @plain@.
 
 h2. Terms lookup twitter example 
 
@@ -117,7 +117,7 @@ curl -XGET localhost:9200/tweets/_search -d '{
 }'
 </pre>
 
-The above is higly optimized, both in a sense that the list of followers will not be fetched if the filter is already cached in the filter cache, and with internal LRU cache for fetching external values for the terms filter. Also, the entry in the filter cache will not hold @all@ the terms reducing the memory required for it.
+The above is highly optimized, both in a sense that the list of followers will not be fetched if the filter is already cached in the filter cache, and with internal LRU cache for fetching external values for the terms filter. Also, the entry in the filter cache will not hold @all@ the terms reducing the memory required for it.
 
 @_cache_key@ is recommended to be set, so its simple to clear the cache associated with it using the clear cache API. For example:
 
