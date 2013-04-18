@@ -87,6 +87,7 @@ h2. Integrations
 * "couch_es":https://github.com/refuge/couch_es: elasticsearch helper for couchdb based products (apache couchdb, bigcouch & refuge)
 * "Jetty":https://github.com/sonian/elasticsearch-jetty: Jetty HTTP Transport
 * "Spring Elasticsearch":https://github.com/dadoonet/spring-elasticsearch: Spring Factory for Elasticsearch
+* "Apache Camel Integration":https://camel.apache.org/elasticsearch.html: An Apache camel component to integrate elasticsearch
 * "elasticsearch-test":https://github.com/tlrx/elasticsearch-test: Elasticsearch Java annotations for unit testing with "JUnit":http://www.junit.org/
 * "Wp-ElasticSearch":http://searchbox-io.github.com/wp-elasticsearch/: ElasticSearch WordPress Plugin
 * "eslogd":https://github.com/OlegKunitsyn/eslogd: Linux daemon that replicates events to a central ElasticSearch server in real-time
