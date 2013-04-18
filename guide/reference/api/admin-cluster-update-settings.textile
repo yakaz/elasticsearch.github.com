@@ -26,6 +26,17 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
 }'
 </pre>
 
+.p The cluster responds with the settings updated. So the response for the last example will be:
+
+<pre class="prettyprint">
+{
+    "persistent" : {},
+    "transient" : {
+        "discovery.zen.minimum_master_nodes" : "2"
+    }
+}
+</pre>
+
 There is a specific list of settings that can be updated, those include:
 
 * @cluster.blocks.read_only@: Have the whole cluster read only (indices do not accept write operations), metadata is not allowed to be modified (create or delete indices).
