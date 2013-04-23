@@ -5,4 +5,4 @@ cat: guide
 sidebar: reference_index_modules_analysis
 ---
 
-p. A token filter of type @reverse@ that simply reverses the tokens.
+p. A token filter of type @reverse@ that simply reverses each token.
