@@ -52,7 +52,7 @@ p. Below is the list of settings that can be changed using the update settings A
 |@index.routing.allocation.include.*@|A node matching any rule will be allowed to host shards from the index.|
 |@index.routing.allocation.exclude.*@|A node matching any rule will NOT be allowed to host shards from the index.|
 |@index.routing.allocation.require.*@|Only nodes matching all rules will be allowed to host shards from the index.|
-|@index.routing.allocation.total_shards_per_node@|Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded.|
+|@index.routing.allocation.total_shards_per_node@|Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded (@-1@).|
 |@index.recovery.initial_shards@|When using local gateway a particular shard is recovered only if there can be allocated quorum shards in the cluster. It can be set to @quorum@ (default), @quorum-1@ (or @half@), @full@ and @full-1@. Number values are also supported, e.g. @1@.|
 |@index.gc_deletes@||
 |@index.ttl.disable_purge@|Disables temporarily the purge of expired docs.|
