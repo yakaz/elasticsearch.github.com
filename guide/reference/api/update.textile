@@ -67,6 +67,17 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 }'
 </pre>
 
+p. **Note**: Be aware of MVEL and handling of ternary operators and assignments. Assignment operations have lower precedence than the ternary operator. Compare the following statements:
+
+<pre class="prettyprint lang-java">
+// Will NOT update the tags array
+ctx._source.tags.contains(tag) ? ctx.op = \"none\" : ctx._source.tags += tag
+// Will update
+ctx._source.tags.contains(tag) ? (ctx.op = \"none\") : ctx._source.tags += tag
+// Also works
+if (ctx._source.tags.contains(tag)) { ctx.op = \"none\" } else { ctx._source.tags += tag }
+</pre>
+
 p. The update API also support passing a partial document (since 0.20), which will be merged into the existing document (simple recursive merge, inner merging of objects, replacing core "keys/values" and arrays). For example:
 
 <pre class="prettyprint">
