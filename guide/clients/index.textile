@@ -72,6 +72,10 @@ h3. Linux Command Line
 
 * "es2unix":https://github.com/elasticsearch/es2unix: Elasticsearch API consumable by the command line.
 
+h3. OCaml
+
+* "ocaml-elasticsearch":https://github.com/tovbinm/ocaml-elasticsearch: OCaml client for Elasticsearch
+
 h2. Integrations
 
 * "Grails":http://grails.org/plugin/elasticsearch: ElasticSearch Grails plugin.
