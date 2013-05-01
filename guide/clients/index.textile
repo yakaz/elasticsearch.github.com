@@ -102,7 +102,7 @@ h2. Integrations
 
 h2. Misc
 
-* "Puppet":https://github.com/visibiz/puppet-elasticsearch: Elasticsearch puppet module.
+* "Puppet":https://github.com/electrical/puppet-elasticsearch: Elasticsearch puppet module.
 * "Chef":http://github.com/elasticsearch/cookbook-elasticsearch: Chef cookbook for Elasticsearch
 * "elasticsearch-rpms":https://github.com/tavisto/elasticsearch-rpms: RPMs for elasticsearch.
 * "daikon":http://www.github.com/neogenix/daikon: Daikon ElasticSearch CLI
