@@ -88,6 +88,8 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 }'
 </pre>
 
+p. If both @doc@ and @script@ is specified, then @doc@ is ignored. Best is to put your field pairs of the partial document in the script itself.
+
 p. Last, it also supports @upsert@ (since 0.20).  If the document does not already exists, the content of the @upsert@ element will be used to index the fresh doc:
 
 <pre class="prettyprint">
