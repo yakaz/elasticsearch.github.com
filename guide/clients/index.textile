@@ -76,6 +76,10 @@ h3. OCaml
 
 * "ocaml-elasticsearch":https://github.com/tovbinm/ocaml-elasticsearch: OCaml client for Elasticsearch
 
+h3. Smalltalk
+
+* "Elasticsearch":http://ss3.gemstone.com/ss/Elasticsearch.html - Smalltalk client for Elasticsearch
+
 h2. Integrations
 
 * "Grails":http://grails.org/plugin/elasticsearch: ElasticSearch Grails plugin.
